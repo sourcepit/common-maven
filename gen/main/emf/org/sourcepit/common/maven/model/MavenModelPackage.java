@@ -1,0 +1,861 @@
+/**
+ * <copyright>
+ * </copyright>
+ * 
+ * $Id$
+ */
+
+package org.sourcepit.common.maven.model;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * The <b>Package</b> for the model.
+ * It contains accessors for the meta objects to represent
+ * <ul>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
+ * </ul>
+ * <!-- end-user-doc -->
+ * 
+ * @see org.sourcepit.common.maven.model.MavenModelFactory
+ * @model kind="package"
+ * @generated
+ */
+public interface MavenModelPackage extends EPackage
+{
+   /**
+    * The package name.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   String eNAME = "maven";
+
+   /**
+    * The package namespace URI.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   String eNS_URI = "http://www.sourcepit.org/common/maven/0.1";
+
+   /**
+    * The package namespace name.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   String eNS_PREFIX = "maven";
+
+   /**
+    * The singleton instance of the package.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   MavenModelPackage eINSTANCE = org.sourcepit.common.maven.model.impl.MavenModelPackageImpl.init();
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.IdentifiableImpl <em>Identifiable</em>}'
+    * class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.IdentifiableImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getIdentifiable()
+    * @generated
+    */
+   int IDENTIFIABLE = 2;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int IDENTIFIABLE__GROUP_ID = 0;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int IDENTIFIABLE__ARTIFACT_ID = 1;
+
+   /**
+    * The number of structural features of the '<em>Identifiable</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int IDENTIFIABLE_FEATURE_COUNT = 2;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.VersionedIdentifiableImpl
+    * <em>Versioned Identifiable</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.VersionedIdentifiableImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getVersionedIdentifiable()
+    * @generated
+    */
+   int VERSIONED_IDENTIFIABLE = 3;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int VERSIONED_IDENTIFIABLE__GROUP_ID = IDENTIFIABLE__GROUP_ID;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int VERSIONED_IDENTIFIABLE__ARTIFACT_ID = IDENTIFIABLE__ARTIFACT_ID;
+
+   /**
+    * The feature id for the '<em><b>Version</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int VERSIONED_IDENTIFIABLE__VERSION = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+   /**
+    * The number of structural features of the '<em>Versioned Identifiable</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int VERSIONED_IDENTIFIABLE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl
+    * <em>Maven Artifact</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.MavenArtifactImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenArtifact()
+    * @generated
+    */
+   int MAVEN_ARTIFACT = 0;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__GROUP_ID = VERSIONED_IDENTIFIABLE__GROUP_ID;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__ARTIFACT_ID = VERSIONED_IDENTIFIABLE__ARTIFACT_ID;
+
+   /**
+    * The feature id for the '<em><b>Version</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__VERSION = VERSIONED_IDENTIFIABLE__VERSION;
+
+   /**
+    * The feature id for the '<em><b>Classifier</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__CLASSIFIER = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 0;
+
+   /**
+    * The feature id for the '<em><b>Type</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__TYPE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 1;
+
+   /**
+    * The feature id for the '<em><b>File</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__FILE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 2;
+
+   /**
+    * The number of structural features of the '<em>Maven Artifact</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT_FEATURE_COUNT = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 3;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenDependencyImpl
+    * <em>Maven Dependency</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.MavenDependencyImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenDependency()
+    * @generated
+    */
+   int MAVEN_DEPENDENCY = 1;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__GROUP_ID = IDENTIFIABLE__GROUP_ID;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__ARTIFACT_ID = IDENTIFIABLE__ARTIFACT_ID;
+
+   /**
+    * The feature id for the '<em><b>Classifier</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__CLASSIFIER = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+   /**
+    * The feature id for the '<em><b>Type</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__TYPE = IDENTIFIABLE_FEATURE_COUNT + 1;
+
+   /**
+    * The feature id for the '<em><b>Version Range</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__VERSION_RANGE = IDENTIFIABLE_FEATURE_COUNT + 2;
+
+   /**
+    * The feature id for the '<em><b>Scope</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__SCOPE = IDENTIFIABLE_FEATURE_COUNT + 3;
+
+   /**
+    * The feature id for the '<em><b>Optional</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__OPTIONAL = IDENTIFIABLE_FEATURE_COUNT + 4;
+
+   /**
+    * The number of structural features of the '<em>Maven Dependency</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 5;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.ClassifiedImpl <em>Classified</em>}'
+    * class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.ClassifiedImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getClassified()
+    * @generated
+    */
+   int CLASSIFIED = 4;
+
+   /**
+    * The feature id for the '<em><b>Classifier</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int CLASSIFIED__CLASSIFIER = 0;
+
+   /**
+    * The feature id for the '<em><b>Type</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int CLASSIFIED__TYPE = 1;
+
+   /**
+    * The number of structural features of the '<em>Classified</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int CLASSIFIED_FEATURE_COUNT = 2;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenProjectImpl <em>Maven Project</em>}'
+    * class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.MavenProjectImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenProject()
+    * @generated
+    */
+   int MAVEN_PROJECT = 5;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__GROUP_ID = VERSIONED_IDENTIFIABLE__GROUP_ID;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__ARTIFACT_ID = VERSIONED_IDENTIFIABLE__ARTIFACT_ID;
+
+   /**
+    * The feature id for the '<em><b>Version</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__VERSION = VERSIONED_IDENTIFIABLE__VERSION;
+
+   /**
+    * The feature id for the '<em><b>Packaging</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__PACKAGING = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 0;
+
+   /**
+    * The feature id for the '<em><b>Pom File</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__POM_FILE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 1;
+
+   /**
+    * The number of structural features of the '<em>Maven Project</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT_FEATURE_COUNT = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 2;
+
+
+   /**
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenArtifact <em>Maven Artifact</em>}
+    * '.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Maven Artifact</em>'.
+    * @see org.sourcepit.common.maven.model.MavenArtifact
+    * @generated
+    */
+   EClass getMavenArtifact();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.MavenArtifact#getFile
+    * <em>File</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>File</em>'.
+    * @see org.sourcepit.common.maven.model.MavenArtifact#getFile()
+    * @see #getMavenArtifact()
+    * @generated
+    */
+   EAttribute getMavenArtifact_File();
+
+   /**
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenDependency
+    * <em>Maven Dependency</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Maven Dependency</em>'.
+    * @see org.sourcepit.common.maven.model.MavenDependency
+    * @generated
+    */
+   EClass getMavenDependency();
+
+   /**
+    * Returns the meta object for the attribute '
+    * {@link org.sourcepit.common.maven.model.MavenDependency#getVersionRange <em>Version Range</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Version Range</em>'.
+    * @see org.sourcepit.common.maven.model.MavenDependency#getVersionRange()
+    * @see #getMavenDependency()
+    * @generated
+    */
+   EAttribute getMavenDependency_VersionRange();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.MavenDependency#getScope
+    * <em>Scope</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Scope</em>'.
+    * @see org.sourcepit.common.maven.model.MavenDependency#getScope()
+    * @see #getMavenDependency()
+    * @generated
+    */
+   EAttribute getMavenDependency_Scope();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.MavenDependency#isOptional
+    * <em>Optional</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Optional</em>'.
+    * @see org.sourcepit.common.maven.model.MavenDependency#isOptional()
+    * @see #getMavenDependency()
+    * @generated
+    */
+   EAttribute getMavenDependency_Optional();
+
+   /**
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.Identifiable <em>Identifiable</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Identifiable</em>'.
+    * @see org.sourcepit.common.maven.model.Identifiable
+    * @generated
+    */
+   EClass getIdentifiable();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.Identifiable#getGroupId
+    * <em>Group Id</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Group Id</em>'.
+    * @see org.sourcepit.common.maven.model.Identifiable#getGroupId()
+    * @see #getIdentifiable()
+    * @generated
+    */
+   EAttribute getIdentifiable_GroupId();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.Identifiable#getArtifactId
+    * <em>Artifact Id</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Artifact Id</em>'.
+    * @see org.sourcepit.common.maven.model.Identifiable#getArtifactId()
+    * @see #getIdentifiable()
+    * @generated
+    */
+   EAttribute getIdentifiable_ArtifactId();
+
+   /**
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.VersionedIdentifiable
+    * <em>Versioned Identifiable</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Versioned Identifiable</em>'.
+    * @see org.sourcepit.common.maven.model.VersionedIdentifiable
+    * @generated
+    */
+   EClass getVersionedIdentifiable();
+
+   /**
+    * Returns the meta object for the attribute '
+    * {@link org.sourcepit.common.maven.model.VersionedIdentifiable#getVersion <em>Version</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Version</em>'.
+    * @see org.sourcepit.common.maven.model.VersionedIdentifiable#getVersion()
+    * @see #getVersionedIdentifiable()
+    * @generated
+    */
+   EAttribute getVersionedIdentifiable_Version();
+
+   /**
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.Classified <em>Classified</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Classified</em>'.
+    * @see org.sourcepit.common.maven.model.Classified
+    * @generated
+    */
+   EClass getClassified();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.Classified#getClassifier
+    * <em>Classifier</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Classifier</em>'.
+    * @see org.sourcepit.common.maven.model.Classified#getClassifier()
+    * @see #getClassified()
+    * @generated
+    */
+   EAttribute getClassified_Classifier();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.Classified#getType
+    * <em>Type</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Type</em>'.
+    * @see org.sourcepit.common.maven.model.Classified#getType()
+    * @see #getClassified()
+    * @generated
+    */
+   EAttribute getClassified_Type();
+
+   /**
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenProject <em>Maven Project</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Maven Project</em>'.
+    * @see org.sourcepit.common.maven.model.MavenProject
+    * @generated
+    */
+   EClass getMavenProject();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.MavenProject#getPackaging
+    * <em>Packaging</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Packaging</em>'.
+    * @see org.sourcepit.common.maven.model.MavenProject#getPackaging()
+    * @see #getMavenProject()
+    * @generated
+    */
+   EAttribute getMavenProject_Packaging();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.MavenProject#getPomFile
+    * <em>Pom File</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Pom File</em>'.
+    * @see org.sourcepit.common.maven.model.MavenProject#getPomFile()
+    * @see #getMavenProject()
+    * @generated
+    */
+   EAttribute getMavenProject_PomFile();
+
+   /**
+    * Returns the factory that creates the instances of the model.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the factory that creates the instances of the model.
+    * @generated
+    */
+   MavenModelFactory getMavenModelFactory();
+
+   /**
+    * <!-- begin-user-doc -->
+    * Defines literals for the meta objects that represent
+    * <ul>
+    * <li>each class,</li>
+    * <li>each feature of each class,</li>
+    * <li>each enum,</li>
+    * <li>and each data type</li>
+    * </ul>
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   interface Literals
+   {
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl
+       * <em>Maven Artifact</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.impl.MavenArtifactImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenArtifact()
+       * @generated
+       */
+      EClass MAVEN_ARTIFACT = eINSTANCE.getMavenArtifact();
+
+      /**
+       * The meta object literal for the '<em><b>File</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute MAVEN_ARTIFACT__FILE = eINSTANCE.getMavenArtifact_File();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.MavenDependencyImpl
+       * <em>Maven Dependency</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.impl.MavenDependencyImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenDependency()
+       * @generated
+       */
+      EClass MAVEN_DEPENDENCY = eINSTANCE.getMavenDependency();
+
+      /**
+       * The meta object literal for the '<em><b>Version Range</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute MAVEN_DEPENDENCY__VERSION_RANGE = eINSTANCE.getMavenDependency_VersionRange();
+
+      /**
+       * The meta object literal for the '<em><b>Scope</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute MAVEN_DEPENDENCY__SCOPE = eINSTANCE.getMavenDependency_Scope();
+
+      /**
+       * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute MAVEN_DEPENDENCY__OPTIONAL = eINSTANCE.getMavenDependency_Optional();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.IdentifiableImpl
+       * <em>Identifiable</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.impl.IdentifiableImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getIdentifiable()
+       * @generated
+       */
+      EClass IDENTIFIABLE = eINSTANCE.getIdentifiable();
+
+      /**
+       * The meta object literal for the '<em><b>Group Id</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute IDENTIFIABLE__GROUP_ID = eINSTANCE.getIdentifiable_GroupId();
+
+      /**
+       * The meta object literal for the '<em><b>Artifact Id</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute IDENTIFIABLE__ARTIFACT_ID = eINSTANCE.getIdentifiable_ArtifactId();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.VersionedIdentifiableImpl
+       * <em>Versioned Identifiable</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.impl.VersionedIdentifiableImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getVersionedIdentifiable()
+       * @generated
+       */
+      EClass VERSIONED_IDENTIFIABLE = eINSTANCE.getVersionedIdentifiable();
+
+      /**
+       * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute VERSIONED_IDENTIFIABLE__VERSION = eINSTANCE.getVersionedIdentifiable_Version();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.ClassifiedImpl
+       * <em>Classified</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.impl.ClassifiedImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getClassified()
+       * @generated
+       */
+      EClass CLASSIFIED = eINSTANCE.getClassified();
+
+      /**
+       * The meta object literal for the '<em><b>Classifier</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute CLASSIFIED__CLASSIFIER = eINSTANCE.getClassified_Classifier();
+
+      /**
+       * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute CLASSIFIED__TYPE = eINSTANCE.getClassified_Type();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.MavenProjectImpl
+       * <em>Maven Project</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.impl.MavenProjectImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenProject()
+       * @generated
+       */
+      EClass MAVEN_PROJECT = eINSTANCE.getMavenProject();
+
+      /**
+       * The meta object literal for the '<em><b>Packaging</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute MAVEN_PROJECT__PACKAGING = eINSTANCE.getMavenProject_Packaging();
+
+      /**
+       * The meta object literal for the '<em><b>Pom File</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute MAVEN_PROJECT__POM_FILE = eINSTANCE.getMavenProject_PomFile();
+
+   }
+
+} // MavenModelPackage
