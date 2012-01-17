@@ -20,7 +20,7 @@ import org.hamcrest.core.IsNull;
 import org.junit.Test;
 import org.sourcepit.common.maven.util.MavenProjectUtils;
 
-public class MavenUtilsTest
+public class MavenProjectUtilsTest
 {
    @Test
    public void testGetOutputDir()

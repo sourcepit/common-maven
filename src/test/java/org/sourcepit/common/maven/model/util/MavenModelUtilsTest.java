@@ -4,7 +4,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.sourcepit.common.maven.utils;
+package org.sourcepit.common.maven.model.util;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
