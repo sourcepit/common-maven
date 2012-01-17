@@ -13,6 +13,7 @@ import org.apache.maven.artifact.Artifact;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelFactory;
+import org.sourcepit.common.maven.model.MavenProject;
 
 public final class MavenModelUtils
 {
@@ -59,4 +60,18 @@ public final class MavenModelUtils
       return mArtifact;
    }
 
+   public static MavenProject toMavenProject(@NotNull org.apache.maven.project.MavenProject mavenProject)
+   {
+      final MavenProject mProject = MavenModelFactory.eINSTANCE.createMavenProject();
+      mProject.setGroupId(mavenProject.getGroupId());
+      mProject.setArtifactId(mavenProject.getArtifactId());
+      mProject.setVersion(mavenProject.getVersion());
+      if (mavenProject.getPackaging() != null
+         && !ObjectUtils.equals(mProject.getPackaging(), mavenProject.getPackaging()))
+      {
+         mProject.setPackaging(mavenProject.getPackaging());
+      }
+      mProject.setPomFile(mavenProject.getFile());
+      return mProject;
+   }
 }

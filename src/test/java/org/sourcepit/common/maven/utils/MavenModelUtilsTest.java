@@ -23,6 +23,7 @@ import org.junit.Test;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
+import org.sourcepit.common.maven.model.MavenProject;
 import org.sourcepit.common.maven.model.util.MavenModelUtils;
 
 public class MavenModelUtilsTest
@@ -38,7 +39,7 @@ public class MavenModelUtilsTest
       catch (ConstraintViolationException e)
       {
       }
-      
+
       Artifact artifact = mock(Artifact.class);
       when(artifact.getFile()).thenReturn(new File(""));
       when(artifact.getGroupId()).thenReturn("groupId");
@@ -112,5 +113,35 @@ public class MavenModelUtilsTest
       mavenDependecy = MavenModelUtils.toMavenDependecy(artifact);
       assertThat(mavenDependecy.getType(), IsEqual.equalTo("war"));
       assertThat(mavenDependecy.getScope(), IsEqual.equalTo("test"));
+   }
+
+   @Test
+   public void testToMavenProject()
+   {
+      try
+      {
+         MavenModelUtils.toMavenProject(null);
+         fail();
+      }
+      catch (ConstraintViolationException e)
+      {
+      }
+
+      org.apache.maven.project.MavenProject project = mock(org.apache.maven.project.MavenProject.class);
+      when(project.getFile()).thenReturn(new File(""));
+      when(project.getGroupId()).thenReturn("groupId");
+      when(project.getArtifactId()).thenReturn("artifactId");
+      when(project.getVersion()).thenReturn("1.0");
+      when(project.getPackaging()).thenReturn("jar");
+
+      MavenProject mProject = MavenModelUtils.toMavenProject(project);
+      assertThat(mProject.getGroupId(), IsEqual.equalTo(project.getGroupId()));
+      assertThat(mProject.getArtifactId(), IsEqual.equalTo(project.getArtifactId()));
+      assertThat(mProject.getVersion(), IsEqual.equalTo(project.getVersion()));
+      assertThat(mProject.getPomFile(), IsEqual.equalTo(project.getFile()));
+
+      // jar is default
+      assertThat(mProject.eIsSet(MavenModelPackage.eINSTANCE.getMavenProject_Packaging()), Is.is(false));
+      assertThat(mProject.getPackaging(), IsEqual.equalTo(project.getPackaging()));
    }
 }
