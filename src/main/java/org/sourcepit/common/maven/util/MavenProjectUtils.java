@@ -10,6 +10,7 @@ import java.io.File;
 
 import javax.validation.constraints.NotNull;
 
+import org.apache.maven.artifact.Artifact;
 import org.apache.maven.project.MavenProject;
 
 public final class MavenProjectUtils
@@ -50,4 +51,24 @@ public final class MavenProjectUtils
    {
       return project.getBasedir();
    }
+
+   public static MavenProject findReferencedProject(@NotNull MavenProject project, @NotNull Artifact artifact)
+   {
+      final String referenceId = getProjectReferenceId(artifact);
+      return project.getProjectReferences().get(referenceId);
+   }
+
+
+   private static String getProjectReferenceId(Artifact artifact)
+   {
+      return getProjectReferenceId(artifact.getGroupId(), artifact.getArtifactId(), artifact.getBaseVersion());
+   }
+
+   private static String getProjectReferenceId(String groupId, String artifactId, String version)
+   {
+      StringBuilder buffer = new StringBuilder(128);
+      buffer.append(groupId).append(':').append(artifactId).append(':').append(version);
+      return buffer.toString();
+   }
+
 }
