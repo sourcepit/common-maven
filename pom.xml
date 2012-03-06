@@ -34,13 +34,28 @@
 			<version>0.1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
+			<groupId>org.sourcepit</groupId>
+			<artifactId>guice-plexus-bridge</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-core</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-compat</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.sourcepit.common</groupId>
+			<artifactId>common-testing</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -59,6 +74,23 @@
 				<targetPath>META-INF/emf</targetPath>
 			</resource>
 		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<configuration>
+						<escapeString>\</escapeString>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
