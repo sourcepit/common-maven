@@ -7,39 +7,24 @@
 package org.sourcepit.common.maven;
 
 import java.io.File;
-import java.io.IOException;
 
-import org.junit.Rule;
-import org.sourcepit.common.maven.testing.EmbeddedMavenTest;
+import org.sourcepit.common.maven.testing.EmbeddedMavenEnvironmentTest;
 import org.sourcepit.common.testing.Environment;
-import org.sourcepit.common.testing.Workspace;
 
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class AbstractCommonMavenTest extends EmbeddedMavenTest
+public class AbstractCommonMavenTest extends EmbeddedMavenEnvironmentTest
 {
-   private final Environment env = Environment.get("env-test.properties");
-
-   private File userHome;
-
-   @Rule
-   public Workspace ws = new Workspace(getUserHome(), false);
+   @Override
+   protected Environment newEnvironment()
+   {
+      return Environment.get("env-test.properties");
+   }
 
    @Override
-   protected File getUserHome()
+   protected File getResourcesRoot()
    {
-      if (userHome == null)
-      {
-         userHome = new File(env.getBuildDir(), "test-ws");
-      }
-      return userHome;
-   }
-   
-   protected File getResource(String path) throws IOException
-   {
-      File resources = env.getPropertyAsFile("test.resources", true);
-      File resource = new File(resources, path).getCanonicalFile();
-      return ws.importDir(resource);
+      return getEnvironment().getPropertyAsFile("test.resources", true);
    }
 }
