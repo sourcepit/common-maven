@@ -32,7 +32,7 @@ public class EmbeddedMavenTestTest extends AbstractCommonMavenTest
       File projectDir = getResource("reactor-project");
       assertTrue(projectDir.exists());
 
-      MavenExecutionResult2 result = buildProject(projectDir, true);
+      MavenExecutionResult2 result = buildProject(new File(projectDir, "pom.xml"), true);
       assertNotNull(result.getSession());
 
       List<MavenProject> projects = result.getTopologicallySortedProjects();
@@ -49,7 +49,7 @@ public class EmbeddedMavenTestTest extends AbstractCommonMavenTest
       assertNotNull(dependencyArtifacts);
       assertThat(dependencyArtifacts.size(), is(1));
       assertThat(dependencyArtifacts.iterator().next(), equalTo(moduleB.getArtifact()));
-      
+
       Set<Artifact> artifacts = moduleA.getArtifacts();
       assertNotNull(artifacts);
       assertThat(artifacts.size(), is(1));

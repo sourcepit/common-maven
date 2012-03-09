@@ -161,21 +161,19 @@ public abstract class EmbeddedMavenTest extends GuplexTest
       return settingsBuilder.build(settingsRequest);
    }
 
-   protected MavenExecutionResult2 buildProject(File projectDir) throws Exception
+   protected MavenExecutionResult2 buildProject(File pom) throws Exception
    {
-      return buildProject(projectDir, null, false);
+      return buildProject(pom, null, false);
    }
 
-   protected MavenExecutionResult2 buildProject(File projectDir, boolean resolveDependencies) throws Exception
+   protected MavenExecutionResult2 buildProject(File pom, boolean resolveDependencies) throws Exception
    {
-      return buildProject(projectDir, null, resolveDependencies);
+      return buildProject(pom, null, resolveDependencies);
    }
 
-   protected MavenExecutionResult2 buildProject(File projectDir, Properties userProperties, boolean resolveDependencies)
+   protected MavenExecutionResult2 buildProject(File pom, Properties userProperties, boolean resolveDependencies)
       throws Exception
    {
-      final File pom = getPomFile(projectDir);
-
       final MavenExecutionRequest request = newMavenExecutionRequest(pom, newSystemProperties(), userProperties,
          "compile");
       request.getProjectBuildingRequest().setProcessPlugins(false);

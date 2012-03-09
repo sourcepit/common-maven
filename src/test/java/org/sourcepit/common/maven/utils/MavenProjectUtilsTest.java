@@ -122,7 +122,7 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
 
       final File projectDir = getResource("reactor-project");
 
-      final List<MavenProject> projects = buildProject(projectDir, true).getTopologicallySortedProjects();
+      final List<MavenProject> projects = buildProject(new File(projectDir, "pom.xml"), true).getTopologicallySortedProjects();
       assertThat(projects.size(), is(3));
 
       MavenProject projectB = projects.get(1);

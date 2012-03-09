@@ -53,6 +53,12 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>org.sourcepit</groupId>
+			<artifactId>guice-plexus-bridge</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<optional>true</optional>
