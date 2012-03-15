@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.sourcepit.common</groupId>
 		<artifactId>common-parent</artifactId>
-		<version>2-SNAPSHOT</version>
+		<version>2</version>
 		<relativePath>../common-parent</relativePath>
 	</parent>
 	<artifactId>common-maven</artifactId>
@@ -26,17 +26,12 @@
 		<dependency>
 			<groupId>org.sourcepit.common</groupId>
 			<artifactId>common-modeling</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.1.0-alpha-1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.sourcepit.common</groupId>
 			<artifactId>common-constraints</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.sourcepit</groupId>
-			<artifactId>guice-plexus-bridge</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.1.0-alpha-1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
@@ -49,13 +44,13 @@
 		<dependency>
 			<groupId>org.sourcepit.common</groupId>
 			<artifactId>common-testing</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.1.0-alpha-3</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.sourcepit</groupId>
 			<artifactId>guice-plexus-bridge</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.1.0-alpha-1</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
