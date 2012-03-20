@@ -6,8 +6,6 @@
 
 package org.sourcepit.common.maven;
 
-import java.io.File;
-
 import org.sourcepit.common.maven.testing.EmbeddedMavenEnvironmentTest;
 import org.sourcepit.common.testing.Environment;
 
@@ -20,11 +18,5 @@ public class AbstractCommonMavenTest extends EmbeddedMavenEnvironmentTest
    protected Environment newEnvironment()
    {
       return Environment.get("env-test.properties");
-   }
-
-   @Override
-   protected File getResourcesRoot()
-   {
-      return getEnvironment().getPropertyAsFile("test.resources", true);
    }
 }

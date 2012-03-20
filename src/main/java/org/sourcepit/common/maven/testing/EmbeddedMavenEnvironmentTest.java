@@ -49,10 +49,13 @@ public abstract class EmbeddedMavenEnvironmentTest extends EmbeddedMavenTest
 
    protected File getResource(String path) throws IOException
    {
-      File resources = getResourcesRoot();
+      File resources = getResourcesDir();
       File resource = new File(resources, path).getCanonicalFile();
       return ws.importDir(resource);
    }
 
-   protected abstract File getResourcesRoot();
+   protected File getResourcesDir()
+   {
+      return getEnvironment().getResourcesDir();
+   }
 }
