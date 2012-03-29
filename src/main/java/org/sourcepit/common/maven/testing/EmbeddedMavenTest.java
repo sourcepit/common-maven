@@ -55,6 +55,12 @@ public abstract class EmbeddedMavenTest extends GuplexTest
    @Inject
    protected SettingsBuilder settingsBuilder;
 
+   @Override
+   protected boolean isUseIndex()
+   {
+      return true;
+   }
+
    @After
    public void tearDown() throws Exception
    {
