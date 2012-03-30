@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.sourcepit.common</groupId>
 		<artifactId>common-parent</artifactId>
-		<version>3-SNAPSHOT</version>
+		<version>3</version>
 		<relativePath>../common-parent</relativePath>
 	</parent>
 	<artifactId>common-maven</artifactId>
