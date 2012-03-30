@@ -49,7 +49,7 @@
 		<dependency>
 			<groupId>org.sourcepit</groupId>
 			<artifactId>guice-plexus-bridge</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.1.0-alpha-2</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
