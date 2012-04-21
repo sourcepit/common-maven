@@ -23,6 +23,9 @@ import org.sourcepit.common.maven.model.MavenProject;
  * <ul>
  * <li>{@link org.sourcepit.common.maven.model.impl.MavenProjectImpl#getPackaging <em>Packaging</em>}</li>
  * <li>{@link org.sourcepit.common.maven.model.impl.MavenProjectImpl#getPomFile <em>Pom File</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.impl.MavenProjectImpl#getOutputDirectory <em>Output Directory</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.impl.MavenProjectImpl#getTestOutputDirectory <em>Test Output Directory
+ * </em>}</li>
  * </ul>
  * </p>
  * 
@@ -73,6 +76,50 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
     * @ordered
     */
    protected File pomFile = POM_FILE_EDEFAULT;
+
+   /**
+    * The default value of the '{@link #getOutputDirectory() <em>Output Directory</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getOutputDirectory()
+    * @generated
+    * @ordered
+    */
+   protected static final File OUTPUT_DIRECTORY_EDEFAULT = null;
+
+   /**
+    * The cached value of the '{@link #getOutputDirectory() <em>Output Directory</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getOutputDirectory()
+    * @generated
+    * @ordered
+    */
+   protected File outputDirectory = OUTPUT_DIRECTORY_EDEFAULT;
+
+   /**
+    * The default value of the '{@link #getTestOutputDirectory() <em>Test Output Directory</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getTestOutputDirectory()
+    * @generated
+    * @ordered
+    */
+   protected static final File TEST_OUTPUT_DIRECTORY_EDEFAULT = null;
+
+   /**
+    * The cached value of the '{@link #getTestOutputDirectory() <em>Test Output Directory</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getTestOutputDirectory()
+    * @generated
+    * @ordered
+    */
+   protected File testOutputDirectory = TEST_OUTPUT_DIRECTORY_EDEFAULT;
 
    /**
     * <!-- begin-user-doc -->
@@ -155,7 +202,59 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
     * 
     * @generated
     */
-   public File getProjectDir()
+   public File getOutputDirectory()
+   {
+      return outputDirectory;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public void setOutputDirectory(File newOutputDirectory)
+   {
+      File oldOutputDirectory = outputDirectory;
+      outputDirectory = newOutputDirectory;
+      if (eNotificationRequired())
+         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.MAVEN_PROJECT__OUTPUT_DIRECTORY,
+            oldOutputDirectory, outputDirectory));
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public File getTestOutputDirectory()
+   {
+      return testOutputDirectory;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public void setTestOutputDirectory(File newTestOutputDirectory)
+   {
+      File oldTestOutputDirectory = testOutputDirectory;
+      testOutputDirectory = newTestOutputDirectory;
+      if (eNotificationRequired())
+         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY,
+            oldTestOutputDirectory, testOutputDirectory));
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public File getProjectDirectory()
    {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
@@ -177,6 +276,10 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
             return getPackaging();
          case MavenModelPackage.MAVEN_PROJECT__POM_FILE :
             return getPomFile();
+         case MavenModelPackage.MAVEN_PROJECT__OUTPUT_DIRECTORY :
+            return getOutputDirectory();
+         case MavenModelPackage.MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY :
+            return getTestOutputDirectory();
       }
       return super.eGet(featureID, resolve, coreType);
    }
@@ -197,6 +300,12 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
             return;
          case MavenModelPackage.MAVEN_PROJECT__POM_FILE :
             setPomFile((File) newValue);
+            return;
+         case MavenModelPackage.MAVEN_PROJECT__OUTPUT_DIRECTORY :
+            setOutputDirectory((File) newValue);
+            return;
+         case MavenModelPackage.MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY :
+            setTestOutputDirectory((File) newValue);
             return;
       }
       super.eSet(featureID, newValue);
@@ -219,6 +328,12 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
          case MavenModelPackage.MAVEN_PROJECT__POM_FILE :
             setPomFile(POM_FILE_EDEFAULT);
             return;
+         case MavenModelPackage.MAVEN_PROJECT__OUTPUT_DIRECTORY :
+            setOutputDirectory(OUTPUT_DIRECTORY_EDEFAULT);
+            return;
+         case MavenModelPackage.MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY :
+            setTestOutputDirectory(TEST_OUTPUT_DIRECTORY_EDEFAULT);
+            return;
       }
       super.eUnset(featureID);
    }
@@ -238,6 +353,13 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
             return PACKAGING_EDEFAULT == null ? packaging != null : !PACKAGING_EDEFAULT.equals(packaging);
          case MavenModelPackage.MAVEN_PROJECT__POM_FILE :
             return POM_FILE_EDEFAULT == null ? pomFile != null : !POM_FILE_EDEFAULT.equals(pomFile);
+         case MavenModelPackage.MAVEN_PROJECT__OUTPUT_DIRECTORY :
+            return OUTPUT_DIRECTORY_EDEFAULT == null ? outputDirectory != null : !OUTPUT_DIRECTORY_EDEFAULT
+               .equals(outputDirectory);
+         case MavenModelPackage.MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY :
+            return TEST_OUTPUT_DIRECTORY_EDEFAULT == null
+               ? testOutputDirectory != null
+               : !TEST_OUTPUT_DIRECTORY_EDEFAULT.equals(testOutputDirectory);
       }
       return super.eIsSet(featureID);
    }
@@ -259,6 +381,10 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
       result.append(packaging);
       result.append(", pomFile: ");
       result.append(pomFile);
+      result.append(", outputDirectory: ");
+      result.append(outputDirectory);
+      result.append(", testOutputDirectory: ");
+      result.append(testOutputDirectory);
       result.append(')');
       return result.toString();
    }

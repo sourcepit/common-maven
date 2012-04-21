@@ -340,6 +340,28 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
+   public EAttribute getMavenProject_OutputDirectory()
+   {
+      return (EAttribute) mavenProjectEClass.getEStructuralFeatures().get(2);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EAttribute getMavenProject_TestOutputDirectory()
+   {
+      return (EAttribute) mavenProjectEClass.getEStructuralFeatures().get(3);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
    public MavenModelFactory getMavenModelFactory()
    {
       return (MavenModelFactory) getEFactoryInstance();
@@ -390,6 +412,8 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       mavenProjectEClass = createEClass(MAVEN_PROJECT);
       createEAttribute(mavenProjectEClass, MAVEN_PROJECT__PACKAGING);
       createEAttribute(mavenProjectEClass, MAVEN_PROJECT__POM_FILE);
+      createEAttribute(mavenProjectEClass, MAVEN_PROJECT__OUTPUT_DIRECTORY);
+      createEAttribute(mavenProjectEClass, MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY);
    }
 
    /**
@@ -483,8 +507,14 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       initEAttribute(getMavenProject_PomFile(), theCommonModelPackage.getEJavaFile(), "pomFile", null, 0, 1,
          MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
+      initEAttribute(getMavenProject_OutputDirectory(), theCommonModelPackage.getEJavaFile(), "outputDirectory", null,
+         0, 1, MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+         !IS_DERIVED, IS_ORDERED);
+      initEAttribute(getMavenProject_TestOutputDirectory(), theCommonModelPackage.getEJavaFile(),
+         "testOutputDirectory", null, 0, 1, MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+         !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-      addEOperation(mavenProjectEClass, theCommonModelPackage.getEJavaFile(), "getProjectDir", 0, 1, IS_UNIQUE,
+      addEOperation(mavenProjectEClass, theCommonModelPackage.getEJavaFile(), "getProjectDirectory", 0, 1, IS_UNIQUE,
          IS_ORDERED);
 
       // Create resource

@@ -29,9 +29,11 @@
         defaultValueLiteral="jar"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MavenProject" eSuperTypes="#//VersionedIdentifiable">
-    <eOperations name="getProjectDir" eType="ecore:EDataType ../../../../common-modeling/src/main/emf/common.ecore#//EJavaFile"/>
+    <eOperations name="getProjectDirectory" eType="ecore:EDataType ../../../../common-modeling/src/main/emf/common.ecore#//EJavaFile"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="packaging" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="jar"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pomFile" eType="ecore:EDataType ../../../../common-modeling/src/main/emf/common.ecore#//EJavaFile"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputDirectory" eType="ecore:EDataType ../../../../common-modeling/src/main/emf/common.ecore#//EJavaFile"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="testOutputDirectory" eType="ecore:EDataType ../../../../common-modeling/src/main/emf/common.ecore#//EJavaFile"/>
   </eClassifiers>
 </ecore:EPackage>

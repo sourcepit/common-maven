@@ -14,6 +14,7 @@ import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelFactory;
 import org.sourcepit.common.maven.model.MavenProject;
+import org.sourcepit.common.maven.util.MavenProjectUtils;
 
 public final class MavenModelUtils
 {
@@ -72,6 +73,8 @@ public final class MavenModelUtils
          mProject.setPackaging(mavenProject.getPackaging());
       }
       mProject.setPomFile(mavenProject.getFile());
+      mProject.setOutputDirectory(MavenProjectUtils.getOutputDir(mavenProject));
+      mProject.setTestOutputDirectory(MavenProjectUtils.getTestOutputDir(mavenProject));
       return mProject;
    }
 }

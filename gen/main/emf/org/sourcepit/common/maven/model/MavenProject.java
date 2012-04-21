@@ -18,6 +18,8 @@ import java.io.File;
  * <ul>
  * <li>{@link org.sourcepit.common.maven.model.MavenProject#getPackaging <em>Packaging</em>}</li>
  * <li>{@link org.sourcepit.common.maven.model.MavenProject#getPomFile <em>Pom File</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.MavenProject#getOutputDirectory <em>Output Directory</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.MavenProject#getTestOutputDirectory <em>Test Output Directory</em>}</li>
  * </ul>
  * </p>
  * 
@@ -87,12 +89,70 @@ public interface MavenProject extends VersionedIdentifiable
    void setPomFile(File value);
 
    /**
+    * Returns the value of the '<em><b>Output Directory</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <p>
+    * If the meaning of the '<em>Output Directory</em>' attribute isn't clear, there really should be more of a
+    * description here...
+    * </p>
+    * <!-- end-user-doc -->
+    * 
+    * @return the value of the '<em>Output Directory</em>' attribute.
+    * @see #setOutputDirectory(File)
+    * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenProject_OutputDirectory()
+    * @model dataType="org.sourcepit.modeling.common.EJavaFile"
+    * @generated
+    */
+   File getOutputDirectory();
+
+   /**
+    * Sets the value of the '{@link org.sourcepit.common.maven.model.MavenProject#getOutputDirectory
+    * <em>Output Directory</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @param value the new value of the '<em>Output Directory</em>' attribute.
+    * @see #getOutputDirectory()
+    * @generated
+    */
+   void setOutputDirectory(File value);
+
+   /**
+    * Returns the value of the '<em><b>Test Output Directory</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <p>
+    * If the meaning of the '<em>Test Output Directory</em>' attribute isn't clear, there really should be more of a
+    * description here...
+    * </p>
+    * <!-- end-user-doc -->
+    * 
+    * @return the value of the '<em>Test Output Directory</em>' attribute.
+    * @see #setTestOutputDirectory(File)
+    * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenProject_TestOutputDirectory()
+    * @model dataType="org.sourcepit.modeling.common.EJavaFile"
+    * @generated
+    */
+   File getTestOutputDirectory();
+
+   /**
+    * Sets the value of the '{@link org.sourcepit.common.maven.model.MavenProject#getTestOutputDirectory
+    * <em>Test Output Directory</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @param value the new value of the '<em>Test Output Directory</em>' attribute.
+    * @see #getTestOutputDirectory()
+    * @generated
+    */
+   void setTestOutputDirectory(File value);
+
+   /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @model kind="operation" dataType="org.sourcepit.modeling.common.EJavaFile"
     * @generated
     */
-   File getProjectDir();
+   File getProjectDirectory();
 
 } // MavenProject

@@ -103,13 +103,21 @@
         <element xmi:type="ecore:EAttribute" href="maven.ecore#//MavenProject/pomFile"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_17hZcSNZEeGSK6mVovZSNA"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_bDd_sIuVEeGlu4_l6kj57Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="maven.ecore#//MavenProject/outputDirectory"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_bDd_sYuVEeGlu4_l6kj57Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_uCpmgIuVEeGlu4_l6kj57Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="maven.ecore#//MavenProject/testOutputDirectory"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_uCpmgYuVEeGlu4_l6kj57Q"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_wPvX0SNYEeGSK6mVovZSNA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_wPvX0iNYEeGSK6mVovZSNA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_wPvX0yNYEeGSK6mVovZSNA"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_wPv-4CNYEeGSK6mVovZSNA" type="5002">
       <children xmi:type="notation:Node" xmi:id="_7m5n4CNZEeGSK6mVovZSNA" type="2002">
-        <element xmi:type="ecore:EOperation" href="maven.ecore#//MavenProject/getProjectDir"/>
+        <element xmi:type="ecore:EOperation" href="maven.ecore#//MavenProject/getProjectDirectory"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_7m5n4SNZEeGSK6mVovZSNA"/>
       </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_wPv-4SNYEeGSK6mVovZSNA"/>

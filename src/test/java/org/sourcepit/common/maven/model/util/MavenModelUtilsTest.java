@@ -17,6 +17,7 @@ import javax.validation.ConstraintViolationException;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.versioning.VersionRange;
+import org.apache.maven.model.Build;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.junit.Test;
@@ -128,17 +129,26 @@ public class MavenModelUtilsTest
       }
 
       org.apache.maven.project.MavenProject project = mock(org.apache.maven.project.MavenProject.class);
-      when(project.getFile()).thenReturn(new File(""));
+      when(project.getBasedir()).thenReturn(new File("projectDir"));
+      when(project.getFile()).thenReturn(new File(new File("projectDir"), "pom.xml"));
       when(project.getGroupId()).thenReturn("groupId");
       when(project.getArtifactId()).thenReturn("artifactId");
       when(project.getVersion()).thenReturn("1.0");
       when(project.getPackaging()).thenReturn("jar");
+      Build build = mock(Build.class);
+      when(project.getBuild()).thenReturn(build);
+      when(build.getOutputDirectory()).thenReturn("outputDirectory");
+      when(build.getTestOutputDirectory()).thenReturn("testOutputDirectory");
 
       MavenProject mProject = MavenModelUtils.toMavenProject(project);
       assertThat(mProject.getGroupId(), IsEqual.equalTo(project.getGroupId()));
       assertThat(mProject.getArtifactId(), IsEqual.equalTo(project.getArtifactId()));
       assertThat(mProject.getVersion(), IsEqual.equalTo(project.getVersion()));
+      assertThat(mProject.getProjectDirectory(), IsEqual.equalTo(project.getBasedir()));
       assertThat(mProject.getPomFile(), IsEqual.equalTo(project.getFile()));
+
+      assertThat(mProject.getOutputDirectory().getName(), IsEqual.equalTo(project.getBuild().getOutputDirectory()));
+      assertThat(mProject.getTestOutputDirectory().getName(), IsEqual.equalTo(project.getBuild().getTestOutputDirectory()));
 
       // jar is default
       assertThat(mProject.eIsSet(MavenModelPackage.eINSTANCE.getMavenProject_Packaging()), Is.is(false));

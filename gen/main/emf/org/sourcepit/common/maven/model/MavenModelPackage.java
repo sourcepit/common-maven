@@ -437,6 +437,26 @@ public interface MavenModelPackage extends EPackage
    int MAVEN_PROJECT__POM_FILE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 1;
 
    /**
+    * The feature id for the '<em><b>Output Directory</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__OUTPUT_DIRECTORY = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 2;
+
+   /**
+    * The feature id for the '<em><b>Test Output Directory</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 3;
+
+   /**
     * The number of structural features of the '<em>Maven Project</em>' class.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -444,7 +464,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_PROJECT_FEATURE_COUNT = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 2;
+   int MAVEN_PROJECT_FEATURE_COUNT = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 4;
 
 
    /**
@@ -660,6 +680,32 @@ public interface MavenModelPackage extends EPackage
    EAttribute getMavenProject_PomFile();
 
    /**
+    * Returns the meta object for the attribute '
+    * {@link org.sourcepit.common.maven.model.MavenProject#getOutputDirectory <em>Output Directory</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Output Directory</em>'.
+    * @see org.sourcepit.common.maven.model.MavenProject#getOutputDirectory()
+    * @see #getMavenProject()
+    * @generated
+    */
+   EAttribute getMavenProject_OutputDirectory();
+
+   /**
+    * Returns the meta object for the attribute '
+    * {@link org.sourcepit.common.maven.model.MavenProject#getTestOutputDirectory <em>Test Output Directory</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Test Output Directory</em>'.
+    * @see org.sourcepit.common.maven.model.MavenProject#getTestOutputDirectory()
+    * @see #getMavenProject()
+    * @generated
+    */
+   EAttribute getMavenProject_TestOutputDirectory();
+
+   /**
     * Returns the factory that creates the instances of the model.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -854,6 +900,24 @@ public interface MavenModelPackage extends EPackage
        * @generated
        */
       EAttribute MAVEN_PROJECT__POM_FILE = eINSTANCE.getMavenProject_PomFile();
+
+      /**
+       * The meta object literal for the '<em><b>Output Directory</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute MAVEN_PROJECT__OUTPUT_DIRECTORY = eINSTANCE.getMavenProject_OutputDirectory();
+
+      /**
+       * The meta object literal for the '<em><b>Test Output Directory</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY = eINSTANCE.getMavenProject_TestOutputDirectory();
 
    }
 
