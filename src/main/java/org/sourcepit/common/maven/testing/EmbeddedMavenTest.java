@@ -20,6 +20,8 @@ import javax.inject.Inject;
 import org.apache.maven.Maven;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.resolver.filter.CumulativeScopeArtifactFilter;
+import org.apache.maven.cli.ExecutionEventLogger;
+import org.apache.maven.eventspy.internal.EventSpyDispatcher;
 import org.apache.maven.execution.DefaultMavenExecutionRequest;
 import org.apache.maven.execution.ExecutionEvent;
 import org.apache.maven.execution.MavenExecutionRequest;
@@ -34,6 +36,7 @@ import org.apache.maven.settings.building.DefaultSettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuilder;
 import org.apache.maven.settings.building.SettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuildingResult;
+import org.codehaus.plexus.logging.Logger;
 import org.junit.After;
 import org.sourcepit.common.maven.util.MavenProjectUtils;
 import org.sourcepit.guplex.test.GuplexTest;
@@ -45,6 +48,12 @@ public abstract class EmbeddedMavenTest extends GuplexTest
 {
    @Inject
    protected Maven maven;
+
+   @Inject
+   protected EventSpyDispatcher eventSpyDispatcher;
+
+   @Inject
+   protected Logger logger;
 
    @Inject
    protected LifecycleDependencyResolver resolver;
@@ -101,6 +110,7 @@ public abstract class EmbeddedMavenTest extends GuplexTest
    protected void populateDefaults(final MavenExecutionRequest request) throws Exception,
       MavenExecutionRequestPopulationException
    {
+      request.setExecutionListener(eventSpyDispatcher.chainListener(new ExecutionEventLogger(logger)));
       final SettingsBuildingResult settingsResult = buildSettings(null, request.getUserSettingsFile(),
          request.getSystemProperties(), request.getUserProperties());
       executionRequestPopulator.populateFromSettings(request, settingsResult.getEffectiveSettings());

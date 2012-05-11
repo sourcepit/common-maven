@@ -22,10 +22,13 @@ public abstract class EmbeddedMavenEnvironmentTest extends EmbeddedMavenTest
 
    protected abstract Environment newEnvironment();
 
-   private File userHome;
-
    @Rule
-   public Workspace ws = new Workspace(getUserHome(), false);
+   public Workspace ws = newWorkspace();
+
+   protected Workspace newWorkspace()
+   {
+      return new Workspace(new File(env.getBuildDir(), "ws"), false);
+   }
 
    public Environment getEnvironment()
    {
@@ -40,18 +43,14 @@ public abstract class EmbeddedMavenEnvironmentTest extends EmbeddedMavenTest
    @Override
    protected File getUserHome()
    {
-      if (userHome == null)
-      {
-         userHome = new File(env.getBuildDir(), "test-ws");
-      }
-      return userHome;
+      return env.getUserHome();
    }
 
    protected File getResource(String path) throws IOException
    {
       File resources = getResourcesDir();
       File resource = new File(resources, path).getCanonicalFile();
-      return ws.importDir(resource);
+      return ws.importFileOrDir(resource);
    }
 
    protected File getResourcesDir()
