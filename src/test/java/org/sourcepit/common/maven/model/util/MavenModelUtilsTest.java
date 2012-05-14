@@ -25,7 +25,6 @@ import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
-import org.sourcepit.common.maven.model.util.MavenModelUtils;
 
 public class MavenModelUtilsTest
 {
@@ -148,7 +147,8 @@ public class MavenModelUtilsTest
       assertThat(mProject.getPomFile(), IsEqual.equalTo(project.getFile()));
 
       assertThat(mProject.getOutputDirectory().getName(), IsEqual.equalTo(project.getBuild().getOutputDirectory()));
-      assertThat(mProject.getTestOutputDirectory().getName(), IsEqual.equalTo(project.getBuild().getTestOutputDirectory()));
+      assertThat(mProject.getTestOutputDirectory().getName(),
+         IsEqual.equalTo(project.getBuild().getTestOutputDirectory()));
 
       // jar is default
       assertThat(mProject.eIsSet(MavenModelPackage.eINSTANCE.getMavenProject_Packaging()), Is.is(false));

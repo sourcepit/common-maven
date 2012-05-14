@@ -462,7 +462,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       // Initialize classes and features; add operations and parameters
       initEClass(mavenArtifactEClass, MavenArtifact.class, "MavenArtifact", !IS_ABSTRACT, !IS_INTERFACE,
          IS_GENERATED_INSTANCE_CLASS);
-      initEAttribute(getMavenArtifact_File(), theCommonModelPackage.getEJavaFile(), "file", null, 0, 1,
+      initEAttribute(getMavenArtifact_File(), theCommonModelPackage.getEFile(), "file", null, 0, 1,
          MavenArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
 
@@ -504,17 +504,17 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       initEAttribute(getMavenProject_Packaging(), ecorePackage.getEString(), "packaging", "jar", 0, 1,
          MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getMavenProject_PomFile(), theCommonModelPackage.getEJavaFile(), "pomFile", null, 0, 1,
+      initEAttribute(getMavenProject_PomFile(), theCommonModelPackage.getEFile(), "pomFile", null, 0, 1,
          MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getMavenProject_OutputDirectory(), theCommonModelPackage.getEJavaFile(), "outputDirectory", null,
-         0, 1, MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+      initEAttribute(getMavenProject_OutputDirectory(), theCommonModelPackage.getEFile(), "outputDirectory", null, 0,
+         1, MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getMavenProject_TestOutputDirectory(), theCommonModelPackage.getEJavaFile(),
-         "testOutputDirectory", null, 0, 1, MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-         !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+      initEAttribute(getMavenProject_TestOutputDirectory(), theCommonModelPackage.getEFile(), "testOutputDirectory",
+         null, 0, 1, MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+         !IS_DERIVED, IS_ORDERED);
 
-      addEOperation(mavenProjectEClass, theCommonModelPackage.getEJavaFile(), "getProjectDirectory", 0, 1, IS_UNIQUE,
+      addEOperation(mavenProjectEClass, theCommonModelPackage.getEFile(), "getProjectDirectory", 0, 1, IS_UNIQUE,
          IS_ORDERED);
 
       // Create resource

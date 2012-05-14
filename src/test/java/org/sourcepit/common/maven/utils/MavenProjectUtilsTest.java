@@ -122,14 +122,15 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
 
       final File projectDir = getResource("reactor-project");
 
-      final List<MavenProject> projects = buildProject(new File(projectDir, "pom.xml"), true).getTopologicallySortedProjects();
+      final List<MavenProject> projects = buildProject(new File(projectDir, "pom.xml"), true)
+         .getTopologicallySortedProjects();
       assertThat(projects.size(), is(3));
 
       MavenProject projectB = projects.get(1);
       assertThat(projectB.getArtifactId(), equalTo("module-b"));
       MavenProject projectA = projects.get(2);
       assertThat(projectA.getArtifactId(), equalTo("module-a"));
-      
+
       try
       {
          MavenProjectUtils.findReferencedProject(projectA, null);

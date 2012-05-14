@@ -37,7 +37,7 @@ public interface MavenArtifact extends VersionedIdentifiable, Classified
     * @return the value of the '<em>File</em>' attribute.
     * @see #setFile(File)
     * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenArtifact_File()
-    * @model dataType="org.sourcepit.modeling.common.EJavaFile"
+    * @model dataType="org.sourcepit.modeling.common.EFile"
     * @generated
     */
    File getFile();

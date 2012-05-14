@@ -71,7 +71,7 @@ public interface MavenProject extends VersionedIdentifiable
     * @return the value of the '<em>Pom File</em>' attribute.
     * @see #setPomFile(File)
     * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenProject_PomFile()
-    * @model dataType="org.sourcepit.modeling.common.EJavaFile"
+    * @model dataType="org.sourcepit.modeling.common.EFile"
     * @generated
     */
    File getPomFile();
@@ -100,7 +100,7 @@ public interface MavenProject extends VersionedIdentifiable
     * @return the value of the '<em>Output Directory</em>' attribute.
     * @see #setOutputDirectory(File)
     * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenProject_OutputDirectory()
-    * @model dataType="org.sourcepit.modeling.common.EJavaFile"
+    * @model dataType="org.sourcepit.modeling.common.EFile"
     * @generated
     */
    File getOutputDirectory();
@@ -129,7 +129,7 @@ public interface MavenProject extends VersionedIdentifiable
     * @return the value of the '<em>Test Output Directory</em>' attribute.
     * @see #setTestOutputDirectory(File)
     * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenProject_TestOutputDirectory()
-    * @model dataType="org.sourcepit.modeling.common.EJavaFile"
+    * @model dataType="org.sourcepit.modeling.common.EFile"
     * @generated
     */
    File getTestOutputDirectory();
@@ -150,7 +150,7 @@ public interface MavenProject extends VersionedIdentifiable
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @model kind="operation" dataType="org.sourcepit.modeling.common.EJavaFile"
+    * @model kind="operation" dataType="org.sourcepit.modeling.common.EFile"
     * @generated
     */
    File getProjectDirectory();
