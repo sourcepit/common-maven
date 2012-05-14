@@ -10,6 +10,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.sourcepit.common.maven.environment.EnvironmentPackage;
+import org.sourcepit.common.maven.environment.impl.EnvironmentPackageImpl;
 import org.sourcepit.common.maven.model.Classified;
 import org.sourcepit.common.maven.model.Identifiable;
 import org.sourcepit.common.maven.model.MavenArtifact;
@@ -132,11 +134,18 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       // Initialize simple dependencies
       CommonModelPackage.eINSTANCE.eClass();
 
+      // Obtain or create and register interdependencies
+      EnvironmentPackageImpl theEnvironmentPackage = (EnvironmentPackageImpl) (EPackage.Registry.INSTANCE
+         .getEPackage(EnvironmentPackage.eNS_URI) instanceof EnvironmentPackageImpl ? EPackage.Registry.INSTANCE
+         .getEPackage(EnvironmentPackage.eNS_URI) : EnvironmentPackage.eINSTANCE);
+
       // Create package meta-data objects
       theMavenModelPackage.createPackageContents();
+      theEnvironmentPackage.createPackageContents();
 
       // Initialize created meta-data
       theMavenModelPackage.initializePackageContents();
+      theEnvironmentPackage.initializePackageContents();
 
       // Mark meta-data to indicate it can't be changed
       theMavenModelPackage.freeze();
@@ -444,8 +453,13 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       setNsURI(eNS_URI);
 
       // Obtain other dependent packages
+      EnvironmentPackage theEnvironmentPackage = (EnvironmentPackage) EPackage.Registry.INSTANCE
+         .getEPackage(EnvironmentPackage.eNS_URI);
       CommonModelPackage theCommonModelPackage = (CommonModelPackage) EPackage.Registry.INSTANCE
          .getEPackage(CommonModelPackage.eNS_URI);
+
+      // Add subpackages
+      getESubpackages().add(theEnvironmentPackage);
 
       // Create type parameters
 

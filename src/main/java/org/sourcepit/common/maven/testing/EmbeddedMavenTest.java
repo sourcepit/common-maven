@@ -6,7 +6,14 @@
 
 package org.sourcepit.common.maven.testing;
 
+import static org.sourcepit.common.utils.io.IOResources.buffIn;
+import static org.sourcepit.common.utils.io.IOResources.fileIn;
+
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,6 +27,7 @@ import javax.inject.Inject;
 import org.apache.maven.Maven;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.resolver.filter.CumulativeScopeArtifactFilter;
+import org.apache.maven.cli.BatchModeMavenTransferListener;
 import org.apache.maven.cli.ExecutionEventLogger;
 import org.apache.maven.eventspy.internal.EventSpyDispatcher;
 import org.apache.maven.execution.DefaultMavenExecutionRequest;
@@ -37,8 +45,14 @@ import org.apache.maven.settings.building.SettingsBuilder;
 import org.apache.maven.settings.building.SettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuildingResult;
 import org.codehaus.plexus.logging.Logger;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.junit.After;
+import org.sourcepit.common.maven.environment.EnvironmentPackage;
+import org.sourcepit.common.maven.environment.EnvironmentSnapshot;
+import org.sourcepit.common.maven.environment.EnvironmentWorkspaceReader;
 import org.sourcepit.common.maven.util.MavenProjectUtils;
+import org.sourcepit.common.utils.io.IOOperation;
 import org.sourcepit.guplex.test.GuplexTest;
 
 /**
@@ -64,15 +78,74 @@ public abstract class EmbeddedMavenTest extends GuplexTest
    @Inject
    protected SettingsBuilder settingsBuilder;
 
+   private ClassLoader classLoader;
+
+   private EnvironmentWorkspaceReader workspaceReader;
+
    @Override
    protected boolean isUseIndex()
    {
       return true;
    }
 
+   @Override
+   public void setUp() throws Exception
+   {
+      final EnvironmentSnapshot envSnapshot = newTestEnvironmentSnapshot();
+      if (envSnapshot != null)
+      {
+         final List<URL> classpath = envSnapshot.getClasspath();
+         if (!classpath.isEmpty())
+         {
+            classLoader = new URLClassLoader(classpath.toArray(new URL[classpath.size()]), getClassLoader());
+         }
+
+         workspaceReader = new EnvironmentWorkspaceReader(envSnapshot);
+      }
+      super.setUp();
+   }
+
+   @Override
+   protected ClassLoader getClassLoader()
+   {
+      if (classLoader != null)
+      {
+         return classLoader;
+      }
+      return super.getClassLoader();
+   }
+
+   protected EnvironmentSnapshot newTestEnvironmentSnapshot()
+   {
+      final File file = getTestEnvironmentSnapshotFile();
+      if (file == null)
+      {
+         return null;
+      }
+
+      EnvironmentPackage.eINSTANCE.getClass();
+
+      final Resource eResource = new XMIResourceImpl();
+      new IOOperation<InputStream>(buffIn(fileIn(file)))
+      {
+         @Override
+         protected void run(InputStream inputStream) throws IOException
+         {
+            eResource.load(inputStream, null);
+         }
+      }.run();
+      return (EnvironmentSnapshot) eResource.getContents().get(0);
+   }
+
+   protected File getTestEnvironmentSnapshotFile()
+   {
+      return null;
+   }
+
    @After
    public void tearDown() throws Exception
    {
+      eventSpyDispatcher.close();
       super.tearDown();
    }
 
@@ -111,6 +184,13 @@ public abstract class EmbeddedMavenTest extends GuplexTest
       MavenExecutionRequestPopulationException
    {
       request.setExecutionListener(eventSpyDispatcher.chainListener(new ExecutionEventLogger(logger)));
+      request.setTransferListener(new BatchModeMavenTransferListener(System.out));
+
+      if (workspaceReader != null)
+      {
+         request.setWorkspaceReader(workspaceReader);
+      }
+
       final SettingsBuildingResult settingsResult = buildSettings(null, request.getUserSettingsFile(),
          request.getSystemProperties(), request.getUserProperties());
       executionRequestPopulator.populateFromSettings(request, settingsResult.getEffectiveSettings());
@@ -271,7 +351,9 @@ public abstract class EmbeddedMavenTest extends GuplexTest
             session[0] = event.getSession();
          }
       });
+      eventSpyDispatcher.onEvent(request);
       final MavenExecutionResult result = maven.execute(request);
+      eventSpyDispatcher.onEvent(result);
       return new MavenExecutionResult2Impl(session[0], result);
    }
 
