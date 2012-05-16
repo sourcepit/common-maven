@@ -119,6 +119,16 @@ public interface EnvironmentPackage extends EPackage
    int ENVIRONMENT_SNAPSHOT__ARTIFACTS = CommonModelPackage.XANNOTATABLE_FEATURE_COUNT + 1;
 
    /**
+    * The feature id for the '<em><b>Packages</b></em>' attribute list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int ENVIRONMENT_SNAPSHOT__PACKAGES = CommonModelPackage.XANNOTATABLE_FEATURE_COUNT + 2;
+
+   /**
     * The number of structural features of the '<em>Snapshot</em>' class.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -126,7 +136,7 @@ public interface EnvironmentPackage extends EPackage
     * @generated
     * @ordered
     */
-   int ENVIRONMENT_SNAPSHOT_FEATURE_COUNT = CommonModelPackage.XANNOTATABLE_FEATURE_COUNT + 2;
+   int ENVIRONMENT_SNAPSHOT_FEATURE_COUNT = CommonModelPackage.XANNOTATABLE_FEATURE_COUNT + 3;
 
 
    /**
@@ -166,6 +176,19 @@ public interface EnvironmentPackage extends EPackage
     * @generated
     */
    EReference getEnvironmentSnapshot_Artifacts();
+
+   /**
+    * Returns the meta object for the attribute list '
+    * {@link org.sourcepit.common.maven.environment.EnvironmentSnapshot#getPackages <em>Packages</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute list '<em>Packages</em>'.
+    * @see org.sourcepit.common.maven.environment.EnvironmentSnapshot#getPackages()
+    * @see #getEnvironmentSnapshot()
+    * @generated
+    */
+   EAttribute getEnvironmentSnapshot_Packages();
 
    /**
     * Returns the factory that creates the instances of the model.
@@ -221,6 +244,15 @@ public interface EnvironmentPackage extends EPackage
        * @generated
        */
       EReference ENVIRONMENT_SNAPSHOT__ARTIFACTS = eINSTANCE.getEnvironmentSnapshot_Artifacts();
+
+      /**
+       * The meta object literal for the '<em><b>Packages</b></em>' attribute list feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute ENVIRONMENT_SNAPSHOT__PACKAGES = eINSTANCE.getEnvironmentSnapshot_Packages();
 
    }
 

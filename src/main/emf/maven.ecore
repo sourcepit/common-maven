@@ -43,6 +43,8 @@
           eType="ecore:EDataType ../../../../common-modeling/src/main/emf/common.ecore#//EURL"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="artifacts" upperBound="-1"
           eType="#//MavenArtifact" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="packages" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

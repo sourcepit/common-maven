@@ -30,6 +30,7 @@ import org.sourcepit.modeling.common.impl.XAnnotatableImpl;
  * <ul>
  * <li>{@link org.sourcepit.common.maven.environment.impl.EnvironmentSnapshotImpl#getClasspath <em>Classpath</em>}</li>
  * <li>{@link org.sourcepit.common.maven.environment.impl.EnvironmentSnapshotImpl#getArtifacts <em>Artifacts</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.environment.impl.EnvironmentSnapshotImpl#getPackages <em>Packages</em>}</li>
  * </ul>
  * </p>
  * 
@@ -58,6 +59,17 @@ public class EnvironmentSnapshotImpl extends XAnnotatableImpl implements Environ
     * @ordered
     */
    protected EList<MavenArtifact> artifacts;
+
+   /**
+    * The cached value of the '{@link #getPackages() <em>Packages</em>}' attribute list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getPackages()
+    * @generated
+    * @ordered
+    */
+   protected EList<String> packages;
 
    /**
     * <!-- begin-user-doc -->
@@ -119,6 +131,22 @@ public class EnvironmentSnapshotImpl extends XAnnotatableImpl implements Environ
     * 
     * @generated
     */
+   public EList<String> getPackages()
+   {
+      if (packages == null)
+      {
+         packages = new EDataTypeUniqueEList<String>(String.class, this,
+            EnvironmentPackage.ENVIRONMENT_SNAPSHOT__PACKAGES);
+      }
+      return packages;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
    @Override
    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
    {
@@ -145,6 +173,8 @@ public class EnvironmentSnapshotImpl extends XAnnotatableImpl implements Environ
             return getClasspath();
          case EnvironmentPackage.ENVIRONMENT_SNAPSHOT__ARTIFACTS :
             return getArtifacts();
+         case EnvironmentPackage.ENVIRONMENT_SNAPSHOT__PACKAGES :
+            return getPackages();
       }
       return super.eGet(featureID, resolve, coreType);
    }
@@ -169,6 +199,10 @@ public class EnvironmentSnapshotImpl extends XAnnotatableImpl implements Environ
             getArtifacts().clear();
             getArtifacts().addAll((Collection<? extends MavenArtifact>) newValue);
             return;
+         case EnvironmentPackage.ENVIRONMENT_SNAPSHOT__PACKAGES :
+            getPackages().clear();
+            getPackages().addAll((Collection<? extends String>) newValue);
+            return;
       }
       super.eSet(featureID, newValue);
    }
@@ -190,6 +224,9 @@ public class EnvironmentSnapshotImpl extends XAnnotatableImpl implements Environ
          case EnvironmentPackage.ENVIRONMENT_SNAPSHOT__ARTIFACTS :
             getArtifacts().clear();
             return;
+         case EnvironmentPackage.ENVIRONMENT_SNAPSHOT__PACKAGES :
+            getPackages().clear();
+            return;
       }
       super.eUnset(featureID);
    }
@@ -209,6 +246,8 @@ public class EnvironmentSnapshotImpl extends XAnnotatableImpl implements Environ
             return classpath != null && !classpath.isEmpty();
          case EnvironmentPackage.ENVIRONMENT_SNAPSHOT__ARTIFACTS :
             return artifacts != null && !artifacts.isEmpty();
+         case EnvironmentPackage.ENVIRONMENT_SNAPSHOT__PACKAGES :
+            return packages != null && !packages.isEmpty();
       }
       return super.eIsSet(featureID);
    }
@@ -228,6 +267,8 @@ public class EnvironmentSnapshotImpl extends XAnnotatableImpl implements Environ
       StringBuffer result = new StringBuffer(super.toString());
       result.append(" (classpath: ");
       result.append(classpath);
+      result.append(", packages: ");
+      result.append(packages);
       result.append(')');
       return result.toString();
    }

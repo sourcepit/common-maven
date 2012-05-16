@@ -22,6 +22,7 @@ import org.sourcepit.modeling.common.XAnnotatable;
  * <ul>
  * <li>{@link org.sourcepit.common.maven.environment.EnvironmentSnapshot#getClasspath <em>Classpath</em>}</li>
  * <li>{@link org.sourcepit.common.maven.environment.EnvironmentSnapshot#getArtifacts <em>Artifacts</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.environment.EnvironmentSnapshot#getPackages <em>Packages</em>}</li>
  * </ul>
  * </p>
  * 
@@ -64,5 +65,22 @@ public interface EnvironmentSnapshot extends XAnnotatable
     * @generated
     */
    EList<MavenArtifact> getArtifacts();
+
+   /**
+    * Returns the value of the '<em><b>Packages</b></em>' attribute list.
+    * The list contents are of type {@link java.lang.String}.
+    * <!-- begin-user-doc -->
+    * <p>
+    * If the meaning of the '<em>Packages</em>' attribute list isn't clear, there really should be more of a description
+    * here...
+    * </p>
+    * <!-- end-user-doc -->
+    * 
+    * @return the value of the '<em>Packages</em>' attribute list.
+    * @see org.sourcepit.common.maven.environment.EnvironmentPackage#getEnvironmentSnapshot_Packages()
+    * @model
+    * @generated
+    */
+   EList<String> getPackages();
 
 } // EnvironmentSnapshot

@@ -151,6 +151,17 @@ public class EnvironmentPackageImpl extends EPackageImpl implements EnvironmentP
     * 
     * @generated
     */
+   public EAttribute getEnvironmentSnapshot_Packages()
+   {
+      return (EAttribute) environmentSnapshotEClass.getEStructuralFeatures().get(2);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
    public EnvironmentFactory getEnvironmentFactory()
    {
       return (EnvironmentFactory) getEFactoryInstance();
@@ -182,6 +193,7 @@ public class EnvironmentPackageImpl extends EPackageImpl implements EnvironmentP
       environmentSnapshotEClass = createEClass(ENVIRONMENT_SNAPSHOT);
       createEAttribute(environmentSnapshotEClass, ENVIRONMENT_SNAPSHOT__CLASSPATH);
       createEReference(environmentSnapshotEClass, ENVIRONMENT_SNAPSHOT__ARTIFACTS);
+      createEAttribute(environmentSnapshotEClass, ENVIRONMENT_SNAPSHOT__PACKAGES);
    }
 
    /**
@@ -233,6 +245,9 @@ public class EnvironmentPackageImpl extends EPackageImpl implements EnvironmentP
       initEReference(getEnvironmentSnapshot_Artifacts(), theMavenModelPackage.getMavenArtifact(), null, "artifacts",
          null, 0, -1, EnvironmentSnapshot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
          !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+      initEAttribute(getEnvironmentSnapshot_Packages(), ecorePackage.getEString(), "packages", null, 0, -1,
+         EnvironmentSnapshot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+         !IS_DERIVED, IS_ORDERED);
    }
 
 } // EnvironmentPackageImpl
