@@ -44,15 +44,26 @@ import org.apache.maven.settings.building.DefaultSettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuilder;
 import org.apache.maven.settings.building.SettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuildingResult;
+import org.codehaus.plexus.ContainerConfiguration;
+import org.codehaus.plexus.DefaultPlexusContainer;
+import org.codehaus.plexus.PlexusContainerException;
+import org.codehaus.plexus.classworlds.ClassWorld;
+import org.codehaus.plexus.classworlds.ClassWorldListener;
+import org.codehaus.plexus.classworlds.realm.ClassRealm;
+import org.codehaus.plexus.classworlds.realm.NoSuchRealmException;
 import org.codehaus.plexus.logging.Logger;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.junit.After;
+import org.sonatype.guice.bean.binders.SpaceModule;
+import org.sonatype.guice.bean.reflect.URLClassSpace;
+import org.sonatype.inject.BeanScanning;
 import org.sourcepit.common.maven.environment.EnvironmentPackage;
 import org.sourcepit.common.maven.environment.EnvironmentSnapshot;
 import org.sourcepit.common.maven.environment.EnvironmentWorkspaceReader;
 import org.sourcepit.common.maven.util.MavenProjectUtils;
 import org.sourcepit.common.utils.io.IOOperation;
+import org.sourcepit.common.utils.lang.Exceptions;
 import org.sourcepit.guplex.test.GuplexTest;
 
 /**
@@ -82,6 +93,8 @@ public abstract class EmbeddedMavenTest extends GuplexTest
 
    private EnvironmentWorkspaceReader workspaceReader;
 
+   private EnvironmentSnapshot envSnapshot;
+
    @Override
    protected boolean isUseIndex()
    {
@@ -91,13 +104,13 @@ public abstract class EmbeddedMavenTest extends GuplexTest
    @Override
    public void setUp() throws Exception
    {
-      final EnvironmentSnapshot envSnapshot = newTestEnvironmentSnapshot();
+      envSnapshot = newTestEnvironmentSnapshot();
       if (envSnapshot != null)
       {
          final List<URL> classpath = envSnapshot.getClasspath();
          if (!classpath.isEmpty())
          {
-            classLoader = new URLClassLoader(classpath.toArray(new URL[classpath.size()]), getClassLoader());
+            classLoader = new URLClassLoader(classpath.toArray(new URL[classpath.size()]), super.getClassLoader());
          }
 
          workspaceReader = new EnvironmentWorkspaceReader(envSnapshot);
@@ -135,6 +148,55 @@ public abstract class EmbeddedMavenTest extends GuplexTest
          }
       }.run();
       return (EnvironmentSnapshot) eResource.getContents().get(0);
+   }
+
+   @Override
+   protected DefaultPlexusContainer newPlexusContainer(final ContainerConfiguration containerConfiguration)
+      throws PlexusContainerException
+   {
+      final BeanScanning beanScanning = isUseIndex() ? BeanScanning.INDEX : BeanScanning.ON;
+      final SpaceModule globalSpaceModule = new SpaceModule(new URLClassSpace(getClass().getClassLoader()),
+         beanScanning);
+      containerConfiguration.setAutoWiring(true);
+      return new DefaultPlexusContainer(containerConfiguration, globalSpaceModule);
+   }
+
+   @Override
+   protected void customizeContainerConfiguration(ContainerConfiguration containerConfiguration)
+   {
+      super.customizeContainerConfiguration(containerConfiguration);
+      containerConfiguration.setClassWorld(new ClassWorld("plexus.core", getClassLoader()));
+      if (envSnapshot != null)
+      {
+         containerConfiguration.getClassWorld().addListener(new ClassWorldListener()
+         {
+            public void realmDisposed(ClassRealm realm)
+            {
+            }
+
+            public void realmCreated(ClassRealm newRealm)
+            {
+               final String id = newRealm.getId();
+               if (!id.equals("plexus.core"))
+               {
+                  final ClassRealm realm;
+                  try
+                  {
+                     realm = newRealm.getWorld().getRealm("plexus.core");
+                  }
+                  catch (NoSuchRealmException e)
+                  {
+                     throw Exceptions.pipe(e);
+                  }
+
+                  for (String string : envSnapshot.getPackages())
+                  {
+                     newRealm.importFrom(realm, string + ".*");
+                  }
+               }
+            }
+         });
+      }
    }
 
    protected File getTestEnvironmentSnapshotFile()
