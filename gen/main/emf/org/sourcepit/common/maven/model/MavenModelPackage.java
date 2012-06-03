@@ -221,6 +221,26 @@ public interface MavenModelPackage extends EPackage
    int MAVEN_ARTIFACT__TYPE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 1;
 
    /**
+    * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__EXTENSIONS = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 2;
+
+   /**
+    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__ANNOTATIONS = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 3;
+
+   /**
     * The feature id for the '<em><b>File</b></em>' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -228,7 +248,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_ARTIFACT__FILE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 2;
+   int MAVEN_ARTIFACT__FILE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 4;
 
    /**
     * The number of structural features of the '<em>Maven Artifact</em>' class.
@@ -238,7 +258,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_ARTIFACT_FEATURE_COUNT = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 3;
+   int MAVEN_ARTIFACT_FEATURE_COUNT = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 5;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenDependencyImpl
@@ -293,6 +313,26 @@ public interface MavenModelPackage extends EPackage
    int MAVEN_DEPENDENCY__TYPE = IDENTIFIABLE_FEATURE_COUNT + 1;
 
    /**
+    * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__EXTENSIONS = IDENTIFIABLE_FEATURE_COUNT + 2;
+
+   /**
+    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__ANNOTATIONS = IDENTIFIABLE_FEATURE_COUNT + 3;
+
+   /**
     * The feature id for the '<em><b>Version Range</b></em>' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -300,7 +340,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_DEPENDENCY__VERSION_RANGE = IDENTIFIABLE_FEATURE_COUNT + 2;
+   int MAVEN_DEPENDENCY__VERSION_RANGE = IDENTIFIABLE_FEATURE_COUNT + 4;
 
    /**
     * The feature id for the '<em><b>Scope</b></em>' attribute.
@@ -310,7 +350,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_DEPENDENCY__SCOPE = IDENTIFIABLE_FEATURE_COUNT + 3;
+   int MAVEN_DEPENDENCY__SCOPE = IDENTIFIABLE_FEATURE_COUNT + 5;
 
    /**
     * The feature id for the '<em><b>Optional</b></em>' attribute.
@@ -320,7 +360,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_DEPENDENCY__OPTIONAL = IDENTIFIABLE_FEATURE_COUNT + 4;
+   int MAVEN_DEPENDENCY__OPTIONAL = IDENTIFIABLE_FEATURE_COUNT + 6;
 
    /**
     * The number of structural features of the '<em>Maven Dependency</em>' class.
@@ -330,7 +370,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_DEPENDENCY_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 5;
+   int MAVEN_DEPENDENCY_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 7;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.ClassifiedImpl <em>Classified</em>}'
@@ -417,6 +457,26 @@ public interface MavenModelPackage extends EPackage
    int MAVEN_PROJECT__VERSION = VERSIONED_IDENTIFIABLE__VERSION;
 
    /**
+    * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__EXTENSIONS = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 0;
+
+   /**
+    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__ANNOTATIONS = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 1;
+
+   /**
     * The feature id for the '<em><b>Packaging</b></em>' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -424,7 +484,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_PROJECT__PACKAGING = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 0;
+   int MAVEN_PROJECT__PACKAGING = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 2;
 
    /**
     * The feature id for the '<em><b>Pom File</b></em>' attribute.
@@ -434,7 +494,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_PROJECT__POM_FILE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 1;
+   int MAVEN_PROJECT__POM_FILE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 3;
 
    /**
     * The feature id for the '<em><b>Output Directory</b></em>' attribute.
@@ -444,7 +504,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_PROJECT__OUTPUT_DIRECTORY = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 2;
+   int MAVEN_PROJECT__OUTPUT_DIRECTORY = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 4;
 
    /**
     * The feature id for the '<em><b>Test Output Directory</b></em>' attribute.
@@ -454,7 +514,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 3;
+   int MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 5;
 
    /**
     * The number of structural features of the '<em>Maven Project</em>' class.
@@ -464,7 +524,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_PROJECT_FEATURE_COUNT = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 4;
+   int MAVEN_PROJECT_FEATURE_COUNT = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 6;
 
 
    /**

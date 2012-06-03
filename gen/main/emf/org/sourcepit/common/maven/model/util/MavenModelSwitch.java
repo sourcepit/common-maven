@@ -16,6 +16,9 @@ import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
 import org.sourcepit.common.maven.model.VersionedIdentifiable;
+import org.sourcepit.modeling.common.Annotatable;
+import org.sourcepit.modeling.common.Extendable;
+import org.sourcepit.modeling.common.XAnnotatable;
 
 /**
  * <!-- begin-user-doc -->
@@ -94,7 +97,13 @@ public class MavenModelSwitch<T> extends Switch<T>
             if (result == null)
                result = caseClassified(mavenArtifact);
             if (result == null)
+               result = caseXAnnotatable(mavenArtifact);
+            if (result == null)
                result = caseIdentifiable(mavenArtifact);
+            if (result == null)
+               result = caseExtendable(mavenArtifact);
+            if (result == null)
+               result = caseAnnotatable(mavenArtifact);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
@@ -107,6 +116,12 @@ public class MavenModelSwitch<T> extends Switch<T>
                result = caseIdentifiable(mavenDependency);
             if (result == null)
                result = caseClassified(mavenDependency);
+            if (result == null)
+               result = caseXAnnotatable(mavenDependency);
+            if (result == null)
+               result = caseExtendable(mavenDependency);
+            if (result == null)
+               result = caseAnnotatable(mavenDependency);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
@@ -144,7 +159,13 @@ public class MavenModelSwitch<T> extends Switch<T>
             if (result == null)
                result = caseVersionedIdentifiable(mavenProject);
             if (result == null)
+               result = caseXAnnotatable(mavenProject);
+            if (result == null)
                result = caseIdentifiable(mavenProject);
+            if (result == null)
+               result = caseExtendable(mavenProject);
+            if (result == null)
+               result = caseAnnotatable(mavenProject);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
@@ -252,6 +273,57 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @generated
     */
    public T caseMavenProject(MavenProject object)
+   {
+      return null;
+   }
+
+   /**
+    * Returns the result of interpreting the object as an instance of '<em>Extendable</em>'.
+    * <!-- begin-user-doc -->
+    * This implementation returns null;
+    * returning a non-null result will terminate the switch.
+    * <!-- end-user-doc -->
+    * 
+    * @param object the target of the switch.
+    * @return the result of interpreting the object as an instance of '<em>Extendable</em>'.
+    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+    * @generated
+    */
+   public T caseExtendable(Extendable object)
+   {
+      return null;
+   }
+
+   /**
+    * Returns the result of interpreting the object as an instance of '<em>Annotatable</em>'.
+    * <!-- begin-user-doc -->
+    * This implementation returns null;
+    * returning a non-null result will terminate the switch.
+    * <!-- end-user-doc -->
+    * 
+    * @param object the target of the switch.
+    * @return the result of interpreting the object as an instance of '<em>Annotatable</em>'.
+    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+    * @generated
+    */
+   public T caseAnnotatable(Annotatable object)
+   {
+      return null;
+   }
+
+   /**
+    * Returns the result of interpreting the object as an instance of '<em>XAnnotatable</em>'.
+    * <!-- begin-user-doc -->
+    * This implementation returns null;
+    * returning a non-null result will terminate the switch.
+    * <!-- end-user-doc -->
+    * 
+    * @param object the target of the switch.
+    * @return the result of interpreting the object as an instance of '<em>XAnnotatable</em>'.
+    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+    * @generated
+    */
+   public T caseXAnnotatable(XAnnotatable object)
    {
       return null;
    }

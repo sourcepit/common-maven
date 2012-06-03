@@ -17,6 +17,9 @@ import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
 import org.sourcepit.common.maven.model.VersionedIdentifiable;
+import org.sourcepit.modeling.common.Annotatable;
+import org.sourcepit.modeling.common.Extendable;
+import org.sourcepit.modeling.common.XAnnotatable;
 
 /**
  * <!-- begin-user-doc -->
@@ -120,6 +123,24 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseMavenProject(MavenProject object)
       {
          return createMavenProjectAdapter();
+      }
+
+      @Override
+      public Adapter caseExtendable(Extendable object)
+      {
+         return createExtendableAdapter();
+      }
+
+      @Override
+      public Adapter caseAnnotatable(Annotatable object)
+      {
+         return createAnnotatableAdapter();
+      }
+
+      @Override
+      public Adapter caseXAnnotatable(XAnnotatable object)
+      {
+         return createXAnnotatableAdapter();
       }
 
       @Override
@@ -243,6 +264,57 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    public Adapter createMavenProjectAdapter()
+   {
+      return null;
+   }
+
+   /**
+    * Creates a new adapter for an object of class '{@link org.sourcepit.modeling.common.Extendable <em>Extendable</em>}
+    * '.
+    * <!-- begin-user-doc -->
+    * This default implementation returns null so that we can easily ignore cases;
+    * it's useful to ignore a case when inheritance will catch all the cases anyway.
+    * <!-- end-user-doc -->
+    * 
+    * @return the new adapter.
+    * @see org.sourcepit.modeling.common.Extendable
+    * @generated
+    */
+   public Adapter createExtendableAdapter()
+   {
+      return null;
+   }
+
+   /**
+    * Creates a new adapter for an object of class '{@link org.sourcepit.modeling.common.Annotatable
+    * <em>Annotatable</em>}'.
+    * <!-- begin-user-doc -->
+    * This default implementation returns null so that we can easily ignore cases;
+    * it's useful to ignore a case when inheritance will catch all the cases anyway.
+    * <!-- end-user-doc -->
+    * 
+    * @return the new adapter.
+    * @see org.sourcepit.modeling.common.Annotatable
+    * @generated
+    */
+   public Adapter createAnnotatableAdapter()
+   {
+      return null;
+   }
+
+   /**
+    * Creates a new adapter for an object of class '{@link org.sourcepit.modeling.common.XAnnotatable
+    * <em>XAnnotatable</em>}'.
+    * <!-- begin-user-doc -->
+    * This default implementation returns null so that we can easily ignore cases;
+    * it's useful to ignore a case when inheritance will catch all the cases anyway.
+    * <!-- end-user-doc -->
+    * 
+    * @return the new adapter.
+    * @see org.sourcepit.modeling.common.XAnnotatable
+    * @generated
+    */
+   public Adapter createXAnnotatableAdapter()
    {
       return null;
    }

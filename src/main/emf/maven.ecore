@@ -3,10 +3,10 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="maven"
     nsURI="http://www.sourcepit.org/common/maven/0.1" nsPrefix="maven">
-  <eClassifiers xsi:type="ecore:EClass" name="MavenArtifact" eSuperTypes="#//VersionedIdentifiable #//Classified">
+  <eClassifiers xsi:type="ecore:EClass" name="MavenArtifact" eSuperTypes="#//VersionedIdentifiable #//Classified ../../../../common-modeling/src/main/emf/common.ecore#//XAnnotatable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="file" eType="ecore:EDataType ../../../../common-modeling/src/main/emf/common.ecore#//EFile"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MavenDependency" eSuperTypes="#//Identifiable #//Classified">
+  <eClassifiers xsi:type="ecore:EClass" name="MavenDependency" eSuperTypes="#//Identifiable #//Classified ../../../../common-modeling/src/main/emf/common.ecore#//XAnnotatable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionRange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scope" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="compile"/>
@@ -28,7 +28,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="jar"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MavenProject" eSuperTypes="#//VersionedIdentifiable">
+  <eClassifiers xsi:type="ecore:EClass" name="MavenProject" eSuperTypes="#//VersionedIdentifiable ../../../../common-modeling/src/main/emf/common.ecore#//XAnnotatable">
     <eOperations name="getProjectDirectory" eType="ecore:EDataType ../../../../common-modeling/src/main/emf/common.ecore#//EFile"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="packaging" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="jar"/>

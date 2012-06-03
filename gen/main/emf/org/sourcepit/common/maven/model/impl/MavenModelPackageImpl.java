@@ -468,10 +468,13 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       // Add supertypes to classes
       mavenArtifactEClass.getESuperTypes().add(this.getVersionedIdentifiable());
       mavenArtifactEClass.getESuperTypes().add(this.getClassified());
+      mavenArtifactEClass.getESuperTypes().add(theCommonModelPackage.getXAnnotatable());
       mavenDependencyEClass.getESuperTypes().add(this.getIdentifiable());
       mavenDependencyEClass.getESuperTypes().add(this.getClassified());
+      mavenDependencyEClass.getESuperTypes().add(theCommonModelPackage.getXAnnotatable());
       versionedIdentifiableEClass.getESuperTypes().add(this.getIdentifiable());
       mavenProjectEClass.getESuperTypes().add(this.getVersionedIdentifiable());
+      mavenProjectEClass.getESuperTypes().add(theCommonModelPackage.getXAnnotatable());
 
       // Initialize classes and features; add operations and parameters
       initEClass(mavenArtifactEClass, MavenArtifact.class, "MavenArtifact", !IS_ABSTRACT, !IS_INTERFACE,

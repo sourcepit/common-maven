@@ -8,6 +8,8 @@ package org.sourcepit.common.maven.model;
 
 import java.io.File;
 
+import org.sourcepit.modeling.common.XAnnotatable;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Maven Project</b></em>'.
@@ -27,7 +29,7 @@ import java.io.File;
  * @model
  * @generated
  */
-public interface MavenProject extends VersionedIdentifiable
+public interface MavenProject extends VersionedIdentifiable, XAnnotatable
 {
    /**
     * Returns the value of the '<em><b>Packaging</b></em>' attribute.

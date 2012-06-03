@@ -6,6 +6,8 @@
 
 package org.sourcepit.common.maven.model;
 
+import org.sourcepit.modeling.common.XAnnotatable;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +27,7 @@ package org.sourcepit.common.maven.model;
  * @model
  * @generated
  */
-public interface MavenDependency extends Identifiable, Classified
+public interface MavenDependency extends Identifiable, Classified, XAnnotatable
 {
    /**
     * Returns the value of the '<em><b>Version Range</b></em>' attribute.

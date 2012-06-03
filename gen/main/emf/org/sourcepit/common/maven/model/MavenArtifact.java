@@ -8,6 +8,8 @@ package org.sourcepit.common.maven.model;
 
 import java.io.File;
 
+import org.sourcepit.modeling.common.XAnnotatable;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Maven Artifact</b></em>'.
@@ -24,7 +26,7 @@ import java.io.File;
  * @model
  * @generated
  */
-public interface MavenArtifact extends VersionedIdentifiable, Classified
+public interface MavenArtifact extends VersionedIdentifiable, Classified, XAnnotatable
 {
    /**
     * Returns the value of the '<em><b>File</b></em>' attribute.
