@@ -77,4 +77,62 @@ public final class MavenModelUtils
       mProject.setTestOutputDirectory(MavenProjectUtils.getTestOutputDir(mavenProject));
       return mProject;
    }
+
+   @NotNull
+   public static MavenArtifact parseArtifactKey(final String artifactKey)
+   {
+      final String[] segments = artifactKey.split(":");
+      if (segments.length > 3 && segments.length < 6)
+      {
+         final MavenArtifact artifact = MavenModelFactory.eINSTANCE.createMavenArtifact();
+         artifact.setGroupId(segments[0]);
+         artifact.setArtifactId(segments[1]);
+         final String type = segments[2];
+         if (!"jar".equals(type))
+         {
+            artifact.setType(type);
+         }
+         if (segments.length > 4) // has classifier
+         {
+            artifact.setClassifier(segments[3]);
+            artifact.setVersion(segments[4]);
+         }
+         else
+         {
+            artifact.setVersion(segments[3]);
+         }
+         return artifact;
+      }
+      else
+      {
+         throw new IllegalArgumentException("Invalid artifact key: " + artifactKey);
+      }
+   }
+
+   @NotNull
+   public static String toArtifactKey(@NotNull MavenArtifact artifact)
+   {
+      return toArtifactKey(artifact.getGroupId(), artifact.getArtifactId(), artifact.getType(),
+         artifact.getClassifier(), artifact.getVersion());
+   }
+
+   @NotNull
+   public static String toArtifactKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String type,
+      String classifier, @NotNull String version)
+   {
+      final StringBuilder sb = new StringBuilder();
+      sb.append(groupId);
+      sb.append(':');
+      sb.append(artifactId);
+      sb.append(':');
+      sb.append(type);
+      if (classifier != null)
+      {
+         sb.append(':');
+         sb.append(classifier);
+      }
+      sb.append(':');
+      sb.append(version);
+      return sb.toString();
+   }
 }

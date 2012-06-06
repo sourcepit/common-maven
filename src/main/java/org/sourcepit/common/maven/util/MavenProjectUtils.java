@@ -57,14 +57,19 @@ public final class MavenProjectUtils
       final String referenceId = getProjectReferenceId(artifact);
       return project.getProjectReferences().get(referenceId);
    }
+   
+   public static String getProjectReferenceId(@NotNull MavenProject project)
+   {
+      return getProjectReferenceId(project.getGroupId(), project.getArtifactId(), project.getVersion());
+   }
 
-
-   private static String getProjectReferenceId(Artifact artifact)
+   public static String getProjectReferenceId(@NotNull Artifact artifact)
    {
       return getProjectReferenceId(artifact.getGroupId(), artifact.getArtifactId(), artifact.getBaseVersion());
    }
 
-   private static String getProjectReferenceId(String groupId, String artifactId, String version)
+   public static String getProjectReferenceId(@NotNull String groupId, @NotNull String artifactId,
+      @NotNull String version)
    {
       StringBuilder buffer = new StringBuilder(128);
       buffer.append(groupId).append(':').append(artifactId).append(':').append(version);
