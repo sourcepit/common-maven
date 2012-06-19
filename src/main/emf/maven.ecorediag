@@ -193,11 +193,9 @@
       <children xmi:type="notation:Node" xmi:id="_qhqRkJ9VEeGRq8w-gIHQrA" type="4001"/>
       <children xmi:type="notation:Node" xmi:id="_qhqRkZ9VEeGRq8w-gIHQrA" type="5001">
         <children xmi:type="notation:Node" xmi:id="_qiG9gJ9VEeGRq8w-gIHQrA" type="2001">
-          <element xmi:type="ecore:EAttribute" href="maven.ecore#//environment/EnvironmentSnapshot/classpath"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_qiG9gZ9VEeGRq8w-gIHQrA"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_rb1a0J9VEeGRq8w-gIHQrA" type="2001">
-          <element xmi:type="ecore:EAttribute" href="maven.ecore#//environment/EnvironmentSnapshot/packages"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_rb1a0Z9VEeGRq8w-gIHQrA"/>
         </children>
         <styles xmi:type="notation:DrawerStyle" xmi:id="_qhqRkp9VEeGRq8w-gIHQrA"/>
@@ -210,10 +208,8 @@
         <styles xmi:type="notation:FilteringStyle" xmi:id="_qhqRmJ9VEeGRq8w-gIHQrA"/>
       </children>
       <styles xmi:type="notation:ShapeStyle" xmi:id="_qhhHoZ9VEeGRq8w-gIHQrA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
-      <element xmi:type="ecore:EClass" href="maven.ecore#//environment/EnvironmentSnapshot"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qhhHop9VEeGRq8w-gIHQrA" x="120" y="175"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_p74D8p9VEeGRq8w-gIHQrA"/>
-    <element xmi:type="ecore:EPackage" href="maven.ecore#//environment"/>
   </notation:Diagram>
 </xmi:XMI>
