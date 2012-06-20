@@ -11,6 +11,7 @@ import java.io.File;
 import javax.validation.constraints.NotNull;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.project.MavenProject;
 
 public final class MavenProjectUtils
@@ -57,7 +58,7 @@ public final class MavenProjectUtils
       final String referenceId = getProjectReferenceId(artifact);
       return project.getProjectReferences().get(referenceId);
    }
-   
+
    public static String getProjectReferenceId(@NotNull MavenProject project)
    {
       return getProjectReferenceId(project.getGroupId(), project.getArtifactId(), project.getVersion());
@@ -74,6 +75,25 @@ public final class MavenProjectUtils
       StringBuilder buffer = new StringBuilder(128);
       buffer.append(groupId).append(':').append(artifactId).append(':').append(version);
       return buffer.toString();
+   }
+
+   public static ArtifactRepository getSnapshotArtifactRepository(@NotNull MavenProject project)
+   {
+      return getDistributionManagementRepository(project, "1-SNAPSHOT");
+   }
+
+   public static ArtifactRepository getReleaseArtifactRepository(@NotNull MavenProject project)
+   {
+      return getDistributionManagementRepository(project, "1");
+   }
+
+   private static ArtifactRepository getDistributionManagementRepository(MavenProject project, String version)
+   {
+      final MavenProject clone = project.clone();
+      clone.setVersion(version);
+      clone.getModel().setVersion(version);
+      clone.getArtifact().setVersion(version);
+      return clone.getDistributionManagementArtifactRepository();
    }
 
 }

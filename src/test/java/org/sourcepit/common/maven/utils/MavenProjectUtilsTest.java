@@ -12,6 +12,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.hamcrest.core.IsSame.sameInstance;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import java.io.File;
@@ -21,6 +22,7 @@ import javax.validation.ConstraintViolationException;
 
 import org.apache.commons.lang.SystemUtils;
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.project.MavenProject;
 import org.junit.Test;
 import org.sourcepit.common.maven.AbstractCommonMavenTest;
@@ -145,5 +147,29 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
 
       MavenProject referencedProject = MavenProjectUtils.findReferencedProject(projectA, artifactB);
       assertThat(referencedProject, sameInstance(projectB));
+   }
+
+   @Test
+   public void testGetSnapshotArtifactRepository() throws Exception
+   {
+      final File projectDir = getResource("reactor-project");
+      final List<MavenProject> projects = buildProject(new File(projectDir, "pom.xml"), true)
+         .getTopologicallySortedProjects();
+      assertThat(projects.size(), is(3));
+
+      MavenProject reactor = projects.get(0);
+      assertThat(reactor.getArtifactId(), equalTo("reactor-project"));
+      MavenProject projectB = projects.get(1);
+      assertThat(projectB.getArtifactId(), equalTo("module-b"));
+      MavenProject projectA = projects.get(2);
+      assertThat(projectA.getArtifactId(), equalTo("module-a"));
+
+      ArtifactRepository snapshotRepository = MavenProjectUtils.getSnapshotArtifactRepository(reactor);
+      assertNotNull(snapshotRepository);
+      assertThat(snapshotRepository.getId(), equalTo("snapshots"));
+
+      ArtifactRepository releaseRepository = MavenProjectUtils.getReleaseArtifactRepository(reactor);
+      assertNotNull(releaseRepository);
+      assertThat(releaseRepository.getId(), equalTo("releases"));
    }
 }
