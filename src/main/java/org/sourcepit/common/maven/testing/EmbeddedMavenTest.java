@@ -106,8 +106,11 @@ public abstract class EmbeddedMavenTest extends GuplexTest
       Properties userProperties, String... goals) throws Exception
    {
       final MavenExecutionRequest request = new DefaultMavenExecutionRequest();
-      request.setBaseDirectory(pom.getParentFile());
-      request.setPom(pom);
+      if (pom != null)
+      {
+         request.setBaseDirectory(pom.getParentFile());
+         request.setPom(pom);
+      }
       request.setSystemProperties(systemProperties == null ? new Properties() : systemProperties);
       request.setUserProperties(userProperties == null ? new Properties() : userProperties);
 
