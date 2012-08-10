@@ -228,7 +228,14 @@ public abstract class EmbeddedMavenTest extends GuplexTest
          }
       });
 
-      execute(request);
+      final MavenExecutionResult2 tmpResult = execute(request);
+      if (session[0] == null)
+      {
+         if (tmpResult.hasExceptions())
+         {
+            throw new IllegalStateException(tmpResult.getExceptions().get(0));
+         }
+      }
 
       final MavenExecutionResult2 result = new MavenExecutionResult2Impl(session[0], session[0].getResult());
       if (request.getProjectBuildingRequest().isResolveDependencies())
