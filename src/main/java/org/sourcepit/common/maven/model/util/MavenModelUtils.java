@@ -9,6 +9,7 @@ package org.sourcepit.common.maven.model.util;
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.ObjectUtils;
+import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.Artifact;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
@@ -18,6 +19,12 @@ import org.sourcepit.common.maven.util.MavenProjectUtils;
 
 public final class MavenModelUtils
 {
+   @NotNull
+   public static MavenDependency toMavenDependecy(@NotNull org.sonatype.aether.artifact.Artifact artifact)
+   {
+      return toMavenDependecy(RepositoryUtils.toArtifact(artifact));
+   }
+
    @NotNull
    public static MavenDependency toMavenDependecy(@NotNull Artifact artifact)
    {
@@ -40,6 +47,12 @@ public final class MavenModelUtils
       }
       dependency.setOptional(artifact.isOptional());
       return dependency;
+   }
+
+   @NotNull
+   public static MavenArtifact toMavenArtifact(@NotNull org.sonatype.aether.artifact.Artifact artifact)
+   {
+      return toMavenArtifact(RepositoryUtils.toArtifact(artifact));
    }
 
    @NotNull

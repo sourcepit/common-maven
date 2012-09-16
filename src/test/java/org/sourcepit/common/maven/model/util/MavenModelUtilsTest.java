@@ -33,7 +33,7 @@ public class MavenModelUtilsTest
    {
       try
       {
-         MavenModelUtils.toMavenArtifact(null);
+         MavenModelUtils.toMavenArtifact((Artifact) null);
          fail();
       }
       catch (ConstraintViolationException e)
@@ -70,7 +70,7 @@ public class MavenModelUtilsTest
    {
       try
       {
-         MavenModelUtils.toMavenDependecy(null);
+         MavenModelUtils.toMavenDependecy((Artifact) null);
          fail();
       }
       catch (ConstraintViolationException e)
