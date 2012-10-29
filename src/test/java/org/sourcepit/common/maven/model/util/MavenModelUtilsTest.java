@@ -6,6 +6,9 @@
 
 package org.sourcepit.common.maven.model.util;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
@@ -18,6 +21,7 @@ import javax.validation.ConstraintViolationException;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.versioning.VersionRange;
 import org.apache.maven.model.Build;
+import org.apache.maven.model.Plugin;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.junit.Test;
@@ -153,5 +157,30 @@ public class MavenModelUtilsTest
       // jar is default
       assertThat(mProject.eIsSet(MavenModelPackage.eINSTANCE.getMavenProject_Packaging()), Is.is(false));
       assertThat(mProject.getPackaging(), IsEqual.equalTo(project.getPackaging()));
+   }
+
+   @Test
+   public void testCreatePlugin() throws Exception
+   {
+      try
+      {
+         MavenModelUtils.createPlugin("", null, "");
+         fail();
+      }
+      catch (ConstraintViolationException e)
+      {
+      }
+
+      Plugin plugin = MavenModelUtils.createPlugin("org.sourcepit", "foo-maven-plugin", "1.0.0");
+      assertNotNull(plugin);
+      assertEquals("org.sourcepit", plugin.getGroupId());
+      assertEquals("foo-maven-plugin", plugin.getArtifactId());
+      assertEquals("1.0.0", plugin.getVersion());
+
+      plugin = MavenModelUtils.createPlugin(null, "foo-maven-plugin", null);
+      assertNotNull(plugin);
+      assertNull(plugin.getGroupId());
+      assertEquals("foo-maven-plugin", plugin.getArtifactId());
+      assertNull(plugin.getVersion());
    }
 }

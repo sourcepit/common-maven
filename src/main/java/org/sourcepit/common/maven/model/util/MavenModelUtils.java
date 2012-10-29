@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.model.Plugin;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelFactory;
@@ -147,5 +148,15 @@ public final class MavenModelUtils
       sb.append(':');
       sb.append(version);
       return sb.toString();
+   }
+
+   @NotNull
+   public static Plugin createPlugin(String groupId, @NotNull String artifactId, String version)
+   {
+      final Plugin plugin = new Plugin();
+      plugin.setGroupId(groupId);
+      plugin.setArtifactId(artifactId);
+      plugin.setVersion(version);
+      return plugin;
    }
 }
