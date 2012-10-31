@@ -11,7 +11,10 @@ import javax.validation.constraints.NotNull;
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.model.Build;
+import org.apache.maven.model.Model;
 import org.apache.maven.model.Plugin;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelFactory;
@@ -154,9 +157,66 @@ public final class MavenModelUtils
    public static Plugin createPlugin(String groupId, @NotNull String artifactId, String version)
    {
       final Plugin plugin = new Plugin();
-      plugin.setGroupId(groupId);
+      if (groupId != null)
+      {
+         plugin.setGroupId(groupId);
+      }
       plugin.setArtifactId(artifactId);
       plugin.setVersion(version);
       return plugin;
+   }
+
+   public static Build getBuild(@NotNull Model model, boolean createOnDemand)
+   {
+      Build build = model.getBuild();
+      if (build == null && createOnDemand)
+      {
+         build = new Build();
+         model.setBuild(build);
+      }
+      return build;
+   }
+
+   public static Plugin getPlugin(@NotNull Model model, String groupId, @NotNull String artifactId,
+      boolean createOnDemand)
+   {
+      final Build build = getBuild(model, createOnDemand);
+      if (build != null)
+      {
+         return getPlugin(build, groupId, artifactId, createOnDemand);
+      }
+      return null;
+   }
+
+   private final static String DEFAULT_GROUP_ID = new Plugin().getGroupId();
+
+   public static Plugin getPlugin(@NotNull Build build, String groupId, @NotNull String artifactId,
+      boolean createOnDemand)
+   {
+      final String pluginKey = createPluginKey(groupId, artifactId);
+      Plugin plugin = build.getPluginsAsMap().get(pluginKey);
+      if (plugin == null && createOnDemand)
+      {
+         plugin = createPlugin(groupId, artifactId, null);
+         build.getPlugins().add(plugin);
+         build.flushPluginMap();
+      }
+      return plugin;
+   }
+
+   private static String createPluginKey(String groupId, @NotNull String artifactId)
+   {
+      return Plugin.constructKey(groupId == null ? DEFAULT_GROUP_ID : groupId, artifactId);
+   }
+
+   public static Xpp3Dom getConfiguration(@NotNull Plugin plugin, boolean createOnDemand)
+   {
+      Xpp3Dom configuration = (Xpp3Dom) plugin.getConfiguration();
+      if (configuration == null && createOnDemand)
+      {
+         configuration = new Xpp3Dom("configuration");
+         plugin.setConfiguration(configuration);
+      }
+      return configuration;
    }
 }
