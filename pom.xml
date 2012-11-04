@@ -7,11 +7,12 @@
 	</parent>
 	<groupId>org.sourcepit.common</groupId>
 	<artifactId>common-maven</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0-alpha-6</version>
 
 	<scm>
 		<connection>scm:git:git@github.com:sourcepit/common-maven.git</connection>
-	</scm>
+	  <tag>common-maven-0.1.0-alpha-6</tag>
+  </scm>
 
 	<!-- repo to resolve parent pom from -->
 	<repositories>
