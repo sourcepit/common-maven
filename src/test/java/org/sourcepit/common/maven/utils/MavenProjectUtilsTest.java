@@ -6,7 +6,7 @@
 
 package org.sourcepit.common.maven.utils;
 
-import static junit.framework.Assert.fail;
+import static org.junit.Assert.fail;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
