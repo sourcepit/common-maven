@@ -8,7 +8,7 @@ package org.sourcepit.common.maven.model;
 
 import java.io.File;
 
-import org.sourcepit.modeling.common.XAnnotatable;
+import org.sourcepit.common.modeling.XAnnotatable;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +39,7 @@ public interface MavenArtifact extends VersionedIdentifiable, Classified, XAnnot
     * @return the value of the '<em>File</em>' attribute.
     * @see #setFile(File)
     * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenArtifact_File()
-    * @model dataType="org.sourcepit.modeling.common.EFile"
+    * @model dataType="org.sourcepit.common.modeling.EFile"
     * @generated
     */
    File getFile();

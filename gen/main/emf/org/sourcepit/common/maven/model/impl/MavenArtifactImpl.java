@@ -22,11 +22,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.sourcepit.common.maven.model.Classified;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenModelPackage;
-import org.sourcepit.modeling.common.Annotatable;
-import org.sourcepit.modeling.common.Annotation;
-import org.sourcepit.modeling.common.CommonModelPackage;
-import org.sourcepit.modeling.common.Extendable;
-import org.sourcepit.modeling.common.XAnnotatable;
+import org.sourcepit.common.modeling.Annotatable;
+import org.sourcepit.common.modeling.Annotation;
+import org.sourcepit.common.modeling.CommonModelingPackage;
+import org.sourcepit.common.modeling.Extendable;
+import org.sourcepit.common.modeling.XAnnotatable;
 
 /**
  * <!-- begin-user-doc -->
@@ -236,7 +236,7 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
       if (annotations == null)
       {
          annotations = new EObjectContainmentWithInverseEList<Annotation>(Annotation.class, this,
-            MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS, CommonModelPackage.ANNOTATION__TARGET);
+            MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS, CommonModelingPackage.ANNOTATION__TARGET);
       }
       return annotations;
    }
@@ -299,6 +299,19 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
     * @generated
     */
    public String getAnnotationData(String source, String key)
+   {
+      // TODO: implement this method
+      // Ensure that you remove @generated or mark it @generated NOT
+      throw new UnsupportedOperationException();
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public String setAnnotationData(String source, String key, String value)
    {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
@@ -546,7 +559,7 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
          switch (derivedFeatureID)
          {
             case MavenModelPackage.MAVEN_ARTIFACT__EXTENSIONS :
-               return CommonModelPackage.EXTENDABLE__EXTENSIONS;
+               return CommonModelingPackage.EXTENDABLE__EXTENSIONS;
             default :
                return -1;
          }
@@ -556,7 +569,7 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
          switch (derivedFeatureID)
          {
             case MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS :
-               return CommonModelPackage.ANNOTATABLE__ANNOTATIONS;
+               return CommonModelingPackage.ANNOTATABLE__ANNOTATIONS;
             default :
                return -1;
          }
@@ -597,7 +610,7 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
       {
          switch (baseFeatureID)
          {
-            case CommonModelPackage.EXTENDABLE__EXTENSIONS :
+            case CommonModelingPackage.EXTENDABLE__EXTENSIONS :
                return MavenModelPackage.MAVEN_ARTIFACT__EXTENSIONS;
             default :
                return -1;
@@ -607,7 +620,7 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
       {
          switch (baseFeatureID)
          {
-            case CommonModelPackage.ANNOTATABLE__ANNOTATIONS :
+            case CommonModelingPackage.ANNOTATABLE__ANNOTATIONS :
                return MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS;
             default :
                return -1;

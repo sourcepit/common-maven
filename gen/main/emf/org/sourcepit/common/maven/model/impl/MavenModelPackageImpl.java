@@ -18,7 +18,7 @@ import org.sourcepit.common.maven.model.MavenModelFactory;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
 import org.sourcepit.common.maven.model.VersionedIdentifiable;
-import org.sourcepit.modeling.common.CommonModelPackage;
+import org.sourcepit.common.modeling.CommonModelingPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -130,7 +130,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       isInited = true;
 
       // Initialize simple dependencies
-      CommonModelPackage.eINSTANCE.eClass();
+      CommonModelingPackage.eINSTANCE.eClass();
 
       // Create package meta-data objects
       theMavenModelPackage.createPackageContents();
@@ -444,8 +444,8 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       setNsURI(eNS_URI);
 
       // Obtain other dependent packages
-      CommonModelPackage theCommonModelPackage = (CommonModelPackage) EPackage.Registry.INSTANCE
-         .getEPackage(CommonModelPackage.eNS_URI);
+      CommonModelingPackage theCommonModelingPackage = (CommonModelingPackage) EPackage.Registry.INSTANCE
+         .getEPackage(CommonModelingPackage.eNS_URI);
 
       // Create type parameters
 
@@ -454,18 +454,18 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       // Add supertypes to classes
       mavenArtifactEClass.getESuperTypes().add(this.getVersionedIdentifiable());
       mavenArtifactEClass.getESuperTypes().add(this.getClassified());
-      mavenArtifactEClass.getESuperTypes().add(theCommonModelPackage.getXAnnotatable());
+      mavenArtifactEClass.getESuperTypes().add(theCommonModelingPackage.getXAnnotatable());
       mavenDependencyEClass.getESuperTypes().add(this.getIdentifiable());
       mavenDependencyEClass.getESuperTypes().add(this.getClassified());
-      mavenDependencyEClass.getESuperTypes().add(theCommonModelPackage.getXAnnotatable());
+      mavenDependencyEClass.getESuperTypes().add(theCommonModelingPackage.getXAnnotatable());
       versionedIdentifiableEClass.getESuperTypes().add(this.getIdentifiable());
       mavenProjectEClass.getESuperTypes().add(this.getVersionedIdentifiable());
-      mavenProjectEClass.getESuperTypes().add(theCommonModelPackage.getXAnnotatable());
+      mavenProjectEClass.getESuperTypes().add(theCommonModelingPackage.getXAnnotatable());
 
       // Initialize classes and features; add operations and parameters
       initEClass(mavenArtifactEClass, MavenArtifact.class, "MavenArtifact", !IS_ABSTRACT, !IS_INTERFACE,
          IS_GENERATED_INSTANCE_CLASS);
-      initEAttribute(getMavenArtifact_File(), theCommonModelPackage.getEFile(), "file", null, 0, 1,
+      initEAttribute(getMavenArtifact_File(), theCommonModelingPackage.getEFile(), "file", null, 0, 1,
          MavenArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
 
@@ -507,17 +507,17 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       initEAttribute(getMavenProject_Packaging(), ecorePackage.getEString(), "packaging", "jar", 0, 1,
          MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getMavenProject_PomFile(), theCommonModelPackage.getEFile(), "pomFile", null, 0, 1,
+      initEAttribute(getMavenProject_PomFile(), theCommonModelingPackage.getEFile(), "pomFile", null, 0, 1,
          MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getMavenProject_OutputDirectory(), theCommonModelPackage.getEFile(), "outputDirectory", null, 0,
-         1, MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+      initEAttribute(getMavenProject_OutputDirectory(), theCommonModelingPackage.getEFile(), "outputDirectory", null,
+         0, 1, MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getMavenProject_TestOutputDirectory(), theCommonModelPackage.getEFile(), "testOutputDirectory",
+      initEAttribute(getMavenProject_TestOutputDirectory(), theCommonModelingPackage.getEFile(), "testOutputDirectory",
          null, 0, 1, MavenProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
 
-      addEOperation(mavenProjectEClass, theCommonModelPackage.getEFile(), "getProjectDirectory", 0, 1, IS_UNIQUE,
+      addEOperation(mavenProjectEClass, theCommonModelingPackage.getEFile(), "getProjectDirectory", 0, 1, IS_UNIQUE,
          IS_ORDERED);
 
       // Create resource

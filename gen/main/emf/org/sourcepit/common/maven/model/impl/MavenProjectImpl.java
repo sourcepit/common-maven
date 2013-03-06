@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
-import org.sourcepit.modeling.common.Annotatable;
-import org.sourcepit.modeling.common.Annotation;
-import org.sourcepit.modeling.common.CommonModelPackage;
-import org.sourcepit.modeling.common.Extendable;
-import org.sourcepit.modeling.common.XAnnotatable;
+import org.sourcepit.common.modeling.Annotatable;
+import org.sourcepit.common.modeling.Annotation;
+import org.sourcepit.common.modeling.CommonModelingPackage;
+import org.sourcepit.common.modeling.Extendable;
+import org.sourcepit.common.modeling.XAnnotatable;
 
 /**
  * <!-- begin-user-doc -->
@@ -208,7 +208,7 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
       if (annotations == null)
       {
          annotations = new EObjectContainmentWithInverseEList<Annotation>(Annotation.class, this,
-            MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS, CommonModelPackage.ANNOTATION__TARGET);
+            MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS, CommonModelingPackage.ANNOTATION__TARGET);
       }
       return annotations;
    }
@@ -363,6 +363,19 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
     * @generated
     */
    public String getAnnotationData(String source, String key)
+   {
+      // TODO: implement this method
+      // Ensure that you remove @generated or mark it @generated NOT
+      throw new UnsupportedOperationException();
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public String setAnnotationData(String source, String key, String value)
    {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
@@ -611,7 +624,7 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
          switch (derivedFeatureID)
          {
             case MavenModelPackage.MAVEN_PROJECT__EXTENSIONS :
-               return CommonModelPackage.EXTENDABLE__EXTENSIONS;
+               return CommonModelingPackage.EXTENDABLE__EXTENSIONS;
             default :
                return -1;
          }
@@ -621,7 +634,7 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
          switch (derivedFeatureID)
          {
             case MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS :
-               return CommonModelPackage.ANNOTATABLE__ANNOTATIONS;
+               return CommonModelingPackage.ANNOTATABLE__ANNOTATIONS;
             default :
                return -1;
          }
@@ -650,7 +663,7 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
       {
          switch (baseFeatureID)
          {
-            case CommonModelPackage.EXTENDABLE__EXTENSIONS :
+            case CommonModelingPackage.EXTENDABLE__EXTENSIONS :
                return MavenModelPackage.MAVEN_PROJECT__EXTENSIONS;
             default :
                return -1;
@@ -660,7 +673,7 @@ public class MavenProjectImpl extends VersionedIdentifiableImpl implements Maven
       {
          switch (baseFeatureID)
          {
-            case CommonModelPackage.ANNOTATABLE__ANNOTATIONS :
+            case CommonModelingPackage.ANNOTATABLE__ANNOTATIONS :
                return MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS;
             default :
                return -1;

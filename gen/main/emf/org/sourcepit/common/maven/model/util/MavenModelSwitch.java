@@ -16,9 +16,9 @@ import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
 import org.sourcepit.common.maven.model.VersionedIdentifiable;
-import org.sourcepit.modeling.common.Annotatable;
-import org.sourcepit.modeling.common.Extendable;
-import org.sourcepit.modeling.common.XAnnotatable;
+import org.sourcepit.common.modeling.Annotatable;
+import org.sourcepit.common.modeling.Extendable;
+import org.sourcepit.common.modeling.XAnnotatable;
 
 /**
  * <!-- begin-user-doc -->

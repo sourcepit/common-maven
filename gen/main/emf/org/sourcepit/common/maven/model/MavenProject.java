@@ -8,7 +8,7 @@ package org.sourcepit.common.maven.model;
 
 import java.io.File;
 
-import org.sourcepit.modeling.common.XAnnotatable;
+import org.sourcepit.common.modeling.XAnnotatable;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,7 +73,7 @@ public interface MavenProject extends VersionedIdentifiable, XAnnotatable
     * @return the value of the '<em>Pom File</em>' attribute.
     * @see #setPomFile(File)
     * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenProject_PomFile()
-    * @model dataType="org.sourcepit.modeling.common.EFile"
+    * @model dataType="org.sourcepit.common.modeling.EFile"
     * @generated
     */
    File getPomFile();
@@ -102,7 +102,7 @@ public interface MavenProject extends VersionedIdentifiable, XAnnotatable
     * @return the value of the '<em>Output Directory</em>' attribute.
     * @see #setOutputDirectory(File)
     * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenProject_OutputDirectory()
-    * @model dataType="org.sourcepit.modeling.common.EFile"
+    * @model dataType="org.sourcepit.common.modeling.EFile"
     * @generated
     */
    File getOutputDirectory();
@@ -131,7 +131,7 @@ public interface MavenProject extends VersionedIdentifiable, XAnnotatable
     * @return the value of the '<em>Test Output Directory</em>' attribute.
     * @see #setTestOutputDirectory(File)
     * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenProject_TestOutputDirectory()
-    * @model dataType="org.sourcepit.modeling.common.EFile"
+    * @model dataType="org.sourcepit.common.modeling.EFile"
     * @generated
     */
    File getTestOutputDirectory();
@@ -152,7 +152,7 @@ public interface MavenProject extends VersionedIdentifiable, XAnnotatable
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @model kind="operation" dataType="org.sourcepit.modeling.common.EFile"
+    * @model kind="operation" dataType="org.sourcepit.common.modeling.EFile"
     * @generated
     */
    File getProjectDirectory();

@@ -6,8 +6,7 @@
 
 package org.sourcepit.common.maven.model;
 
-import org.sourcepit.modeling.common.XAnnotatable;
-
+import org.sourcepit.common.modeling.XAnnotatable;
 
 /**
  * <!-- begin-user-doc -->
