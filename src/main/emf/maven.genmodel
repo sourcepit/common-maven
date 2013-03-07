@@ -5,7 +5,7 @@
     modelDirectory="/common-maven/gen/main/emf" editDirectory="/common-maven.edit/src"
     editorDirectory="/common-maven.editor/src" modelPluginID="" modelName="Maven"
     updateClasspath="false" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
-    copyrightFields="false" usedGenPackages="../../../../common-modeling/src/main/emf/common.genmodel#//common">
+    copyrightFields="false" usedGenPackages="../../../../common-modeling/src/main/emf/CommonModeling.genmodel#//modeling">
   <foreignModel>maven.ecore</foreignModel>
   <genPackages prefix="MavenModel" basePackage="org.sourcepit.common" disposableProviderFactory="true"
       interfacePackageSuffix="model" metaDataPackageSuffix="model" classPackageSuffix="model.impl"
