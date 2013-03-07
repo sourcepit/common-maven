@@ -53,7 +53,7 @@ public interface MavenModelPackage extends EPackage
     * 
     * @generated
     */
-   String eNS_PREFIX = "maven";
+   String eNS_PREFIX = "common-maven";
 
    /**
     * The singleton instance of the package.
