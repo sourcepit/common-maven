@@ -7,41 +7,18 @@
 package org.sourcepit.common.maven.testing;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 
 import javax.inject.Inject;
 
-import org.apache.maven.Maven;
-import org.apache.maven.artifact.Artifact;
-import org.apache.maven.artifact.resolver.filter.CumulativeScopeArtifactFilter;
-import org.apache.maven.cli.BatchModeMavenTransferListener;
-import org.apache.maven.cli.ExecutionEventLogger;
-import org.apache.maven.eventspy.internal.EventSpyDispatcher;
-import org.apache.maven.execution.DefaultMavenExecutionRequest;
-import org.apache.maven.execution.ExecutionEvent;
 import org.apache.maven.execution.MavenExecutionRequest;
-import org.apache.maven.execution.MavenExecutionRequestPopulationException;
-import org.apache.maven.execution.MavenExecutionRequestPopulator;
-import org.apache.maven.execution.MavenExecutionResult;
-import org.apache.maven.execution.MavenSession;
-import org.apache.maven.lifecycle.LifecycleExecutionException;
-import org.apache.maven.lifecycle.internal.LifecycleDependencyResolver;
 import org.apache.maven.project.MavenProject;
-import org.apache.maven.settings.building.DefaultSettingsBuildingRequest;
-import org.apache.maven.settings.building.SettingsBuilder;
-import org.apache.maven.settings.building.SettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuildingResult;
 import org.codehaus.plexus.ContainerConfiguration;
 import org.codehaus.plexus.classworlds.ClassWorld;
-import org.codehaus.plexus.logging.Logger;
 import org.junit.After;
-import org.sourcepit.common.maven.util.MavenProjectUtils;
+import org.junit.Before;
 import org.sourcepit.guplex.test.GuplexTest;
 
 /**
@@ -50,22 +27,7 @@ import org.sourcepit.guplex.test.GuplexTest;
 public abstract class EmbeddedMavenTest extends GuplexTest
 {
    @Inject
-   protected Maven maven;
-
-   @Inject
-   protected EventSpyDispatcher eventSpyDispatcher;
-
-   @Inject
-   protected Logger logger;
-
-   @Inject
-   protected LifecycleDependencyResolver resolver;
-
-   @Inject
-   protected MavenExecutionRequestPopulator executionRequestPopulator;
-
-   @Inject
-   protected SettingsBuilder settingsBuilder;
+   protected EmbeddedMaven embeddedMaven;
 
    @Override
    protected boolean isUseIndex()
@@ -80,81 +42,20 @@ public abstract class EmbeddedMavenTest extends GuplexTest
       containerConfiguration.setClassWorld(new ClassWorld("plexus.core", getClassLoader()));
    }
 
-   protected File getTestEnvironmentSnapshotFile()
+   @Override
+   @Before
+   public void setUp() throws Exception
    {
-      return null;
+      super.setUp();
+      configure(embeddedMaven);
    }
 
-   @After
-   public void tearDown() throws Exception
+   protected void configure(EmbeddedMaven embeddedMaven)
    {
-      eventSpyDispatcher.close();
-      super.tearDown();
-   }
-
-   protected MavenExecutionRequest newMavenExecutionRequest(File pom) throws Exception
-   {
-      return newMavenExecutionRequest(pom, "validate");
-   }
-
-   protected MavenExecutionRequest newMavenExecutionRequest(File pom, String... goals) throws Exception
-   {
-      return newMavenExecutionRequest(pom, newSystemProperties(), null, goals);
-   }
-
-   protected MavenExecutionRequest newMavenExecutionRequest(File pom, Properties systemProperties,
-      Properties userProperties, String... goals) throws Exception
-   {
-      final MavenExecutionRequest request = new DefaultMavenExecutionRequest();
-      if (pom != null)
-      {
-         request.setBaseDirectory(pom.getParentFile());
-         request.setPom(pom);
-      }
-      request.setSystemProperties(systemProperties == null ? new Properties() : systemProperties);
-      request.setUserProperties(userProperties == null ? new Properties() : userProperties);
-
-      request.setUserSettingsFile(getUserSettingsFile());
-
-      if (goals != null)
-      {
-         request.setGoals(Arrays.asList(goals));
-      }
-
-      populateDefaults(request);
-
-      return request;
-   }
-
-   protected void populateDefaults(final MavenExecutionRequest request) throws Exception,
-      MavenExecutionRequestPopulationException
-   {
-      request.setExecutionListener(eventSpyDispatcher.chainListener(new ExecutionEventLogger(logger)));
-      request.setTransferListener(new BatchModeMavenTransferListener(System.out));
-
-      final SettingsBuildingResult settingsResult = buildSettings(null, request.getUserSettingsFile(),
-         request.getSystemProperties(), request.getUserProperties());
-      executionRequestPopulator.populateFromSettings(request, settingsResult.getEffectiveSettings());
-
-      File localRepositoryDir = getLocalRepositoryPath();
-      if (localRepositoryDir != null)
-      {
-         request.setLocalRepositoryPath(localRepositoryDir);
-      }
-
-      executionRequestPopulator.populateDefaults(request);
-   }
-
-   protected Properties newSystemProperties()
-   {
-      Properties properties = new Properties();
-      properties.putAll(System.getProperties());
-      File userHome = getUserHome();
-      if (userHome != null && userHome.exists())
-      {
-         properties.put("user.home", userHome.getAbsolutePath());
-      }
-      return properties;
+      embeddedMaven.setUserHome(getUserHome());
+      embeddedMaven.setUserSettings(getUserSettingsFile());
+      embeddedMaven.setLocalRepo(getLocalRepositoryPath());
+      embeddedMaven.setRemoteRepo(getRemoteRepositoryPath());
    }
 
    protected File getUserHome()
@@ -185,124 +86,70 @@ public abstract class EmbeddedMavenTest extends GuplexTest
       }
       return null;
    }
+   
+   protected File getRemoteRepositoryPath()
+   {
+      return null;
+   }
+
+   public EmbeddedMaven getEmbeddedMaven()
+   {
+      return embeddedMaven;
+   }
+
+   @After
+   public void tearDown() throws Exception
+   {
+      embeddedMaven.dispose();
+      super.tearDown();
+   }
+
+   protected MavenExecutionRequest newMavenExecutionRequest(File pom) throws Exception
+   {
+      return embeddedMaven.newMavenExecutionRequest(pom);
+   }
+
+   protected MavenExecutionRequest newMavenExecutionRequest(File pom, String... goals) throws Exception
+   {
+      return embeddedMaven.newMavenExecutionRequest(pom, goals);
+   }
+
+   protected MavenExecutionRequest newMavenExecutionRequest(File pom, Properties systemProperties,
+      Properties userProperties, String... goals) throws Exception
+   {
+      return embeddedMaven.newMavenExecutionRequest(pom, systemProperties, userProperties, goals);
+   }
 
    protected SettingsBuildingResult buildSettings(File globalSettingsFile, File userSettingsFile,
       Properties systemProperties, Properties userProperties) throws Exception
    {
-      final SettingsBuildingRequest settingsRequest = new DefaultSettingsBuildingRequest();
-      settingsRequest.setGlobalSettingsFile(globalSettingsFile);
-      settingsRequest.setUserSettingsFile(userSettingsFile);
-      settingsRequest.setSystemProperties(systemProperties);
-      settingsRequest.setUserProperties(userProperties);
-
-      return settingsBuilder.build(settingsRequest);
+      return embeddedMaven.buildSettings(globalSettingsFile, userSettingsFile, systemProperties, userProperties);
+   }
+   
+   protected MavenExecutionResult2 buildStubProject(File projectDir)
+   {
+      return embeddedMaven.buildStubProject(projectDir);
    }
 
    protected MavenExecutionResult2 buildProject(File pom) throws Exception
    {
-      return buildProject(pom, null, false);
+      return embeddedMaven.buildProject(pom);
    }
 
    protected MavenExecutionResult2 buildProject(File pom, boolean resolveDependencies) throws Exception
    {
-      return buildProject(pom, null, resolveDependencies);
+      return embeddedMaven.buildProject(pom, resolveDependencies);
    }
 
    protected MavenExecutionResult2 buildProject(File pom, Properties userProperties, boolean resolveDependencies)
       throws Exception
    {
-      final MavenExecutionRequest request = newMavenExecutionRequest(pom, newSystemProperties(), userProperties,
-         "compile");
-      request.getProjectBuildingRequest().setProcessPlugins(false);
-      request.getProjectBuildingRequest().setResolveDependencies(resolveDependencies);
-
-      final MavenSession[] session = new MavenSession[1];
-      request.setExecutionListener(new ChainedExecutionListener(request.getExecutionListener())
-      {
-         @Override
-         public void sessionStarted(ExecutionEvent event)
-         {
-            super.sessionStarted(event);
-            session[0] = event.getSession();
-            throw new IllegalStateException();
-         }
-      });
-
-      final MavenExecutionResult2 tmpResult = execute(request);
-      if (session[0] == null)
-      {
-         if (tmpResult.hasExceptions())
-         {
-            throw new IllegalStateException(tmpResult.getExceptions().get(0));
-         }
-      }
-
-      final MavenExecutionResult2 result = new MavenExecutionResult2Impl(session[0], session[0].getResult());
-      if (request.getProjectBuildingRequest().isResolveDependencies())
-      {
-         Set<Artifact> projectArtifacts = new HashSet<Artifact>();
-
-         for (MavenProject mavenProject : result.getTopologicallySortedProjects())
-         {
-            File artifactFile = MavenProjectUtils.getOutputDir(mavenProject);
-            if (artifactFile == null)
-            {
-               artifactFile = mavenProject.getBasedir();
-            }
-            mavenProject.getArtifact().setFile(artifactFile);
-            mavenProject.getArtifact().setResolved(true);
-
-            projectArtifacts.add(mavenProject.getArtifact());
-
-            mavenProject.addLifecyclePhase("clean");
-            mavenProject.addLifecyclePhase("process-resources");
-            mavenProject.addLifecyclePhase("compile");
-
-            ArrayList<String> scopesToCollect = new ArrayList<String>();
-            Collections.addAll(scopesToCollect, "system", "compile", "provided", "runtime", "test");
-
-            try
-            {
-               resolver.resolveProjectDependencies(mavenProject, scopesToCollect, scopesToCollect, result.getSession(),
-                  true, Collections.<Artifact> emptySet());
-            }
-            catch (LifecycleExecutionException e)
-            {
-               result.addException(e);
-            }
-
-            mavenProject.setArtifactFilter(new CumulativeScopeArtifactFilter(scopesToCollect));
-         }
-      }
-      if (result.hasExceptions())
-      {
-         throw new IllegalStateException(result.getExceptions().get(0));
-      }
-
-      return result;
-   }
-
-   protected File getPomFile(File projectDir)
-   {
-      return new File(projectDir, "pom.xml");
+      return embeddedMaven.buildProject(pom, userProperties, resolveDependencies);
    }
 
    protected MavenExecutionResult2 execute(MavenExecutionRequest request)
    {
-      final MavenSession[] session = new MavenSession[1];
-      request.setExecutionListener(new ChainedExecutionListener(request.getExecutionListener())
-      {
-         @Override
-         public void sessionStarted(ExecutionEvent event)
-         {
-            super.sessionStarted(event);
-            session[0] = event.getSession();
-         }
-      });
-      eventSpyDispatcher.onEvent(request);
-      final MavenExecutionResult result = maven.execute(request);
-      eventSpyDispatcher.onEvent(result);
-      return new MavenExecutionResult2Impl(session[0], result);
+      return embeddedMaven.execute(request);
    }
 
    protected MavenProject getProject(List<MavenProject> projects, String artifactId)
