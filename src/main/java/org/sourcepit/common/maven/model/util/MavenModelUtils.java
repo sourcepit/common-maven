@@ -6,6 +6,8 @@
 
 package org.sourcepit.common.maven.model.util;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
+
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.ObjectUtils;
@@ -132,6 +134,19 @@ public final class MavenModelUtils
       return toArtifactKey(artifact.getGroupId(), artifact.getArtifactId(), artifact.getType(),
          artifact.getClassifier(), artifact.getVersion());
    }
+   
+   @NotNull
+   public static String toArtifactKey(@NotNull Artifact artifact)
+   {
+      return toArtifactKey(artifact.getGroupId(), artifact.getArtifactId(), artifact.getType(),
+         artifact.getClassifier(), artifact.getVersion());
+   }
+   
+   @NotNull
+   public static String toArtifactKey(@NotNull org.sonatype.aether.artifact.Artifact artifact)
+   {
+      return toArtifactKey(RepositoryUtils.toArtifact(artifact));
+   }
 
    @NotNull
    public static String toArtifactKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String type,
@@ -150,6 +165,24 @@ public final class MavenModelUtils
       }
       sb.append(':');
       sb.append(version);
+      return sb.toString();
+   }
+
+   @NotNull
+   public static String toVersionConflictKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String type,
+      String classifier)
+   {
+      final StringBuilder sb = new StringBuilder();
+      sb.append(groupId);
+      sb.append(':');
+      sb.append(artifactId);
+      sb.append(':');
+      sb.append(type);
+      if (!isNullOrEmpty(classifier))
+      {
+         sb.append(':');
+         sb.append(classifier);
+      }
       return sb.toString();
    }
 
