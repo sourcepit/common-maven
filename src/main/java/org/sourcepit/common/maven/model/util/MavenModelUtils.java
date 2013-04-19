@@ -158,7 +158,7 @@ public final class MavenModelUtils
       sb.append(artifactId);
       sb.append(':');
       sb.append(type);
-      if (classifier != null)
+      if (classifier != null && classifier.length() > 0)
       {
          sb.append(':');
          sb.append(classifier);
