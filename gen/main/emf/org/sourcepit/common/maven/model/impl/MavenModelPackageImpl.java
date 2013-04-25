@@ -8,15 +8,18 @@ package org.sourcepit.common.maven.model.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.sourcepit.common.maven.model.Classified;
+import org.sourcepit.common.maven.model.DependencyDeclaration;
 import org.sourcepit.common.maven.model.Identifiable;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelFactory;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
+import org.sourcepit.common.maven.model.Scope;
 import org.sourcepit.common.maven.model.VersionedIdentifiable;
 import org.sourcepit.common.modeling.CommonModelingPackage;
 
@@ -76,6 +79,22 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * @generated
     */
    private EClass mavenProjectEClass = null;
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   private EClass dependencyDeclarationEClass = null;
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   private EEnum scopeEEnum = null;
 
    /**
     * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -362,6 +381,61 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
+   public EClass getDependencyDeclaration()
+   {
+      return dependencyDeclarationEClass;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EAttribute getDependencyDeclaration_VersionConstraint()
+   {
+      return (EAttribute) dependencyDeclarationEClass.getEStructuralFeatures().get(0);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EAttribute getDependencyDeclaration_Scope()
+   {
+      return (EAttribute) dependencyDeclarationEClass.getEStructuralFeatures().get(1);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EAttribute getDependencyDeclaration_Optional()
+   {
+      return (EAttribute) dependencyDeclarationEClass.getEStructuralFeatures().get(2);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EEnum getScope()
+   {
+      return scopeEEnum;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
    public MavenModelFactory getMavenModelFactory()
    {
       return (MavenModelFactory) getEFactoryInstance();
@@ -414,6 +488,14 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       createEAttribute(mavenProjectEClass, MAVEN_PROJECT__POM_FILE);
       createEAttribute(mavenProjectEClass, MAVEN_PROJECT__OUTPUT_DIRECTORY);
       createEAttribute(mavenProjectEClass, MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY);
+
+      dependencyDeclarationEClass = createEClass(DEPENDENCY_DECLARATION);
+      createEAttribute(dependencyDeclarationEClass, DEPENDENCY_DECLARATION__VERSION_CONSTRAINT);
+      createEAttribute(dependencyDeclarationEClass, DEPENDENCY_DECLARATION__SCOPE);
+      createEAttribute(dependencyDeclarationEClass, DEPENDENCY_DECLARATION__OPTIONAL);
+
+      // Create enums
+      scopeEEnum = createEEnum(SCOPE);
    }
 
    /**
@@ -461,6 +543,8 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       versionedIdentifiableEClass.getESuperTypes().add(this.getIdentifiable());
       mavenProjectEClass.getESuperTypes().add(this.getVersionedIdentifiable());
       mavenProjectEClass.getESuperTypes().add(theCommonModelingPackage.getXAnnotatable());
+      dependencyDeclarationEClass.getESuperTypes().add(this.getIdentifiable());
+      dependencyDeclarationEClass.getESuperTypes().add(this.getClassified());
 
       // Initialize classes and features; add operations and parameters
       initEClass(mavenArtifactEClass, MavenArtifact.class, "MavenArtifact", !IS_ABSTRACT, !IS_INTERFACE,
@@ -519,6 +603,27 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
 
       addEOperation(mavenProjectEClass, theCommonModelingPackage.getEFile(), "getProjectDirectory", 0, 1, IS_UNIQUE,
          IS_ORDERED);
+
+      initEClass(dependencyDeclarationEClass, DependencyDeclaration.class, "DependencyDeclaration", IS_ABSTRACT,
+         !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+      initEAttribute(getDependencyDeclaration_VersionConstraint(), ecorePackage.getEString(), "versionConstraint",
+         null, 1, 1, DependencyDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+         IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+      initEAttribute(getDependencyDeclaration_Scope(), this.getScope(), "scope", "compile", 1, 1,
+         DependencyDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+         !IS_DERIVED, IS_ORDERED);
+      initEAttribute(getDependencyDeclaration_Optional(), ecorePackage.getEBoolean(), "optional", null, 0, 1,
+         DependencyDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+         !IS_DERIVED, IS_ORDERED);
+
+      // Initialize enums and add enum literals
+      initEEnum(scopeEEnum, Scope.class, "Scope");
+      addEEnumLiteral(scopeEEnum, Scope.COMPILE);
+      addEEnumLiteral(scopeEEnum, Scope.PROVIDED);
+      addEEnumLiteral(scopeEEnum, Scope.RUNTIME);
+      addEEnumLiteral(scopeEEnum, Scope.TEST);
+      addEEnumLiteral(scopeEEnum, Scope.SYSTEM);
+      addEEnumLiteral(scopeEEnum, Scope.IMPORT);
 
       // Create resource
       createResource(eNS_URI);

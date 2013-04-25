@@ -7,6 +7,7 @@
 package org.sourcepit.common.maven.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
@@ -16,6 +17,7 @@ import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelFactory;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
+import org.sourcepit.common.maven.model.Scope;
 
 /**
  * <!-- begin-user-doc -->
@@ -91,6 +93,42 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
+   @Override
+   public Object createFromString(EDataType eDataType, String initialValue)
+   {
+      switch (eDataType.getClassifierID())
+      {
+         case MavenModelPackage.SCOPE :
+            return createScopeFromString(eDataType, initialValue);
+         default :
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+      }
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   @Override
+   public String convertToString(EDataType eDataType, Object instanceValue)
+   {
+      switch (eDataType.getClassifierID())
+      {
+         case MavenModelPackage.SCOPE :
+            return convertScopeToString(eDataType, instanceValue);
+         default :
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+      }
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
    public MavenArtifact createMavenArtifact()
    {
       MavenArtifactImpl mavenArtifact = new MavenArtifactImpl();
@@ -119,6 +157,32 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
    {
       MavenProjectImpl mavenProject = new MavenProjectImpl();
       return mavenProject;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public Scope createScopeFromString(EDataType eDataType, String initialValue)
+   {
+      Scope result = Scope.get(initialValue);
+      if (result == null)
+         throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '"
+            + eDataType.getName() + "'");
+      return result;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public String convertScopeToString(EDataType eDataType, Object instanceValue)
+   {
+      return instanceValue == null ? null : instanceValue.toString();
    }
 
    /**

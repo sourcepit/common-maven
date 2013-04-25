@@ -8,6 +8,7 @@ package org.sourcepit.common.maven.model;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
@@ -528,6 +529,110 @@ public interface MavenModelPackage extends EPackage
 
 
    /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.DependencyDeclarationImpl
+    * <em>Dependency Declaration</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.DependencyDeclarationImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getDependencyDeclaration()
+    * @generated
+    */
+   int DEPENDENCY_DECLARATION = 6;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DEPENDENCY_DECLARATION__GROUP_ID = IDENTIFIABLE__GROUP_ID;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DEPENDENCY_DECLARATION__ARTIFACT_ID = IDENTIFIABLE__ARTIFACT_ID;
+
+   /**
+    * The feature id for the '<em><b>Classifier</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DEPENDENCY_DECLARATION__CLASSIFIER = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+   /**
+    * The feature id for the '<em><b>Type</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DEPENDENCY_DECLARATION__TYPE = IDENTIFIABLE_FEATURE_COUNT + 1;
+
+   /**
+    * The feature id for the '<em><b>Version Constraint</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DEPENDENCY_DECLARATION__VERSION_CONSTRAINT = IDENTIFIABLE_FEATURE_COUNT + 2;
+
+   /**
+    * The feature id for the '<em><b>Scope</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DEPENDENCY_DECLARATION__SCOPE = IDENTIFIABLE_FEATURE_COUNT + 3;
+
+   /**
+    * The feature id for the '<em><b>Optional</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DEPENDENCY_DECLARATION__OPTIONAL = IDENTIFIABLE_FEATURE_COUNT + 4;
+
+   /**
+    * The number of structural features of the '<em>Dependency Declaration</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int DEPENDENCY_DECLARATION_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 5;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.Scope <em>Scope</em>}' enum.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.Scope
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getScope()
+    * @generated
+    */
+   int SCOPE = 7;
+
+
+   /**
     * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenArtifact <em>Maven Artifact</em>}
     * '.
     * <!-- begin-user-doc -->
@@ -766,6 +871,68 @@ public interface MavenModelPackage extends EPackage
    EAttribute getMavenProject_TestOutputDirectory();
 
    /**
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.DependencyDeclaration
+    * <em>Dependency Declaration</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Dependency Declaration</em>'.
+    * @see org.sourcepit.common.maven.model.DependencyDeclaration
+    * @generated
+    */
+   EClass getDependencyDeclaration();
+
+   /**
+    * Returns the meta object for the attribute '
+    * {@link org.sourcepit.common.maven.model.DependencyDeclaration#getVersionConstraint <em>Version Constraint</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Version Constraint</em>'.
+    * @see org.sourcepit.common.maven.model.DependencyDeclaration#getVersionConstraint()
+    * @see #getDependencyDeclaration()
+    * @generated
+    */
+   EAttribute getDependencyDeclaration_VersionConstraint();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.DependencyDeclaration#getScope
+    * <em>Scope</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Scope</em>'.
+    * @see org.sourcepit.common.maven.model.DependencyDeclaration#getScope()
+    * @see #getDependencyDeclaration()
+    * @generated
+    */
+   EAttribute getDependencyDeclaration_Scope();
+
+   /**
+    * Returns the meta object for the attribute '
+    * {@link org.sourcepit.common.maven.model.DependencyDeclaration#isOptional <em>Optional</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for the attribute '<em>Optional</em>'.
+    * @see org.sourcepit.common.maven.model.DependencyDeclaration#isOptional()
+    * @see #getDependencyDeclaration()
+    * @generated
+    */
+   EAttribute getDependencyDeclaration_Optional();
+
+   /**
+    * Returns the meta object for enum '{@link org.sourcepit.common.maven.model.Scope <em>Scope</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for enum '<em>Scope</em>'.
+    * @see org.sourcepit.common.maven.model.Scope
+    * @generated
+    */
+   EEnum getScope();
+
+   /**
     * Returns the factory that creates the instances of the model.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -978,6 +1145,56 @@ public interface MavenModelPackage extends EPackage
        * @generated
        */
       EAttribute MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY = eINSTANCE.getMavenProject_TestOutputDirectory();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.DependencyDeclarationImpl
+       * <em>Dependency Declaration</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.impl.DependencyDeclarationImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getDependencyDeclaration()
+       * @generated
+       */
+      EClass DEPENDENCY_DECLARATION = eINSTANCE.getDependencyDeclaration();
+
+      /**
+       * The meta object literal for the '<em><b>Version Constraint</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute DEPENDENCY_DECLARATION__VERSION_CONSTRAINT = eINSTANCE.getDependencyDeclaration_VersionConstraint();
+
+      /**
+       * The meta object literal for the '<em><b>Scope</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute DEPENDENCY_DECLARATION__SCOPE = eINSTANCE.getDependencyDeclaration_Scope();
+
+      /**
+       * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @generated
+       */
+      EAttribute DEPENDENCY_DECLARATION__OPTIONAL = eINSTANCE.getDependencyDeclaration_Optional();
+
+      /**
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.Scope <em>Scope</em>}' enum.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.Scope
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getScope()
+       * @generated
+       */
+      EEnum SCOPE = eINSTANCE.getScope();
 
    }
 

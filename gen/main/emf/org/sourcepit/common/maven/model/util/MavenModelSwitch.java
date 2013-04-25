@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.sourcepit.common.maven.model.Classified;
+import org.sourcepit.common.maven.model.DependencyDeclaration;
 import org.sourcepit.common.maven.model.Identifiable;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
@@ -170,6 +171,18 @@ public class MavenModelSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
+         case MavenModelPackage.DEPENDENCY_DECLARATION :
+         {
+            DependencyDeclaration dependencyDeclaration = (DependencyDeclaration) theEObject;
+            T result = caseDependencyDeclaration(dependencyDeclaration);
+            if (result == null)
+               result = caseIdentifiable(dependencyDeclaration);
+            if (result == null)
+               result = caseClassified(dependencyDeclaration);
+            if (result == null)
+               result = defaultCase(theEObject);
+            return result;
+         }
          default :
             return defaultCase(theEObject);
       }
@@ -273,6 +286,23 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @generated
     */
    public T caseMavenProject(MavenProject object)
+   {
+      return null;
+   }
+
+   /**
+    * Returns the result of interpreting the object as an instance of '<em>Dependency Declaration</em>'.
+    * <!-- begin-user-doc -->
+    * This implementation returns null;
+    * returning a non-null result will terminate the switch.
+    * <!-- end-user-doc -->
+    * 
+    * @param object the target of the switch.
+    * @return the result of interpreting the object as an instance of '<em>Dependency Declaration</em>'.
+    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+    * @generated
+    */
+   public T caseDependencyDeclaration(DependencyDeclaration object)
    {
       return null;
    }

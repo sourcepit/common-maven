@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.sourcepit.common.maven.model.Classified;
+import org.sourcepit.common.maven.model.DependencyDeclaration;
 import org.sourcepit.common.maven.model.Identifiable;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
@@ -123,6 +124,12 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseMavenProject(MavenProject object)
       {
          return createMavenProjectAdapter();
+      }
+
+      @Override
+      public Adapter caseDependencyDeclaration(DependencyDeclaration object)
+      {
+         return createDependencyDeclarationAdapter();
       }
 
       @Override
@@ -264,6 +271,23 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    public Adapter createMavenProjectAdapter()
+   {
+      return null;
+   }
+
+   /**
+    * Creates a new adapter for an object of class '{@link org.sourcepit.common.maven.model.DependencyDeclaration
+    * <em>Dependency Declaration</em>}'.
+    * <!-- begin-user-doc -->
+    * This default implementation returns null so that we can easily ignore cases;
+    * it's useful to ignore a case when inheritance will catch all the cases anyway.
+    * <!-- end-user-doc -->
+    * 
+    * @return the new adapter.
+    * @see org.sourcepit.common.maven.model.DependencyDeclaration
+    * @generated
+    */
+   public Adapter createDependencyDeclarationAdapter()
    {
       return null;
    }
