@@ -100,6 +100,8 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
       {
          case MavenModelPackage.SCOPE :
             return createScopeFromString(eDataType, initialValue);
+         case MavenModelPackage.NULLABLE_SCOPE :
+            return createNullableScopeFromString(eDataType, initialValue);
          default :
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
       }
@@ -118,6 +120,8 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
       {
          case MavenModelPackage.SCOPE :
             return convertScopeToString(eDataType, instanceValue);
+         case MavenModelPackage.NULLABLE_SCOPE :
+            return convertNullableScopeToString(eDataType, instanceValue);
          default :
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
       }
@@ -183,6 +187,28 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
    public String convertScopeToString(EDataType eDataType, Object instanceValue)
    {
       return instanceValue == null ? null : instanceValue.toString();
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public Scope createNullableScopeFromString(EDataType eDataType, String initialValue)
+   {
+      return (Scope) super.createFromString(eDataType, initialValue);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public String convertNullableScopeToString(EDataType eDataType, Object instanceValue)
+   {
+      return super.convertToString(eDataType, instanceValue);
    }
 
    /**

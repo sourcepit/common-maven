@@ -8,6 +8,7 @@ package org.sourcepit.common.maven.model;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -633,6 +634,17 @@ public interface MavenModelPackage extends EPackage
 
 
    /**
+    * The meta object id for the '<em>Nullable Scope</em>' data type.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.Scope
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getNullableScope()
+    * @generated
+    */
+   int NULLABLE_SCOPE = 8;
+
+   /**
     * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenArtifact <em>Maven Artifact</em>}
     * '.
     * <!-- begin-user-doc -->
@@ -933,6 +945,18 @@ public interface MavenModelPackage extends EPackage
    EEnum getScope();
 
    /**
+    * Returns the meta object for data type '{@link org.sourcepit.common.maven.model.Scope <em>Nullable Scope</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for data type '<em>Nullable Scope</em>'.
+    * @see org.sourcepit.common.maven.model.Scope
+    * @model instanceClass="org.sourcepit.common.maven.model.Scope"
+    * @generated
+    */
+   EDataType getNullableScope();
+
+   /**
     * Returns the factory that creates the instances of the model.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -1195,6 +1219,17 @@ public interface MavenModelPackage extends EPackage
        * @generated
        */
       EEnum SCOPE = eINSTANCE.getScope();
+
+      /**
+       * The meta object literal for the '<em>Nullable Scope</em>' data type.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.Scope
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getNullableScope()
+       * @generated
+       */
+      EDataType NULLABLE_SCOPE = eINSTANCE.getNullableScope();
 
    }
 

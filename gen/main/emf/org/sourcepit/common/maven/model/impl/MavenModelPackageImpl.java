@@ -8,6 +8,7 @@ package org.sourcepit.common.maven.model.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -95,6 +96,14 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * @generated
     */
    private EEnum scopeEEnum = null;
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   private EDataType nullableScopeEDataType = null;
 
    /**
     * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -436,6 +445,17 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
+   public EDataType getNullableScope()
+   {
+      return nullableScopeEDataType;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
    public MavenModelFactory getMavenModelFactory()
    {
       return (MavenModelFactory) getEFactoryInstance();
@@ -496,6 +516,9 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
 
       // Create enums
       scopeEEnum = createEEnum(SCOPE);
+
+      // Create data types
+      nullableScopeEDataType = createEDataType(NULLABLE_SCOPE);
    }
 
    /**
@@ -624,6 +647,9 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       addEEnumLiteral(scopeEEnum, Scope.TEST);
       addEEnumLiteral(scopeEEnum, Scope.SYSTEM);
       addEEnumLiteral(scopeEEnum, Scope.IMPORT);
+
+      // Initialize data types
+      initEDataType(nullableScopeEDataType, Scope.class, "NullableScope", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
       // Create resource
       createResource(eNS_URI);

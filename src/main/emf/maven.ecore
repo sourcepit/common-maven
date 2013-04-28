@@ -50,4 +50,5 @@
     <eLiterals name="system" value="4"/>
     <eLiterals name="import" value="5"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="NullableScope" instanceClassName="org.sourcepit.common.maven.model.Scope"/>
 </ecore:EPackage>
