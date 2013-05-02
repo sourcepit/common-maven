@@ -9,25 +9,28 @@ package org.sourcepit.common.maven.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.sourcepit.common.maven.model.Classified;
+import org.sourcepit.common.maven.model.ArtifactKey;
+import org.sourcepit.common.maven.model.MavenArtifactCoordinates;
+import org.sourcepit.common.maven.model.MavenClassified;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Classified</b></em>'.
+ * An implementation of the model object '<em><b>Maven Artifact Coordinates</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.sourcepit.common.maven.model.impl.ClassifiedImpl#getClassifier <em>Classifier</em>}</li>
- * <li>{@link org.sourcepit.common.maven.model.impl.ClassifiedImpl#getType <em>Type</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.impl.MavenArtifactCoordinatesImpl#getClassifier <em>Classifier</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.impl.MavenArtifactCoordinatesImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  * 
  * @generated
  */
-public abstract class ClassifiedImpl extends EObjectImpl implements Classified
+public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinatesImpl
+   implements
+      MavenArtifactCoordinates
 {
    /**
     * The default value of the '{@link #getClassifier() <em>Classifier</em>}' attribute.
@@ -79,7 +82,7 @@ public abstract class ClassifiedImpl extends EObjectImpl implements Classified
     * 
     * @generated
     */
-   protected ClassifiedImpl()
+   protected MavenArtifactCoordinatesImpl()
    {
       super();
    }
@@ -93,7 +96,7 @@ public abstract class ClassifiedImpl extends EObjectImpl implements Classified
    @Override
    protected EClass eStaticClass()
    {
-      return MavenModelPackage.Literals.CLASSIFIED;
+      return MavenModelPackage.Literals.MAVEN_ARTIFACT_COORDINATES;
    }
 
    /**
@@ -118,8 +121,8 @@ public abstract class ClassifiedImpl extends EObjectImpl implements Classified
       String oldClassifier = classifier;
       classifier = newClassifier;
       if (eNotificationRequired())
-         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.CLASSIFIED__CLASSIFIER, oldClassifier,
-            classifier));
+         eNotify(new ENotificationImpl(this, Notification.SET,
+            MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER, oldClassifier, classifier));
    }
 
    /**
@@ -144,7 +147,21 @@ public abstract class ClassifiedImpl extends EObjectImpl implements Classified
       String oldType = type;
       type = newType;
       if (eNotificationRequired())
-         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.CLASSIFIED__TYPE, oldType, type));
+         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__TYPE,
+            oldType, type));
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public ArtifactKey getArtifactKey()
+   {
+      // TODO: implement this method
+      // Ensure that you remove @generated or mark it @generated NOT
+      throw new UnsupportedOperationException();
    }
 
    /**
@@ -158,9 +175,9 @@ public abstract class ClassifiedImpl extends EObjectImpl implements Classified
    {
       switch (featureID)
       {
-         case MavenModelPackage.CLASSIFIED__CLASSIFIER :
+         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER :
             return getClassifier();
-         case MavenModelPackage.CLASSIFIED__TYPE :
+         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__TYPE :
             return getType();
       }
       return super.eGet(featureID, resolve, coreType);
@@ -177,10 +194,10 @@ public abstract class ClassifiedImpl extends EObjectImpl implements Classified
    {
       switch (featureID)
       {
-         case MavenModelPackage.CLASSIFIED__CLASSIFIER :
+         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER :
             setClassifier((String) newValue);
             return;
-         case MavenModelPackage.CLASSIFIED__TYPE :
+         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__TYPE :
             setType((String) newValue);
             return;
       }
@@ -198,10 +215,10 @@ public abstract class ClassifiedImpl extends EObjectImpl implements Classified
    {
       switch (featureID)
       {
-         case MavenModelPackage.CLASSIFIED__CLASSIFIER :
+         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER :
             setClassifier(CLASSIFIER_EDEFAULT);
             return;
-         case MavenModelPackage.CLASSIFIED__TYPE :
+         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__TYPE :
             setType(TYPE_EDEFAULT);
             return;
       }
@@ -219,12 +236,60 @@ public abstract class ClassifiedImpl extends EObjectImpl implements Classified
    {
       switch (featureID)
       {
-         case MavenModelPackage.CLASSIFIED__CLASSIFIER :
+         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER :
             return CLASSIFIER_EDEFAULT == null ? classifier != null : !CLASSIFIER_EDEFAULT.equals(classifier);
-         case MavenModelPackage.CLASSIFIED__TYPE :
+         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__TYPE :
             return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       }
       return super.eIsSet(featureID);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   @Override
+   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+   {
+      if (baseClass == MavenClassified.class)
+      {
+         switch (derivedFeatureID)
+         {
+            case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER :
+               return MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER;
+            case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__TYPE :
+               return MavenModelPackage.MAVEN_CLASSIFIED__TYPE;
+            default :
+               return -1;
+         }
+      }
+      return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   @Override
+   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+   {
+      if (baseClass == MavenClassified.class)
+      {
+         switch (baseFeatureID)
+         {
+            case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
+               return MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER;
+            case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
+               return MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__TYPE;
+            default :
+               return -1;
+         }
+      }
+      return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
    }
 
    /**
@@ -248,4 +313,4 @@ public abstract class ClassifiedImpl extends EObjectImpl implements Classified
       return result.toString();
    }
 
-} // ClassifiedImpl
+} // MavenArtifactCoordinatesImpl

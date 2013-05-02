@@ -10,14 +10,15 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.sourcepit.common.maven.model.Classified;
 import org.sourcepit.common.maven.model.DependencyDeclaration;
-import org.sourcepit.common.maven.model.Identifiable;
 import org.sourcepit.common.maven.model.MavenArtifact;
+import org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates;
+import org.sourcepit.common.maven.model.MavenArtifactCoordinates;
+import org.sourcepit.common.maven.model.MavenClassified;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
-import org.sourcepit.common.maven.model.VersionedIdentifiable;
+import org.sourcepit.common.maven.model.MavenProjectCoordinates;
 import org.sourcepit.common.modeling.Annotatable;
 import org.sourcepit.common.modeling.Extendable;
 import org.sourcepit.common.modeling.XAnnotatable;
@@ -103,21 +104,21 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
       }
 
       @Override
-      public Adapter caseIdentifiable(Identifiable object)
+      public Adapter caseMavenArtifactConflictCoordinates(MavenArtifactConflictCoordinates object)
       {
-         return createIdentifiableAdapter();
+         return createMavenArtifactConflictCoordinatesAdapter();
       }
 
       @Override
-      public Adapter caseVersionedIdentifiable(VersionedIdentifiable object)
+      public Adapter caseMavenProjectCoordinates(MavenProjectCoordinates object)
       {
-         return createVersionedIdentifiableAdapter();
+         return createMavenProjectCoordinatesAdapter();
       }
 
       @Override
-      public Adapter caseClassified(Classified object)
+      public Adapter caseMavenClassified(MavenClassified object)
       {
-         return createClassifiedAdapter();
+         return createMavenClassifiedAdapter();
       }
 
       @Override
@@ -130,6 +131,12 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDependencyDeclaration(DependencyDeclaration object)
       {
          return createDependencyDeclarationAdapter();
+      }
+
+      @Override
+      public Adapter caseMavenArtifactCoordinates(MavenArtifactCoordinates object)
+      {
+         return createMavenArtifactCoordinatesAdapter();
       }
 
       @Override
@@ -208,52 +215,53 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
    }
 
    /**
-    * Creates a new adapter for an object of class '{@link org.sourcepit.common.maven.model.Identifiable
-    * <em>Identifiable</em>}'.
+    * Creates a new adapter for an object of class '
+    * {@link org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates
+    * <em>Maven Artifact Conflict Coordinates</em>}'.
     * <!-- begin-user-doc -->
     * This default implementation returns null so that we can easily ignore cases;
     * it's useful to ignore a case when inheritance will catch all the cases anyway.
     * <!-- end-user-doc -->
     * 
     * @return the new adapter.
-    * @see org.sourcepit.common.maven.model.Identifiable
+    * @see org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates
     * @generated
     */
-   public Adapter createIdentifiableAdapter()
+   public Adapter createMavenArtifactConflictCoordinatesAdapter()
    {
       return null;
    }
 
    /**
-    * Creates a new adapter for an object of class '{@link org.sourcepit.common.maven.model.VersionedIdentifiable
-    * <em>Versioned Identifiable</em>}'.
+    * Creates a new adapter for an object of class '{@link org.sourcepit.common.maven.model.MavenProjectCoordinates
+    * <em>Maven Project Coordinates</em>}'.
     * <!-- begin-user-doc -->
     * This default implementation returns null so that we can easily ignore cases;
     * it's useful to ignore a case when inheritance will catch all the cases anyway.
     * <!-- end-user-doc -->
     * 
     * @return the new adapter.
-    * @see org.sourcepit.common.maven.model.VersionedIdentifiable
+    * @see org.sourcepit.common.maven.model.MavenProjectCoordinates
     * @generated
     */
-   public Adapter createVersionedIdentifiableAdapter()
+   public Adapter createMavenProjectCoordinatesAdapter()
    {
       return null;
    }
 
    /**
-    * Creates a new adapter for an object of class '{@link org.sourcepit.common.maven.model.Classified
-    * <em>Classified</em>}'.
+    * Creates a new adapter for an object of class '{@link org.sourcepit.common.maven.model.MavenClassified
+    * <em>Maven Classified</em>}'.
     * <!-- begin-user-doc -->
     * This default implementation returns null so that we can easily ignore cases;
     * it's useful to ignore a case when inheritance will catch all the cases anyway.
     * <!-- end-user-doc -->
     * 
     * @return the new adapter.
-    * @see org.sourcepit.common.maven.model.Classified
+    * @see org.sourcepit.common.maven.model.MavenClassified
     * @generated
     */
-   public Adapter createClassifiedAdapter()
+   public Adapter createMavenClassifiedAdapter()
    {
       return null;
    }
@@ -288,6 +296,23 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    public Adapter createDependencyDeclarationAdapter()
+   {
+      return null;
+   }
+
+   /**
+    * Creates a new adapter for an object of class '{@link org.sourcepit.common.maven.model.MavenArtifactCoordinates
+    * <em>Maven Artifact Coordinates</em>}'.
+    * <!-- begin-user-doc -->
+    * This default implementation returns null so that we can easily ignore cases;
+    * it's useful to ignore a case when inheritance will catch all the cases anyway.
+    * <!-- end-user-doc -->
+    * 
+    * @return the new adapter.
+    * @see org.sourcepit.common.maven.model.MavenArtifactCoordinates
+    * @generated
+    */
+   public Adapter createMavenArtifactCoordinatesAdapter()
    {
       return null;
    }

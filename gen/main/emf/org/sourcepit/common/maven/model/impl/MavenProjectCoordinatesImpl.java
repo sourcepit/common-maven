@@ -10,22 +10,25 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.sourcepit.common.maven.model.MavenModelPackage;
-import org.sourcepit.common.maven.model.VersionedIdentifiable;
+import org.sourcepit.common.maven.model.MavenProjectCoordinates;
+import org.sourcepit.common.maven.model.ProjectKey;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Versioned Identifiable</b></em>'.
+ * An implementation of the model object '<em><b>Maven Project Coordinates</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.sourcepit.common.maven.model.impl.VersionedIdentifiableImpl#getVersion <em>Version</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.impl.MavenProjectCoordinatesImpl#getVersion <em>Version</em>}</li>
  * </ul>
  * </p>
  * 
  * @generated
  */
-public abstract class VersionedIdentifiableImpl extends IdentifiableImpl implements VersionedIdentifiable
+public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictCoordinatesImpl
+   implements
+      MavenProjectCoordinates
 {
    /**
     * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
@@ -55,7 +58,7 @@ public abstract class VersionedIdentifiableImpl extends IdentifiableImpl impleme
     * 
     * @generated
     */
-   protected VersionedIdentifiableImpl()
+   protected MavenProjectCoordinatesImpl()
    {
       super();
    }
@@ -69,7 +72,7 @@ public abstract class VersionedIdentifiableImpl extends IdentifiableImpl impleme
    @Override
    protected EClass eStaticClass()
    {
-      return MavenModelPackage.Literals.VERSIONED_IDENTIFIABLE;
+      return MavenModelPackage.Literals.MAVEN_PROJECT_COORDINATES;
    }
 
    /**
@@ -94,8 +97,21 @@ public abstract class VersionedIdentifiableImpl extends IdentifiableImpl impleme
       String oldVersion = version;
       version = newVersion;
       if (eNotificationRequired())
-         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.VERSIONED_IDENTIFIABLE__VERSION,
+         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION,
             oldVersion, version));
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public ProjectKey getProjectKey()
+   {
+      // TODO: implement this method
+      // Ensure that you remove @generated or mark it @generated NOT
+      throw new UnsupportedOperationException();
    }
 
    /**
@@ -109,7 +125,7 @@ public abstract class VersionedIdentifiableImpl extends IdentifiableImpl impleme
    {
       switch (featureID)
       {
-         case MavenModelPackage.VERSIONED_IDENTIFIABLE__VERSION :
+         case MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION :
             return getVersion();
       }
       return super.eGet(featureID, resolve, coreType);
@@ -126,7 +142,7 @@ public abstract class VersionedIdentifiableImpl extends IdentifiableImpl impleme
    {
       switch (featureID)
       {
-         case MavenModelPackage.VERSIONED_IDENTIFIABLE__VERSION :
+         case MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION :
             setVersion((String) newValue);
             return;
       }
@@ -144,7 +160,7 @@ public abstract class VersionedIdentifiableImpl extends IdentifiableImpl impleme
    {
       switch (featureID)
       {
-         case MavenModelPackage.VERSIONED_IDENTIFIABLE__VERSION :
+         case MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION :
             setVersion(VERSION_EDEFAULT);
             return;
       }
@@ -162,7 +178,7 @@ public abstract class VersionedIdentifiableImpl extends IdentifiableImpl impleme
    {
       switch (featureID)
       {
-         case MavenModelPackage.VERSIONED_IDENTIFIABLE__VERSION :
+         case MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION :
             return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
       }
       return super.eIsSet(featureID);
@@ -187,4 +203,4 @@ public abstract class VersionedIdentifiableImpl extends IdentifiableImpl impleme
       return result.toString();
    }
 
-} // VersionedIdentifiableImpl
+} // MavenProjectCoordinatesImpl

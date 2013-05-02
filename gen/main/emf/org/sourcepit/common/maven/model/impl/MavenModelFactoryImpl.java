@@ -12,11 +12,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.sourcepit.common.maven.model.ArtifactConflictKey;
+import org.sourcepit.common.maven.model.ArtifactKey;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelFactory;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
+import org.sourcepit.common.maven.model.ProjectKey;
 import org.sourcepit.common.maven.model.Scope;
 
 /**
@@ -102,6 +105,12 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
             return createScopeFromString(eDataType, initialValue);
          case MavenModelPackage.NULLABLE_SCOPE :
             return createNullableScopeFromString(eDataType, initialValue);
+         case MavenModelPackage.ARTIFACT_CONFLICT_KEY :
+            return createArtifactConflictKeyFromString(eDataType, initialValue);
+         case MavenModelPackage.PROJECT_KEY :
+            return createProjectKeyFromString(eDataType, initialValue);
+         case MavenModelPackage.ARTIFACT_KEY :
+            return createArtifactKeyFromString(eDataType, initialValue);
          default :
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
       }
@@ -122,6 +131,12 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
             return convertScopeToString(eDataType, instanceValue);
          case MavenModelPackage.NULLABLE_SCOPE :
             return convertNullableScopeToString(eDataType, instanceValue);
+         case MavenModelPackage.ARTIFACT_CONFLICT_KEY :
+            return convertArtifactConflictKeyToString(eDataType, instanceValue);
+         case MavenModelPackage.PROJECT_KEY :
+            return convertProjectKeyToString(eDataType, instanceValue);
+         case MavenModelPackage.ARTIFACT_KEY :
+            return convertArtifactKeyToString(eDataType, instanceValue);
          default :
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
       }
@@ -207,6 +222,72 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * @generated
     */
    public String convertNullableScopeToString(EDataType eDataType, Object instanceValue)
+   {
+      return super.convertToString(eDataType, instanceValue);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public ArtifactConflictKey createArtifactConflictKeyFromString(EDataType eDataType, String initialValue)
+   {
+      return (ArtifactConflictKey) super.createFromString(eDataType, initialValue);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public String convertArtifactConflictKeyToString(EDataType eDataType, Object instanceValue)
+   {
+      return super.convertToString(eDataType, instanceValue);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public ProjectKey createProjectKeyFromString(EDataType eDataType, String initialValue)
+   {
+      return (ProjectKey) super.createFromString(eDataType, initialValue);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public String convertProjectKeyToString(EDataType eDataType, Object instanceValue)
+   {
+      return super.convertToString(eDataType, instanceValue);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public ArtifactKey createArtifactKeyFromString(EDataType eDataType, String initialValue)
+   {
+      return (ArtifactKey) super.createFromString(eDataType, initialValue);
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public String convertArtifactKeyToString(EDataType eDataType, Object instanceValue)
    {
       return super.convertToString(eDataType, instanceValue);
    }

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
+import org.sourcepit.common.modeling.CommonModelingPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,100 +68,6 @@ public interface MavenModelPackage extends EPackage
    MavenModelPackage eINSTANCE = org.sourcepit.common.maven.model.impl.MavenModelPackageImpl.init();
 
    /**
-    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.IdentifiableImpl <em>Identifiable</em>}'
-    * class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see org.sourcepit.common.maven.model.impl.IdentifiableImpl
-    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getIdentifiable()
-    * @generated
-    */
-   int IDENTIFIABLE = 2;
-
-   /**
-    * The feature id for the '<em><b>Group Id</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int IDENTIFIABLE__GROUP_ID = 0;
-
-   /**
-    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int IDENTIFIABLE__ARTIFACT_ID = 1;
-
-   /**
-    * The number of structural features of the '<em>Identifiable</em>' class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int IDENTIFIABLE_FEATURE_COUNT = 2;
-
-   /**
-    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.VersionedIdentifiableImpl
-    * <em>Versioned Identifiable</em>}' class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see org.sourcepit.common.maven.model.impl.VersionedIdentifiableImpl
-    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getVersionedIdentifiable()
-    * @generated
-    */
-   int VERSIONED_IDENTIFIABLE = 3;
-
-   /**
-    * The feature id for the '<em><b>Group Id</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int VERSIONED_IDENTIFIABLE__GROUP_ID = IDENTIFIABLE__GROUP_ID;
-
-   /**
-    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int VERSIONED_IDENTIFIABLE__ARTIFACT_ID = IDENTIFIABLE__ARTIFACT_ID;
-
-   /**
-    * The feature id for the '<em><b>Version</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int VERSIONED_IDENTIFIABLE__VERSION = IDENTIFIABLE_FEATURE_COUNT + 0;
-
-   /**
-    * The number of structural features of the '<em>Versioned Identifiable</em>' class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int VERSIONED_IDENTIFIABLE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
-
-   /**
     * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl
     * <em>Maven Artifact</em>}' class.
     * <!-- begin-user-doc -->
@@ -173,56 +80,6 @@ public interface MavenModelPackage extends EPackage
    int MAVEN_ARTIFACT = 0;
 
    /**
-    * The feature id for the '<em><b>Group Id</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_ARTIFACT__GROUP_ID = VERSIONED_IDENTIFIABLE__GROUP_ID;
-
-   /**
-    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_ARTIFACT__ARTIFACT_ID = VERSIONED_IDENTIFIABLE__ARTIFACT_ID;
-
-   /**
-    * The feature id for the '<em><b>Version</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_ARTIFACT__VERSION = VERSIONED_IDENTIFIABLE__VERSION;
-
-   /**
-    * The feature id for the '<em><b>Classifier</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_ARTIFACT__CLASSIFIER = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 0;
-
-   /**
-    * The feature id for the '<em><b>Type</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_ARTIFACT__TYPE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 1;
-
-   /**
     * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -230,7 +87,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_ARTIFACT__EXTENSIONS = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 2;
+   int MAVEN_ARTIFACT__EXTENSIONS = CommonModelingPackage.XANNOTATABLE__EXTENSIONS;
 
    /**
     * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -240,7 +97,57 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_ARTIFACT__ANNOTATIONS = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 3;
+   int MAVEN_ARTIFACT__ANNOTATIONS = CommonModelingPackage.XANNOTATABLE__ANNOTATIONS;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__GROUP_ID = CommonModelingPackage.XANNOTATABLE_FEATURE_COUNT + 0;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__ARTIFACT_ID = CommonModelingPackage.XANNOTATABLE_FEATURE_COUNT + 1;
+
+   /**
+    * The feature id for the '<em><b>Version</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__VERSION = CommonModelingPackage.XANNOTATABLE_FEATURE_COUNT + 2;
+
+   /**
+    * The feature id for the '<em><b>Classifier</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__CLASSIFIER = CommonModelingPackage.XANNOTATABLE_FEATURE_COUNT + 3;
+
+   /**
+    * The feature id for the '<em><b>Type</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT__TYPE = CommonModelingPackage.XANNOTATABLE_FEATURE_COUNT + 4;
 
    /**
     * The feature id for the '<em><b>File</b></em>' attribute.
@@ -250,7 +157,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_ARTIFACT__FILE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 4;
+   int MAVEN_ARTIFACT__FILE = CommonModelingPackage.XANNOTATABLE_FEATURE_COUNT + 5;
 
    /**
     * The number of structural features of the '<em>Maven Artifact</em>' class.
@@ -260,173 +167,19 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_ARTIFACT_FEATURE_COUNT = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 5;
+   int MAVEN_ARTIFACT_FEATURE_COUNT = CommonModelingPackage.XANNOTATABLE_FEATURE_COUNT + 6;
 
    /**
-    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenDependencyImpl
-    * <em>Maven Dependency</em>}' class.
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenArtifactConflictCoordinatesImpl
+    * <em>Maven Artifact Conflict Coordinates</em>}' class.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @see org.sourcepit.common.maven.model.impl.MavenDependencyImpl
-    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenDependency()
+    * @see org.sourcepit.common.maven.model.impl.MavenArtifactConflictCoordinatesImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenArtifactConflictCoordinates()
     * @generated
     */
-   int MAVEN_DEPENDENCY = 1;
-
-   /**
-    * The feature id for the '<em><b>Group Id</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_DEPENDENCY__GROUP_ID = IDENTIFIABLE__GROUP_ID;
-
-   /**
-    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_DEPENDENCY__ARTIFACT_ID = IDENTIFIABLE__ARTIFACT_ID;
-
-   /**
-    * The feature id for the '<em><b>Classifier</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_DEPENDENCY__CLASSIFIER = IDENTIFIABLE_FEATURE_COUNT + 0;
-
-   /**
-    * The feature id for the '<em><b>Type</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_DEPENDENCY__TYPE = IDENTIFIABLE_FEATURE_COUNT + 1;
-
-   /**
-    * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_DEPENDENCY__EXTENSIONS = IDENTIFIABLE_FEATURE_COUNT + 2;
-
-   /**
-    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_DEPENDENCY__ANNOTATIONS = IDENTIFIABLE_FEATURE_COUNT + 3;
-
-   /**
-    * The feature id for the '<em><b>Version Range</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_DEPENDENCY__VERSION_RANGE = IDENTIFIABLE_FEATURE_COUNT + 4;
-
-   /**
-    * The feature id for the '<em><b>Scope</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_DEPENDENCY__SCOPE = IDENTIFIABLE_FEATURE_COUNT + 5;
-
-   /**
-    * The feature id for the '<em><b>Optional</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_DEPENDENCY__OPTIONAL = IDENTIFIABLE_FEATURE_COUNT + 6;
-
-   /**
-    * The number of structural features of the '<em>Maven Dependency</em>' class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_DEPENDENCY_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 7;
-
-   /**
-    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.ClassifiedImpl <em>Classified</em>}'
-    * class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see org.sourcepit.common.maven.model.impl.ClassifiedImpl
-    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getClassified()
-    * @generated
-    */
-   int CLASSIFIED = 4;
-
-   /**
-    * The feature id for the '<em><b>Classifier</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int CLASSIFIED__CLASSIFIER = 0;
-
-   /**
-    * The feature id for the '<em><b>Type</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int CLASSIFIED__TYPE = 1;
-
-   /**
-    * The number of structural features of the '<em>Classified</em>' class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int CLASSIFIED_FEATURE_COUNT = 2;
-
-   /**
-    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenProjectImpl <em>Maven Project</em>}'
-    * class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see org.sourcepit.common.maven.model.impl.MavenProjectImpl
-    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenProject()
-    * @generated
-    */
-   int MAVEN_PROJECT = 5;
+   int MAVEN_ARTIFACT_CONFLICT_COORDINATES = 2;
 
    /**
     * The feature id for the '<em><b>Group Id</b></em>' attribute.
@@ -436,7 +189,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_PROJECT__GROUP_ID = VERSIONED_IDENTIFIABLE__GROUP_ID;
+   int MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID = 0;
 
    /**
     * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
@@ -446,88 +199,17 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int MAVEN_PROJECT__ARTIFACT_ID = VERSIONED_IDENTIFIABLE__ARTIFACT_ID;
+   int MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID = 1;
 
    /**
-    * The feature id for the '<em><b>Version</b></em>' attribute.
+    * The number of structural features of the '<em>Maven Artifact Conflict Coordinates</em>' class.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @generated
     * @ordered
     */
-   int MAVEN_PROJECT__VERSION = VERSIONED_IDENTIFIABLE__VERSION;
-
-   /**
-    * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_PROJECT__EXTENSIONS = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 0;
-
-   /**
-    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_PROJECT__ANNOTATIONS = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 1;
-
-   /**
-    * The feature id for the '<em><b>Packaging</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_PROJECT__PACKAGING = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 2;
-
-   /**
-    * The feature id for the '<em><b>Pom File</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_PROJECT__POM_FILE = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 3;
-
-   /**
-    * The feature id for the '<em><b>Output Directory</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_PROJECT__OUTPUT_DIRECTORY = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 4;
-
-   /**
-    * The feature id for the '<em><b>Test Output Directory</b></em>' attribute.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 5;
-
-   /**
-    * The number of structural features of the '<em>Maven Project</em>' class.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    * @ordered
-    */
-   int MAVEN_PROJECT_FEATURE_COUNT = VERSIONED_IDENTIFIABLE_FEATURE_COUNT + 6;
-
+   int MAVEN_ARTIFACT_CONFLICT_COORDINATES_FEATURE_COUNT = 2;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.DependencyDeclarationImpl
@@ -549,7 +231,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int DEPENDENCY_DECLARATION__GROUP_ID = IDENTIFIABLE__GROUP_ID;
+   int DEPENDENCY_DECLARATION__GROUP_ID = MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID;
 
    /**
     * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
@@ -559,7 +241,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int DEPENDENCY_DECLARATION__ARTIFACT_ID = IDENTIFIABLE__ARTIFACT_ID;
+   int DEPENDENCY_DECLARATION__ARTIFACT_ID = MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID;
 
    /**
     * The feature id for the '<em><b>Classifier</b></em>' attribute.
@@ -569,7 +251,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int DEPENDENCY_DECLARATION__CLASSIFIER = IDENTIFIABLE_FEATURE_COUNT + 0;
+   int DEPENDENCY_DECLARATION__CLASSIFIER = MAVEN_ARTIFACT_CONFLICT_COORDINATES_FEATURE_COUNT + 0;
 
    /**
     * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -579,7 +261,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int DEPENDENCY_DECLARATION__TYPE = IDENTIFIABLE_FEATURE_COUNT + 1;
+   int DEPENDENCY_DECLARATION__TYPE = MAVEN_ARTIFACT_CONFLICT_COORDINATES_FEATURE_COUNT + 1;
 
    /**
     * The feature id for the '<em><b>Version Constraint</b></em>' attribute.
@@ -589,7 +271,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int DEPENDENCY_DECLARATION__VERSION_CONSTRAINT = IDENTIFIABLE_FEATURE_COUNT + 2;
+   int DEPENDENCY_DECLARATION__VERSION_CONSTRAINT = MAVEN_ARTIFACT_CONFLICT_COORDINATES_FEATURE_COUNT + 2;
 
    /**
     * The feature id for the '<em><b>Scope</b></em>' attribute.
@@ -599,7 +281,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int DEPENDENCY_DECLARATION__SCOPE = IDENTIFIABLE_FEATURE_COUNT + 3;
+   int DEPENDENCY_DECLARATION__SCOPE = MAVEN_ARTIFACT_CONFLICT_COORDINATES_FEATURE_COUNT + 3;
 
    /**
     * The feature id for the '<em><b>Optional</b></em>' attribute.
@@ -609,7 +291,7 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int DEPENDENCY_DECLARATION__OPTIONAL = IDENTIFIABLE_FEATURE_COUNT + 4;
+   int DEPENDENCY_DECLARATION__OPTIONAL = MAVEN_ARTIFACT_CONFLICT_COORDINATES_FEATURE_COUNT + 4;
 
    /**
     * The number of structural features of the '<em>Dependency Declaration</em>' class.
@@ -619,7 +301,397 @@ public interface MavenModelPackage extends EPackage
     * @generated
     * @ordered
     */
-   int DEPENDENCY_DECLARATION_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 5;
+   int DEPENDENCY_DECLARATION_FEATURE_COUNT = MAVEN_ARTIFACT_CONFLICT_COORDINATES_FEATURE_COUNT + 5;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenDependencyImpl
+    * <em>Maven Dependency</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.MavenDependencyImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenDependency()
+    * @generated
+    */
+   int MAVEN_DEPENDENCY = 1;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__GROUP_ID = DEPENDENCY_DECLARATION__GROUP_ID;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__ARTIFACT_ID = DEPENDENCY_DECLARATION__ARTIFACT_ID;
+
+   /**
+    * The feature id for the '<em><b>Classifier</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__CLASSIFIER = DEPENDENCY_DECLARATION__CLASSIFIER;
+
+   /**
+    * The feature id for the '<em><b>Type</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__TYPE = DEPENDENCY_DECLARATION__TYPE;
+
+   /**
+    * The feature id for the '<em><b>Version Constraint</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__VERSION_CONSTRAINT = DEPENDENCY_DECLARATION__VERSION_CONSTRAINT;
+
+   /**
+    * The feature id for the '<em><b>Scope</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__SCOPE = DEPENDENCY_DECLARATION__SCOPE;
+
+   /**
+    * The feature id for the '<em><b>Optional</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__OPTIONAL = DEPENDENCY_DECLARATION__OPTIONAL;
+
+   /**
+    * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__EXTENSIONS = DEPENDENCY_DECLARATION_FEATURE_COUNT + 0;
+
+   /**
+    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY__ANNOTATIONS = DEPENDENCY_DECLARATION_FEATURE_COUNT + 1;
+
+   /**
+    * The number of structural features of the '<em>Maven Dependency</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_DEPENDENCY_FEATURE_COUNT = DEPENDENCY_DECLARATION_FEATURE_COUNT + 2;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenProjectCoordinatesImpl
+    * <em>Maven Project Coordinates</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.MavenProjectCoordinatesImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenProjectCoordinates()
+    * @generated
+    */
+   int MAVEN_PROJECT_COORDINATES = 3;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT_COORDINATES__GROUP_ID = MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT_COORDINATES__ARTIFACT_ID = MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID;
+
+   /**
+    * The feature id for the '<em><b>Version</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT_COORDINATES__VERSION = MAVEN_ARTIFACT_CONFLICT_COORDINATES_FEATURE_COUNT + 0;
+
+   /**
+    * The number of structural features of the '<em>Maven Project Coordinates</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT_COORDINATES_FEATURE_COUNT = MAVEN_ARTIFACT_CONFLICT_COORDINATES_FEATURE_COUNT + 1;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenClassifiedImpl
+    * <em>Maven Classified</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.MavenClassifiedImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenClassified()
+    * @generated
+    */
+   int MAVEN_CLASSIFIED = 4;
+
+   /**
+    * The feature id for the '<em><b>Classifier</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_CLASSIFIED__CLASSIFIER = 0;
+
+   /**
+    * The feature id for the '<em><b>Type</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_CLASSIFIED__TYPE = 1;
+
+   /**
+    * The number of structural features of the '<em>Maven Classified</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_CLASSIFIED_FEATURE_COUNT = 2;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenProjectImpl <em>Maven Project</em>}'
+    * class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.MavenProjectImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenProject()
+    * @generated
+    */
+   int MAVEN_PROJECT = 5;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__GROUP_ID = MAVEN_PROJECT_COORDINATES__GROUP_ID;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__ARTIFACT_ID = MAVEN_PROJECT_COORDINATES__ARTIFACT_ID;
+
+   /**
+    * The feature id for the '<em><b>Version</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__VERSION = MAVEN_PROJECT_COORDINATES__VERSION;
+
+   /**
+    * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__EXTENSIONS = MAVEN_PROJECT_COORDINATES_FEATURE_COUNT + 0;
+
+   /**
+    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__ANNOTATIONS = MAVEN_PROJECT_COORDINATES_FEATURE_COUNT + 1;
+
+   /**
+    * The feature id for the '<em><b>Packaging</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__PACKAGING = MAVEN_PROJECT_COORDINATES_FEATURE_COUNT + 2;
+
+   /**
+    * The feature id for the '<em><b>Pom File</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__POM_FILE = MAVEN_PROJECT_COORDINATES_FEATURE_COUNT + 3;
+
+   /**
+    * The feature id for the '<em><b>Output Directory</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__OUTPUT_DIRECTORY = MAVEN_PROJECT_COORDINATES_FEATURE_COUNT + 4;
+
+   /**
+    * The feature id for the '<em><b>Test Output Directory</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY = MAVEN_PROJECT_COORDINATES_FEATURE_COUNT + 5;
+
+   /**
+    * The number of structural features of the '<em>Maven Project</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_PROJECT_FEATURE_COUNT = MAVEN_PROJECT_COORDINATES_FEATURE_COUNT + 6;
+
+   /**
+    * The meta object id for the '{@link org.sourcepit.common.maven.model.impl.MavenArtifactCoordinatesImpl
+    * <em>Maven Artifact Coordinates</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.impl.MavenArtifactCoordinatesImpl
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenArtifactCoordinates()
+    * @generated
+    */
+   int MAVEN_ARTIFACT_COORDINATES = 7;
+
+   /**
+    * The feature id for the '<em><b>Group Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT_COORDINATES__GROUP_ID = MAVEN_PROJECT_COORDINATES__GROUP_ID;
+
+   /**
+    * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT_COORDINATES__ARTIFACT_ID = MAVEN_PROJECT_COORDINATES__ARTIFACT_ID;
+
+   /**
+    * The feature id for the '<em><b>Version</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT_COORDINATES__VERSION = MAVEN_PROJECT_COORDINATES__VERSION;
+
+   /**
+    * The feature id for the '<em><b>Classifier</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT_COORDINATES__CLASSIFIER = MAVEN_PROJECT_COORDINATES_FEATURE_COUNT + 0;
+
+   /**
+    * The feature id for the '<em><b>Type</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT_COORDINATES__TYPE = MAVEN_PROJECT_COORDINATES_FEATURE_COUNT + 1;
+
+   /**
+    * The number of structural features of the '<em>Maven Artifact Coordinates</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    * @ordered
+    */
+   int MAVEN_ARTIFACT_COORDINATES_FEATURE_COUNT = MAVEN_PROJECT_COORDINATES_FEATURE_COUNT + 2;
 
    /**
     * The meta object id for the '{@link org.sourcepit.common.maven.model.Scope <em>Scope</em>}' enum.
@@ -630,8 +702,7 @@ public interface MavenModelPackage extends EPackage
     * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getScope()
     * @generated
     */
-   int SCOPE = 7;
-
+   int SCOPE = 8;
 
    /**
     * The meta object id for the '<em>Nullable Scope</em>' data type.
@@ -642,7 +713,41 @@ public interface MavenModelPackage extends EPackage
     * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getNullableScope()
     * @generated
     */
-   int NULLABLE_SCOPE = 8;
+   int NULLABLE_SCOPE = 9;
+
+   /**
+    * The meta object id for the '<em>Artifact Conflict Key</em>' data type.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.ArtifactConflictKey
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getArtifactConflictKey()
+    * @generated
+    */
+   int ARTIFACT_CONFLICT_KEY = 10;
+
+   /**
+    * The meta object id for the '<em>Project Key</em>' data type.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.ProjectKey
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getProjectKey()
+    * @generated
+    */
+   int PROJECT_KEY = 11;
+
+   /**
+    * The meta object id for the '<em>Artifact Key</em>' data type.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see org.sourcepit.common.maven.model.ArtifactKey
+    * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getArtifactKey()
+    * @generated
+    */
+   int ARTIFACT_KEY = 12;
+
 
    /**
     * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenArtifact <em>Maven Artifact</em>}
@@ -682,142 +787,105 @@ public interface MavenModelPackage extends EPackage
    EClass getMavenDependency();
 
    /**
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates
+    * <em>Maven Artifact Conflict Coordinates</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Maven Artifact Conflict Coordinates</em>'.
+    * @see org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates
+    * @generated
+    */
+   EClass getMavenArtifactConflictCoordinates();
+
+   /**
     * Returns the meta object for the attribute '
-    * {@link org.sourcepit.common.maven.model.MavenDependency#getVersionRange <em>Version Range</em>}'.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return the meta object for the attribute '<em>Version Range</em>'.
-    * @see org.sourcepit.common.maven.model.MavenDependency#getVersionRange()
-    * @see #getMavenDependency()
-    * @generated
-    */
-   EAttribute getMavenDependency_VersionRange();
-
-   /**
-    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.MavenDependency#getScope
-    * <em>Scope</em>}'.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return the meta object for the attribute '<em>Scope</em>'.
-    * @see org.sourcepit.common.maven.model.MavenDependency#getScope()
-    * @see #getMavenDependency()
-    * @generated
-    */
-   EAttribute getMavenDependency_Scope();
-
-   /**
-    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.MavenDependency#isOptional
-    * <em>Optional</em>}'.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return the meta object for the attribute '<em>Optional</em>'.
-    * @see org.sourcepit.common.maven.model.MavenDependency#isOptional()
-    * @see #getMavenDependency()
-    * @generated
-    */
-   EAttribute getMavenDependency_Optional();
-
-   /**
-    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.Identifiable <em>Identifiable</em>}'.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @return the meta object for class '<em>Identifiable</em>'.
-    * @see org.sourcepit.common.maven.model.Identifiable
-    * @generated
-    */
-   EClass getIdentifiable();
-
-   /**
-    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.Identifiable#getGroupId
-    * <em>Group Id</em>}'.
+    * {@link org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates#getGroupId <em>Group Id</em>}'.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @return the meta object for the attribute '<em>Group Id</em>'.
-    * @see org.sourcepit.common.maven.model.Identifiable#getGroupId()
-    * @see #getIdentifiable()
+    * @see org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates#getGroupId()
+    * @see #getMavenArtifactConflictCoordinates()
     * @generated
     */
-   EAttribute getIdentifiable_GroupId();
+   EAttribute getMavenArtifactConflictCoordinates_GroupId();
 
    /**
-    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.Identifiable#getArtifactId
-    * <em>Artifact Id</em>}'.
+    * Returns the meta object for the attribute '
+    * {@link org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates#getArtifactId <em>Artifact Id</em>}'.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @return the meta object for the attribute '<em>Artifact Id</em>'.
-    * @see org.sourcepit.common.maven.model.Identifiable#getArtifactId()
-    * @see #getIdentifiable()
+    * @see org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates#getArtifactId()
+    * @see #getMavenArtifactConflictCoordinates()
     * @generated
     */
-   EAttribute getIdentifiable_ArtifactId();
+   EAttribute getMavenArtifactConflictCoordinates_ArtifactId();
 
    /**
-    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.VersionedIdentifiable
-    * <em>Versioned Identifiable</em>}'.
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenProjectCoordinates
+    * <em>Maven Project Coordinates</em>}'.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @return the meta object for class '<em>Versioned Identifiable</em>'.
-    * @see org.sourcepit.common.maven.model.VersionedIdentifiable
+    * @return the meta object for class '<em>Maven Project Coordinates</em>'.
+    * @see org.sourcepit.common.maven.model.MavenProjectCoordinates
     * @generated
     */
-   EClass getVersionedIdentifiable();
+   EClass getMavenProjectCoordinates();
 
    /**
     * Returns the meta object for the attribute '
-    * {@link org.sourcepit.common.maven.model.VersionedIdentifiable#getVersion <em>Version</em>}'.
+    * {@link org.sourcepit.common.maven.model.MavenProjectCoordinates#getVersion <em>Version</em>}'.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @return the meta object for the attribute '<em>Version</em>'.
-    * @see org.sourcepit.common.maven.model.VersionedIdentifiable#getVersion()
-    * @see #getVersionedIdentifiable()
+    * @see org.sourcepit.common.maven.model.MavenProjectCoordinates#getVersion()
+    * @see #getMavenProjectCoordinates()
     * @generated
     */
-   EAttribute getVersionedIdentifiable_Version();
+   EAttribute getMavenProjectCoordinates_Version();
 
    /**
-    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.Classified <em>Classified</em>}'.
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenClassified
+    * <em>Maven Classified</em>}'.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @return the meta object for class '<em>Classified</em>'.
-    * @see org.sourcepit.common.maven.model.Classified
+    * @return the meta object for class '<em>Maven Classified</em>'.
+    * @see org.sourcepit.common.maven.model.MavenClassified
     * @generated
     */
-   EClass getClassified();
+   EClass getMavenClassified();
 
    /**
-    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.Classified#getClassifier
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.MavenClassified#getClassifier
     * <em>Classifier</em>}'.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @return the meta object for the attribute '<em>Classifier</em>'.
-    * @see org.sourcepit.common.maven.model.Classified#getClassifier()
-    * @see #getClassified()
+    * @see org.sourcepit.common.maven.model.MavenClassified#getClassifier()
+    * @see #getMavenClassified()
     * @generated
     */
-   EAttribute getClassified_Classifier();
+   EAttribute getMavenClassified_Classifier();
 
    /**
-    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.Classified#getType
+    * Returns the meta object for the attribute '{@link org.sourcepit.common.maven.model.MavenClassified#getType
     * <em>Type</em>}'.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
     * @return the meta object for the attribute '<em>Type</em>'.
-    * @see org.sourcepit.common.maven.model.Classified#getType()
-    * @see #getClassified()
+    * @see org.sourcepit.common.maven.model.MavenClassified#getType()
+    * @see #getMavenClassified()
     * @generated
     */
-   EAttribute getClassified_Type();
+   EAttribute getMavenClassified_Type();
 
    /**
     * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenProject <em>Maven Project</em>}'.
@@ -934,6 +1002,18 @@ public interface MavenModelPackage extends EPackage
    EAttribute getDependencyDeclaration_Optional();
 
    /**
+    * Returns the meta object for class '{@link org.sourcepit.common.maven.model.MavenArtifactCoordinates
+    * <em>Maven Artifact Coordinates</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for class '<em>Maven Artifact Coordinates</em>'.
+    * @see org.sourcepit.common.maven.model.MavenArtifactCoordinates
+    * @generated
+    */
+   EClass getMavenArtifactCoordinates();
+
+   /**
     * Returns the meta object for enum '{@link org.sourcepit.common.maven.model.Scope <em>Scope</em>}'.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -955,6 +1035,44 @@ public interface MavenModelPackage extends EPackage
     * @generated
     */
    EDataType getNullableScope();
+
+   /**
+    * Returns the meta object for data type '{@link org.sourcepit.common.maven.model.ArtifactConflictKey
+    * <em>Artifact Conflict Key</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for data type '<em>Artifact Conflict Key</em>'.
+    * @see org.sourcepit.common.maven.model.ArtifactConflictKey
+    * @model instanceClass="org.sourcepit.common.maven.model.ArtifactConflictKey"
+    * @generated
+    */
+   EDataType getArtifactConflictKey();
+
+   /**
+    * Returns the meta object for data type '{@link org.sourcepit.common.maven.model.ProjectKey <em>Project Key</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for data type '<em>Project Key</em>'.
+    * @see org.sourcepit.common.maven.model.ProjectKey
+    * @model instanceClass="org.sourcepit.common.maven.model.ProjectKey"
+    * @generated
+    */
+   EDataType getProjectKey();
+
+   /**
+    * Returns the meta object for data type '{@link org.sourcepit.common.maven.model.ArtifactKey <em>Artifact Key</em>}
+    * '.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @return the meta object for data type '<em>Artifact Key</em>'.
+    * @see org.sourcepit.common.maven.model.ArtifactKey
+    * @model instanceClass="org.sourcepit.common.maven.model.ArtifactKey"
+    * @generated
+    */
+   EDataType getArtifactKey();
 
    /**
     * Returns the factory that creates the instances of the model.
@@ -1015,43 +1133,17 @@ public interface MavenModelPackage extends EPackage
       EClass MAVEN_DEPENDENCY = eINSTANCE.getMavenDependency();
 
       /**
-       * The meta object literal for the '<em><b>Version Range</b></em>' attribute feature.
+       * The meta object literal for the '
+       * {@link org.sourcepit.common.maven.model.impl.MavenArtifactConflictCoordinatesImpl
+       * <em>Maven Artifact Conflict Coordinates</em>}' class.
        * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
        * 
+       * @see org.sourcepit.common.maven.model.impl.MavenArtifactConflictCoordinatesImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenArtifactConflictCoordinates()
        * @generated
        */
-      EAttribute MAVEN_DEPENDENCY__VERSION_RANGE = eINSTANCE.getMavenDependency_VersionRange();
-
-      /**
-       * The meta object literal for the '<em><b>Scope</b></em>' attribute feature.
-       * <!-- begin-user-doc -->
-       * <!-- end-user-doc -->
-       * 
-       * @generated
-       */
-      EAttribute MAVEN_DEPENDENCY__SCOPE = eINSTANCE.getMavenDependency_Scope();
-
-      /**
-       * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
-       * <!-- begin-user-doc -->
-       * <!-- end-user-doc -->
-       * 
-       * @generated
-       */
-      EAttribute MAVEN_DEPENDENCY__OPTIONAL = eINSTANCE.getMavenDependency_Optional();
-
-      /**
-       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.IdentifiableImpl
-       * <em>Identifiable</em>}' class.
-       * <!-- begin-user-doc -->
-       * <!-- end-user-doc -->
-       * 
-       * @see org.sourcepit.common.maven.model.impl.IdentifiableImpl
-       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getIdentifiable()
-       * @generated
-       */
-      EClass IDENTIFIABLE = eINSTANCE.getIdentifiable();
+      EClass MAVEN_ARTIFACT_CONFLICT_COORDINATES = eINSTANCE.getMavenArtifactConflictCoordinates();
 
       /**
        * The meta object literal for the '<em><b>Group Id</b></em>' attribute feature.
@@ -1060,7 +1152,8 @@ public interface MavenModelPackage extends EPackage
        * 
        * @generated
        */
-      EAttribute IDENTIFIABLE__GROUP_ID = eINSTANCE.getIdentifiable_GroupId();
+      EAttribute MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID = eINSTANCE
+         .getMavenArtifactConflictCoordinates_GroupId();
 
       /**
        * The meta object literal for the '<em><b>Artifact Id</b></em>' attribute feature.
@@ -1069,19 +1162,20 @@ public interface MavenModelPackage extends EPackage
        * 
        * @generated
        */
-      EAttribute IDENTIFIABLE__ARTIFACT_ID = eINSTANCE.getIdentifiable_ArtifactId();
+      EAttribute MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID = eINSTANCE
+         .getMavenArtifactConflictCoordinates_ArtifactId();
 
       /**
-       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.VersionedIdentifiableImpl
-       * <em>Versioned Identifiable</em>}' class.
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.MavenProjectCoordinatesImpl
+       * <em>Maven Project Coordinates</em>}' class.
        * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
        * 
-       * @see org.sourcepit.common.maven.model.impl.VersionedIdentifiableImpl
-       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getVersionedIdentifiable()
+       * @see org.sourcepit.common.maven.model.impl.MavenProjectCoordinatesImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenProjectCoordinates()
        * @generated
        */
-      EClass VERSIONED_IDENTIFIABLE = eINSTANCE.getVersionedIdentifiable();
+      EClass MAVEN_PROJECT_COORDINATES = eINSTANCE.getMavenProjectCoordinates();
 
       /**
        * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
@@ -1090,19 +1184,19 @@ public interface MavenModelPackage extends EPackage
        * 
        * @generated
        */
-      EAttribute VERSIONED_IDENTIFIABLE__VERSION = eINSTANCE.getVersionedIdentifiable_Version();
+      EAttribute MAVEN_PROJECT_COORDINATES__VERSION = eINSTANCE.getMavenProjectCoordinates_Version();
 
       /**
-       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.ClassifiedImpl
-       * <em>Classified</em>}' class.
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.MavenClassifiedImpl
+       * <em>Maven Classified</em>}' class.
        * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
        * 
-       * @see org.sourcepit.common.maven.model.impl.ClassifiedImpl
-       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getClassified()
+       * @see org.sourcepit.common.maven.model.impl.MavenClassifiedImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenClassified()
        * @generated
        */
-      EClass CLASSIFIED = eINSTANCE.getClassified();
+      EClass MAVEN_CLASSIFIED = eINSTANCE.getMavenClassified();
 
       /**
        * The meta object literal for the '<em><b>Classifier</b></em>' attribute feature.
@@ -1111,7 +1205,7 @@ public interface MavenModelPackage extends EPackage
        * 
        * @generated
        */
-      EAttribute CLASSIFIED__CLASSIFIER = eINSTANCE.getClassified_Classifier();
+      EAttribute MAVEN_CLASSIFIED__CLASSIFIER = eINSTANCE.getMavenClassified_Classifier();
 
       /**
        * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
@@ -1120,7 +1214,7 @@ public interface MavenModelPackage extends EPackage
        * 
        * @generated
        */
-      EAttribute CLASSIFIED__TYPE = eINSTANCE.getClassified_Type();
+      EAttribute MAVEN_CLASSIFIED__TYPE = eINSTANCE.getMavenClassified_Type();
 
       /**
        * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.MavenProjectImpl
@@ -1210,6 +1304,18 @@ public interface MavenModelPackage extends EPackage
       EAttribute DEPENDENCY_DECLARATION__OPTIONAL = eINSTANCE.getDependencyDeclaration_Optional();
 
       /**
+       * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.MavenArtifactCoordinatesImpl
+       * <em>Maven Artifact Coordinates</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.impl.MavenArtifactCoordinatesImpl
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getMavenArtifactCoordinates()
+       * @generated
+       */
+      EClass MAVEN_ARTIFACT_COORDINATES = eINSTANCE.getMavenArtifactCoordinates();
+
+      /**
        * The meta object literal for the '{@link org.sourcepit.common.maven.model.Scope <em>Scope</em>}' enum.
        * <!-- begin-user-doc -->
        * <!-- end-user-doc -->
@@ -1230,6 +1336,39 @@ public interface MavenModelPackage extends EPackage
        * @generated
        */
       EDataType NULLABLE_SCOPE = eINSTANCE.getNullableScope();
+
+      /**
+       * The meta object literal for the '<em>Artifact Conflict Key</em>' data type.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.ArtifactConflictKey
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getArtifactConflictKey()
+       * @generated
+       */
+      EDataType ARTIFACT_CONFLICT_KEY = eINSTANCE.getArtifactConflictKey();
+
+      /**
+       * The meta object literal for the '<em>Project Key</em>' data type.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.ProjectKey
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getProjectKey()
+       * @generated
+       */
+      EDataType PROJECT_KEY = eINSTANCE.getProjectKey();
+
+      /**
+       * The meta object literal for the '<em>Artifact Key</em>' data type.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * 
+       * @see org.sourcepit.common.maven.model.ArtifactKey
+       * @see org.sourcepit.common.maven.model.impl.MavenModelPackageImpl#getArtifactKey()
+       * @generated
+       */
+      EDataType ARTIFACT_KEY = eINSTANCE.getArtifactKey();
 
    }
 

@@ -9,8 +9,8 @@ package org.sourcepit.common.maven.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.sourcepit.common.maven.model.Classified;
 import org.sourcepit.common.maven.model.DependencyDeclaration;
+import org.sourcepit.common.maven.model.MavenClassified;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.Scope;
 
@@ -32,7 +32,9 @@ import org.sourcepit.common.maven.model.Scope;
  * 
  * @generated
  */
-public abstract class DependencyDeclarationImpl extends IdentifiableImpl implements DependencyDeclaration
+public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoordinatesImpl
+   implements
+      DependencyDeclaration
 {
    /**
     * The default value of the '{@link #getClassifier() <em>Classifier</em>}' attribute.
@@ -417,14 +419,14 @@ public abstract class DependencyDeclarationImpl extends IdentifiableImpl impleme
    @Override
    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
    {
-      if (baseClass == Classified.class)
+      if (baseClass == MavenClassified.class)
       {
          switch (derivedFeatureID)
          {
             case MavenModelPackage.DEPENDENCY_DECLARATION__CLASSIFIER :
-               return MavenModelPackage.CLASSIFIED__CLASSIFIER;
+               return MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER;
             case MavenModelPackage.DEPENDENCY_DECLARATION__TYPE :
-               return MavenModelPackage.CLASSIFIED__TYPE;
+               return MavenModelPackage.MAVEN_CLASSIFIED__TYPE;
             default :
                return -1;
          }
@@ -441,13 +443,13 @@ public abstract class DependencyDeclarationImpl extends IdentifiableImpl impleme
    @Override
    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
    {
-      if (baseClass == Classified.class)
+      if (baseClass == MavenClassified.class)
       {
          switch (baseFeatureID)
          {
-            case MavenModelPackage.CLASSIFIED__CLASSIFIER :
+            case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
                return MavenModelPackage.DEPENDENCY_DECLARATION__CLASSIFIER;
-            case MavenModelPackage.CLASSIFIED__TYPE :
+            case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
                return MavenModelPackage.DEPENDENCY_DECLARATION__TYPE;
             default :
                return -1;

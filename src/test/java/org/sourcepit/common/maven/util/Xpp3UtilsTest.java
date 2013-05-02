@@ -6,7 +6,11 @@
 
 package org.sourcepit.common.maven.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.fail;
 
 import javax.validation.ConstraintViolationException;
 
@@ -152,7 +156,7 @@ public class Xpp3UtilsTest
       assertEquals("scope", node.getChild(5).getValue());
       assertEquals("/tmp/foo.jar", node.getChild(6).getValue());
       assertEquals("true", node.getChild(7).getValue());
-      
+
       dependency = new Dependency();
       dependency.setGroupId("groupId");
       dependency.setArtifactId("artifactId");
@@ -162,7 +166,7 @@ public class Xpp3UtilsTest
       dependency.setType("jar");
       dependency.setOptional(false);
       dependency.setSystemPath("");
-      
+
       node = Xpp3Utils.toDependencyNode(dependency);
       assertNotNull(node);
       assertEquals("dependency", node.getName());

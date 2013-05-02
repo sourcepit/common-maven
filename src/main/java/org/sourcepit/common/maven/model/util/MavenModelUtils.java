@@ -6,22 +6,28 @@
 
 package org.sourcepit.common.maven.model.util;
 
-import static com.google.common.base.Strings.isNullOrEmpty;
+import static com.google.common.base.Preconditions.checkState;
 
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.handler.ArtifactHandler;
 import org.apache.maven.model.Build;
+import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.Plugin;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.sourcepit.common.maven.model.ArtifactKey;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelFactory;
 import org.sourcepit.common.maven.model.MavenProject;
+import org.sourcepit.common.maven.model.Scope;
+import org.sourcepit.common.maven.model.VersionConflictKey;
 import org.sourcepit.common.maven.util.MavenProjectUtils;
+import org.sourcepit.common.modeling.Annotation;
 
 public final class MavenModelUtils
 {
@@ -37,22 +43,114 @@ public final class MavenModelUtils
       final MavenDependency dependency = MavenModelFactory.eINSTANCE.createMavenDependency();
       dependency.setGroupId(artifact.getGroupId());
       dependency.setArtifactId(artifact.getArtifactId());
-      dependency.setVersionRange(artifact.getVersionRange() == null ? artifact.getVersion() : artifact
+      dependency.setVersionConstraint(artifact.getVersionRange() == null ? artifact.getVersion() : artifact
          .getVersionRange().toString());
+
+      if (dependency.isOptional() != artifact.isOptional())
+      {
+         dependency.setOptional(artifact.isOptional());
+      }
+
       if (artifact.getClassifier() != null && !ObjectUtils.equals(dependency.getClassifier(), artifact.getClassifier()))
       {
          dependency.setClassifier(artifact.getClassifier());
       }
+
       if (artifact.getType() != null && !ObjectUtils.equals(dependency.getType(), artifact.getType()))
       {
          dependency.setType(artifact.getType());
       }
-      if (artifact.getScope() != null && !ObjectUtils.equals(dependency.getScope(), artifact.getScope()))
+
+      if (artifact.getScope() != null)
       {
-         dependency.setScope(artifact.getScope());
+         final Scope artifactScope = toScope(artifact.getScope());
+         if (!ObjectUtils.equals(dependency.getScope(), artifactScope))
+         {
+            dependency.setScope(artifactScope);
+         }
       }
-      dependency.setOptional(artifact.isOptional());
+
       return dependency;
+   }
+
+   @NotNull
+   public static MavenDependency toMavenDependecy(@NotNull org.sonatype.aether.graph.Dependency dependency)
+   {
+      final Artifact artifact = RepositoryUtils.toArtifact(dependency.getArtifact());
+
+      final MavenDependency mavenDep = MavenModelFactory.eINSTANCE.createMavenDependency();
+      mavenDep.setGroupId(artifact.getGroupId());
+      mavenDep.setArtifactId(artifact.getArtifactId());
+      mavenDep.setVersionConstraint(artifact.getVersion());
+
+      if (mavenDep.isOptional() != dependency.isOptional())
+      {
+         mavenDep.setOptional(dependency.isOptional());
+      }
+
+      if (artifact.getClassifier() != null && !ObjectUtils.equals(mavenDep.getClassifier(), artifact.getClassifier()))
+      {
+         mavenDep.setClassifier(artifact.getClassifier());
+      }
+
+      if (artifact.getType() != null && !ObjectUtils.equals(mavenDep.getType(), artifact.getType()))
+      {
+         mavenDep.setType(artifact.getType());
+      }
+
+      if (dependency.getScope() != null)
+      {
+         final Scope artifactScope = toScope(dependency.getScope());
+         if (!ObjectUtils.equals(mavenDep.getScope(), artifactScope))
+         {
+            mavenDep.setScope(artifactScope);
+         }
+      }
+
+      return mavenDep;
+   }
+
+   @NotNull
+   public static MavenDependency toMavenDependecy(@NotNull Dependency dependency)
+   {
+      final MavenDependency mavenDep = MavenModelFactory.eINSTANCE.createMavenDependency();
+      mavenDep.setGroupId(dependency.getGroupId());
+      mavenDep.setArtifactId(dependency.getArtifactId());
+      mavenDep.setVersionConstraint(dependency.getVersion());
+
+      if (mavenDep.isOptional() != dependency.isOptional())
+      {
+         mavenDep.setOptional(dependency.isOptional());
+      }
+
+      if (dependency.getClassifier() != null
+         && !ObjectUtils.equals(mavenDep.getClassifier(), dependency.getClassifier()))
+      {
+         mavenDep.setClassifier(dependency.getClassifier());
+      }
+
+      if (dependency.getType() != null && !ObjectUtils.equals(mavenDep.getType(), dependency.getType()))
+      {
+         mavenDep.setType(dependency.getType());
+      }
+
+      if (dependency.getScope() != null)
+      {
+         final Scope artifactScope = toScope(dependency.getScope());
+         if (!ObjectUtils.equals(mavenDep.getScope(), artifactScope))
+         {
+            mavenDep.setScope(artifactScope);
+         }
+      }
+
+      return mavenDep;
+   }
+
+   public static Scope toScope(@NotNull String scope)
+   {
+      final Scope result = Scope.get(scope);
+      checkState(result != null, "%s is not a valid maven scope", scope);
+      return result;
    }
 
    @NotNull
@@ -64,20 +162,32 @@ public final class MavenModelUtils
    @NotNull
    public static MavenArtifact toMavenArtifact(@NotNull Artifact artifact)
    {
-      final MavenArtifact mArtifact = MavenModelFactory.eINSTANCE.createMavenArtifact();
-      mArtifact.setGroupId(artifact.getGroupId());
-      mArtifact.setArtifactId(artifact.getArtifactId());
-      mArtifact.setVersion(artifact.getVersion());
-      if (artifact.getClassifier() != null && !ObjectUtils.equals(mArtifact.getClassifier(), artifact.getClassifier()))
+      final MavenArtifact mavenArtifact = MavenModelFactory.eINSTANCE.createMavenArtifact();
+      mavenArtifact.setGroupId(artifact.getGroupId());
+      mavenArtifact.setArtifactId(artifact.getArtifactId());
+      mavenArtifact.setVersion(artifact.getVersion());
+      if (artifact.getClassifier() != null
+         && !ObjectUtils.equals(mavenArtifact.getClassifier(), artifact.getClassifier()))
       {
-         mArtifact.setClassifier(artifact.getClassifier());
+         mavenArtifact.setClassifier(artifact.getClassifier());
       }
-      if (artifact.getType() != null && !ObjectUtils.equals(mArtifact.getType(), artifact.getType()))
+      if (artifact.getType() != null && !ObjectUtils.equals(mavenArtifact.getType(), artifact.getType()))
       {
-         mArtifact.setType(artifact.getType());
+         mavenArtifact.setType(artifact.getType());
       }
-      mArtifact.setFile(artifact.getFile());
-      return mArtifact;
+      mavenArtifact.setFile(artifact.getFile());
+
+      final ArtifactHandler artifactHandler = artifact.getArtifactHandler();
+
+      final Annotation annotation = mavenArtifact.getAnnotation(ArtifactHandler.class.getName(), true);
+      annotation.setData("packaging", artifactHandler.getPackaging());
+      annotation.setData("directory", artifactHandler.getDirectory());
+      annotation.setData("extension", artifactHandler.getExtension());
+      annotation.setData("language", artifactHandler.getLanguage());
+      annotation.setData("classifier", artifactHandler.getClassifier());
+      annotation.setData("includesDependencies", artifactHandler.isIncludesDependencies());
+      annotation.setData("addedToClasspath", artifactHandler.isAddedToClasspath());
+      return mavenArtifact;
    }
 
    public static MavenProject toMavenProject(@NotNull org.apache.maven.project.MavenProject mavenProject)
@@ -129,61 +239,37 @@ public final class MavenModelUtils
    }
 
    @NotNull
-   public static String toArtifactKey(@NotNull MavenArtifact artifact)
+   public static ArtifactKey toArtifactKey(@NotNull MavenArtifact artifact)
    {
       return toArtifactKey(artifact.getGroupId(), artifact.getArtifactId(), artifact.getType(),
          artifact.getClassifier(), artifact.getVersion());
    }
-   
+
    @NotNull
-   public static String toArtifactKey(@NotNull Artifact artifact)
+   public static ArtifactKey toArtifactKey(@NotNull Artifact artifact)
    {
       return toArtifactKey(artifact.getGroupId(), artifact.getArtifactId(), artifact.getType(),
          artifact.getClassifier(), artifact.getVersion());
    }
-   
+
    @NotNull
-   public static String toArtifactKey(@NotNull org.sonatype.aether.artifact.Artifact artifact)
+   public static ArtifactKey toArtifactKey(@NotNull org.sonatype.aether.artifact.Artifact artifact)
    {
       return toArtifactKey(RepositoryUtils.toArtifact(artifact));
    }
 
    @NotNull
-   public static String toArtifactKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String type,
+   public static ArtifactKey toArtifactKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String type,
       String classifier, @NotNull String version)
    {
-      final StringBuilder sb = new StringBuilder();
-      sb.append(groupId);
-      sb.append(':');
-      sb.append(artifactId);
-      sb.append(':');
-      sb.append(type);
-      if (classifier != null && classifier.length() > 0)
-      {
-         sb.append(':');
-         sb.append(classifier);
-      }
-      sb.append(':');
-      sb.append(version);
-      return sb.toString();
+      return new ArtifactKey(groupId, artifactId, version, type, classifier);
    }
 
    @NotNull
-   public static String toVersionConflictKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String type,
-      String classifier)
+   public static VersionConflictKey toVersionConflictKey(@NotNull String groupId, @NotNull String artifactId,
+      @NotNull String type, String classifier)
    {
-      final StringBuilder sb = new StringBuilder();
-      sb.append(groupId);
-      sb.append(':');
-      sb.append(artifactId);
-      sb.append(':');
-      sb.append(type);
-      if (!isNullOrEmpty(classifier))
-      {
-         sb.append(':');
-         sb.append(classifier);
-      }
-      return sb.toString();
+      return new VersionConflictKey(groupId, artifactId, type, classifier);
    }
 
    @NotNull

@@ -46,7 +46,7 @@ import org.sourcepit.common.modeling.XAnnotatable;
  * 
  * @generated
  */
-public class MavenProjectImpl extends VersionedIdentifiableImpl implements MavenProject
+public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements MavenProject
 {
    /**
     * The cached value of the '{@link #getExtensions() <em>Extensions</em>}' containment reference list.

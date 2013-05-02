@@ -21,7 +21,9 @@ import java.io.File;
 
 import javax.validation.ConstraintViolationException;
 
+import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.handler.DefaultArtifactHandler;
 import org.apache.maven.artifact.versioning.VersionRange;
 import org.apache.maven.model.Build;
 import org.apache.maven.model.Model;
@@ -34,6 +36,7 @@ import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
+import org.sourcepit.common.maven.model.Scope;
 
 public class MavenModelUtilsTest
 {
@@ -49,6 +52,7 @@ public class MavenModelUtilsTest
       {
       }
 
+
       Artifact artifact = mock(Artifact.class);
       when(artifact.getFile()).thenReturn(new File(""));
       when(artifact.getGroupId()).thenReturn("groupId");
@@ -56,6 +60,7 @@ public class MavenModelUtilsTest
       when(artifact.getVersion()).thenReturn("1.0");
       when(artifact.getClassifier()).thenReturn("classifier");
       when(artifact.getType()).thenReturn("jar");
+      when(artifact.getArtifactHandler()).thenReturn(new DefaultArtifactHandler("jar"));
 
       MavenArtifact mavenArtifact = MavenModelUtils.toMavenArtifact(artifact);
       assertThat(mavenArtifact.getFile(), IsEqual.equalTo(artifact.getFile()));
@@ -64,14 +69,35 @@ public class MavenModelUtilsTest
       assertThat(mavenArtifact.getVersion(), IsEqual.equalTo(artifact.getVersion()));
       assertThat(mavenArtifact.getClassifier(), IsEqual.equalTo(artifact.getClassifier()));
       // jar is default
-      assertThat(mavenArtifact.eIsSet(MavenModelPackage.eINSTANCE.getClassified_Type()), Is.is(false));
+      assertThat(mavenArtifact.eIsSet(MavenModelPackage.eINSTANCE.getMavenClassified_Type()), Is.is(false));
       assertThat(mavenArtifact.getType(), IsEqual.equalTo(artifact.getType()));
 
       when(artifact.getType()).thenReturn("war");
 
       mavenArtifact = MavenModelUtils.toMavenArtifact(artifact);
-      assertThat(mavenArtifact.eIsSet(MavenModelPackage.eINSTANCE.getClassified_Type()), Is.is(true));
+      assertThat(mavenArtifact.eIsSet(MavenModelPackage.eINSTANCE.getMavenClassified_Type()), Is.is(true));
       assertThat(mavenArtifact.getType(), IsEqual.equalTo(artifact.getType()));
+   }
+
+   @Test
+   public void testToArtifactKey()
+   {
+      Artifact artifact = mock(Artifact.class);
+      when(artifact.getFile()).thenReturn(new File(""));
+      when(artifact.getGroupId()).thenReturn("groupId");
+      when(artifact.getArtifactId()).thenReturn("artifactId");
+      when(artifact.getVersion()).thenReturn("1.0");
+      when(artifact.getClassifier()).thenReturn("classifier");
+      when(artifact.getType()).thenReturn("test-jar");
+      DefaultArtifactHandler artifactHandler = new DefaultArtifactHandler("test-jar");
+      artifactHandler.setExtension("jar");
+      when(artifact.getArtifactHandler()).thenReturn(artifactHandler);
+
+      String key = MavenModelUtils.toArtifactKey(artifact).toString();
+      assertEquals("groupId:artifactId:test-jar:classifier:1.0", key);
+
+      key = MavenModelUtils.toArtifactKey(RepositoryUtils.toArtifact(artifact)).toString();
+      assertEquals("groupId:artifactId:test-jar:classifier:1.0", key);
    }
 
    @Test
@@ -99,29 +125,29 @@ public class MavenModelUtilsTest
       MavenDependency mavenDependecy = MavenModelUtils.toMavenDependecy(artifact);
       assertThat(mavenDependecy.getGroupId(), IsEqual.equalTo(artifact.getGroupId()));
       assertThat(mavenDependecy.getArtifactId(), IsEqual.equalTo(artifact.getArtifactId()));
-      assertThat(mavenDependecy.getVersionRange(), IsEqual.equalTo(artifact.getVersionRange().toString()));
+      assertThat(mavenDependecy.getVersionConstraint(), IsEqual.equalTo(artifact.getVersionRange().toString()));
       assertThat(mavenDependecy.getClassifier(), IsEqual.equalTo(artifact.getClassifier()));
 
       // jar is default
-      assertThat(mavenDependecy.eIsSet(MavenModelPackage.eINSTANCE.getClassified_Type()), Is.is(false));
+      assertThat(mavenDependecy.eIsSet(MavenModelPackage.eINSTANCE.getMavenClassified_Type()), Is.is(false));
       assertThat(mavenDependecy.getType(), IsEqual.equalTo(artifact.getType()));
       // compile is default
-      assertThat(mavenDependecy.eIsSet(MavenModelPackage.eINSTANCE.getMavenDependency_Scope()), Is.is(false));
-      assertThat(mavenDependecy.getScope(), IsEqual.equalTo(artifact.getScope()));
+      assertThat(mavenDependecy.eIsSet(MavenModelPackage.eINSTANCE.getDependencyDeclaration_Scope()), Is.is(false));
+      assertThat(mavenDependecy.getScope(), IsEqual.equalTo(MavenModelUtils.toScope(artifact.getScope())));
 
       when(artifact.getType()).thenReturn(null);
       when(artifact.getScope()).thenReturn(null);
 
       mavenDependecy = MavenModelUtils.toMavenDependecy(artifact);
       assertThat(mavenDependecy.getType(), IsEqual.equalTo("jar"));
-      assertThat(mavenDependecy.getScope(), IsEqual.equalTo("compile"));
+      assertThat(mavenDependecy.getScope(), IsEqual.equalTo(Scope.COMPILE));
 
       when(artifact.getType()).thenReturn("war");
       when(artifact.getScope()).thenReturn("test");
 
       mavenDependecy = MavenModelUtils.toMavenDependecy(artifact);
       assertThat(mavenDependecy.getType(), IsEqual.equalTo("war"));
-      assertThat(mavenDependecy.getScope(), IsEqual.equalTo("test"));
+      assertThat(mavenDependecy.getScope(), IsEqual.equalTo(Scope.TEST));
    }
 
    @Test

@@ -164,7 +164,8 @@ public class EmbeddedMaven
 
    public Artifact createArtifact(Model pom)
    {
-      return repositorySystem.createArtifact(pom.getGroupId(), pom.getArtifactId(), pom.getVersion(), pom.getPackaging());
+      return repositorySystem.createArtifact(pom.getGroupId(), pom.getArtifactId(), pom.getVersion(),
+         pom.getPackaging());
    }
 
    public MavenExecutionRequest newMavenExecutionRequest(File pom) throws Exception

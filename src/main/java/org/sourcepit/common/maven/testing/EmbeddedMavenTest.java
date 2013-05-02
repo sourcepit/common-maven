@@ -86,7 +86,7 @@ public abstract class EmbeddedMavenTest extends GuplexTest
       }
       return null;
    }
-   
+
    protected File getRemoteRepositoryPath()
    {
       return null;
@@ -125,7 +125,7 @@ public abstract class EmbeddedMavenTest extends GuplexTest
    {
       return embeddedMaven.buildSettings(globalSettingsFile, userSettingsFile, systemProperties, userProperties);
    }
-   
+
    protected MavenExecutionResult2 buildStubProject(File projectDir)
    {
       return embeddedMaven.buildStubProject(projectDir);

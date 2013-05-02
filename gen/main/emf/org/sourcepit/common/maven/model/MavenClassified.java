@@ -10,22 +10,22 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Classified</b></em>'.
+ * A representation of the model object '<em><b>Maven Classified</b></em>'.
  * <!-- end-user-doc -->
  * 
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.sourcepit.common.maven.model.Classified#getClassifier <em>Classifier</em>}</li>
- * <li>{@link org.sourcepit.common.maven.model.Classified#getType <em>Type</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.MavenClassified#getClassifier <em>Classifier</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.MavenClassified#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  * 
- * @see org.sourcepit.common.maven.model.MavenModelPackage#getClassified()
+ * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenClassified()
  * @model abstract="true"
  * @generated
  */
-public interface Classified extends EObject
+public interface MavenClassified extends EObject
 {
    /**
     * Returns the value of the '<em><b>Classifier</b></em>' attribute.
@@ -38,14 +38,14 @@ public interface Classified extends EObject
     * 
     * @return the value of the '<em>Classifier</em>' attribute.
     * @see #setClassifier(String)
-    * @see org.sourcepit.common.maven.model.MavenModelPackage#getClassified_Classifier()
+    * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenClassified_Classifier()
     * @model
     * @generated
     */
    String getClassifier();
 
    /**
-    * Sets the value of the '{@link org.sourcepit.common.maven.model.Classified#getClassifier <em>Classifier</em>}'
+    * Sets the value of the '{@link org.sourcepit.common.maven.model.MavenClassified#getClassifier <em>Classifier</em>}'
     * attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -67,14 +67,14 @@ public interface Classified extends EObject
     * 
     * @return the value of the '<em>Type</em>' attribute.
     * @see #setType(String)
-    * @see org.sourcepit.common.maven.model.MavenModelPackage#getClassified_Type()
+    * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenClassified_Type()
     * @model default="jar"
     * @generated
     */
    String getType();
 
    /**
-    * Sets the value of the '{@link org.sourcepit.common.maven.model.Classified#getType <em>Type</em>}' attribute.
+    * Sets the value of the '{@link org.sourcepit.common.maven.model.MavenClassified#getType <em>Type</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
@@ -84,4 +84,4 @@ public interface Classified extends EObject
     */
    void setType(String value);
 
-} // Classified
+} // MavenClassified

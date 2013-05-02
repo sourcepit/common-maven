@@ -9,14 +9,15 @@ package org.sourcepit.common.maven.model.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.sourcepit.common.maven.model.Classified;
 import org.sourcepit.common.maven.model.DependencyDeclaration;
-import org.sourcepit.common.maven.model.Identifiable;
 import org.sourcepit.common.maven.model.MavenArtifact;
+import org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates;
+import org.sourcepit.common.maven.model.MavenArtifactCoordinates;
+import org.sourcepit.common.maven.model.MavenClassified;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
-import org.sourcepit.common.maven.model.VersionedIdentifiable;
+import org.sourcepit.common.maven.model.MavenProjectCoordinates;
 import org.sourcepit.common.modeling.Annotatable;
 import org.sourcepit.common.modeling.Extendable;
 import org.sourcepit.common.modeling.XAnnotatable;
@@ -94,17 +95,19 @@ public class MavenModelSwitch<T> extends Switch<T>
             MavenArtifact mavenArtifact = (MavenArtifact) theEObject;
             T result = caseMavenArtifact(mavenArtifact);
             if (result == null)
-               result = caseVersionedIdentifiable(mavenArtifact);
-            if (result == null)
-               result = caseClassified(mavenArtifact);
-            if (result == null)
                result = caseXAnnotatable(mavenArtifact);
             if (result == null)
-               result = caseIdentifiable(mavenArtifact);
+               result = caseMavenArtifactCoordinates(mavenArtifact);
             if (result == null)
                result = caseExtendable(mavenArtifact);
             if (result == null)
                result = caseAnnotatable(mavenArtifact);
+            if (result == null)
+               result = caseMavenProjectCoordinates(mavenArtifact);
+            if (result == null)
+               result = caseMavenClassified(mavenArtifact);
+            if (result == null)
+               result = caseMavenArtifactConflictCoordinates(mavenArtifact);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
@@ -114,11 +117,13 @@ public class MavenModelSwitch<T> extends Switch<T>
             MavenDependency mavenDependency = (MavenDependency) theEObject;
             T result = caseMavenDependency(mavenDependency);
             if (result == null)
-               result = caseIdentifiable(mavenDependency);
-            if (result == null)
-               result = caseClassified(mavenDependency);
+               result = caseDependencyDeclaration(mavenDependency);
             if (result == null)
                result = caseXAnnotatable(mavenDependency);
+            if (result == null)
+               result = caseMavenArtifactConflictCoordinates(mavenDependency);
+            if (result == null)
+               result = caseMavenClassified(mavenDependency);
             if (result == null)
                result = caseExtendable(mavenDependency);
             if (result == null)
@@ -127,28 +132,28 @@ public class MavenModelSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case MavenModelPackage.IDENTIFIABLE :
+         case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES :
          {
-            Identifiable identifiable = (Identifiable) theEObject;
-            T result = caseIdentifiable(identifiable);
+            MavenArtifactConflictCoordinates mavenArtifactConflictCoordinates = (MavenArtifactConflictCoordinates) theEObject;
+            T result = caseMavenArtifactConflictCoordinates(mavenArtifactConflictCoordinates);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
          }
-         case MavenModelPackage.VERSIONED_IDENTIFIABLE :
+         case MavenModelPackage.MAVEN_PROJECT_COORDINATES :
          {
-            VersionedIdentifiable versionedIdentifiable = (VersionedIdentifiable) theEObject;
-            T result = caseVersionedIdentifiable(versionedIdentifiable);
+            MavenProjectCoordinates mavenProjectCoordinates = (MavenProjectCoordinates) theEObject;
+            T result = caseMavenProjectCoordinates(mavenProjectCoordinates);
             if (result == null)
-               result = caseIdentifiable(versionedIdentifiable);
+               result = caseMavenArtifactConflictCoordinates(mavenProjectCoordinates);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
          }
-         case MavenModelPackage.CLASSIFIED :
+         case MavenModelPackage.MAVEN_CLASSIFIED :
          {
-            Classified classified = (Classified) theEObject;
-            T result = caseClassified(classified);
+            MavenClassified mavenClassified = (MavenClassified) theEObject;
+            T result = caseMavenClassified(mavenClassified);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
@@ -158,11 +163,11 @@ public class MavenModelSwitch<T> extends Switch<T>
             MavenProject mavenProject = (MavenProject) theEObject;
             T result = caseMavenProject(mavenProject);
             if (result == null)
-               result = caseVersionedIdentifiable(mavenProject);
+               result = caseMavenProjectCoordinates(mavenProject);
             if (result == null)
                result = caseXAnnotatable(mavenProject);
             if (result == null)
-               result = caseIdentifiable(mavenProject);
+               result = caseMavenArtifactConflictCoordinates(mavenProject);
             if (result == null)
                result = caseExtendable(mavenProject);
             if (result == null)
@@ -176,9 +181,23 @@ public class MavenModelSwitch<T> extends Switch<T>
             DependencyDeclaration dependencyDeclaration = (DependencyDeclaration) theEObject;
             T result = caseDependencyDeclaration(dependencyDeclaration);
             if (result == null)
-               result = caseIdentifiable(dependencyDeclaration);
+               result = caseMavenArtifactConflictCoordinates(dependencyDeclaration);
             if (result == null)
-               result = caseClassified(dependencyDeclaration);
+               result = caseMavenClassified(dependencyDeclaration);
+            if (result == null)
+               result = defaultCase(theEObject);
+            return result;
+         }
+         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES :
+         {
+            MavenArtifactCoordinates mavenArtifactCoordinates = (MavenArtifactCoordinates) theEObject;
+            T result = caseMavenArtifactCoordinates(mavenArtifactCoordinates);
+            if (result == null)
+               result = caseMavenProjectCoordinates(mavenArtifactCoordinates);
+            if (result == null)
+               result = caseMavenClassified(mavenArtifactCoordinates);
+            if (result == null)
+               result = caseMavenArtifactConflictCoordinates(mavenArtifactCoordinates);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
@@ -223,52 +242,52 @@ public class MavenModelSwitch<T> extends Switch<T>
    }
 
    /**
-    * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+    * Returns the result of interpreting the object as an instance of '<em>Maven Artifact Conflict Coordinates</em>'.
     * <!-- begin-user-doc -->
     * This implementation returns null;
     * returning a non-null result will terminate the switch.
     * <!-- end-user-doc -->
     * 
     * @param object the target of the switch.
-    * @return the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+    * @return the result of interpreting the object as an instance of '<em>Maven Artifact Conflict Coordinates</em>'.
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseIdentifiable(Identifiable object)
+   public T caseMavenArtifactConflictCoordinates(MavenArtifactConflictCoordinates object)
    {
       return null;
    }
 
    /**
-    * Returns the result of interpreting the object as an instance of '<em>Versioned Identifiable</em>'.
+    * Returns the result of interpreting the object as an instance of '<em>Maven Project Coordinates</em>'.
     * <!-- begin-user-doc -->
     * This implementation returns null;
     * returning a non-null result will terminate the switch.
     * <!-- end-user-doc -->
     * 
     * @param object the target of the switch.
-    * @return the result of interpreting the object as an instance of '<em>Versioned Identifiable</em>'.
+    * @return the result of interpreting the object as an instance of '<em>Maven Project Coordinates</em>'.
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseVersionedIdentifiable(VersionedIdentifiable object)
+   public T caseMavenProjectCoordinates(MavenProjectCoordinates object)
    {
       return null;
    }
 
    /**
-    * Returns the result of interpreting the object as an instance of '<em>Classified</em>'.
+    * Returns the result of interpreting the object as an instance of '<em>Maven Classified</em>'.
     * <!-- begin-user-doc -->
     * This implementation returns null;
     * returning a non-null result will terminate the switch.
     * <!-- end-user-doc -->
     * 
     * @param object the target of the switch.
-    * @return the result of interpreting the object as an instance of '<em>Classified</em>'.
+    * @return the result of interpreting the object as an instance of '<em>Maven Classified</em>'.
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseClassified(Classified object)
+   public T caseMavenClassified(MavenClassified object)
    {
       return null;
    }
@@ -303,6 +322,23 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @generated
     */
    public T caseDependencyDeclaration(DependencyDeclaration object)
+   {
+      return null;
+   }
+
+   /**
+    * Returns the result of interpreting the object as an instance of '<em>Maven Artifact Coordinates</em>'.
+    * <!-- begin-user-doc -->
+    * This implementation returns null;
+    * returning a non-null result will terminate the switch.
+    * <!-- end-user-doc -->
+    * 
+    * @param object the target of the switch.
+    * @return the result of interpreting the object as an instance of '<em>Maven Artifact Coordinates</em>'.
+    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+    * @generated
+    */
+   public T caseMavenArtifactCoordinates(MavenArtifactCoordinates object)
    {
       return null;
    }

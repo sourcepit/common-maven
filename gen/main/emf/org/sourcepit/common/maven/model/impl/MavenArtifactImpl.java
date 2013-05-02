@@ -7,26 +7,20 @@
 package org.sourcepit.common.maven.model.impl;
 
 import java.io.File;
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-import org.sourcepit.common.maven.model.Classified;
+import org.sourcepit.common.maven.model.ArtifactConflictKey;
+import org.sourcepit.common.maven.model.ArtifactKey;
 import org.sourcepit.common.maven.model.MavenArtifact;
+import org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates;
+import org.sourcepit.common.maven.model.MavenArtifactCoordinates;
+import org.sourcepit.common.maven.model.MavenClassified;
 import org.sourcepit.common.maven.model.MavenModelPackage;
-import org.sourcepit.common.modeling.Annotatable;
-import org.sourcepit.common.modeling.Annotation;
-import org.sourcepit.common.modeling.CommonModelingPackage;
-import org.sourcepit.common.modeling.Extendable;
-import org.sourcepit.common.modeling.XAnnotatable;
+import org.sourcepit.common.maven.model.MavenProjectCoordinates;
+import org.sourcepit.common.maven.model.ProjectKey;
+import org.sourcepit.common.modeling.impl.XAnnotatableImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,18 +29,85 @@ import org.sourcepit.common.modeling.XAnnotatable;
  * <p>
  * The following features are implemented:
  * <ul>
+ * <li>{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl#getGroupId <em>Group Id</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl#getArtifactId <em>Artifact Id</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl#getVersion <em>Version</em>}</li>
  * <li>{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl#getClassifier <em>Classifier</em>}</li>
  * <li>{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl#getType <em>Type</em>}</li>
- * <li>{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl#getExtensions <em>Extensions</em>}</li>
- * <li>{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl#getAnnotations <em>Annotations</em>}</li>
  * <li>{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl#getFile <em>File</em>}</li>
  * </ul>
  * </p>
  * 
  * @generated
  */
-public class MavenArtifactImpl extends VersionedIdentifiableImpl implements MavenArtifact
+public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
 {
+   /**
+    * The default value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getGroupId()
+    * @generated
+    * @ordered
+    */
+   protected static final String GROUP_ID_EDEFAULT = null;
+
+   /**
+    * The cached value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getGroupId()
+    * @generated
+    * @ordered
+    */
+   protected String groupId = GROUP_ID_EDEFAULT;
+
+   /**
+    * The default value of the '{@link #getArtifactId() <em>Artifact Id</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getArtifactId()
+    * @generated
+    * @ordered
+    */
+   protected static final String ARTIFACT_ID_EDEFAULT = null;
+
+   /**
+    * The cached value of the '{@link #getArtifactId() <em>Artifact Id</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getArtifactId()
+    * @generated
+    * @ordered
+    */
+   protected String artifactId = ARTIFACT_ID_EDEFAULT;
+
+   /**
+    * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getVersion()
+    * @generated
+    * @ordered
+    */
+   protected static final String VERSION_EDEFAULT = null;
+
+   /**
+    * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @see #getVersion()
+    * @generated
+    * @ordered
+    */
+   protected String version = VERSION_EDEFAULT;
+
    /**
     * The default value of the '{@link #getClassifier() <em>Classifier</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -92,28 +153,6 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
    protected String type = TYPE_EDEFAULT;
 
    /**
-    * The cached value of the '{@link #getExtensions() <em>Extensions</em>}' containment reference list.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see #getExtensions()
-    * @generated
-    * @ordered
-    */
-   protected EList<EObject> extensions;
-
-   /**
-    * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @see #getAnnotations()
-    * @generated
-    * @ordered
-    */
-   protected EList<Annotation> annotations;
-
-   /**
     * The default value of the '{@link #getFile() <em>File</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -156,6 +195,84 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
    protected EClass eStaticClass()
    {
       return MavenModelPackage.Literals.MAVEN_ARTIFACT;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public String getGroupId()
+   {
+      return groupId;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public void setGroupId(String newGroupId)
+   {
+      String oldGroupId = groupId;
+      groupId = newGroupId;
+      if (eNotificationRequired())
+         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID, oldGroupId,
+            groupId));
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public String getArtifactId()
+   {
+      return artifactId;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public void setArtifactId(String newArtifactId)
+   {
+      String oldArtifactId = artifactId;
+      artifactId = newArtifactId;
+      if (eNotificationRequired())
+         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.MAVEN_ARTIFACT__ARTIFACT_ID,
+            oldArtifactId, artifactId));
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public String getVersion()
+   {
+      return version;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public void setVersion(String newVersion)
+   {
+      String oldVersion = version;
+      version = newVersion;
+      if (eNotificationRequired())
+         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.MAVEN_ARTIFACT__VERSION, oldVersion,
+            version));
    }
 
    /**
@@ -215,38 +332,6 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
     * 
     * @generated
     */
-   public EList<EObject> getExtensions()
-   {
-      if (extensions == null)
-      {
-         extensions = new EObjectContainmentEList<EObject>(EObject.class, this,
-            MavenModelPackage.MAVEN_ARTIFACT__EXTENSIONS);
-      }
-      return extensions;
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public EList<Annotation> getAnnotations()
-   {
-      if (annotations == null)
-      {
-         annotations = new EObjectContainmentWithInverseEList<Annotation>(Annotation.class, this,
-            MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS, CommonModelingPackage.ANNOTATION__TARGET);
-      }
-      return annotations;
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
    public File getFile()
    {
       return file;
@@ -272,7 +357,7 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
     * 
     * @generated
     */
-   public Annotation getAnnotation(String source)
+   public ArtifactKey getArtifactKey()
    {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
@@ -285,7 +370,7 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
     * 
     * @generated
     */
-   public Annotation getAnnotation(String source, boolean createOnDemand)
+   public ProjectKey getProjectKey()
    {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
@@ -298,126 +383,11 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
     * 
     * @generated
     */
-   public String getAnnotationData(String source, String key)
+   public ArtifactConflictKey getArtifactConflictKey()
    {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public String setAnnotationData(String source, String key, String value)
-   {
-      // TODO: implement this method
-      // Ensure that you remove @generated or mark it @generated NOT
-      throw new UnsupportedOperationException();
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public <T extends EObject> T getExtension(Class<T> extensionType)
-   {
-      // TODO: implement this method
-      // Ensure that you remove @generated or mark it @generated NOT
-      throw new UnsupportedOperationException();
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public <T extends EObject> EList<T> getExtensions(Class<T> extensionType)
-   {
-      // TODO: implement this method
-      // Ensure that you remove @generated or mark it @generated NOT
-      throw new UnsupportedOperationException();
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public <T extends EObject> void addExtension(T extension)
-   {
-      // TODO: implement this method
-      // Ensure that you remove @generated or mark it @generated NOT
-      throw new UnsupportedOperationException();
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public <T extends EObject> void removeExtension(T extension)
-   {
-      // TODO: implement this method
-      // Ensure that you remove @generated or mark it @generated NOT
-      throw new UnsupportedOperationException();
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public <T extends EObject> void removeExtensions(Class<T> extentionType)
-   {
-      // TODO: implement this method
-      // Ensure that you remove @generated or mark it @generated NOT
-      throw new UnsupportedOperationException();
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   @SuppressWarnings("unchecked")
-   @Override
-   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
-         case MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS :
-            return ((InternalEList<InternalEObject>) (InternalEList<?>) getAnnotations()).basicAdd(otherEnd, msgs);
-      }
-      return super.eInverseAdd(otherEnd, featureID, msgs);
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   @Override
-   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
-         case MavenModelPackage.MAVEN_ARTIFACT__EXTENSIONS :
-            return ((InternalEList<?>) getExtensions()).basicRemove(otherEnd, msgs);
-         case MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS :
-            return ((InternalEList<?>) getAnnotations()).basicRemove(otherEnd, msgs);
-      }
-      return super.eInverseRemove(otherEnd, featureID, msgs);
    }
 
    /**
@@ -431,14 +401,16 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
    {
       switch (featureID)
       {
+         case MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID :
+            return getGroupId();
+         case MavenModelPackage.MAVEN_ARTIFACT__ARTIFACT_ID :
+            return getArtifactId();
+         case MavenModelPackage.MAVEN_ARTIFACT__VERSION :
+            return getVersion();
          case MavenModelPackage.MAVEN_ARTIFACT__CLASSIFIER :
             return getClassifier();
          case MavenModelPackage.MAVEN_ARTIFACT__TYPE :
             return getType();
-         case MavenModelPackage.MAVEN_ARTIFACT__EXTENSIONS :
-            return getExtensions();
-         case MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS :
-            return getAnnotations();
          case MavenModelPackage.MAVEN_ARTIFACT__FILE :
             return getFile();
       }
@@ -451,25 +423,25 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
     * 
     * @generated
     */
-   @SuppressWarnings("unchecked")
    @Override
    public void eSet(int featureID, Object newValue)
    {
       switch (featureID)
       {
+         case MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID :
+            setGroupId((String) newValue);
+            return;
+         case MavenModelPackage.MAVEN_ARTIFACT__ARTIFACT_ID :
+            setArtifactId((String) newValue);
+            return;
+         case MavenModelPackage.MAVEN_ARTIFACT__VERSION :
+            setVersion((String) newValue);
+            return;
          case MavenModelPackage.MAVEN_ARTIFACT__CLASSIFIER :
             setClassifier((String) newValue);
             return;
          case MavenModelPackage.MAVEN_ARTIFACT__TYPE :
             setType((String) newValue);
-            return;
-         case MavenModelPackage.MAVEN_ARTIFACT__EXTENSIONS :
-            getExtensions().clear();
-            getExtensions().addAll((Collection<? extends EObject>) newValue);
-            return;
-         case MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS :
-            getAnnotations().clear();
-            getAnnotations().addAll((Collection<? extends Annotation>) newValue);
             return;
          case MavenModelPackage.MAVEN_ARTIFACT__FILE :
             setFile((File) newValue);
@@ -489,17 +461,20 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
    {
       switch (featureID)
       {
+         case MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID :
+            setGroupId(GROUP_ID_EDEFAULT);
+            return;
+         case MavenModelPackage.MAVEN_ARTIFACT__ARTIFACT_ID :
+            setArtifactId(ARTIFACT_ID_EDEFAULT);
+            return;
+         case MavenModelPackage.MAVEN_ARTIFACT__VERSION :
+            setVersion(VERSION_EDEFAULT);
+            return;
          case MavenModelPackage.MAVEN_ARTIFACT__CLASSIFIER :
             setClassifier(CLASSIFIER_EDEFAULT);
             return;
          case MavenModelPackage.MAVEN_ARTIFACT__TYPE :
             setType(TYPE_EDEFAULT);
-            return;
-         case MavenModelPackage.MAVEN_ARTIFACT__EXTENSIONS :
-            getExtensions().clear();
-            return;
-         case MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS :
-            getAnnotations().clear();
             return;
          case MavenModelPackage.MAVEN_ARTIFACT__FILE :
             setFile(FILE_EDEFAULT);
@@ -519,14 +494,16 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
    {
       switch (featureID)
       {
+         case MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID :
+            return GROUP_ID_EDEFAULT == null ? groupId != null : !GROUP_ID_EDEFAULT.equals(groupId);
+         case MavenModelPackage.MAVEN_ARTIFACT__ARTIFACT_ID :
+            return ARTIFACT_ID_EDEFAULT == null ? artifactId != null : !ARTIFACT_ID_EDEFAULT.equals(artifactId);
+         case MavenModelPackage.MAVEN_ARTIFACT__VERSION :
+            return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
          case MavenModelPackage.MAVEN_ARTIFACT__CLASSIFIER :
             return CLASSIFIER_EDEFAULT == null ? classifier != null : !CLASSIFIER_EDEFAULT.equals(classifier);
          case MavenModelPackage.MAVEN_ARTIFACT__TYPE :
             return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-         case MavenModelPackage.MAVEN_ARTIFACT__EXTENSIONS :
-            return extensions != null && !extensions.isEmpty();
-         case MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS :
-            return annotations != null && !annotations.isEmpty();
          case MavenModelPackage.MAVEN_ARTIFACT__FILE :
             return FILE_EDEFAULT == null ? file != null : !FILE_EDEFAULT.equals(file);
       }
@@ -542,39 +519,41 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
    @Override
    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
    {
-      if (baseClass == Classified.class)
+      if (baseClass == MavenArtifactConflictCoordinates.class)
+      {
+         switch (derivedFeatureID)
+         {
+            case MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID :
+               return MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID;
+            case MavenModelPackage.MAVEN_ARTIFACT__ARTIFACT_ID :
+               return MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID;
+            default :
+               return -1;
+         }
+      }
+      if (baseClass == MavenProjectCoordinates.class)
+      {
+         switch (derivedFeatureID)
+         {
+            case MavenModelPackage.MAVEN_ARTIFACT__VERSION :
+               return MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION;
+            default :
+               return -1;
+         }
+      }
+      if (baseClass == MavenClassified.class)
       {
          switch (derivedFeatureID)
          {
             case MavenModelPackage.MAVEN_ARTIFACT__CLASSIFIER :
-               return MavenModelPackage.CLASSIFIED__CLASSIFIER;
+               return MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER;
             case MavenModelPackage.MAVEN_ARTIFACT__TYPE :
-               return MavenModelPackage.CLASSIFIED__TYPE;
+               return MavenModelPackage.MAVEN_CLASSIFIED__TYPE;
             default :
                return -1;
          }
       }
-      if (baseClass == Extendable.class)
-      {
-         switch (derivedFeatureID)
-         {
-            case MavenModelPackage.MAVEN_ARTIFACT__EXTENSIONS :
-               return CommonModelingPackage.EXTENDABLE__EXTENSIONS;
-            default :
-               return -1;
-         }
-      }
-      if (baseClass == Annotatable.class)
-      {
-         switch (derivedFeatureID)
-         {
-            case MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS :
-               return CommonModelingPackage.ANNOTATABLE__ANNOTATIONS;
-            default :
-               return -1;
-         }
-      }
-      if (baseClass == XAnnotatable.class)
+      if (baseClass == MavenArtifactCoordinates.class)
       {
          switch (derivedFeatureID)
          {
@@ -594,39 +573,41 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
    @Override
    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
    {
-      if (baseClass == Classified.class)
+      if (baseClass == MavenArtifactConflictCoordinates.class)
       {
          switch (baseFeatureID)
          {
-            case MavenModelPackage.CLASSIFIED__CLASSIFIER :
+            case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID :
+               return MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID;
+            case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID :
+               return MavenModelPackage.MAVEN_ARTIFACT__ARTIFACT_ID;
+            default :
+               return -1;
+         }
+      }
+      if (baseClass == MavenProjectCoordinates.class)
+      {
+         switch (baseFeatureID)
+         {
+            case MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION :
+               return MavenModelPackage.MAVEN_ARTIFACT__VERSION;
+            default :
+               return -1;
+         }
+      }
+      if (baseClass == MavenClassified.class)
+      {
+         switch (baseFeatureID)
+         {
+            case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
                return MavenModelPackage.MAVEN_ARTIFACT__CLASSIFIER;
-            case MavenModelPackage.CLASSIFIED__TYPE :
+            case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
                return MavenModelPackage.MAVEN_ARTIFACT__TYPE;
             default :
                return -1;
          }
       }
-      if (baseClass == Extendable.class)
-      {
-         switch (baseFeatureID)
-         {
-            case CommonModelingPackage.EXTENDABLE__EXTENSIONS :
-               return MavenModelPackage.MAVEN_ARTIFACT__EXTENSIONS;
-            default :
-               return -1;
-         }
-      }
-      if (baseClass == Annotatable.class)
-      {
-         switch (baseFeatureID)
-         {
-            case CommonModelingPackage.ANNOTATABLE__ANNOTATIONS :
-               return MavenModelPackage.MAVEN_ARTIFACT__ANNOTATIONS;
-            default :
-               return -1;
-         }
-      }
-      if (baseClass == XAnnotatable.class)
+      if (baseClass == MavenArtifactCoordinates.class)
       {
          switch (baseFeatureID)
          {
@@ -650,7 +631,13 @@ public class MavenArtifactImpl extends VersionedIdentifiableImpl implements Mave
          return super.toString();
 
       StringBuffer result = new StringBuffer(super.toString());
-      result.append(" (classifier: ");
+      result.append(" (groupId: ");
+      result.append(groupId);
+      result.append(", artifactId: ");
+      result.append(artifactId);
+      result.append(", version: ");
+      result.append(version);
+      result.append(", classifier: ");
       result.append(classifier);
       result.append(", type: ");
       result.append(type);

@@ -12,16 +12,20 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.sourcepit.common.maven.model.Classified;
+import org.sourcepit.common.maven.model.ArtifactConflictKey;
+import org.sourcepit.common.maven.model.ArtifactKey;
 import org.sourcepit.common.maven.model.DependencyDeclaration;
-import org.sourcepit.common.maven.model.Identifiable;
 import org.sourcepit.common.maven.model.MavenArtifact;
+import org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates;
+import org.sourcepit.common.maven.model.MavenArtifactCoordinates;
+import org.sourcepit.common.maven.model.MavenClassified;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelFactory;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.MavenProject;
+import org.sourcepit.common.maven.model.MavenProjectCoordinates;
+import org.sourcepit.common.maven.model.ProjectKey;
 import org.sourcepit.common.maven.model.Scope;
-import org.sourcepit.common.maven.model.VersionedIdentifiable;
 import org.sourcepit.common.modeling.CommonModelingPackage;
 
 /**
@@ -55,7 +59,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   private EClass identifiableEClass = null;
+   private EClass mavenArtifactConflictCoordinatesEClass = null;
 
    /**
     * <!-- begin-user-doc -->
@@ -63,7 +67,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   private EClass versionedIdentifiableEClass = null;
+   private EClass mavenProjectCoordinatesEClass = null;
 
    /**
     * <!-- begin-user-doc -->
@@ -71,7 +75,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   private EClass classifiedEClass = null;
+   private EClass mavenClassifiedEClass = null;
 
    /**
     * <!-- begin-user-doc -->
@@ -95,6 +99,14 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
+   private EClass mavenArtifactCoordinatesEClass = null;
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
    private EEnum scopeEEnum = null;
 
    /**
@@ -104,6 +116,30 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * @generated
     */
    private EDataType nullableScopeEDataType = null;
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   private EDataType artifactConflictKeyEDataType = null;
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   private EDataType projectKeyEDataType = null;
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   private EDataType artifactKeyEDataType = null;
 
    /**
     * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -214,9 +250,9 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenDependency_VersionRange()
+   public EClass getMavenArtifactConflictCoordinates()
    {
-      return (EAttribute) mavenDependencyEClass.getEStructuralFeatures().get(0);
+      return mavenArtifactConflictCoordinatesEClass;
    }
 
    /**
@@ -225,9 +261,9 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenDependency_Scope()
+   public EAttribute getMavenArtifactConflictCoordinates_GroupId()
    {
-      return (EAttribute) mavenDependencyEClass.getEStructuralFeatures().get(1);
+      return (EAttribute) mavenArtifactConflictCoordinatesEClass.getEStructuralFeatures().get(0);
    }
 
    /**
@@ -236,9 +272,9 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenDependency_Optional()
+   public EAttribute getMavenArtifactConflictCoordinates_ArtifactId()
    {
-      return (EAttribute) mavenDependencyEClass.getEStructuralFeatures().get(2);
+      return (EAttribute) mavenArtifactConflictCoordinatesEClass.getEStructuralFeatures().get(1);
    }
 
    /**
@@ -247,9 +283,9 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EClass getIdentifiable()
+   public EClass getMavenProjectCoordinates()
    {
-      return identifiableEClass;
+      return mavenProjectCoordinatesEClass;
    }
 
    /**
@@ -258,9 +294,9 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getIdentifiable_GroupId()
+   public EAttribute getMavenProjectCoordinates_Version()
    {
-      return (EAttribute) identifiableEClass.getEStructuralFeatures().get(0);
+      return (EAttribute) mavenProjectCoordinatesEClass.getEStructuralFeatures().get(0);
    }
 
    /**
@@ -269,9 +305,9 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getIdentifiable_ArtifactId()
+   public EClass getMavenClassified()
    {
-      return (EAttribute) identifiableEClass.getEStructuralFeatures().get(1);
+      return mavenClassifiedEClass;
    }
 
    /**
@@ -280,9 +316,9 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EClass getVersionedIdentifiable()
+   public EAttribute getMavenClassified_Classifier()
    {
-      return versionedIdentifiableEClass;
+      return (EAttribute) mavenClassifiedEClass.getEStructuralFeatures().get(0);
    }
 
    /**
@@ -291,42 +327,9 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getVersionedIdentifiable_Version()
+   public EAttribute getMavenClassified_Type()
    {
-      return (EAttribute) versionedIdentifiableEClass.getEStructuralFeatures().get(0);
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public EClass getClassified()
-   {
-      return classifiedEClass;
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public EAttribute getClassified_Classifier()
-   {
-      return (EAttribute) classifiedEClass.getEStructuralFeatures().get(0);
-   }
-
-   /**
-    * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
-    * 
-    * @generated
-    */
-   public EAttribute getClassified_Type()
-   {
-      return (EAttribute) classifiedEClass.getEStructuralFeatures().get(1);
+      return (EAttribute) mavenClassifiedEClass.getEStructuralFeatures().get(1);
    }
 
    /**
@@ -434,6 +437,17 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
+   public EClass getMavenArtifactCoordinates()
+   {
+      return mavenArtifactCoordinatesEClass;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
    public EEnum getScope()
    {
       return scopeEEnum;
@@ -448,6 +462,39 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
    public EDataType getNullableScope()
    {
       return nullableScopeEDataType;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EDataType getArtifactConflictKey()
+   {
+      return artifactConflictKeyEDataType;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EDataType getProjectKey()
+   {
+      return projectKeyEDataType;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @generated
+    */
+   public EDataType getArtifactKey()
+   {
+      return artifactKeyEDataType;
    }
 
    /**
@@ -488,20 +535,17 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       createEAttribute(mavenArtifactEClass, MAVEN_ARTIFACT__FILE);
 
       mavenDependencyEClass = createEClass(MAVEN_DEPENDENCY);
-      createEAttribute(mavenDependencyEClass, MAVEN_DEPENDENCY__VERSION_RANGE);
-      createEAttribute(mavenDependencyEClass, MAVEN_DEPENDENCY__SCOPE);
-      createEAttribute(mavenDependencyEClass, MAVEN_DEPENDENCY__OPTIONAL);
 
-      identifiableEClass = createEClass(IDENTIFIABLE);
-      createEAttribute(identifiableEClass, IDENTIFIABLE__GROUP_ID);
-      createEAttribute(identifiableEClass, IDENTIFIABLE__ARTIFACT_ID);
+      mavenArtifactConflictCoordinatesEClass = createEClass(MAVEN_ARTIFACT_CONFLICT_COORDINATES);
+      createEAttribute(mavenArtifactConflictCoordinatesEClass, MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID);
+      createEAttribute(mavenArtifactConflictCoordinatesEClass, MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID);
 
-      versionedIdentifiableEClass = createEClass(VERSIONED_IDENTIFIABLE);
-      createEAttribute(versionedIdentifiableEClass, VERSIONED_IDENTIFIABLE__VERSION);
+      mavenProjectCoordinatesEClass = createEClass(MAVEN_PROJECT_COORDINATES);
+      createEAttribute(mavenProjectCoordinatesEClass, MAVEN_PROJECT_COORDINATES__VERSION);
 
-      classifiedEClass = createEClass(CLASSIFIED);
-      createEAttribute(classifiedEClass, CLASSIFIED__CLASSIFIER);
-      createEAttribute(classifiedEClass, CLASSIFIED__TYPE);
+      mavenClassifiedEClass = createEClass(MAVEN_CLASSIFIED);
+      createEAttribute(mavenClassifiedEClass, MAVEN_CLASSIFIED__CLASSIFIER);
+      createEAttribute(mavenClassifiedEClass, MAVEN_CLASSIFIED__TYPE);
 
       mavenProjectEClass = createEClass(MAVEN_PROJECT);
       createEAttribute(mavenProjectEClass, MAVEN_PROJECT__PACKAGING);
@@ -514,11 +558,16 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       createEAttribute(dependencyDeclarationEClass, DEPENDENCY_DECLARATION__SCOPE);
       createEAttribute(dependencyDeclarationEClass, DEPENDENCY_DECLARATION__OPTIONAL);
 
+      mavenArtifactCoordinatesEClass = createEClass(MAVEN_ARTIFACT_COORDINATES);
+
       // Create enums
       scopeEEnum = createEEnum(SCOPE);
 
       // Create data types
       nullableScopeEDataType = createEDataType(NULLABLE_SCOPE);
+      artifactConflictKeyEDataType = createEDataType(ARTIFACT_CONFLICT_KEY);
+      projectKeyEDataType = createEDataType(PROJECT_KEY);
+      artifactKeyEDataType = createEDataType(ARTIFACT_KEY);
    }
 
    /**
@@ -557,17 +606,17 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       // Set bounds for type parameters
 
       // Add supertypes to classes
-      mavenArtifactEClass.getESuperTypes().add(this.getVersionedIdentifiable());
-      mavenArtifactEClass.getESuperTypes().add(this.getClassified());
       mavenArtifactEClass.getESuperTypes().add(theCommonModelingPackage.getXAnnotatable());
-      mavenDependencyEClass.getESuperTypes().add(this.getIdentifiable());
-      mavenDependencyEClass.getESuperTypes().add(this.getClassified());
+      mavenArtifactEClass.getESuperTypes().add(this.getMavenArtifactCoordinates());
+      mavenDependencyEClass.getESuperTypes().add(this.getDependencyDeclaration());
       mavenDependencyEClass.getESuperTypes().add(theCommonModelingPackage.getXAnnotatable());
-      versionedIdentifiableEClass.getESuperTypes().add(this.getIdentifiable());
-      mavenProjectEClass.getESuperTypes().add(this.getVersionedIdentifiable());
+      mavenProjectCoordinatesEClass.getESuperTypes().add(this.getMavenArtifactConflictCoordinates());
+      mavenProjectEClass.getESuperTypes().add(this.getMavenProjectCoordinates());
       mavenProjectEClass.getESuperTypes().add(theCommonModelingPackage.getXAnnotatable());
-      dependencyDeclarationEClass.getESuperTypes().add(this.getIdentifiable());
-      dependencyDeclarationEClass.getESuperTypes().add(this.getClassified());
+      dependencyDeclarationEClass.getESuperTypes().add(this.getMavenArtifactConflictCoordinates());
+      dependencyDeclarationEClass.getESuperTypes().add(this.getMavenClassified());
+      mavenArtifactCoordinatesEClass.getESuperTypes().add(this.getMavenProjectCoordinates());
+      mavenArtifactCoordinatesEClass.getESuperTypes().add(this.getMavenClassified());
 
       // Initialize classes and features; add operations and parameters
       initEClass(mavenArtifactEClass, MavenArtifact.class, "MavenArtifact", !IS_ABSTRACT, !IS_INTERFACE,
@@ -578,35 +627,33 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
 
       initEClass(mavenDependencyEClass, MavenDependency.class, "MavenDependency", !IS_ABSTRACT, !IS_INTERFACE,
          IS_GENERATED_INSTANCE_CLASS);
-      initEAttribute(getMavenDependency_VersionRange(), ecorePackage.getEString(), "versionRange", null, 0, 1,
-         MavenDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-         !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getMavenDependency_Scope(), ecorePackage.getEString(), "scope", "compile", 0, 1,
-         MavenDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-         !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getMavenDependency_Optional(), ecorePackage.getEBoolean(), "optional", null, 0, 1,
-         MavenDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-         !IS_DERIVED, IS_ORDERED);
 
-      initEClass(identifiableEClass, Identifiable.class, "Identifiable", IS_ABSTRACT, !IS_INTERFACE,
-         IS_GENERATED_INSTANCE_CLASS);
-      initEAttribute(getIdentifiable_GroupId(), ecorePackage.getEString(), "groupId", null, 1, 1, Identifiable.class,
-         !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getIdentifiable_ArtifactId(), ecorePackage.getEString(), "artifactId", null, 1, 1,
-         Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-         !IS_DERIVED, IS_ORDERED);
+      initEClass(mavenArtifactConflictCoordinatesEClass, MavenArtifactConflictCoordinates.class,
+         "MavenArtifactConflictCoordinates", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+      initEAttribute(getMavenArtifactConflictCoordinates_GroupId(), ecorePackage.getEString(), "groupId", null, 1, 1,
+         MavenArtifactConflictCoordinates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+         IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+      initEAttribute(getMavenArtifactConflictCoordinates_ArtifactId(), ecorePackage.getEString(), "artifactId", null,
+         1, 1, MavenArtifactConflictCoordinates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+         !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-      initEClass(versionedIdentifiableEClass, VersionedIdentifiable.class, "VersionedIdentifiable", IS_ABSTRACT,
+      addEOperation(mavenArtifactConflictCoordinatesEClass, this.getArtifactConflictKey(), "getArtifactConflictKey", 1,
+         1, IS_UNIQUE, IS_ORDERED);
+
+      initEClass(mavenProjectCoordinatesEClass, MavenProjectCoordinates.class, "MavenProjectCoordinates", IS_ABSTRACT,
          !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-      initEAttribute(getVersionedIdentifiable_Version(), ecorePackage.getEString(), "version", null, 1, 1,
-         VersionedIdentifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+      initEAttribute(getMavenProjectCoordinates_Version(), ecorePackage.getEString(), "version", null, 1, 1,
+         MavenProjectCoordinates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
 
-      initEClass(classifiedEClass, Classified.class, "Classified", IS_ABSTRACT, !IS_INTERFACE,
+      addEOperation(mavenProjectCoordinatesEClass, this.getProjectKey(), "getProjectKey", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+      initEClass(mavenClassifiedEClass, MavenClassified.class, "MavenClassified", IS_ABSTRACT, !IS_INTERFACE,
          IS_GENERATED_INSTANCE_CLASS);
-      initEAttribute(getClassified_Classifier(), ecorePackage.getEString(), "classifier", null, 0, 1, Classified.class,
-         !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-      initEAttribute(getClassified_Type(), ecorePackage.getEString(), "type", "jar", 0, 1, Classified.class,
+      initEAttribute(getMavenClassified_Classifier(), ecorePackage.getEString(), "classifier", null, 0, 1,
+         MavenClassified.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+         !IS_DERIVED, IS_ORDERED);
+      initEAttribute(getMavenClassified_Type(), ecorePackage.getEString(), "type", "jar", 0, 1, MavenClassified.class,
          !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
       initEClass(mavenProjectEClass, MavenProject.class, "MavenProject", !IS_ABSTRACT, !IS_INTERFACE,
@@ -639,6 +686,12 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
          DependencyDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
          !IS_DERIVED, IS_ORDERED);
 
+      initEClass(mavenArtifactCoordinatesEClass, MavenArtifactCoordinates.class, "MavenArtifactCoordinates",
+         IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+      addEOperation(mavenArtifactCoordinatesEClass, this.getArtifactKey(), "getArtifactKey", 1, 1, IS_UNIQUE,
+         IS_ORDERED);
+
       // Initialize enums and add enum literals
       initEEnum(scopeEEnum, Scope.class, "Scope");
       addEEnumLiteral(scopeEEnum, Scope.COMPILE);
@@ -650,6 +703,11 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
 
       // Initialize data types
       initEDataType(nullableScopeEDataType, Scope.class, "NullableScope", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+      initEDataType(artifactConflictKeyEDataType, ArtifactConflictKey.class, "ArtifactConflictKey", IS_SERIALIZABLE,
+         !IS_GENERATED_INSTANCE_CLASS);
+      initEDataType(projectKeyEDataType, ProjectKey.class, "ProjectKey", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+      initEDataType(artifactKeyEDataType, ArtifactKey.class, "ArtifactKey", IS_SERIALIZABLE,
+         !IS_GENERATED_INSTANCE_CLASS);
 
       // Create resource
       createResource(eNS_URI);

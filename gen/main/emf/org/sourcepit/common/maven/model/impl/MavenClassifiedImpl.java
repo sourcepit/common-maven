@@ -10,68 +10,68 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.sourcepit.common.maven.model.Identifiable;
+import org.sourcepit.common.maven.model.MavenClassified;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Identifiable</b></em>'.
+ * An implementation of the model object '<em><b>Maven Classified</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.sourcepit.common.maven.model.impl.IdentifiableImpl#getGroupId <em>Group Id</em>}</li>
- * <li>{@link org.sourcepit.common.maven.model.impl.IdentifiableImpl#getArtifactId <em>Artifact Id</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.impl.MavenClassifiedImpl#getClassifier <em>Classifier</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.impl.MavenClassifiedImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  * 
  * @generated
  */
-public abstract class IdentifiableImpl extends EObjectImpl implements Identifiable
+public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenClassified
 {
    /**
-    * The default value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
+    * The default value of the '{@link #getClassifier() <em>Classifier</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @see #getGroupId()
+    * @see #getClassifier()
     * @generated
     * @ordered
     */
-   protected static final String GROUP_ID_EDEFAULT = null;
+   protected static final String CLASSIFIER_EDEFAULT = null;
 
    /**
-    * The cached value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
+    * The cached value of the '{@link #getClassifier() <em>Classifier</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @see #getGroupId()
+    * @see #getClassifier()
     * @generated
     * @ordered
     */
-   protected String groupId = GROUP_ID_EDEFAULT;
+   protected String classifier = CLASSIFIER_EDEFAULT;
 
    /**
-    * The default value of the '{@link #getArtifactId() <em>Artifact Id</em>}' attribute.
+    * The default value of the '{@link #getType() <em>Type</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @see #getArtifactId()
+    * @see #getType()
     * @generated
     * @ordered
     */
-   protected static final String ARTIFACT_ID_EDEFAULT = null;
+   protected static final String TYPE_EDEFAULT = "jar";
 
    /**
-    * The cached value of the '{@link #getArtifactId() <em>Artifact Id</em>}' attribute.
+    * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
-    * @see #getArtifactId()
+    * @see #getType()
     * @generated
     * @ordered
     */
-   protected String artifactId = ARTIFACT_ID_EDEFAULT;
+   protected String type = TYPE_EDEFAULT;
 
    /**
     * <!-- begin-user-doc -->
@@ -79,7 +79,7 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
     * 
     * @generated
     */
-   protected IdentifiableImpl()
+   protected MavenClassifiedImpl()
    {
       super();
    }
@@ -93,7 +93,7 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
    @Override
    protected EClass eStaticClass()
    {
-      return MavenModelPackage.Literals.IDENTIFIABLE;
+      return MavenModelPackage.Literals.MAVEN_CLASSIFIED;
    }
 
    /**
@@ -102,9 +102,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
     * 
     * @generated
     */
-   public String getGroupId()
+   public String getClassifier()
    {
-      return groupId;
+      return classifier;
    }
 
    /**
@@ -113,13 +113,13 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
     * 
     * @generated
     */
-   public void setGroupId(String newGroupId)
+   public void setClassifier(String newClassifier)
    {
-      String oldGroupId = groupId;
-      groupId = newGroupId;
+      String oldClassifier = classifier;
+      classifier = newClassifier;
       if (eNotificationRequired())
-         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.IDENTIFIABLE__GROUP_ID, oldGroupId,
-            groupId));
+         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER,
+            oldClassifier, classifier));
    }
 
    /**
@@ -128,9 +128,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
     * 
     * @generated
     */
-   public String getArtifactId()
+   public String getType()
    {
-      return artifactId;
+      return type;
    }
 
    /**
@@ -139,13 +139,12 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
     * 
     * @generated
     */
-   public void setArtifactId(String newArtifactId)
+   public void setType(String newType)
    {
-      String oldArtifactId = artifactId;
-      artifactId = newArtifactId;
+      String oldType = type;
+      type = newType;
       if (eNotificationRequired())
-         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.IDENTIFIABLE__ARTIFACT_ID,
-            oldArtifactId, artifactId));
+         eNotify(new ENotificationImpl(this, Notification.SET, MavenModelPackage.MAVEN_CLASSIFIED__TYPE, oldType, type));
    }
 
    /**
@@ -159,10 +158,10 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
    {
       switch (featureID)
       {
-         case MavenModelPackage.IDENTIFIABLE__GROUP_ID :
-            return getGroupId();
-         case MavenModelPackage.IDENTIFIABLE__ARTIFACT_ID :
-            return getArtifactId();
+         case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
+            return getClassifier();
+         case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
+            return getType();
       }
       return super.eGet(featureID, resolve, coreType);
    }
@@ -178,11 +177,11 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
    {
       switch (featureID)
       {
-         case MavenModelPackage.IDENTIFIABLE__GROUP_ID :
-            setGroupId((String) newValue);
+         case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
+            setClassifier((String) newValue);
             return;
-         case MavenModelPackage.IDENTIFIABLE__ARTIFACT_ID :
-            setArtifactId((String) newValue);
+         case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
+            setType((String) newValue);
             return;
       }
       super.eSet(featureID, newValue);
@@ -199,11 +198,11 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
    {
       switch (featureID)
       {
-         case MavenModelPackage.IDENTIFIABLE__GROUP_ID :
-            setGroupId(GROUP_ID_EDEFAULT);
+         case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
+            setClassifier(CLASSIFIER_EDEFAULT);
             return;
-         case MavenModelPackage.IDENTIFIABLE__ARTIFACT_ID :
-            setArtifactId(ARTIFACT_ID_EDEFAULT);
+         case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
+            setType(TYPE_EDEFAULT);
             return;
       }
       super.eUnset(featureID);
@@ -220,10 +219,10 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
    {
       switch (featureID)
       {
-         case MavenModelPackage.IDENTIFIABLE__GROUP_ID :
-            return GROUP_ID_EDEFAULT == null ? groupId != null : !GROUP_ID_EDEFAULT.equals(groupId);
-         case MavenModelPackage.IDENTIFIABLE__ARTIFACT_ID :
-            return ARTIFACT_ID_EDEFAULT == null ? artifactId != null : !ARTIFACT_ID_EDEFAULT.equals(artifactId);
+         case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
+            return CLASSIFIER_EDEFAULT == null ? classifier != null : !CLASSIFIER_EDEFAULT.equals(classifier);
+         case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
+            return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       }
       return super.eIsSet(featureID);
    }
@@ -241,12 +240,12 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
          return super.toString();
 
       StringBuffer result = new StringBuffer(super.toString());
-      result.append(" (groupId: ");
-      result.append(groupId);
-      result.append(", artifactId: ");
-      result.append(artifactId);
+      result.append(" (classifier: ");
+      result.append(classifier);
+      result.append(", type: ");
+      result.append(type);
       result.append(')');
       return result.toString();
    }
 
-} // IdentifiableImpl
+} // MavenClassifiedImpl

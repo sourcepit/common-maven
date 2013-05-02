@@ -29,7 +29,7 @@ import org.sourcepit.common.modeling.XAnnotatable;
  * @model
  * @generated
  */
-public interface MavenProject extends VersionedIdentifiable, XAnnotatable
+public interface MavenProject extends MavenProjectCoordinates, XAnnotatable
 {
    /**
     * Returns the value of the '<em><b>Packaging</b></em>' attribute.

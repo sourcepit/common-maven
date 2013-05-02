@@ -10,22 +10,22 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Identifiable</b></em>'.
+ * A representation of the model object '<em><b>Maven Artifact Conflict Coordinates</b></em>'.
  * <!-- end-user-doc -->
  * 
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.sourcepit.common.maven.model.Identifiable#getGroupId <em>Group Id</em>}</li>
- * <li>{@link org.sourcepit.common.maven.model.Identifiable#getArtifactId <em>Artifact Id</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates#getGroupId <em>Group Id</em>}</li>
+ * <li>{@link org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates#getArtifactId <em>Artifact Id</em>}</li>
  * </ul>
  * </p>
  * 
- * @see org.sourcepit.common.maven.model.MavenModelPackage#getIdentifiable()
+ * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenArtifactConflictCoordinates()
  * @model abstract="true"
  * @generated
  */
-public interface Identifiable extends EObject
+public interface MavenArtifactConflictCoordinates extends EObject
 {
    /**
     * Returns the value of the '<em><b>Group Id</b></em>' attribute.
@@ -38,15 +38,15 @@ public interface Identifiable extends EObject
     * 
     * @return the value of the '<em>Group Id</em>' attribute.
     * @see #setGroupId(String)
-    * @see org.sourcepit.common.maven.model.MavenModelPackage#getIdentifiable_GroupId()
+    * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenArtifactConflictCoordinates_GroupId()
     * @model required="true"
     * @generated
     */
    String getGroupId();
 
    /**
-    * Sets the value of the '{@link org.sourcepit.common.maven.model.Identifiable#getGroupId <em>Group Id</em>}'
-    * attribute.
+    * Sets the value of the '{@link org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates#getGroupId
+    * <em>Group Id</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
@@ -67,15 +67,15 @@ public interface Identifiable extends EObject
     * 
     * @return the value of the '<em>Artifact Id</em>' attribute.
     * @see #setArtifactId(String)
-    * @see org.sourcepit.common.maven.model.MavenModelPackage#getIdentifiable_ArtifactId()
+    * @see org.sourcepit.common.maven.model.MavenModelPackage#getMavenArtifactConflictCoordinates_ArtifactId()
     * @model required="true"
     * @generated
     */
    String getArtifactId();
 
    /**
-    * Sets the value of the '{@link org.sourcepit.common.maven.model.Identifiable#getArtifactId <em>Artifact Id</em>}'
-    * attribute.
+    * Sets the value of the '{@link org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates#getArtifactId
+    * <em>Artifact Id</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * 
@@ -85,4 +85,13 @@ public interface Identifiable extends EObject
     */
    void setArtifactId(String value);
 
-} // Identifiable
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * 
+    * @model kind="operation" dataType="org.sourcepit.common.maven.model.ArtifactConflictKey" required="true"
+    * @generated
+    */
+   ArtifactConflictKey getArtifactConflictKey();
+
+} // MavenArtifactConflictCoordinates
