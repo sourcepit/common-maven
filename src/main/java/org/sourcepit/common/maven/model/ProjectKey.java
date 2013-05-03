@@ -6,7 +6,11 @@
 
 package org.sourcepit.common.maven.model;
 
+import java.util.regex.Matcher;
+
 import javax.validation.constraints.NotNull;
+
+import org.apache.maven.artifact.Artifact;
 
 public class ProjectKey
 {
@@ -17,7 +21,17 @@ public class ProjectKey
    public ProjectKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String version)
    {
       this.artifactConflictKey = new ArtifactConflictKey(groupId, artifactId);
-      this.version = version;
+      this.version = normalizeSnapshotVersion(version);
+   }
+
+   private static String normalizeSnapshotVersion(String version)
+   {
+      Matcher matcher = Artifact.VERSION_FILE_PATTERN.matcher(version);
+      if (matcher.matches())
+      {
+         return matcher.group(1) + "-SNAPSHOT";
+      }
+      return version;
    }
 
    public ArtifactConflictKey getArtifactConflictKey()
