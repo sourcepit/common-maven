@@ -28,15 +28,13 @@ import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.DefaultModelWriter;
 import org.apache.maven.plugin.LegacySupport;
+import org.codehaus.plexus.PlexusContainer;
 
 @Named
 public class ArtifactRepositoryFacade
 {
    @Inject
-   private ArtifactDeployer deployer;
-
-   @Inject
-   private ArtifactInstaller installer;
+   private PlexusContainer plexus;
 
    @Inject
    private LegacySupport legacySupport;
@@ -133,9 +131,22 @@ public class ArtifactRepositoryFacade
       final MavenSession session = legacySupport.getSession();
       try
       {
+         final ArtifactInstaller installer = install ? plexus.lookup(ArtifactInstaller.class) : null;
+         final ArtifactDeployer deployer = deploy ? plexus.lookup(ArtifactDeployer.class) : null;
+
          legacySupport.setSession(result.getSession());
 
          final ArtifactRepository deploymentRepository = embeddedMaven.getRemoteRepository();
+
+         final Artifact artifact = embeddedMaven.createArtifact(pom);
+         if (install)
+         {
+            installer.install(source, artifact, localRepository);
+         }
+         if (deploy)
+         {
+            deployer.deploy(source, artifact, deploymentRepository, localRepository);
+         }
 
          if (!"pom".equals(pom.getPackaging()))
          {
@@ -157,16 +168,6 @@ public class ArtifactRepositoryFacade
             {
                FileUtils.forceDelete(pomFile);
             }
-         }
-
-         final Artifact artifact = embeddedMaven.createArtifact(pom);
-         if (install)
-         {
-            installer.install(source, artifact, localRepository);
-         }
-         if (deploy)
-         {
-            deployer.deploy(source, artifact, deploymentRepository, localRepository);
          }
       }
       catch (RuntimeException e)
