@@ -8,6 +8,8 @@ package org.sourcepit.common.maven.model.util;
 
 import static com.google.common.base.Preconditions.checkState;
 
+import java.util.regex.Matcher;
+
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.ObjectUtils;
@@ -270,6 +272,16 @@ public final class MavenModelUtils
       @NotNull String type, String classifier)
    {
       return new VersionConflictKey(groupId, artifactId, type, classifier);
+   }
+   
+   public static String normalizeSnapshotVersion(@NotNull String version)
+   {
+      Matcher matcher = Artifact.VERSION_FILE_PATTERN.matcher(version);
+      if (matcher.matches())
+      {
+         return matcher.group(1) + "-SNAPSHOT";
+      }
+      return version;
    }
 
    @NotNull
