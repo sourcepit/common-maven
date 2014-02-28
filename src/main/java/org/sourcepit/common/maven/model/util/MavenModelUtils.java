@@ -7,7 +7,9 @@
 package org.sourcepit.common.maven.model.util;
 
 import static com.google.common.base.Preconditions.checkState;
+import static org.apache.maven.model.Plugin.constructKey;
 
+import java.util.Collection;
 import java.util.regex.Matcher;
 
 import javax.validation.constraints.NotNull;
@@ -20,6 +22,9 @@ import org.apache.maven.model.Build;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginContainer;
+import org.apache.maven.model.PluginExecution;
+import org.apache.maven.model.PluginManagement;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.sourcepit.common.maven.model.ArtifactKey;
 import org.sourcepit.common.maven.model.MavenArtifact;
@@ -273,7 +278,7 @@ public final class MavenModelUtils
    {
       return new VersionConflictKey(groupId, artifactId, type, classifier);
    }
-   
+
    public static String normalizeSnapshotVersion(@NotNull String version)
    {
       Matcher matcher = Artifact.VERSION_FILE_PATTERN.matcher(version);
@@ -308,6 +313,17 @@ public final class MavenModelUtils
       return build;
    }
 
+   public static PluginManagement getPluginManagement(@NotNull Build build, boolean createOnDemand)
+   {
+      PluginManagement pluginManagement = build.getPluginManagement();
+      if (pluginManagement == null && createOnDemand)
+      {
+         pluginManagement = new PluginManagement();
+         build.setPluginManagement(pluginManagement);
+      }
+      return pluginManagement;
+   }
+
    public static Plugin getPlugin(@NotNull Model model, String groupId, @NotNull String artifactId,
       boolean createOnDemand)
    {
@@ -321,7 +337,7 @@ public final class MavenModelUtils
 
    private final static String DEFAULT_GROUP_ID = new Plugin().getGroupId();
 
-   public static Plugin getPlugin(@NotNull Build build, String groupId, @NotNull String artifactId,
+   public static Plugin getPlugin(@NotNull PluginContainer build, String groupId, @NotNull String artifactId,
       boolean createOnDemand)
    {
       final String pluginKey = createPluginKey(groupId, artifactId);
@@ -349,5 +365,53 @@ public final class MavenModelUtils
          plugin.setConfiguration(configuration);
       }
       return configuration;
+   }
+
+   public static PluginExecution getPluginExecution(@NotNull Plugin plugin, boolean createOnDemand,
+      @NotNull final String id)
+   {
+      PluginExecution pluginExecution = plugin.getExecutionsAsMap().get(id);
+      if (pluginExecution == null && createOnDemand)
+      {
+         pluginExecution = new PluginExecution();
+         pluginExecution.setId(id);
+         plugin.getExecutions().add(pluginExecution);
+         plugin.flushExecutionMap();
+      }
+      return pluginExecution;
+   }
+
+   public static Plugin getPlugin(@NotNull PluginContainer build, boolean createOnDemand,
+      @NotNull final String groupId, @NotNull final String artifactId, final String version)
+   {
+      Plugin plugin = build.getPluginsAsMap().get(constructKey(groupId, artifactId));
+      if (plugin == null && createOnDemand)
+      {
+         plugin = new Plugin();
+         plugin.setGroupId(groupId);
+         plugin.setArtifactId(artifactId);
+         plugin.setVersion(version);
+         build.getPlugins().add(plugin);
+         build.flushPluginMap();
+      }
+      return plugin;
+   }
+
+   public static Dependency getDependency(@NotNull Collection<Dependency> dependencies, @NotNull String groupId,
+      @NotNull String artifactId)
+   {
+      for (Dependency dependency : dependencies)
+      {
+         if (!groupId.equals(dependency.getGroupId()))
+         {
+            continue;
+         }
+         if (!artifactId.equals(dependency.getArtifactId()))
+         {
+            continue;
+         }
+         return dependency;
+      }
+      return null;
    }
 }

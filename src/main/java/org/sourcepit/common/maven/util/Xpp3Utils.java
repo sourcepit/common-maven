@@ -87,6 +87,19 @@ public final class Xpp3Utils
       }
    }
 
+   public static void setValueNode(@NotNull Xpp3Dom parent, @NotNull String name, String value)
+   {
+      final Xpp3Dom child = parent.getChild(name);
+      if (child == null)
+      {
+         parent.addChild(newValueNode(name, value));
+      }
+      else
+      {
+         child.setValue(value);
+      }
+   }
+
    public static void addValueNode(@NotNull Xpp3Dom parent, @NotNull String name, String value)
    {
       parent.addChild(newValueNode(name, value));
