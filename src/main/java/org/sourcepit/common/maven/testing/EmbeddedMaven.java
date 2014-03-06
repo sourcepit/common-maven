@@ -24,8 +24,8 @@ import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.InvalidRepositoryException;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.artifact.resolver.filter.CumulativeScopeArtifactFilter;
-import org.apache.maven.cli.BatchModeMavenTransferListener;
-import org.apache.maven.cli.ExecutionEventLogger;
+import org.apache.maven.cli.transfer.BatchModeMavenTransferListener;
+import org.apache.maven.cli.event.ExecutionEventLogger;
 import org.apache.maven.eventspy.internal.EventSpyDispatcher;
 import org.apache.maven.execution.DefaultMavenExecutionRequest;
 import org.apache.maven.execution.ExecutionEvent;
@@ -45,7 +45,7 @@ import org.apache.maven.settings.building.DefaultSettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuilder;
 import org.apache.maven.settings.building.SettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuildingResult;
-import org.codehaus.plexus.logging.Logger;
+import org.slf4j.Logger;
 import org.sourcepit.common.maven.util.MavenProjectUtils;
 
 @Named

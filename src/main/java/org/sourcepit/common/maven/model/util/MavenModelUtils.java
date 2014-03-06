@@ -39,7 +39,7 @@ import org.sourcepit.common.modeling.Annotation;
 public final class MavenModelUtils
 {
    @NotNull
-   public static MavenDependency toMavenDependecy(@NotNull org.sonatype.aether.artifact.Artifact artifact)
+   public static MavenDependency toMavenDependecy(@NotNull org.eclipse.aether.artifact.Artifact artifact)
    {
       return toMavenDependecy(RepositoryUtils.toArtifact(artifact));
    }
@@ -81,7 +81,7 @@ public final class MavenModelUtils
    }
 
    @NotNull
-   public static MavenDependency toMavenDependecy(@NotNull org.sonatype.aether.graph.Dependency dependency)
+   public static MavenDependency toMavenDependecy(@NotNull org.eclipse.aether.graph.Dependency dependency)
    {
       final Artifact artifact = RepositoryUtils.toArtifact(dependency.getArtifact());
 
@@ -161,7 +161,7 @@ public final class MavenModelUtils
    }
 
    @NotNull
-   public static MavenArtifact toMavenArtifact(@NotNull org.sonatype.aether.artifact.Artifact artifact)
+   public static MavenArtifact toMavenArtifact(@NotNull org.eclipse.aether.artifact.Artifact artifact)
    {
       return toMavenArtifact(RepositoryUtils.toArtifact(artifact));
    }
@@ -260,7 +260,7 @@ public final class MavenModelUtils
    }
 
    @NotNull
-   public static ArtifactKey toArtifactKey(@NotNull org.sonatype.aether.artifact.Artifact artifact)
+   public static ArtifactKey toArtifactKey(@NotNull org.eclipse.aether.artifact.Artifact artifact)
    {
       return toArtifactKey(RepositoryUtils.toArtifact(artifact));
    }

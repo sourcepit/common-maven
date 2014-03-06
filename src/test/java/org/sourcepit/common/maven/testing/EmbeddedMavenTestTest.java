@@ -8,9 +8,7 @@ package org.sourcepit.common.maven.testing;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.util.List;
@@ -26,6 +24,8 @@ import org.sourcepit.common.maven.AbstractCommonMavenTest;
  */
 public class EmbeddedMavenTestTest extends AbstractCommonMavenTest
 {
+   
+   
    @Test
    public void testBuildProjectWithDependencies() throws Exception
    {

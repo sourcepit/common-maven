@@ -12,41 +12,87 @@ import java.util.Properties;
 
 import javax.inject.Inject;
 
+import org.apache.maven.cli.logging.Slf4jConfiguration;
+import org.apache.maven.cli.logging.Slf4jConfigurationFactory;
+import org.apache.maven.cli.logging.Slf4jLoggerManager;
 import org.apache.maven.execution.MavenExecutionRequest;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.settings.building.SettingsBuildingResult;
 import org.codehaus.plexus.ContainerConfiguration;
+import org.codehaus.plexus.DefaultContainerConfiguration;
+import org.codehaus.plexus.DefaultPlexusContainer;
+import org.codehaus.plexus.PlexusConstants;
+import org.codehaus.plexus.PlexusContainerException;
 import org.codehaus.plexus.classworlds.ClassWorld;
+import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.junit.After;
 import org.junit.Before;
-import org.sourcepit.guplex.test.GuplexTest;
+import org.junit.Rule;
+import org.junit.rules.TestName;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.LoggerFactory;
+
+import com.google.inject.AbstractModule;
 
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public abstract class EmbeddedMavenTest extends GuplexTest
+public abstract class EmbeddedMavenTest
 {
+   @Rule
+   public TestName testName = new TestName();
+
    @Inject
    protected EmbeddedMaven embeddedMaven;
 
-   @Override
-   protected boolean isUseIndex()
-   {
-      return true;
-   }
+   protected DefaultPlexusContainer container;
 
-   @Override
-   protected void customizeContainerConfiguration(ContainerConfiguration containerConfiguration)
-   {
-      super.customizeContainerConfiguration(containerConfiguration);
-      containerConfiguration.setClassWorld(new ClassWorld("plexus.core", getClassLoader()));
-   }
-
-   @Override
    @Before
    public void setUp() throws Exception
    {
-      super.setUp();
+      // init maven like logging
+      final ILoggerFactory slf4jLoggerFactory = LoggerFactory.getILoggerFactory();
+      Slf4jConfiguration slf4jConfiguration = Slf4jConfigurationFactory.getConfiguration(slf4jLoggerFactory);
+      slf4jConfiguration.setRootLoggerLevel(Slf4jConfiguration.Level.INFO);
+      slf4jConfiguration.activate();
+
+      // create a maven like plexus configuration
+      ContainerConfiguration cc = new DefaultContainerConfiguration();
+      cc.setClassWorld(new ClassWorld("plexus.core", getClass().getClassLoader()));
+      cc.setClassPathScanning(PlexusConstants.SCANNING_INDEX);
+      cc.setAutoWiring(true);
+      cc.setName("maven");
+
+      // create container and inject dependencies into this class
+      DefaultPlexusContainer container = null;
+      try
+      {
+         container = new DefaultPlexusContainer(cc, new AbstractModule()
+         {
+            protected void configure()
+            {
+               bind(ILoggerFactory.class).toInstance(slf4jLoggerFactory);
+            }
+         });
+      }
+      catch (PlexusContainerException e)
+      {
+         throw new IllegalStateException(e);
+      }
+      container.setLookupRealm(null);
+      container.setLoggerManager(new Slf4jLoggerManager());
+
+      final ClassRealm testRealm = container.getClassWorld().newRealm(testName.getMethodName());// ,
+
+      container.discoverComponents(testRealm, new AbstractModule()
+      {
+         @Override
+         protected void configure()
+         {
+            requestInjection(EmbeddedMavenTest.this);
+         }
+      });
+
       configure(embeddedMaven);
    }
 
@@ -100,8 +146,24 @@ public abstract class EmbeddedMavenTest extends GuplexTest
    @After
    public void tearDown() throws Exception
    {
-      embeddedMaven.dispose();
-      super.tearDown();
+      if (embeddedMaven != null)
+      {
+         embeddedMaven.dispose();
+      }
+
+      if (null != container)
+      {
+         teardownContainer();
+      }
+   }
+
+   protected synchronized void teardownContainer()
+   {
+      if (null != container)
+      {
+         container.dispose();
+         container = null;
+      }
    }
 
    protected MavenExecutionRequest newMavenExecutionRequest(File pom) throws Exception

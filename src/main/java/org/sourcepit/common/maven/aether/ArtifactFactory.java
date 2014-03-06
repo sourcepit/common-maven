@@ -16,7 +16,7 @@ import javax.inject.Named;
 import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.DefaultArtifact;
 import org.apache.maven.artifact.handler.ArtifactHandler;
-import org.sonatype.aether.artifact.Artifact;
+import org.eclipse.aether.artifact.Artifact;
 import org.sourcepit.common.maven.model.ArtifactKey;
 
 @Named
