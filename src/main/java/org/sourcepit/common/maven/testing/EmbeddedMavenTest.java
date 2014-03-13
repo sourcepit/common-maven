@@ -64,7 +64,6 @@ public abstract class EmbeddedMavenTest
       cc.setName("maven");
 
       // create container and inject dependencies into this class
-      DefaultPlexusContainer container = null;
       try
       {
          container = new DefaultPlexusContainer(cc, new AbstractModule()
@@ -82,9 +81,8 @@ public abstract class EmbeddedMavenTest
       container.setLookupRealm(null);
       container.setLoggerManager(new Slf4jLoggerManager());
 
-      final ClassRealm testRealm = container.getClassWorld().newRealm(testName.getMethodName());// ,
-
-      container.discoverComponents(testRealm, new AbstractModule()
+      final ClassRealm realm = new ClassRealm(container.getClassWorld(), "foo", null);
+      container.discoverComponents(realm, new com.google.inject.AbstractModule()
       {
          @Override
          protected void configure()
@@ -94,6 +92,11 @@ public abstract class EmbeddedMavenTest
       });
 
       configure(embeddedMaven);
+   }
+
+   protected ClassLoader getClassLoader()
+   {
+      return getClass().getClassLoader();
    }
 
    protected void configure(EmbeddedMaven embeddedMaven)
