@@ -19,7 +19,7 @@ import static org.sourcepit.common.maven.model.util.MavenModelUtils.getBuild;
 
 import java.io.File;
 
-import javax.validation.ConstraintViolationException;
+import java.lang.IllegalArgumentException;
 
 import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.Artifact;
@@ -48,7 +48,7 @@ public class MavenModelUtilsTest
          MavenModelUtils.toMavenArtifact((Artifact) null);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -108,7 +108,7 @@ public class MavenModelUtilsTest
          MavenModelUtils.toMavenDependecy((Artifact) null);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -158,7 +158,7 @@ public class MavenModelUtilsTest
          MavenModelUtils.toMavenProject(null);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -198,7 +198,7 @@ public class MavenModelUtilsTest
          MavenModelUtils.createPlugin("", null, "");
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -223,7 +223,7 @@ public class MavenModelUtilsTest
          MavenModelUtils.getBuild(null, false);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -253,7 +253,7 @@ public class MavenModelUtilsTest
          MavenModelUtils.getPlugin((Model) null, null, null, false);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -262,7 +262,7 @@ public class MavenModelUtilsTest
          MavenModelUtils.getPlugin((Build) null, null, null, false);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -271,7 +271,7 @@ public class MavenModelUtilsTest
          MavenModelUtils.getPlugin(new Model(), null, null, false);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -312,7 +312,7 @@ public class MavenModelUtilsTest
          MavenModelUtils.getConfiguration(null, false);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 

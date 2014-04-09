@@ -12,7 +12,7 @@ import static org.apache.maven.model.Plugin.constructKey;
 import java.util.Collection;
 import java.util.regex.Matcher;
 
-import javax.validation.constraints.NotNull;
+import org.sourcepit.common.constraints.NotNull;
 
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.maven.RepositoryUtils;

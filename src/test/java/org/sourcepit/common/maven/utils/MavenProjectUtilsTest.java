@@ -18,7 +18,7 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.util.List;
 
-import javax.validation.ConstraintViolationException;
+import java.lang.IllegalArgumentException;
 
 import org.apache.commons.lang.SystemUtils;
 import org.apache.maven.artifact.Artifact;
@@ -38,7 +38,7 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
          MavenProjectUtils.getOutputDir(null);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -53,7 +53,7 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
          MavenProjectUtils.getOutputDir(project);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalStateException e)
       {
       }
 
@@ -78,7 +78,7 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
          MavenProjectUtils.getTestOutputDir(null);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -93,7 +93,7 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
          MavenProjectUtils.getTestOutputDir(project);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalStateException e)
       {
       }
 
@@ -118,7 +118,7 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
          MavenProjectUtils.findReferencedProject(null, null);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       { // noop
       }
 
@@ -138,7 +138,7 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
          MavenProjectUtils.findReferencedProject(projectA, null);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       { // noop
       }
 

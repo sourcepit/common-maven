@@ -6,7 +6,7 @@
 
 package org.sourcepit.common.maven.model.impl;
 
-import javax.validation.constraints.NotNull;
+import org.sourcepit.common.constraints.NotNull;
 
 import org.sourcepit.common.maven.model.MavenProjectCoordinates;
 import org.sourcepit.common.maven.model.ProjectKey;

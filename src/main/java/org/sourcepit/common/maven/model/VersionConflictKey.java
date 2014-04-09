@@ -8,7 +8,7 @@ package org.sourcepit.common.maven.model;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 
-import javax.validation.constraints.NotNull;
+import org.sourcepit.common.constraints.NotNull;
 
 public class VersionConflictKey
 {

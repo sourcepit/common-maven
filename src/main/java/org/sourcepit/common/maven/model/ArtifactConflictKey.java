@@ -6,7 +6,7 @@
 
 package org.sourcepit.common.maven.model;
 
-import javax.validation.constraints.NotNull;
+import org.sourcepit.common.constraints.NotNull;
 
 public final class ArtifactConflictKey
 {

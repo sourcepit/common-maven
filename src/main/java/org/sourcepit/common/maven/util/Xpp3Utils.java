@@ -6,7 +6,7 @@
 
 package org.sourcepit.common.maven.util;
 
-import javax.validation.constraints.NotNull;
+import org.sourcepit.common.constraints.NotNull;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.Dependency;

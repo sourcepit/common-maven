@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.fail;
 
-import javax.validation.ConstraintViolationException;
+import java.lang.IllegalArgumentException;
 
 import org.apache.maven.model.Dependency;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
@@ -29,7 +29,7 @@ public class Xpp3UtilsTest
          Xpp3Utils.clearChildren(null);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -59,7 +59,7 @@ public class Xpp3UtilsTest
          Xpp3Utils.newValueNode(null, "");
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -82,7 +82,7 @@ public class Xpp3UtilsTest
          Xpp3Utils.addValueNode(null, "foo", "bar");
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -94,7 +94,7 @@ public class Xpp3UtilsTest
          Xpp3Utils.addValueNode(parent, null, "bar");
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
@@ -125,7 +125,7 @@ public class Xpp3UtilsTest
          Xpp3Utils.toDependencyNode(null);
          fail();
       }
-      catch (ConstraintViolationException e)
+      catch (IllegalArgumentException e)
       {
       }
 
