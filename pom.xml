@@ -25,6 +25,7 @@
 	
 	<modules>
 		<module>common-maven-model</module>
+		<module>common-maven-core</module>
 	</modules>
 
 </project>
