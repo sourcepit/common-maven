@@ -4,7 +4,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.sourcepit.common.maven.model.util;
+package org.sourcepit.common.maven.core;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -21,10 +21,12 @@ import org.apache.maven.artifact.versioning.VersionRange;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.junit.Test;
+import org.sourcepit.common.maven.core.MavenCoreUtils;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.Scope;
+import org.sourcepit.common.maven.model.util.MavenModelUtils;
 
 public class MavenCoreUtilsTest
 {

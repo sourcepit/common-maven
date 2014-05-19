@@ -17,7 +17,7 @@ import java.util.Set;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.project.MavenProject;
 import org.junit.Test;
-import org.sourcepit.common.maven.AbstractCommonMavenTest;
+import org.sourcepit.common.maven.core.AbstractCommonMavenTest;
 
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>

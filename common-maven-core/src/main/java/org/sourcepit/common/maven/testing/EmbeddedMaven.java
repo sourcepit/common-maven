@@ -46,7 +46,7 @@ import org.apache.maven.settings.building.SettingsBuilder;
 import org.apache.maven.settings.building.SettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuildingResult;
 import org.slf4j.Logger;
-import org.sourcepit.common.maven.util.MavenProjectUtils;
+import org.sourcepit.common.maven.core.MavenProjectUtils;
 
 @Named
 public class EmbeddedMaven

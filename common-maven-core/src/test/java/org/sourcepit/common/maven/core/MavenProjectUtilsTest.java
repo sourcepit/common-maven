@@ -4,7 +4,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.sourcepit.common.maven.utils;
+package org.sourcepit.common.maven.core;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -28,9 +28,8 @@ import org.apache.maven.project.MavenProject;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.junit.Test;
-import org.sourcepit.common.maven.AbstractCommonMavenTest;
+import org.sourcepit.common.maven.core.MavenProjectUtils;
 import org.sourcepit.common.maven.model.MavenModelPackage;
-import org.sourcepit.common.maven.util.MavenProjectUtils;
 
 public class MavenProjectUtilsTest extends AbstractCommonMavenTest
 {

@@ -4,7 +4,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.sourcepit.common.maven.util;
+package org.sourcepit.common.maven.core;
 
 import java.io.File;
 
