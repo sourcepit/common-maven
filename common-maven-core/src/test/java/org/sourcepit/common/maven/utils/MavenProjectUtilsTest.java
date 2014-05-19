@@ -14,18 +14,22 @@ import static org.hamcrest.core.IsSame.sameInstance;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.File;
 import java.util.List;
 
-import java.lang.IllegalArgumentException;
-
 import org.apache.commons.lang.SystemUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.repository.ArtifactRepository;
+import org.apache.maven.model.Build;
 import org.apache.maven.project.MavenProject;
+import org.hamcrest.core.Is;
+import org.hamcrest.core.IsEqual;
 import org.junit.Test;
 import org.sourcepit.common.maven.AbstractCommonMavenTest;
+import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.util.MavenProjectUtils;
 
 public class MavenProjectUtilsTest extends AbstractCommonMavenTest
@@ -171,5 +175,45 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
       ArtifactRepository releaseRepository = MavenProjectUtils.getReleaseArtifactRepository(reactor);
       assertNotNull(releaseRepository);
       assertThat(releaseRepository.getId(), equalTo("releases"));
+   }
+   
+   @Test
+   public void testToMavenProject()
+   {
+      try
+      {
+         MavenProjectUtils.toMavenProject(null);
+         fail();
+      }
+      catch (IllegalArgumentException e)
+      {
+      }
+
+      MavenProject project = mock(MavenProject.class);
+      when(project.getBasedir()).thenReturn(new File("projectDir"));
+      when(project.getFile()).thenReturn(new File(new File("projectDir"), "pom.xml"));
+      when(project.getGroupId()).thenReturn("groupId");
+      when(project.getArtifactId()).thenReturn("artifactId");
+      when(project.getVersion()).thenReturn("1.0");
+      when(project.getPackaging()).thenReturn("jar");
+      Build build = mock(Build.class);
+      when(project.getBuild()).thenReturn(build);
+      when(build.getOutputDirectory()).thenReturn("outputDirectory");
+      when(build.getTestOutputDirectory()).thenReturn("testOutputDirectory");
+
+      org.sourcepit.common.maven.model.MavenProject mProject = MavenProjectUtils.toMavenProject(project);
+      assertThat(mProject.getGroupId(), IsEqual.equalTo(project.getGroupId()));
+      assertThat(mProject.getArtifactId(), IsEqual.equalTo(project.getArtifactId()));
+      assertThat(mProject.getVersion(), IsEqual.equalTo(project.getVersion()));
+      assertThat(mProject.getProjectDirectory(), IsEqual.equalTo(project.getBasedir()));
+      assertThat(mProject.getPomFile(), IsEqual.equalTo(project.getFile()));
+
+      assertThat(mProject.getOutputDirectory().getName(), IsEqual.equalTo(project.getBuild().getOutputDirectory()));
+      assertThat(mProject.getTestOutputDirectory().getName(),
+         IsEqual.equalTo(project.getBuild().getTestOutputDirectory()));
+
+      // jar is default
+      assertThat(mProject.eIsSet(MavenModelPackage.eINSTANCE.getMavenProject_Packaging()), Is.is(false));
+      assertThat(mProject.getPackaging(), IsEqual.equalTo(project.getPackaging()));
    }
 }

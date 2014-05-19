@@ -6,11 +6,9 @@
 
 package org.sourcepit.common.maven.util;
 
-import org.sourcepit.common.constraints.NotNull;
-
-import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.Dependency;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.sourcepit.common.constraints.NotNull;
 
 import com.google.common.base.Strings;
 
@@ -69,7 +67,7 @@ public final class Xpp3Utils
       }
 
       value = dependency.getScope();
-      if (!Strings.isNullOrEmpty(value) && !Artifact.SCOPE_COMPILE.equals(value))
+      if (!Strings.isNullOrEmpty(value) && !"compile".equals(value))
       {
          addValueNode(dependencyNode, "scope", value);
       }

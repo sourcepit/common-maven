@@ -9,7 +9,8 @@ package org.sourcepit.common.maven.util;
 import java.io.File;
 
 import org.sourcepit.common.constraints.NotNull;
-
+import org.sourcepit.common.maven.model.MavenModelFactory;
+import org.apache.commons.lang.ObjectUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.project.MavenProject;
@@ -94,6 +95,23 @@ public final class MavenProjectUtils
       clone.getModel().setVersion(version);
       clone.getArtifact().setVersion(version);
       return clone.getDistributionManagementArtifactRepository();
+   }
+   
+   public static org.sourcepit.common.maven.model.MavenProject toMavenProject(@NotNull org.apache.maven.project.MavenProject mavenProject)
+   {
+      final org.sourcepit.common.maven.model.MavenProject mProject = MavenModelFactory.eINSTANCE.createMavenProject();
+      mProject.setGroupId(mavenProject.getGroupId());
+      mProject.setArtifactId(mavenProject.getArtifactId());
+      mProject.setVersion(mavenProject.getVersion());
+      if (mavenProject.getPackaging() != null
+         && !ObjectUtils.equals(mProject.getPackaging(), mavenProject.getPackaging()))
+      {
+         mProject.setPackaging(mavenProject.getPackaging());
+      }
+      mProject.setPomFile(mavenProject.getFile());
+      mProject.setOutputDirectory(MavenProjectUtils.getOutputDir(mavenProject));
+      mProject.setTestOutputDirectory(MavenProjectUtils.getTestOutputDir(mavenProject));
+      return mProject;
    }
 
 }

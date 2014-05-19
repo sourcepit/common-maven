@@ -11,13 +11,9 @@ import static org.apache.maven.model.Plugin.constructKey;
 
 import java.util.Collection;
 import java.util.regex.Matcher;
-
-import org.sourcepit.common.constraints.NotNull;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.ObjectUtils;
-import org.apache.maven.RepositoryUtils;
-import org.apache.maven.artifact.Artifact;
-import org.apache.maven.artifact.handler.ArtifactHandler;
 import org.apache.maven.model.Build;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Model;
@@ -26,96 +22,17 @@ import org.apache.maven.model.PluginContainer;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.model.PluginManagement;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.sourcepit.common.constraints.NotNull;
 import org.sourcepit.common.maven.model.ArtifactKey;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelFactory;
-import org.sourcepit.common.maven.model.MavenProject;
 import org.sourcepit.common.maven.model.Scope;
 import org.sourcepit.common.maven.model.VersionConflictKey;
-import org.sourcepit.common.maven.util.MavenProjectUtils;
-import org.sourcepit.common.modeling.Annotation;
 
 public final class MavenModelUtils
 {
-   @NotNull
-   public static MavenDependency toMavenDependecy(@NotNull org.eclipse.aether.artifact.Artifact artifact)
-   {
-      return toMavenDependecy(RepositoryUtils.toArtifact(artifact));
-   }
-
-   @NotNull
-   public static MavenDependency toMavenDependecy(@NotNull Artifact artifact)
-   {
-      final MavenDependency dependency = MavenModelFactory.eINSTANCE.createMavenDependency();
-      dependency.setGroupId(artifact.getGroupId());
-      dependency.setArtifactId(artifact.getArtifactId());
-      dependency.setVersionConstraint(artifact.getVersionRange() == null ? artifact.getVersion() : artifact
-         .getVersionRange().toString());
-
-      if (dependency.isOptional() != artifact.isOptional())
-      {
-         dependency.setOptional(artifact.isOptional());
-      }
-
-      if (artifact.getClassifier() != null && !ObjectUtils.equals(dependency.getClassifier(), artifact.getClassifier()))
-      {
-         dependency.setClassifier(artifact.getClassifier());
-      }
-
-      if (artifact.getType() != null && !ObjectUtils.equals(dependency.getType(), artifact.getType()))
-      {
-         dependency.setType(artifact.getType());
-      }
-
-      if (artifact.getScope() != null)
-      {
-         final Scope artifactScope = toScope(artifact.getScope());
-         if (!ObjectUtils.equals(dependency.getScope(), artifactScope))
-         {
-            dependency.setScope(artifactScope);
-         }
-      }
-
-      return dependency;
-   }
-
-   @NotNull
-   public static MavenDependency toMavenDependecy(@NotNull org.eclipse.aether.graph.Dependency dependency)
-   {
-      final Artifact artifact = RepositoryUtils.toArtifact(dependency.getArtifact());
-
-      final MavenDependency mavenDep = MavenModelFactory.eINSTANCE.createMavenDependency();
-      mavenDep.setGroupId(artifact.getGroupId());
-      mavenDep.setArtifactId(artifact.getArtifactId());
-      mavenDep.setVersionConstraint(artifact.getVersion());
-
-      if (mavenDep.isOptional() != dependency.isOptional())
-      {
-         mavenDep.setOptional(dependency.isOptional());
-      }
-
-      if (artifact.getClassifier() != null && !ObjectUtils.equals(mavenDep.getClassifier(), artifact.getClassifier()))
-      {
-         mavenDep.setClassifier(artifact.getClassifier());
-      }
-
-      if (artifact.getType() != null && !ObjectUtils.equals(mavenDep.getType(), artifact.getType()))
-      {
-         mavenDep.setType(artifact.getType());
-      }
-
-      if (dependency.getScope() != null)
-      {
-         final Scope artifactScope = toScope(dependency.getScope());
-         if (!ObjectUtils.equals(mavenDep.getScope(), artifactScope))
-         {
-            mavenDep.setScope(artifactScope);
-         }
-      }
-
-      return mavenDep;
-   }
+   
 
    @NotNull
    public static MavenDependency toMavenDependecy(@NotNull Dependency dependency)
@@ -160,59 +77,6 @@ public final class MavenModelUtils
       return result;
    }
 
-   @NotNull
-   public static MavenArtifact toMavenArtifact(@NotNull org.eclipse.aether.artifact.Artifact artifact)
-   {
-      return toMavenArtifact(RepositoryUtils.toArtifact(artifact));
-   }
-
-   @NotNull
-   public static MavenArtifact toMavenArtifact(@NotNull Artifact artifact)
-   {
-      final MavenArtifact mavenArtifact = MavenModelFactory.eINSTANCE.createMavenArtifact();
-      mavenArtifact.setGroupId(artifact.getGroupId());
-      mavenArtifact.setArtifactId(artifact.getArtifactId());
-      mavenArtifact.setVersion(artifact.getVersion());
-      if (artifact.getClassifier() != null
-         && !ObjectUtils.equals(mavenArtifact.getClassifier(), artifact.getClassifier()))
-      {
-         mavenArtifact.setClassifier(artifact.getClassifier());
-      }
-      if (artifact.getType() != null && !ObjectUtils.equals(mavenArtifact.getType(), artifact.getType()))
-      {
-         mavenArtifact.setType(artifact.getType());
-      }
-      mavenArtifact.setFile(artifact.getFile());
-
-      final ArtifactHandler artifactHandler = artifact.getArtifactHandler();
-
-      final Annotation annotation = mavenArtifact.getAnnotation(ArtifactHandler.class.getName(), true);
-      annotation.setData("packaging", artifactHandler.getPackaging());
-      annotation.setData("directory", artifactHandler.getDirectory());
-      annotation.setData("extension", artifactHandler.getExtension());
-      annotation.setData("language", artifactHandler.getLanguage());
-      annotation.setData("classifier", artifactHandler.getClassifier());
-      annotation.setData("includesDependencies", artifactHandler.isIncludesDependencies());
-      annotation.setData("addedToClasspath", artifactHandler.isAddedToClasspath());
-      return mavenArtifact;
-   }
-
-   public static MavenProject toMavenProject(@NotNull org.apache.maven.project.MavenProject mavenProject)
-   {
-      final MavenProject mProject = MavenModelFactory.eINSTANCE.createMavenProject();
-      mProject.setGroupId(mavenProject.getGroupId());
-      mProject.setArtifactId(mavenProject.getArtifactId());
-      mProject.setVersion(mavenProject.getVersion());
-      if (mavenProject.getPackaging() != null
-         && !ObjectUtils.equals(mProject.getPackaging(), mavenProject.getPackaging()))
-      {
-         mProject.setPackaging(mavenProject.getPackaging());
-      }
-      mProject.setPomFile(mavenProject.getFile());
-      mProject.setOutputDirectory(MavenProjectUtils.getOutputDir(mavenProject));
-      mProject.setTestOutputDirectory(MavenProjectUtils.getTestOutputDir(mavenProject));
-      return mProject;
-   }
 
    @NotNull
    public static MavenArtifact parseArtifactKey(final String artifactKey)
@@ -252,18 +116,6 @@ public final class MavenModelUtils
          artifact.getClassifier(), artifact.getVersion());
    }
 
-   @NotNull
-   public static ArtifactKey toArtifactKey(@NotNull Artifact artifact)
-   {
-      return toArtifactKey(artifact.getGroupId(), artifact.getArtifactId(), artifact.getType(),
-         artifact.getClassifier(), artifact.getVersion());
-   }
-
-   @NotNull
-   public static ArtifactKey toArtifactKey(@NotNull org.eclipse.aether.artifact.Artifact artifact)
-   {
-      return toArtifactKey(RepositoryUtils.toArtifact(artifact));
-   }
 
    @NotNull
    public static ArtifactKey toArtifactKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String type,
@@ -277,16 +129,6 @@ public final class MavenModelUtils
       @NotNull String type, String classifier)
    {
       return new VersionConflictKey(groupId, artifactId, type, classifier);
-   }
-
-   public static String normalizeSnapshotVersion(@NotNull String version)
-   {
-      Matcher matcher = Artifact.VERSION_FILE_PATTERN.matcher(version);
-      if (matcher.matches())
-      {
-         return matcher.group(1) + "-SNAPSHOT";
-      }
-      return version;
    }
 
    @NotNull
@@ -413,5 +255,17 @@ public final class MavenModelUtils
          return dependency;
       }
       return null;
+   }
+   
+   private static final Pattern VERSION_FILE_PATTERN = Pattern.compile( "^(.*)-([0-9]{8}.[0-9]{6})-([0-9]+)$" );
+
+   public static String normalizeSnapshotVersion(@NotNull String version)
+   {
+      Matcher matcher = VERSION_FILE_PATTERN.matcher(version);
+      if (matcher.matches())
+      {
+         return matcher.group(1) + "-SNAPSHOT";
+      }
+      return version;
    }
 }
