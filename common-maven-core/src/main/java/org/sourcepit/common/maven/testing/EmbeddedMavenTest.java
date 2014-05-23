@@ -32,7 +32,8 @@ import org.junit.rules.TestName;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.LoggerFactory;
 
-import com.google.inject.AbstractModule;
+import com.google.inject.Binder;
+import com.google.inject.Module;
 
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
@@ -66,11 +67,13 @@ public abstract class EmbeddedMavenTest
       // create container and inject dependencies into this class
       try
       {
-         container = new DefaultPlexusContainer(cc, new AbstractModule()
+         container = new DefaultPlexusContainer(cc, new Module()
          {
-            protected void configure()
+            @Override
+            public void configure(Binder binder)
             {
-               bind(ILoggerFactory.class).toInstance(slf4jLoggerFactory);
+               binder.bind(ILoggerFactory.class).toInstance(slf4jLoggerFactory);
+               configureCustomBindings(binder);
             }
          });
       }
@@ -92,6 +95,10 @@ public abstract class EmbeddedMavenTest
       });
 
       configure(embeddedMaven);
+   }
+
+   protected void configureCustomBindings(Binder binder)
+   {
    }
 
    protected ClassLoader getClassLoader()
