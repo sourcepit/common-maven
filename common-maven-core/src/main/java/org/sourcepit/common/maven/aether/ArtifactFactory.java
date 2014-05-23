@@ -8,6 +8,7 @@ package org.sourcepit.common.maven.aether;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 
+import java.io.File;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -32,22 +33,46 @@ public class ArtifactFactory
 
    public Artifact createArtifact(final Artifact artifact, String classifier, String type)
    {
+      return createArtifact(artifact, classifier, type, null);
+   }
+
+   public Artifact createArtifact(final Artifact artifact, String classifier, String type, String localPath)
+   {
       classifier = isNullOrEmpty(classifier) ? null : classifier;
+      
+      final String scope = localPath == null ? null : org.apache.maven.artifact.Artifact.SCOPE_SYSTEM;
 
       final ArtifactHandler handler = artifactHandlers.get(type);
 
       final DefaultArtifact legacyArtifact = new DefaultArtifact(artifact.getGroupId(), artifact.getArtifactId(),
-         artifact.getVersion(), null, type, classifier, handler);
+         artifact.getVersion(), scope, type, classifier, handler);
+      
+      if (localPath != null)
+      {
+         legacyArtifact.setFile(new File(localPath));
+      }
 
       return RepositoryUtils.toArtifact(legacyArtifact);
    }
 
    public Artifact createArtifact(ArtifactKey artifactKey)
    {
+      return createArtifact(artifactKey, null);
+   }
+
+   public Artifact createArtifact(ArtifactKey artifactKey, String localPath)
+   {
       final ArtifactHandler handler = artifactHandlers.get(artifactKey.getType());
 
+      final String scope = localPath == null ? null : org.apache.maven.artifact.Artifact.SCOPE_SYSTEM;
+
       final DefaultArtifact legacyArtifact = new DefaultArtifact(artifactKey.getGroupId(), artifactKey.getArtifactId(),
-         artifactKey.getVersion(), null, artifactKey.getType(), artifactKey.getClassifier(), handler);
+         artifactKey.getVersion(), scope, artifactKey.getType(), artifactKey.getClassifier(), handler);
+
+      if (localPath != null)
+      {
+         legacyArtifact.setFile(new File(localPath));
+      }
 
       return RepositoryUtils.toArtifact(legacyArtifact);
    }
