@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.sourcepit.common</groupId>
 		<artifactId>common-maven</artifactId>
-		<version>0.17.0</version>
+		<version>0.18.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>common-maven-core</artifactId>
 
