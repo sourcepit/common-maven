@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.sourcepit</groupId>
 		<artifactId>srcpit-parent</artifactId>
-		<version>11</version>
+		<version>12</version>
 	</parent>
 	<groupId>org.sourcepit.common</groupId>
 	<artifactId>common-maven</artifactId>
@@ -22,10 +23,75 @@
 			<url>http://nexus.sourcepit.org/content/groups/public/</url>
 		</repository>
 	</repositories>
-	
+
 	<modules>
 		<module>common-maven-model</module>
 		<module>common-maven-core</module>
 	</modules>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.sourcepit.common</groupId>
+				<artifactId>common-modeling</artifactId>
+				<version>0.10.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.sourcepit.common</groupId>
+				<artifactId>common-constraints</artifactId>
+				<version>0.11.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.sourcepit.common</groupId>
+				<artifactId>common-testing</artifactId>
+				<version>0.10.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.sourcepit.tools</groupId>
+					<artifactId>osgify-maven-plugin</artifactId>
+					<version>0.18.0</version>
+					<configuration>
+						<pde>true</pde>
+						<options>
+							<excludedExecutionEnvironments>
+								JavaSE/compact1-1.8,
+								JavaSE/compact2-1.8,
+								JavaSE/compact3-1.8
+							</excludedExecutionEnvironments>
+						</options>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.sourcepit.tools</groupId>
+										<artifactId>osgify-maven-plugin</artifactId>
+										<versionRange>[0.17.0,)</versionRange>
+										<goals>
+											<goal>generate-manifest</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
