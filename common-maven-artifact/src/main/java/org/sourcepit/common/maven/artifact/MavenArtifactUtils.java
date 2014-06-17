@@ -1,15 +1,23 @@
 /**
- * Copyright (c) 2011 Sourcepit.org contributors and others. All rights reserved. This program and the accompanying
+ * Copyright (c) 2014 Sourcepit.org contributors and others. All rights reserved. This program and the accompanying
  * materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution,
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.sourcepit.common.maven.core;
+package org.sourcepit.common.maven.artifact;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.ObjectUtils;
-import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.handler.ArtifactHandler;
+import org.eclipse.aether.artifact.ArtifactProperties;
+import org.eclipse.aether.artifact.ArtifactType;
+import org.eclipse.aether.artifact.DefaultArtifactType;
 import org.sourcepit.common.constraints.NotNull;
 import org.sourcepit.common.maven.model.ArtifactKey;
 import org.sourcepit.common.maven.model.MavenArtifact;
@@ -19,12 +27,17 @@ import org.sourcepit.common.maven.model.Scope;
 import org.sourcepit.common.maven.model.util.MavenModelUtils;
 import org.sourcepit.common.modeling.Annotation;
 
-public final class MavenCoreUtils
+public final class MavenArtifactUtils
 {
+   private MavenArtifactUtils()
+   {
+      super();
+   }
+
    @NotNull
    public static MavenDependency toMavenDependecy(@NotNull org.eclipse.aether.artifact.Artifact artifact)
    {
-      return toMavenDependecy(RepositoryUtils.toArtifact(artifact));
+      return toMavenDependecy(toArtifact(artifact));
    }
 
    @NotNull
@@ -66,7 +79,7 @@ public final class MavenCoreUtils
    @NotNull
    public static MavenDependency toMavenDependecy(@NotNull org.eclipse.aether.graph.Dependency dependency)
    {
-      final Artifact artifact = RepositoryUtils.toArtifact(dependency.getArtifact());
+      final Artifact artifact = toArtifact(dependency.getArtifact());
 
       final MavenDependency mavenDep = MavenModelFactory.eINSTANCE.createMavenDependency();
       mavenDep.setGroupId(artifact.getGroupId());
@@ -104,7 +117,7 @@ public final class MavenCoreUtils
    @NotNull
    public static MavenArtifact toMavenArtifact(@NotNull org.eclipse.aether.artifact.Artifact artifact)
    {
-      return toMavenArtifact(RepositoryUtils.toArtifact(artifact));
+      return toMavenArtifact(toArtifact(artifact));
    }
 
    @NotNull
@@ -149,7 +162,102 @@ public final class MavenCoreUtils
    @NotNull
    public static ArtifactKey toArtifactKey(@NotNull org.eclipse.aether.artifact.Artifact artifact)
    {
-      return toArtifactKey(RepositoryUtils.toArtifact(artifact));
+      return toArtifactKey(toArtifact(artifact));
    }
 
+   public static Artifact toArtifact(org.eclipse.aether.artifact.Artifact artifact)
+   {
+      if (artifact == null)
+      {
+         return null;
+      }
+
+      ArtifactHandler handler = newHandler(artifact);
+
+      /*
+       * NOTE: From Artifact.hasClassifier(), an empty string and a null both denote "no classifier". However, some
+       * plugins only check for null, so be sure to nullify an empty classifier.
+       */
+      org.apache.maven.artifact.Artifact result = new org.apache.maven.artifact.DefaultArtifact(artifact.getGroupId(),
+         artifact.getArtifactId(), artifact.getVersion(), null, artifact.getProperty(ArtifactProperties.TYPE,
+            artifact.getExtension()), nullify(artifact.getClassifier()), handler);
+
+      result.setFile(artifact.getFile());
+      result.setResolved(artifact.getFile() != null);
+
+      List<String> trail = new ArrayList<String>(1);
+      trail.add(result.getId());
+      result.setDependencyTrail(trail);
+
+      return result;
+   }
+
+   private static String nullify(String string)
+   {
+      return (string == null || string.length() <= 0) ? null : string;
+   }
+
+   private static ArtifactHandler newHandler(org.eclipse.aether.artifact.Artifact artifact)
+   {
+      String type = artifact.getProperty(ArtifactProperties.TYPE, artifact.getExtension());
+      ArtifactHandlerImpl handler = new ArtifactHandlerImpl();
+      handler.setType(type);
+      handler.setExtension(artifact.getExtension());
+      handler.setLanguage(artifact.getProperty(ArtifactProperties.LANGUAGE, null));
+      handler.setAddedToClasspath(Boolean.parseBoolean(artifact.getProperty(ArtifactProperties.CONSTITUTES_BUILD_PATH,
+         "")));
+      handler.setIncludesDependencies(Boolean.parseBoolean(artifact.getProperty(
+         ArtifactProperties.INCLUDES_DEPENDENCIES, "")));
+      return handler;
+   }
+
+   public static org.eclipse.aether.artifact.Artifact toArtifact(Artifact artifact)
+   {
+      final String groupId = artifact.getGroupId();
+      final String artifactId = artifact.getArtifactId();
+      final String version = getVersion(artifact);
+      final String classifier = artifact.getClassifier();
+      final ArtifactHandler artifactHandler = artifact.getArtifactHandler();
+      final String extension = artifactHandler.getExtension();
+      final Map<String, String> properties = getProperties(artifact);
+      final String type = artifact.getType();
+      final ArtifactType artifactType = newArtifactType(type, artifactHandler);
+      final File file = artifact.getFile();
+      return newArtifact(groupId, artifactId, version, classifier, extension, properties, artifactType, file);
+   }
+
+   private static org.eclipse.aether.artifact.Artifact newArtifact(final String groupId, final String artifactId,
+      final String version, final String classifier, final String extension, final Map<String, String> properties,
+      final ArtifactType artifactType, final File file)
+   {
+      return new org.eclipse.aether.artifact.DefaultArtifact(groupId, artifactId, classifier, extension, version,
+         properties, artifactType).setFile(file);
+   }
+
+   private static Map<String, String> getProperties(org.apache.maven.artifact.Artifact artifact)
+   {
+      final String scope = artifact.getScope();
+      if (org.apache.maven.artifact.Artifact.SCOPE_SYSTEM.equals(scope))
+      {
+         String localPath = (artifact.getFile() != null) ? artifact.getFile().getPath() : "";
+         return Collections.singletonMap(ArtifactProperties.LOCAL_PATH, localPath);
+      }
+      return null;
+   }
+
+   private static String getVersion(org.apache.maven.artifact.Artifact artifact)
+   {
+      String version = artifact.getVersion();
+      if (version == null && artifact.getVersionRange() != null)
+      {
+         version = artifact.getVersionRange().toString();
+      }
+      return version;
+   }
+
+   private static ArtifactType newArtifactType(String id, ArtifactHandler handler)
+   {
+      return new DefaultArtifactType(id, handler.getExtension(), handler.getClassifier(), handler.getLanguage(),
+         handler.isAddedToClasspath(), handler.isIncludesDependencies());
+   }
 }

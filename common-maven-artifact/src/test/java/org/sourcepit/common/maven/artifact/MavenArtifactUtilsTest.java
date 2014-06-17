@@ -4,7 +4,7 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-package org.sourcepit.common.maven.core;
+package org.sourcepit.common.maven.artifact;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -14,34 +14,32 @@ import static org.mockito.Mockito.when;
 
 import java.io.File;
 
-import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.Artifact;
-import org.apache.maven.artifact.handler.DefaultArtifactHandler;
 import org.apache.maven.artifact.versioning.VersionRange;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.junit.Test;
-import org.sourcepit.common.maven.core.MavenCoreUtils;
+import org.sourcepit.common.maven.artifact.ArtifactHandlerImpl;
+import org.sourcepit.common.maven.artifact.MavenArtifactUtils;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.Scope;
 import org.sourcepit.common.maven.model.util.MavenModelUtils;
 
-public class MavenCoreUtilsTest
+public class MavenArtifactUtilsTest
 {
    @Test
    public void testToMavenArtifact()
    {
       try
       {
-         MavenCoreUtils.toMavenArtifact((Artifact) null);
+         MavenArtifactUtils.toMavenArtifact((Artifact) null);
          fail();
       }
       catch (IllegalArgumentException e)
       {
       }
-
 
       Artifact artifact = mock(Artifact.class);
       when(artifact.getFile()).thenReturn(new File(""));
@@ -50,9 +48,9 @@ public class MavenCoreUtilsTest
       when(artifact.getVersion()).thenReturn("1.0");
       when(artifact.getClassifier()).thenReturn("classifier");
       when(artifact.getType()).thenReturn("jar");
-      when(artifact.getArtifactHandler()).thenReturn(new DefaultArtifactHandler("jar"));
+      when(artifact.getArtifactHandler()).thenReturn(new ArtifactHandlerImpl("jar"));
 
-      MavenArtifact mavenArtifact = MavenCoreUtils.toMavenArtifact(artifact);
+      MavenArtifact mavenArtifact = MavenArtifactUtils.toMavenArtifact(artifact);
       assertThat(mavenArtifact.getFile(), IsEqual.equalTo(artifact.getFile()));
       assertThat(mavenArtifact.getGroupId(), IsEqual.equalTo(artifact.getGroupId()));
       assertThat(mavenArtifact.getArtifactId(), IsEqual.equalTo(artifact.getArtifactId()));
@@ -64,7 +62,7 @@ public class MavenCoreUtilsTest
 
       when(artifact.getType()).thenReturn("war");
 
-      mavenArtifact = MavenCoreUtils.toMavenArtifact(artifact);
+      mavenArtifact = MavenArtifactUtils.toMavenArtifact(artifact);
       assertThat(mavenArtifact.eIsSet(MavenModelPackage.eINSTANCE.getMavenClassified_Type()), Is.is(true));
       assertThat(mavenArtifact.getType(), IsEqual.equalTo(artifact.getType()));
    }
@@ -79,14 +77,14 @@ public class MavenCoreUtilsTest
       when(artifact.getVersion()).thenReturn("1.0");
       when(artifact.getClassifier()).thenReturn("classifier");
       when(artifact.getType()).thenReturn("test-jar");
-      DefaultArtifactHandler artifactHandler = new DefaultArtifactHandler("test-jar");
+      ArtifactHandlerImpl artifactHandler = new ArtifactHandlerImpl("test-jar");
       artifactHandler.setExtension("jar");
       when(artifact.getArtifactHandler()).thenReturn(artifactHandler);
 
-      String key = MavenCoreUtils.toArtifactKey(artifact).toString();
+      String key = MavenArtifactUtils.toArtifactKey(artifact).toString();
       assertEquals("groupId:artifactId:test-jar:classifier:1.0", key);
 
-      key = MavenCoreUtils.toArtifactKey(RepositoryUtils.toArtifact(artifact)).toString();
+      key = MavenArtifactUtils.toArtifactKey(MavenArtifactUtils.toArtifact(artifact)).toString();
       assertEquals("groupId:artifactId:test-jar:classifier:1.0", key);
    }
 
@@ -95,7 +93,7 @@ public class MavenCoreUtilsTest
    {
       try
       {
-         MavenCoreUtils.toMavenDependecy((Artifact) null);
+         MavenArtifactUtils.toMavenDependecy((Artifact) null);
          fail();
       }
       catch (IllegalArgumentException e)
@@ -112,7 +110,7 @@ public class MavenCoreUtilsTest
       when(artifact.getType()).thenReturn("jar");
       when(artifact.getScope()).thenReturn("compile");
 
-      MavenDependency mavenDependecy = MavenCoreUtils.toMavenDependecy(artifact);
+      MavenDependency mavenDependecy = MavenArtifactUtils.toMavenDependecy(artifact);
       assertThat(mavenDependecy.getGroupId(), IsEqual.equalTo(artifact.getGroupId()));
       assertThat(mavenDependecy.getArtifactId(), IsEqual.equalTo(artifact.getArtifactId()));
       assertThat(mavenDependecy.getVersionConstraint(), IsEqual.equalTo(artifact.getVersionRange().toString()));
@@ -128,14 +126,14 @@ public class MavenCoreUtilsTest
       when(artifact.getType()).thenReturn(null);
       when(artifact.getScope()).thenReturn(null);
 
-      mavenDependecy = MavenCoreUtils.toMavenDependecy(artifact);
+      mavenDependecy = MavenArtifactUtils.toMavenDependecy(artifact);
       assertThat(mavenDependecy.getType(), IsEqual.equalTo("jar"));
       assertThat(mavenDependecy.getScope(), IsEqual.equalTo(Scope.COMPILE));
 
       when(artifact.getType()).thenReturn("war");
       when(artifact.getScope()).thenReturn("test");
 
-      mavenDependecy = MavenCoreUtils.toMavenDependecy(artifact);
+      mavenDependecy = MavenArtifactUtils.toMavenDependecy(artifact);
       assertThat(mavenDependecy.getType(), IsEqual.equalTo("war"));
       assertThat(mavenDependecy.getScope(), IsEqual.equalTo(Scope.TEST));
    }
