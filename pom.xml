@@ -26,6 +26,7 @@
 	<modules>
 		<module>common-maven-model</module>
 		<module>common-maven-core</module>
+		<module>common-maven-artifact</module>
 	</modules>
 
 	<dependencyManagement>
