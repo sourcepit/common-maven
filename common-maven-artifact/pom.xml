@@ -67,8 +67,8 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.sourcepit.tools</groupId>
-				<artifactId>osgify-maven-plugin</artifactId>
+				<groupId>org.sourcepit.osgifier</groupId>
+				<artifactId>osgifier-maven-plugin</artifactId>
 				<executions>
 					<execution>
 						<goals>
