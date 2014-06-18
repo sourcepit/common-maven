@@ -39,17 +39,17 @@
 			<dependency>
 				<groupId>org.sourcepit.common</groupId>
 				<artifactId>org.sourcepit.common.modeling</artifactId>
-				<version>0.11.0-SNAPSHOT</version>
+				<version>0.11.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.sourcepit.common</groupId>
 				<artifactId>org.sourcepit.common.constraints</artifactId>
-				<version>0.13.0-SNAPSHOT</version>
+				<version>0.13.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.sourcepit.common</groupId>
 				<artifactId>common-testing</artifactId>
-				<version>0.10.0</version>
+				<version>0.11.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
