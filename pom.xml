@@ -24,16 +24,16 @@
 	</repositories>
 
 	<modules>
-		<module>common-maven-model</module>
+		<module>org.sourcepit.common.maven.model</module>
 		<module>common-maven-core</module>
-		<module>common-maven-artifact</module>
+		<module>org.sourcepit.common.maven.artifact</module>
 	</modules>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.sourcepit.common</groupId>
-				<artifactId>common-maven-model</artifactId>
+				<artifactId>org.sourcepit.common.maven.model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

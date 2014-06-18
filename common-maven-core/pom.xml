@@ -10,7 +10,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.sourcepit.common</groupId>
-			<artifactId>common-maven-model</artifactId>
+			<artifactId>org.sourcepit.common.maven.model</artifactId>
 		</dependency>
 
 		<dependency>

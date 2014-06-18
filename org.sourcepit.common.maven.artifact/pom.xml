@@ -5,12 +5,12 @@
 		<artifactId>common-maven</artifactId>
 		<version>0.19.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>common-maven-artifact</artifactId>
+	<artifactId>org.sourcepit.common.maven.artifact</artifactId>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.sourcepit.common</groupId>
-			<artifactId>common-maven-model</artifactId>
+			<artifactId>org.sourcepit.common.maven.model</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>srcpit.osgified</groupId>
@@ -75,9 +75,6 @@
 							<goal>generate-manifest</goal>
 							<goal>inject-manifest</goal>
 						</goals>
-						<configuration>
-							<symbolicName>org.sourcepit.common.maven.artifact</symbolicName>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
