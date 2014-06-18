@@ -38,12 +38,12 @@
 			</dependency>
 			<dependency>
 				<groupId>org.sourcepit.common</groupId>
-				<artifactId>common-modeling</artifactId>
+				<artifactId>org.sourcepit.common.modeling</artifactId>
 				<version>0.11.0-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>org.sourcepit.common</groupId>
-				<artifactId>common-constraints</artifactId>
+				<artifactId>org.sourcepit.common.constraints</artifactId>
 				<version>0.13.0-SNAPSHOT</version>
 			</dependency>
 			<dependency>
