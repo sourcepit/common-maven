@@ -22,11 +22,9 @@ import org.sourcepit.common.testing.Environment;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class AbstractCommonMavenTest extends EmbeddedMavenEnvironmentTest
-{
+public class AbstractCommonMavenTest extends EmbeddedMavenEnvironmentTest {
    @Override
-   protected Environment newEnvironment()
-   {
+   protected Environment newEnvironment() {
       return Environment.get("env-test.properties");
    }
 }

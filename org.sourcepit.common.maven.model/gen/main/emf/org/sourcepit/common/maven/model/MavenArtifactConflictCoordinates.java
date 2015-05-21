@@ -35,8 +35,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface MavenArtifactConflictCoordinates extends EObject
-{
+public interface MavenArtifactConflictCoordinates extends EObject {
    /**
     * Returns the value of the '<em><b>Group Id</b></em>' attribute.
     * <!-- begin-user-doc -->

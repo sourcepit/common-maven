@@ -38,8 +38,7 @@ import org.sourcepit.common.maven.model.ProjectKey;
  */
 public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictCoordinatesImpl
    implements
-      MavenProjectCoordinates
-{
+      MavenProjectCoordinates {
    /**
     * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -68,8 +67,7 @@ public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictC
     * 
     * @generated
     */
-   protected MavenProjectCoordinatesImpl()
-   {
+   protected MavenProjectCoordinatesImpl() {
       super();
    }
 
@@ -80,8 +78,7 @@ public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictC
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return MavenModelPackage.Literals.MAVEN_PROJECT_COORDINATES;
    }
 
@@ -91,8 +88,7 @@ public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictC
     * 
     * @generated
     */
-   public String getVersion()
-   {
+   public String getVersion() {
       return version;
    }
 
@@ -102,8 +98,7 @@ public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictC
     * 
     * @generated
     */
-   public void setVersion(String newVersion)
-   {
+   public void setVersion(String newVersion) {
       String oldVersion = version;
       version = newVersion;
       if (eNotificationRequired())
@@ -117,8 +112,7 @@ public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictC
     * 
     * @generated
     */
-   public ProjectKey getProjectKey()
-   {
+   public ProjectKey getProjectKey() {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -131,10 +125,8 @@ public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictC
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION :
             return getVersion();
       }
@@ -148,10 +140,8 @@ public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictC
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION :
             setVersion((String) newValue);
             return;
@@ -166,10 +156,8 @@ public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictC
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION :
             setVersion(VERSION_EDEFAULT);
             return;
@@ -184,10 +172,8 @@ public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictC
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION :
             return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
       }
@@ -201,8 +187,7 @@ public abstract class MavenProjectCoordinatesImpl extends MavenArtifactConflictC
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

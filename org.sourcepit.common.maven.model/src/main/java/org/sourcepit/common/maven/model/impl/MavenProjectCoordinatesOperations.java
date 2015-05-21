@@ -17,19 +17,15 @@
 package org.sourcepit.common.maven.model.impl;
 
 import org.sourcepit.common.constraints.NotNull;
-
 import org.sourcepit.common.maven.model.MavenProjectCoordinates;
 import org.sourcepit.common.maven.model.ProjectKey;
 
-public final class MavenProjectCoordinatesOperations
-{
-   private MavenProjectCoordinatesOperations()
-   {
+public final class MavenProjectCoordinatesOperations {
+   private MavenProjectCoordinatesOperations() {
       super();
    }
 
-   public static ProjectKey getProjectKey(@NotNull MavenProjectCoordinates o)
-   {
+   public static ProjectKey getProjectKey(@NotNull MavenProjectCoordinates o) {
       return new ProjectKey(o.getGroupId(), o.getArtifactId(), o.getVersion());
    }
 

@@ -48,8 +48,7 @@ import com.google.inject.Module;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public abstract class EmbeddedMavenTest
-{
+public abstract class EmbeddedMavenTest {
    @Rule
    public TestName testName = new TestName();
 
@@ -59,8 +58,7 @@ public abstract class EmbeddedMavenTest
    protected DefaultPlexusContainer container;
 
    @Before
-   public void setUp() throws Exception
-   {
+   public void setUp() throws Exception {
       // init maven like logging
       final ILoggerFactory slf4jLoggerFactory = LoggerFactory.getILoggerFactory();
       Slf4jConfiguration slf4jConfiguration = Slf4jConfigurationFactory.getConfiguration(slf4jLoggerFactory);
@@ -75,31 +73,25 @@ public abstract class EmbeddedMavenTest
       cc.setName("maven");
 
       // create container and inject dependencies into this class
-      try
-      {
-         container = new DefaultPlexusContainer(cc, new Module()
-         {
+      try {
+         container = new DefaultPlexusContainer(cc, new Module() {
             @Override
-            public void configure(Binder binder)
-            {
+            public void configure(Binder binder) {
                binder.bind(ILoggerFactory.class).toInstance(slf4jLoggerFactory);
                configureCustomBindings(binder);
             }
          });
       }
-      catch (PlexusContainerException e)
-      {
+      catch (PlexusContainerException e) {
          throw new IllegalStateException(e);
       }
       container.setLookupRealm(null);
       container.setLoggerManager(new Slf4jLoggerManager());
 
       final ClassRealm realm = new ClassRealm(container.getClassWorld(), "foo", null);
-      container.discoverComponents(realm, new com.google.inject.AbstractModule()
-      {
+      container.discoverComponents(realm, new com.google.inject.AbstractModule() {
          @Override
-         protected void configure()
-         {
+         protected void configure() {
             requestInjection(EmbeddedMavenTest.this);
          }
       });
@@ -107,139 +99,111 @@ public abstract class EmbeddedMavenTest
       configure(embeddedMaven);
    }
 
-   protected void configureCustomBindings(Binder binder)
-   {
+   protected void configureCustomBindings(Binder binder) {
    }
 
-   protected ClassLoader getClassLoader()
-   {
+   protected ClassLoader getClassLoader() {
       return getClass().getClassLoader();
    }
 
-   protected void configure(EmbeddedMaven embeddedMaven)
-   {
+   protected void configure(EmbeddedMaven embeddedMaven) {
       embeddedMaven.setUserHome(getUserHome());
       embeddedMaven.setUserSettings(getUserSettingsFile());
       embeddedMaven.setLocalRepo(getLocalRepositoryPath());
       embeddedMaven.setRemoteRepo(getRemoteRepositoryPath());
    }
 
-   protected File getUserHome()
-   {
+   protected File getUserHome() {
       return null;
    }
 
-   protected File getUserSettingsFile()
-   {
+   protected File getUserSettingsFile() {
       File userHome = getUserHome();
-      if (userHome != null && userHome.exists())
-      {
+      if (userHome != null && userHome.exists()) {
          return new File(userHome, ".m2/settings.xml");
       }
       return null;
    }
 
-   protected File getLocalRepositoryPath()
-   {
+   protected File getLocalRepositoryPath() {
       final File userHome = getUserHome();
-      if (userHome != null && userHome.exists())
-      {
+      if (userHome != null && userHome.exists()) {
          final File userSettingsFile = getUserSettingsFile();
-         if (userSettingsFile == null || !userSettingsFile.exists())
-         {
+         if (userSettingsFile == null || !userSettingsFile.exists()) {
             return new File(userHome, ".m2/repository");
          }
       }
       return null;
    }
 
-   protected File getRemoteRepositoryPath()
-   {
+   protected File getRemoteRepositoryPath() {
       return null;
    }
 
-   public EmbeddedMaven getEmbeddedMaven()
-   {
+   public EmbeddedMaven getEmbeddedMaven() {
       return embeddedMaven;
    }
 
    @After
-   public void tearDown() throws Exception
-   {
-      if (embeddedMaven != null)
-      {
+   public void tearDown() throws Exception {
+      if (embeddedMaven != null) {
          embeddedMaven.dispose();
       }
 
-      if (null != container)
-      {
+      if (null != container) {
          teardownContainer();
       }
    }
 
-   protected synchronized void teardownContainer()
-   {
-      if (null != container)
-      {
+   protected synchronized void teardownContainer() {
+      if (null != container) {
          container.dispose();
          container = null;
       }
    }
 
-   protected MavenExecutionRequest newMavenExecutionRequest(File pom) throws Exception
-   {
+   protected MavenExecutionRequest newMavenExecutionRequest(File pom) throws Exception {
       return embeddedMaven.newMavenExecutionRequest(pom);
    }
 
-   protected MavenExecutionRequest newMavenExecutionRequest(File pom, String... goals) throws Exception
-   {
+   protected MavenExecutionRequest newMavenExecutionRequest(File pom, String... goals) throws Exception {
       return embeddedMaven.newMavenExecutionRequest(pom, goals);
    }
 
    protected MavenExecutionRequest newMavenExecutionRequest(File pom, Properties systemProperties,
-      Properties userProperties, String... goals) throws Exception
-   {
+      Properties userProperties, String... goals) throws Exception {
       return embeddedMaven.newMavenExecutionRequest(pom, systemProperties, userProperties, goals);
    }
 
    protected SettingsBuildingResult buildSettings(File globalSettingsFile, File userSettingsFile,
-      Properties systemProperties, Properties userProperties) throws Exception
-   {
+      Properties systemProperties, Properties userProperties) throws Exception {
       return embeddedMaven.buildSettings(globalSettingsFile, userSettingsFile, systemProperties, userProperties);
    }
 
-   protected MavenExecutionResult2 buildStubProject(File projectDir)
-   {
+   protected MavenExecutionResult2 buildStubProject(File projectDir) {
       return embeddedMaven.buildStubProject(projectDir);
    }
 
-   protected MavenExecutionResult2 buildProject(File pom) throws Exception
-   {
+   protected MavenExecutionResult2 buildProject(File pom) throws Exception {
       return embeddedMaven.buildProject(pom);
    }
 
-   protected MavenExecutionResult2 buildProject(File pom, boolean resolveDependencies) throws Exception
-   {
+   protected MavenExecutionResult2 buildProject(File pom, boolean resolveDependencies) throws Exception {
       return embeddedMaven.buildProject(pom, resolveDependencies);
    }
 
    protected MavenExecutionResult2 buildProject(File pom, Properties userProperties, boolean resolveDependencies)
-      throws Exception
-   {
+      throws Exception {
       return embeddedMaven.buildProject(pom, userProperties, resolveDependencies);
    }
 
-   protected MavenExecutionResult2 execute(MavenExecutionRequest request)
-   {
+   protected MavenExecutionResult2 execute(MavenExecutionRequest request) {
       return embeddedMaven.execute(request);
    }
 
-   protected MavenProject getProject(List<MavenProject> projects, String artifactId)
-   {
-      for (MavenProject project : projects)
-      {
-         if (artifactId.equals(project.getArtifactId()))
-         {
+   protected MavenProject getProject(List<MavenProject> projects, String artifactId) {
+      for (MavenProject project : projects) {
+         if (artifactId.equals(project.getArtifactId())) {
             return project;
          }
       }

@@ -27,8 +27,7 @@ package org.sourcepit.common.maven.model;
  * @model abstract="true"
  * @generated
  */
-public interface MavenArtifactCoordinates extends MavenProjectCoordinates, MavenClassified
-{
+public interface MavenArtifactCoordinates extends MavenProjectCoordinates, MavenClassified {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->

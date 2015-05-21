@@ -19,17 +19,14 @@ package org.sourcepit.common.maven.model.impl;
 import java.io.File;
 
 import org.sourcepit.common.constraints.NotNull;
-
 import org.sourcepit.common.maven.model.MavenProject;
 
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class MavenProjectOperations
-{
+public class MavenProjectOperations {
    @NotNull
-   public static File getProjectDirectory(@NotNull MavenProject p)
-   {
+   public static File getProjectDirectory(@NotNull MavenProject p) {
       return p.getPomFile().getParentFile();
    }
 }

@@ -48,8 +48,7 @@ import org.sourcepit.common.modeling.XAnnotatable;
  * 
  * @generated
  */
-public class MavenDependencyImpl extends DependencyDeclarationImpl implements MavenDependency
-{
+public class MavenDependencyImpl extends DependencyDeclarationImpl implements MavenDependency {
    /**
     * The cached value of the '{@link #getExtensions() <em>Extensions</em>}' containment reference list.
     * <!-- begin-user-doc -->
@@ -78,8 +77,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   protected MavenDependencyImpl()
-   {
+   protected MavenDependencyImpl() {
       super();
    }
 
@@ -90,8 +88,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return MavenModelPackage.Literals.MAVEN_DEPENDENCY;
    }
 
@@ -101,10 +98,8 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public EList<EObject> getExtensions()
-   {
-      if (extensions == null)
-      {
+   public EList<EObject> getExtensions() {
+      if (extensions == null) {
          extensions = new EObjectContainmentEList<EObject>(EObject.class, this,
             MavenModelPackage.MAVEN_DEPENDENCY__EXTENSIONS);
       }
@@ -117,10 +112,8 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public EList<Annotation> getAnnotations()
-   {
-      if (annotations == null)
-      {
+   public EList<Annotation> getAnnotations() {
+      if (annotations == null) {
          annotations = new EObjectContainmentWithInverseEList<Annotation>(Annotation.class, this,
             MavenModelPackage.MAVEN_DEPENDENCY__ANNOTATIONS, CommonModelingPackage.ANNOTATION__TARGET);
       }
@@ -133,8 +126,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public Annotation getAnnotation(String source)
-   {
+   public Annotation getAnnotation(String source) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -146,8 +138,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public Annotation getAnnotation(String source, boolean createOnDemand)
-   {
+   public Annotation getAnnotation(String source, boolean createOnDemand) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -159,8 +150,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public String getAnnotationData(String source, String key)
-   {
+   public String getAnnotationData(String source, String key) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -172,8 +162,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public String setAnnotationData(String source, String key, String value)
-   {
+   public String setAnnotationData(String source, String key, String value) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -185,8 +174,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public <T extends EObject> T getExtension(Class<T> extensionType)
-   {
+   public <T extends EObject> T getExtension(Class<T> extensionType) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -198,8 +186,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public <T extends EObject> EList<T> getExtensions(Class<T> extensionType)
-   {
+   public <T extends EObject> EList<T> getExtensions(Class<T> extensionType) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -211,8 +198,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public <T extends EObject> void addExtension(T extension)
-   {
+   public <T extends EObject> void addExtension(T extension) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -224,8 +210,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public <T extends EObject> void removeExtension(T extension)
-   {
+   public <T extends EObject> void removeExtension(T extension) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -237,8 +222,7 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * 
     * @generated
     */
-   public <T extends EObject> void removeExtensions(Class<T> extentionType)
-   {
+   public <T extends EObject> void removeExtensions(Class<T> extentionType) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -252,10 +236,8 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     */
    @SuppressWarnings("unchecked")
    @Override
-   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_DEPENDENCY__ANNOTATIONS :
             return ((InternalEList<InternalEObject>) (InternalEList<?>) getAnnotations()).basicAdd(otherEnd, msgs);
       }
@@ -269,10 +251,8 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * @generated
     */
    @Override
-   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_DEPENDENCY__EXTENSIONS :
             return ((InternalEList<?>) getExtensions()).basicRemove(otherEnd, msgs);
          case MavenModelPackage.MAVEN_DEPENDENCY__ANNOTATIONS :
@@ -288,10 +268,8 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_DEPENDENCY__EXTENSIONS :
             return getExtensions();
          case MavenModelPackage.MAVEN_DEPENDENCY__ANNOTATIONS :
@@ -308,10 +286,8 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     */
    @SuppressWarnings("unchecked")
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_DEPENDENCY__EXTENSIONS :
             getExtensions().clear();
             getExtensions().addAll((Collection<? extends EObject>) newValue);
@@ -331,10 +307,8 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_DEPENDENCY__EXTENSIONS :
             getExtensions().clear();
             return;
@@ -352,10 +326,8 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_DEPENDENCY__EXTENSIONS :
             return extensions != null && !extensions.isEmpty();
          case MavenModelPackage.MAVEN_DEPENDENCY__ANNOTATIONS :
@@ -371,32 +343,25 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * @generated
     */
    @Override
-   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-   {
-      if (baseClass == Extendable.class)
-      {
-         switch (derivedFeatureID)
-         {
+   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+      if (baseClass == Extendable.class) {
+         switch (derivedFeatureID) {
             case MavenModelPackage.MAVEN_DEPENDENCY__EXTENSIONS :
                return CommonModelingPackage.EXTENDABLE__EXTENSIONS;
             default :
                return -1;
          }
       }
-      if (baseClass == Annotatable.class)
-      {
-         switch (derivedFeatureID)
-         {
+      if (baseClass == Annotatable.class) {
+         switch (derivedFeatureID) {
             case MavenModelPackage.MAVEN_DEPENDENCY__ANNOTATIONS :
                return CommonModelingPackage.ANNOTATABLE__ANNOTATIONS;
             default :
                return -1;
          }
       }
-      if (baseClass == XAnnotatable.class)
-      {
-         switch (derivedFeatureID)
-         {
+      if (baseClass == XAnnotatable.class) {
+         switch (derivedFeatureID) {
             default :
                return -1;
          }
@@ -411,32 +376,25 @@ public class MavenDependencyImpl extends DependencyDeclarationImpl implements Ma
     * @generated
     */
    @Override
-   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-   {
-      if (baseClass == Extendable.class)
-      {
-         switch (baseFeatureID)
-         {
+   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+      if (baseClass == Extendable.class) {
+         switch (baseFeatureID) {
             case CommonModelingPackage.EXTENDABLE__EXTENSIONS :
                return MavenModelPackage.MAVEN_DEPENDENCY__EXTENSIONS;
             default :
                return -1;
          }
       }
-      if (baseClass == Annotatable.class)
-      {
-         switch (baseFeatureID)
-         {
+      if (baseClass == Annotatable.class) {
+         switch (baseFeatureID) {
             case CommonModelingPackage.ANNOTATABLE__ANNOTATIONS :
                return MavenModelPackage.MAVEN_DEPENDENCY__ANNOTATIONS;
             default :
                return -1;
          }
       }
-      if (baseClass == XAnnotatable.class)
-      {
-         switch (baseFeatureID)
-         {
+      if (baseClass == XAnnotatable.class) {
+         switch (baseFeatureID) {
             default :
                return -1;
          }

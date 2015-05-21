@@ -56,8 +56,7 @@ import org.sourcepit.common.modeling.XAnnotatable;
  * 
  * @generated
  */
-public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements MavenProject
-{
+public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements MavenProject {
    /**
     * The cached value of the '{@link #getExtensions() <em>Extensions</em>}' containment reference list.
     * <!-- begin-user-doc -->
@@ -174,8 +173,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   protected MavenProjectImpl()
-   {
+   protected MavenProjectImpl() {
       super();
    }
 
@@ -186,8 +184,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return MavenModelPackage.Literals.MAVEN_PROJECT;
    }
 
@@ -197,10 +194,8 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public EList<EObject> getExtensions()
-   {
-      if (extensions == null)
-      {
+   public EList<EObject> getExtensions() {
+      if (extensions == null) {
          extensions = new EObjectContainmentEList<EObject>(EObject.class, this,
             MavenModelPackage.MAVEN_PROJECT__EXTENSIONS);
       }
@@ -213,10 +208,8 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public EList<Annotation> getAnnotations()
-   {
-      if (annotations == null)
-      {
+   public EList<Annotation> getAnnotations() {
+      if (annotations == null) {
          annotations = new EObjectContainmentWithInverseEList<Annotation>(Annotation.class, this,
             MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS, CommonModelingPackage.ANNOTATION__TARGET);
       }
@@ -229,8 +222,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public String getPackaging()
-   {
+   public String getPackaging() {
       return packaging;
    }
 
@@ -240,8 +232,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public void setPackaging(String newPackaging)
-   {
+   public void setPackaging(String newPackaging) {
       String oldPackaging = packaging;
       packaging = newPackaging;
       if (eNotificationRequired())
@@ -255,8 +246,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public File getPomFile()
-   {
+   public File getPomFile() {
       return pomFile;
    }
 
@@ -266,8 +256,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public void setPomFile(File newPomFile)
-   {
+   public void setPomFile(File newPomFile) {
       File oldPomFile = pomFile;
       pomFile = newPomFile;
       if (eNotificationRequired())
@@ -281,8 +270,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public File getOutputDirectory()
-   {
+   public File getOutputDirectory() {
       return outputDirectory;
    }
 
@@ -292,8 +280,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public void setOutputDirectory(File newOutputDirectory)
-   {
+   public void setOutputDirectory(File newOutputDirectory) {
       File oldOutputDirectory = outputDirectory;
       outputDirectory = newOutputDirectory;
       if (eNotificationRequired())
@@ -307,8 +294,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public File getTestOutputDirectory()
-   {
+   public File getTestOutputDirectory() {
       return testOutputDirectory;
    }
 
@@ -318,8 +304,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public void setTestOutputDirectory(File newTestOutputDirectory)
-   {
+   public void setTestOutputDirectory(File newTestOutputDirectory) {
       File oldTestOutputDirectory = testOutputDirectory;
       testOutputDirectory = newTestOutputDirectory;
       if (eNotificationRequired())
@@ -333,8 +318,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public File getProjectDirectory()
-   {
+   public File getProjectDirectory() {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -346,8 +330,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public Annotation getAnnotation(String source)
-   {
+   public Annotation getAnnotation(String source) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -359,8 +342,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public Annotation getAnnotation(String source, boolean createOnDemand)
-   {
+   public Annotation getAnnotation(String source, boolean createOnDemand) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -372,8 +354,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public String getAnnotationData(String source, String key)
-   {
+   public String getAnnotationData(String source, String key) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -385,8 +366,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public String setAnnotationData(String source, String key, String value)
-   {
+   public String setAnnotationData(String source, String key, String value) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -398,8 +378,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public <T extends EObject> T getExtension(Class<T> extensionType)
-   {
+   public <T extends EObject> T getExtension(Class<T> extensionType) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -411,8 +390,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public <T extends EObject> EList<T> getExtensions(Class<T> extensionType)
-   {
+   public <T extends EObject> EList<T> getExtensions(Class<T> extensionType) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -424,8 +402,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public <T extends EObject> void addExtension(T extension)
-   {
+   public <T extends EObject> void addExtension(T extension) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -437,8 +414,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public <T extends EObject> void removeExtension(T extension)
-   {
+   public <T extends EObject> void removeExtension(T extension) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -450,8 +426,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * 
     * @generated
     */
-   public <T extends EObject> void removeExtensions(Class<T> extentionType)
-   {
+   public <T extends EObject> void removeExtensions(Class<T> extentionType) {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -465,10 +440,8 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     */
    @SuppressWarnings("unchecked")
    @Override
-   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS :
             return ((InternalEList<InternalEObject>) (InternalEList<?>) getAnnotations()).basicAdd(otherEnd, msgs);
       }
@@ -482,10 +455,8 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * @generated
     */
    @Override
-   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-   {
-      switch (featureID)
-      {
+   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_PROJECT__EXTENSIONS :
             return ((InternalEList<?>) getExtensions()).basicRemove(otherEnd, msgs);
          case MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS :
@@ -501,10 +472,8 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_PROJECT__EXTENSIONS :
             return getExtensions();
          case MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS :
@@ -529,10 +498,8 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     */
    @SuppressWarnings("unchecked")
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_PROJECT__EXTENSIONS :
             getExtensions().clear();
             getExtensions().addAll((Collection<? extends EObject>) newValue);
@@ -564,10 +531,8 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_PROJECT__EXTENSIONS :
             getExtensions().clear();
             return;
@@ -597,10 +562,8 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_PROJECT__EXTENSIONS :
             return extensions != null && !extensions.isEmpty();
          case MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS :
@@ -610,8 +573,9 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
          case MavenModelPackage.MAVEN_PROJECT__POM_FILE :
             return POM_FILE_EDEFAULT == null ? pomFile != null : !POM_FILE_EDEFAULT.equals(pomFile);
          case MavenModelPackage.MAVEN_PROJECT__OUTPUT_DIRECTORY :
-            return OUTPUT_DIRECTORY_EDEFAULT == null ? outputDirectory != null : !OUTPUT_DIRECTORY_EDEFAULT
-               .equals(outputDirectory);
+            return OUTPUT_DIRECTORY_EDEFAULT == null
+               ? outputDirectory != null
+               : !OUTPUT_DIRECTORY_EDEFAULT.equals(outputDirectory);
          case MavenModelPackage.MAVEN_PROJECT__TEST_OUTPUT_DIRECTORY :
             return TEST_OUTPUT_DIRECTORY_EDEFAULT == null
                ? testOutputDirectory != null
@@ -627,32 +591,25 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * @generated
     */
    @Override
-   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-   {
-      if (baseClass == Extendable.class)
-      {
-         switch (derivedFeatureID)
-         {
+   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+      if (baseClass == Extendable.class) {
+         switch (derivedFeatureID) {
             case MavenModelPackage.MAVEN_PROJECT__EXTENSIONS :
                return CommonModelingPackage.EXTENDABLE__EXTENSIONS;
             default :
                return -1;
          }
       }
-      if (baseClass == Annotatable.class)
-      {
-         switch (derivedFeatureID)
-         {
+      if (baseClass == Annotatable.class) {
+         switch (derivedFeatureID) {
             case MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS :
                return CommonModelingPackage.ANNOTATABLE__ANNOTATIONS;
             default :
                return -1;
          }
       }
-      if (baseClass == XAnnotatable.class)
-      {
-         switch (derivedFeatureID)
-         {
+      if (baseClass == XAnnotatable.class) {
+         switch (derivedFeatureID) {
             default :
                return -1;
          }
@@ -667,32 +624,25 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * @generated
     */
    @Override
-   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-   {
-      if (baseClass == Extendable.class)
-      {
-         switch (baseFeatureID)
-         {
+   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+      if (baseClass == Extendable.class) {
+         switch (baseFeatureID) {
             case CommonModelingPackage.EXTENDABLE__EXTENSIONS :
                return MavenModelPackage.MAVEN_PROJECT__EXTENSIONS;
             default :
                return -1;
          }
       }
-      if (baseClass == Annotatable.class)
-      {
-         switch (baseFeatureID)
-         {
+      if (baseClass == Annotatable.class) {
+         switch (baseFeatureID) {
             case CommonModelingPackage.ANNOTATABLE__ANNOTATIONS :
                return MavenModelPackage.MAVEN_PROJECT__ANNOTATIONS;
             default :
                return -1;
          }
       }
-      if (baseClass == XAnnotatable.class)
-      {
-         switch (baseFeatureID)
-         {
+      if (baseClass == XAnnotatable.class) {
+         switch (baseFeatureID) {
             default :
                return -1;
          }
@@ -707,8 +657,7 @@ public class MavenProjectImpl extends MavenProjectCoordinatesImpl implements Mav
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

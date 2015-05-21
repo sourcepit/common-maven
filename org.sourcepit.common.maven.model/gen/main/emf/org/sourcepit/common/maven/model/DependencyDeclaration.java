@@ -35,8 +35,7 @@ package org.sourcepit.common.maven.model;
  * @model abstract="true"
  * @generated
  */
-public interface DependencyDeclaration extends MavenArtifactConflictCoordinates, MavenClassified
-{
+public interface DependencyDeclaration extends MavenArtifactConflictCoordinates, MavenClassified {
    /**
     * Returns the value of the '<em><b>Version Constraint</b></em>' attribute.
     * <!-- begin-user-doc -->

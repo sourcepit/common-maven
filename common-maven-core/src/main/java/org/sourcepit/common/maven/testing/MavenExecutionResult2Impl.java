@@ -27,74 +27,60 @@ import org.apache.maven.project.MavenProject;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public class MavenExecutionResult2Impl implements MavenExecutionResult2
-{
+public class MavenExecutionResult2Impl implements MavenExecutionResult2 {
    private final MavenExecutionResult origin;
    private final MavenSession session;
 
-   public MavenExecutionResult2Impl(MavenSession session, MavenExecutionResult origin)
-   {
+   public MavenExecutionResult2Impl(MavenSession session, MavenExecutionResult origin) {
       this.session = session;
       this.origin = origin;
    }
 
-   public MavenSession getSession()
-   {
+   public MavenSession getSession() {
       return session;
    }
 
-   public MavenExecutionResult setProject(MavenProject project)
-   {
+   public MavenExecutionResult setProject(MavenProject project) {
       return origin.setProject(project);
    }
 
-   public MavenProject getProject()
-   {
+   public MavenProject getProject() {
       return origin.getProject();
    }
 
-   public MavenExecutionResult setTopologicallySortedProjects(List<MavenProject> projects)
-   {
+   public MavenExecutionResult setTopologicallySortedProjects(List<MavenProject> projects) {
       return origin.setTopologicallySortedProjects(projects);
    }
 
-   public List<MavenProject> getTopologicallySortedProjects()
-   {
+   public List<MavenProject> getTopologicallySortedProjects() {
       return origin.getTopologicallySortedProjects();
    }
 
-   public MavenExecutionResult setDependencyResolutionResult(DependencyResolutionResult result)
-   {
+   public MavenExecutionResult setDependencyResolutionResult(DependencyResolutionResult result) {
       return origin.setDependencyResolutionResult(result);
    }
 
-   public DependencyResolutionResult getDependencyResolutionResult()
-   {
+   public DependencyResolutionResult getDependencyResolutionResult() {
       return origin.getDependencyResolutionResult();
    }
 
-   public List<Throwable> getExceptions()
-   {
+   public List<Throwable> getExceptions() {
       return origin.getExceptions();
    }
 
-   public MavenExecutionResult addException(Throwable e)
-   {
+   public MavenExecutionResult addException(Throwable e) {
       return origin.addException(e);
    }
 
-   public boolean hasExceptions()
-   {
+   public boolean hasExceptions() {
       return origin.hasExceptions();
    }
 
-   public BuildSummary getBuildSummary(MavenProject project)
-   {
+   public BuildSummary getBuildSummary(MavenProject project) {
       return origin.getBuildSummary(project);
    }
 
-   public void addBuildSummary(BuildSummary summary)
-   {
+   public void addBuildSummary(BuildSummary summary) {
       origin.addBuildSummary(summary);
    }
 }

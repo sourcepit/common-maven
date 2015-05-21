@@ -44,8 +44,7 @@ import org.sourcepit.common.maven.model.Scope;
  */
 public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoordinatesImpl
    implements
-      DependencyDeclaration
-{
+      DependencyDeclaration {
    /**
     * The default value of the '{@link #getClassifier() <em>Classifier</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -162,8 +161,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   protected DependencyDeclarationImpl()
-   {
+   protected DependencyDeclarationImpl() {
       super();
    }
 
@@ -174,8 +172,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return MavenModelPackage.Literals.DEPENDENCY_DECLARATION;
    }
 
@@ -185,8 +182,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   public String getClassifier()
-   {
+   public String getClassifier() {
       return classifier;
    }
 
@@ -196,8 +192,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   public void setClassifier(String newClassifier)
-   {
+   public void setClassifier(String newClassifier) {
       String oldClassifier = classifier;
       classifier = newClassifier;
       if (eNotificationRequired())
@@ -211,8 +206,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   public String getType()
-   {
+   public String getType() {
       return type;
    }
 
@@ -222,8 +216,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   public void setType(String newType)
-   {
+   public void setType(String newType) {
       String oldType = type;
       type = newType;
       if (eNotificationRequired())
@@ -237,8 +230,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   public String getVersionConstraint()
-   {
+   public String getVersionConstraint() {
       return versionConstraint;
    }
 
@@ -248,8 +240,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   public void setVersionConstraint(String newVersionConstraint)
-   {
+   public void setVersionConstraint(String newVersionConstraint) {
       String oldVersionConstraint = versionConstraint;
       versionConstraint = newVersionConstraint;
       if (eNotificationRequired())
@@ -263,8 +254,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   public Scope getScope()
-   {
+   public Scope getScope() {
       return scope;
    }
 
@@ -274,8 +264,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   public void setScope(Scope newScope)
-   {
+   public void setScope(Scope newScope) {
       Scope oldScope = scope;
       scope = newScope == null ? SCOPE_EDEFAULT : newScope;
       if (eNotificationRequired())
@@ -289,8 +278,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   public boolean isOptional()
-   {
+   public boolean isOptional() {
       return optional;
    }
 
@@ -300,8 +288,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * 
     * @generated
     */
-   public void setOptional(boolean newOptional)
-   {
+   public void setOptional(boolean newOptional) {
       boolean oldOptional = optional;
       optional = newOptional;
       if (eNotificationRequired())
@@ -316,10 +303,8 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case MavenModelPackage.DEPENDENCY_DECLARATION__CLASSIFIER :
             return getClassifier();
          case MavenModelPackage.DEPENDENCY_DECLARATION__TYPE :
@@ -341,10 +326,8 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case MavenModelPackage.DEPENDENCY_DECLARATION__CLASSIFIER :
             setClassifier((String) newValue);
             return;
@@ -371,10 +354,8 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.DEPENDENCY_DECLARATION__CLASSIFIER :
             setClassifier(CLASSIFIER_EDEFAULT);
             return;
@@ -401,17 +382,16 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.DEPENDENCY_DECLARATION__CLASSIFIER :
             return CLASSIFIER_EDEFAULT == null ? classifier != null : !CLASSIFIER_EDEFAULT.equals(classifier);
          case MavenModelPackage.DEPENDENCY_DECLARATION__TYPE :
             return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
          case MavenModelPackage.DEPENDENCY_DECLARATION__VERSION_CONSTRAINT :
-            return VERSION_CONSTRAINT_EDEFAULT == null ? versionConstraint != null : !VERSION_CONSTRAINT_EDEFAULT
-               .equals(versionConstraint);
+            return VERSION_CONSTRAINT_EDEFAULT == null
+               ? versionConstraint != null
+               : !VERSION_CONSTRAINT_EDEFAULT.equals(versionConstraint);
          case MavenModelPackage.DEPENDENCY_DECLARATION__SCOPE :
             return scope != SCOPE_EDEFAULT;
          case MavenModelPackage.DEPENDENCY_DECLARATION__OPTIONAL :
@@ -427,12 +407,9 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * @generated
     */
    @Override
-   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-   {
-      if (baseClass == MavenClassified.class)
-      {
-         switch (derivedFeatureID)
-         {
+   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+      if (baseClass == MavenClassified.class) {
+         switch (derivedFeatureID) {
             case MavenModelPackage.DEPENDENCY_DECLARATION__CLASSIFIER :
                return MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER;
             case MavenModelPackage.DEPENDENCY_DECLARATION__TYPE :
@@ -451,12 +428,9 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * @generated
     */
    @Override
-   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-   {
-      if (baseClass == MavenClassified.class)
-      {
-         switch (baseFeatureID)
-         {
+   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+      if (baseClass == MavenClassified.class) {
+         switch (baseFeatureID) {
             case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
                return MavenModelPackage.DEPENDENCY_DECLARATION__CLASSIFIER;
             case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
@@ -475,8 +449,7 @@ public abstract class DependencyDeclarationImpl extends MavenArtifactConflictCoo
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

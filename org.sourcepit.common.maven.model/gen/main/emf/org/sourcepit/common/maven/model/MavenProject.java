@@ -39,8 +39,7 @@ import org.sourcepit.common.modeling.XAnnotatable;
  * @model
  * @generated
  */
-public interface MavenProject extends MavenProjectCoordinates, XAnnotatable
-{
+public interface MavenProject extends MavenProjectCoordinates, XAnnotatable {
    /**
     * Returns the value of the '<em><b>Packaging</b></em>' attribute.
     * The default value is <code>"jar"</code>.

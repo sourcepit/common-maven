@@ -18,44 +18,37 @@ package org.sourcepit.common.maven.model;
 
 import org.sourcepit.common.maven.model.util.MavenModelUtils;
 
-public class ArtifactKeyBuilder
-{
+public class ArtifactKeyBuilder {
    private String groupId, artifactId, type, classifier;
 
    private String version;
 
-   public ArtifactKeyBuilder setGroupId(String groupId)
-   {
+   public ArtifactKeyBuilder setGroupId(String groupId) {
       this.groupId = groupId;
       return this;
    }
 
-   public ArtifactKeyBuilder setArtifactId(String artifactId)
-   {
+   public ArtifactKeyBuilder setArtifactId(String artifactId) {
       this.artifactId = artifactId;
       return this;
    }
 
-   public ArtifactKeyBuilder setType(String type)
-   {
+   public ArtifactKeyBuilder setType(String type) {
       this.type = type;
       return this;
    }
 
-   public ArtifactKeyBuilder setClassifier(String classifier)
-   {
+   public ArtifactKeyBuilder setClassifier(String classifier) {
       this.classifier = classifier;
       return this;
    }
 
-   public ArtifactKeyBuilder setVersion(String version)
-   {
+   public ArtifactKeyBuilder setVersion(String version) {
       this.version = version;
       return this;
    }
 
-   public ArtifactKey toArtifactKey()
-   {
+   public ArtifactKey toArtifactKey() {
       return MavenModelUtils.toArtifactKey(groupId, artifactId, type, classifier, version);
    }
 

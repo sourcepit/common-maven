@@ -22,25 +22,19 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.fail;
 
-import java.lang.IllegalArgumentException;
-
 import org.apache.maven.model.Dependency;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.junit.Test;
 
-public class Xpp3UtilsTest
-{
+public class Xpp3UtilsTest {
 
    @Test
-   public void testClearChildren()
-   {
-      try
-      {
+   public void testClearChildren() {
+      try {
          Xpp3Utils.clearChildren(null);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Xpp3Dom node = new Xpp3Dom("node");
@@ -62,15 +56,12 @@ public class Xpp3UtilsTest
    }
 
    @Test
-   public void testNewValueNode()
-   {
-      try
-      {
+   public void testNewValueNode() {
+      try {
          Xpp3Utils.newValueNode(null, "");
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Xpp3Dom node = Xpp3Utils.newValueNode("foo", null);
@@ -85,27 +76,22 @@ public class Xpp3UtilsTest
    }
 
    @Test
-   public void testAddValueNode()
-   {
-      try
-      {
+   public void testAddValueNode() {
+      try {
          Xpp3Utils.addValueNode(null, "foo", "bar");
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Xpp3Dom parent = new Xpp3Dom("parent");
       assertEquals(0, parent.getChildCount());
 
-      try
-      {
+      try {
          Xpp3Utils.addValueNode(parent, null, "bar");
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Xpp3Utils.addValueNode(parent, "foo", null);
@@ -128,15 +114,12 @@ public class Xpp3UtilsTest
    }
 
    @Test
-   public void testNewDependencyNode()
-   {
-      try
-      {
+   public void testNewDependencyNode() {
+      try {
          Xpp3Utils.toDependencyNode(null);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Xpp3Dom node = Xpp3Utils.toDependencyNode(new Dependency());

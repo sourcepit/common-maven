@@ -38,21 +38,16 @@ import org.apache.maven.project.MavenProject;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.junit.Test;
-import org.sourcepit.common.maven.core.MavenProjectUtils;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 
-public class MavenProjectUtilsTest extends AbstractCommonMavenTest
-{
+public class MavenProjectUtilsTest extends AbstractCommonMavenTest {
    @Test
-   public void testGetOutputDir()
-   {
-      try
-      {
+   public void testGetOutputDir() {
+      try {
          MavenProjectUtils.getOutputDir(null);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       MavenProject project = new MavenProject();
@@ -61,13 +56,11 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
       assertThat(outputDir, nullValue());
 
       project.getBuild().setOutputDirectory("target/classes");
-      try
-      {
+      try {
          MavenProjectUtils.getOutputDir(project);
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
       final File pomFile = new File("pom.xml").getAbsoluteFile();
@@ -84,15 +77,12 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
    }
 
    @Test
-   public void testGetTestOutputDir()
-   {
-      try
-      {
+   public void testGetTestOutputDir() {
+      try {
          MavenProjectUtils.getTestOutputDir(null);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       MavenProject project = new MavenProject();
@@ -101,13 +91,11 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
       assertThat(outputDir, nullValue());
 
       project.getBuild().setTestOutputDirectory("target/classes");
-      try
-      {
+      try {
          MavenProjectUtils.getTestOutputDir(project);
          fail();
       }
-      catch (IllegalStateException e)
-      {
+      catch (IllegalStateException e) {
       }
 
       final File pomFile = new File("pom.xml").getAbsoluteFile();
@@ -124,21 +112,17 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
    }
 
    @Test
-   public void testFindReferencedProject() throws Exception
-   {
-      try
-      {
+   public void testFindReferencedProject() throws Exception {
+      try {
          MavenProjectUtils.findReferencedProject(null, null);
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
 
       final File projectDir = getResource("reactor-project");
 
-      final List<MavenProject> projects = buildProject(new File(projectDir, "pom.xml"), true)
-         .getTopologicallySortedProjects();
+      final List<MavenProject> projects = buildProject(new File(projectDir, "pom.xml"), true).getTopologicallySortedProjects();
       assertThat(projects.size(), is(3));
 
       MavenProject projectB = projects.get(1);
@@ -146,13 +130,11 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
       MavenProject projectA = projects.get(2);
       assertThat(projectA.getArtifactId(), equalTo("module-a"));
 
-      try
-      {
+      try {
          MavenProjectUtils.findReferencedProject(projectA, null);
          fail();
       }
-      catch (IllegalArgumentException e)
-      { // noop
+      catch (IllegalArgumentException e) { // noop
       }
 
       Artifact artifactB = projectA.getArtifacts().iterator().next();
@@ -163,11 +145,9 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
    }
 
    @Test
-   public void testGetSnapshotArtifactRepository() throws Exception
-   {
+   public void testGetSnapshotArtifactRepository() throws Exception {
       final File projectDir = getResource("reactor-project");
-      final List<MavenProject> projects = buildProject(new File(projectDir, "pom.xml"), true)
-         .getTopologicallySortedProjects();
+      final List<MavenProject> projects = buildProject(new File(projectDir, "pom.xml"), true).getTopologicallySortedProjects();
       assertThat(projects.size(), is(3));
 
       MavenProject reactor = projects.get(0);
@@ -187,15 +167,12 @@ public class MavenProjectUtilsTest extends AbstractCommonMavenTest
    }
 
    @Test
-   public void testToMavenProject()
-   {
-      try
-      {
+   public void testToMavenProject() {
+      try {
          MavenProjectUtils.toMavenProject(null);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       MavenProject project = mock(MavenProject.class);

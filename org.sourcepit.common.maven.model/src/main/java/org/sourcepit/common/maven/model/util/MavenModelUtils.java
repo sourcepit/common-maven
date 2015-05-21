@@ -40,39 +40,32 @@ import org.sourcepit.common.maven.model.MavenModelFactory;
 import org.sourcepit.common.maven.model.Scope;
 import org.sourcepit.common.maven.model.VersionConflictKey;
 
-public final class MavenModelUtils
-{
+public final class MavenModelUtils {
 
 
    @NotNull
-   public static MavenDependency toMavenDependecy(@NotNull Dependency dependency)
-   {
+   public static MavenDependency toMavenDependecy(@NotNull Dependency dependency) {
       final MavenDependency mavenDep = MavenModelFactory.eINSTANCE.createMavenDependency();
       mavenDep.setGroupId(dependency.getGroupId());
       mavenDep.setArtifactId(dependency.getArtifactId());
       mavenDep.setVersionConstraint(dependency.getVersion());
 
-      if (mavenDep.isOptional() != dependency.isOptional())
-      {
+      if (mavenDep.isOptional() != dependency.isOptional()) {
          mavenDep.setOptional(dependency.isOptional());
       }
 
       if (dependency.getClassifier() != null
-         && !ObjectUtils.equals(mavenDep.getClassifier(), dependency.getClassifier()))
-      {
+         && !ObjectUtils.equals(mavenDep.getClassifier(), dependency.getClassifier())) {
          mavenDep.setClassifier(dependency.getClassifier());
       }
 
-      if (dependency.getType() != null && !ObjectUtils.equals(mavenDep.getType(), dependency.getType()))
-      {
+      if (dependency.getType() != null && !ObjectUtils.equals(mavenDep.getType(), dependency.getType())) {
          mavenDep.setType(dependency.getType());
       }
 
-      if (dependency.getScope() != null)
-      {
+      if (dependency.getScope() != null) {
          final Scope artifactScope = toScope(dependency.getScope());
-         if (!ObjectUtils.equals(mavenDep.getScope(), artifactScope))
-         {
+         if (!ObjectUtils.equals(mavenDep.getScope(), artifactScope)) {
             mavenDep.setScope(artifactScope);
          }
       }
@@ -80,8 +73,7 @@ public final class MavenModelUtils
       return mavenDep;
    }
 
-   public static Scope toScope(@NotNull String scope)
-   {
+   public static Scope toScope(@NotNull String scope) {
       final Scope result = Scope.get(scope);
       checkState(result != null, "%s is not a valid maven scope", scope);
       return result;
@@ -89,17 +81,14 @@ public final class MavenModelUtils
 
 
    @NotNull
-   public static MavenArtifact parseArtifactKey(final String artifactKey)
-   {
+   public static MavenArtifact parseArtifactKey(final String artifactKey) {
       final String[] segments = artifactKey.split(":");
-      if (segments.length > 3 && segments.length < 6)
-      {
+      if (segments.length > 3 && segments.length < 6) {
          final MavenArtifact artifact = MavenModelFactory.eINSTANCE.createMavenArtifact();
          artifact.setGroupId(segments[0]);
          artifact.setArtifactId(segments[1]);
          final String type = segments[2];
-         if (!"jar".equals(type))
-         {
+         if (!"jar".equals(type)) {
             artifact.setType(type);
          }
          if (segments.length > 4) // has classifier
@@ -107,21 +96,18 @@ public final class MavenModelUtils
             artifact.setClassifier(segments[3]);
             artifact.setVersion(segments[4]);
          }
-         else
-         {
+         else {
             artifact.setVersion(segments[3]);
          }
          return artifact;
       }
-      else
-      {
+      else {
          throw new IllegalArgumentException("Invalid artifact key: " + artifactKey);
       }
    }
 
    @NotNull
-   public static ArtifactKey toArtifactKey(@NotNull MavenArtifact artifact)
-   {
+   public static ArtifactKey toArtifactKey(@NotNull MavenArtifact artifact) {
       return toArtifactKey(artifact.getGroupId(), artifact.getArtifactId(), artifact.getType(),
          artifact.getClassifier(), artifact.getVersion());
    }
@@ -129,24 +115,20 @@ public final class MavenModelUtils
 
    @NotNull
    public static ArtifactKey toArtifactKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String type,
-      String classifier, @NotNull String version)
-   {
+      String classifier, @NotNull String version) {
       return new ArtifactKey(groupId, artifactId, version, type, classifier);
    }
 
    @NotNull
    public static VersionConflictKey toVersionConflictKey(@NotNull String groupId, @NotNull String artifactId,
-      @NotNull String type, String classifier)
-   {
+      @NotNull String type, String classifier) {
       return new VersionConflictKey(groupId, artifactId, type, classifier);
    }
 
    @NotNull
-   public static Plugin createPlugin(String groupId, @NotNull String artifactId, String version)
-   {
+   public static Plugin createPlugin(String groupId, @NotNull String artifactId, String version) {
       final Plugin plugin = new Plugin();
-      if (groupId != null)
-      {
+      if (groupId != null) {
          plugin.setGroupId(groupId);
       }
       plugin.setArtifactId(artifactId);
@@ -154,22 +136,18 @@ public final class MavenModelUtils
       return plugin;
    }
 
-   public static Build getBuild(@NotNull Model model, boolean createOnDemand)
-   {
+   public static Build getBuild(@NotNull Model model, boolean createOnDemand) {
       Build build = model.getBuild();
-      if (build == null && createOnDemand)
-      {
+      if (build == null && createOnDemand) {
          build = new Build();
          model.setBuild(build);
       }
       return build;
    }
 
-   public static PluginManagement getPluginManagement(@NotNull Build build, boolean createOnDemand)
-   {
+   public static PluginManagement getPluginManagement(@NotNull Build build, boolean createOnDemand) {
       PluginManagement pluginManagement = build.getPluginManagement();
-      if (pluginManagement == null && createOnDemand)
-      {
+      if (pluginManagement == null && createOnDemand) {
          pluginManagement = new PluginManagement();
          build.setPluginManagement(pluginManagement);
       }
@@ -177,11 +155,9 @@ public final class MavenModelUtils
    }
 
    public static Plugin getPlugin(@NotNull Model model, String groupId, @NotNull String artifactId,
-      boolean createOnDemand)
-   {
+      boolean createOnDemand) {
       final Build build = getBuild(model, createOnDemand);
-      if (build != null)
-      {
+      if (build != null) {
          return getPlugin(build, groupId, artifactId, createOnDemand);
       }
       return null;
@@ -190,12 +166,10 @@ public final class MavenModelUtils
    private final static String DEFAULT_GROUP_ID = new Plugin().getGroupId();
 
    public static Plugin getPlugin(@NotNull PluginContainer build, String groupId, @NotNull String artifactId,
-      boolean createOnDemand)
-   {
+      boolean createOnDemand) {
       final String pluginKey = createPluginKey(groupId, artifactId);
       Plugin plugin = build.getPluginsAsMap().get(pluginKey);
-      if (plugin == null && createOnDemand)
-      {
+      if (plugin == null && createOnDemand) {
          plugin = createPlugin(groupId, artifactId, null);
          build.getPlugins().add(plugin);
          build.flushPluginMap();
@@ -203,16 +177,13 @@ public final class MavenModelUtils
       return plugin;
    }
 
-   private static String createPluginKey(String groupId, @NotNull String artifactId)
-   {
+   private static String createPluginKey(String groupId, @NotNull String artifactId) {
       return Plugin.constructKey(groupId == null ? DEFAULT_GROUP_ID : groupId, artifactId);
    }
 
-   public static Xpp3Dom getConfiguration(@NotNull Plugin plugin, boolean createOnDemand)
-   {
+   public static Xpp3Dom getConfiguration(@NotNull Plugin plugin, boolean createOnDemand) {
       Xpp3Dom configuration = (Xpp3Dom) plugin.getConfiguration();
-      if (configuration == null && createOnDemand)
-      {
+      if (configuration == null && createOnDemand) {
          configuration = new Xpp3Dom("configuration");
          plugin.setConfiguration(configuration);
       }
@@ -220,11 +191,9 @@ public final class MavenModelUtils
    }
 
    public static PluginExecution getPluginExecution(@NotNull Plugin plugin, boolean createOnDemand,
-      @NotNull final String id)
-   {
+      @NotNull final String id) {
       PluginExecution pluginExecution = plugin.getExecutionsAsMap().get(id);
-      if (pluginExecution == null && createOnDemand)
-      {
+      if (pluginExecution == null && createOnDemand) {
          pluginExecution = new PluginExecution();
          pluginExecution.setId(id);
          plugin.getExecutions().add(pluginExecution);
@@ -234,11 +203,9 @@ public final class MavenModelUtils
    }
 
    public static Plugin getPlugin(@NotNull PluginContainer build, boolean createOnDemand,
-      @NotNull final String groupId, @NotNull final String artifactId, final String version)
-   {
+      @NotNull final String groupId, @NotNull final String artifactId, final String version) {
       Plugin plugin = build.getPluginsAsMap().get(constructKey(groupId, artifactId));
-      if (plugin == null && createOnDemand)
-      {
+      if (plugin == null && createOnDemand) {
          plugin = new Plugin();
          plugin.setGroupId(groupId);
          plugin.setArtifactId(artifactId);
@@ -250,16 +217,12 @@ public final class MavenModelUtils
    }
 
    public static Dependency getDependency(@NotNull Collection<Dependency> dependencies, @NotNull String groupId,
-      @NotNull String artifactId)
-   {
-      for (Dependency dependency : dependencies)
-      {
-         if (!groupId.equals(dependency.getGroupId()))
-         {
+      @NotNull String artifactId) {
+      for (Dependency dependency : dependencies) {
+         if (!groupId.equals(dependency.getGroupId())) {
             continue;
          }
-         if (!artifactId.equals(dependency.getArtifactId()))
-         {
+         if (!artifactId.equals(dependency.getArtifactId())) {
             continue;
          }
          return dependency;
@@ -269,11 +232,9 @@ public final class MavenModelUtils
 
    private static final Pattern VERSION_FILE_PATTERN = Pattern.compile("^(.*)-([0-9]{8}.[0-9]{6})-([0-9]+)$");
 
-   public static String normalizeSnapshotVersion(@NotNull String version)
-   {
+   public static String normalizeSnapshotVersion(@NotNull String version) {
       Matcher matcher = VERSION_FILE_PATTERN.matcher(version);
-      if (matcher.matches())
-      {
+      if (matcher.matches()) {
          return matcher.group(1) + "-SNAPSHOT";
       }
       return version;

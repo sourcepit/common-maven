@@ -46,8 +46,7 @@ import org.sourcepit.common.modeling.XAnnotatable;
  * @see org.sourcepit.common.maven.model.MavenModelPackage
  * @generated
  */
-public class MavenModelSwitch<T> extends Switch<T>
-{
+public class MavenModelSwitch<T> extends Switch<T> {
    /**
     * The cached model package
     * <!-- begin-user-doc -->
@@ -64,10 +63,8 @@ public class MavenModelSwitch<T> extends Switch<T>
     * 
     * @generated
     */
-   public MavenModelSwitch()
-   {
-      if (modelPackage == null)
-      {
+   public MavenModelSwitch() {
+      if (modelPackage == null) {
          modelPackage = MavenModelPackage.eINSTANCE;
       }
    }
@@ -82,8 +79,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @generated
     */
    @Override
-   protected boolean isSwitchFor(EPackage ePackage)
-   {
+   protected boolean isSwitchFor(EPackage ePackage) {
       return ePackage == modelPackage;
    }
 
@@ -96,12 +92,9 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @generated
     */
    @Override
-   protected T doSwitch(int classifierID, EObject theEObject)
-   {
-      switch (classifierID)
-      {
-         case MavenModelPackage.MAVEN_ARTIFACT :
-         {
+   protected T doSwitch(int classifierID, EObject theEObject) {
+      switch (classifierID) {
+         case MavenModelPackage.MAVEN_ARTIFACT : {
             MavenArtifact mavenArtifact = (MavenArtifact) theEObject;
             T result = caseMavenArtifact(mavenArtifact);
             if (result == null)
@@ -122,8 +115,7 @@ public class MavenModelSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case MavenModelPackage.MAVEN_DEPENDENCY :
-         {
+         case MavenModelPackage.MAVEN_DEPENDENCY : {
             MavenDependency mavenDependency = (MavenDependency) theEObject;
             T result = caseMavenDependency(mavenDependency);
             if (result == null)
@@ -142,16 +134,14 @@ public class MavenModelSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES :
-         {
+         case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES : {
             MavenArtifactConflictCoordinates mavenArtifactConflictCoordinates = (MavenArtifactConflictCoordinates) theEObject;
             T result = caseMavenArtifactConflictCoordinates(mavenArtifactConflictCoordinates);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
          }
-         case MavenModelPackage.MAVEN_PROJECT_COORDINATES :
-         {
+         case MavenModelPackage.MAVEN_PROJECT_COORDINATES : {
             MavenProjectCoordinates mavenProjectCoordinates = (MavenProjectCoordinates) theEObject;
             T result = caseMavenProjectCoordinates(mavenProjectCoordinates);
             if (result == null)
@@ -160,16 +150,14 @@ public class MavenModelSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case MavenModelPackage.MAVEN_CLASSIFIED :
-         {
+         case MavenModelPackage.MAVEN_CLASSIFIED : {
             MavenClassified mavenClassified = (MavenClassified) theEObject;
             T result = caseMavenClassified(mavenClassified);
             if (result == null)
                result = defaultCase(theEObject);
             return result;
          }
-         case MavenModelPackage.MAVEN_PROJECT :
-         {
+         case MavenModelPackage.MAVEN_PROJECT : {
             MavenProject mavenProject = (MavenProject) theEObject;
             T result = caseMavenProject(mavenProject);
             if (result == null)
@@ -186,8 +174,7 @@ public class MavenModelSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case MavenModelPackage.DEPENDENCY_DECLARATION :
-         {
+         case MavenModelPackage.DEPENDENCY_DECLARATION : {
             DependencyDeclaration dependencyDeclaration = (DependencyDeclaration) theEObject;
             T result = caseDependencyDeclaration(dependencyDeclaration);
             if (result == null)
@@ -198,8 +185,7 @@ public class MavenModelSwitch<T> extends Switch<T>
                result = defaultCase(theEObject);
             return result;
          }
-         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES :
-         {
+         case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES : {
             MavenArtifactCoordinates mavenArtifactCoordinates = (MavenArtifactCoordinates) theEObject;
             T result = caseMavenArtifactCoordinates(mavenArtifactCoordinates);
             if (result == null)
@@ -229,8 +215,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseMavenArtifact(MavenArtifact object)
-   {
+   public T caseMavenArtifact(MavenArtifact object) {
       return null;
    }
 
@@ -246,8 +231,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseMavenDependency(MavenDependency object)
-   {
+   public T caseMavenDependency(MavenDependency object) {
       return null;
    }
 
@@ -263,8 +247,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseMavenArtifactConflictCoordinates(MavenArtifactConflictCoordinates object)
-   {
+   public T caseMavenArtifactConflictCoordinates(MavenArtifactConflictCoordinates object) {
       return null;
    }
 
@@ -280,8 +263,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseMavenProjectCoordinates(MavenProjectCoordinates object)
-   {
+   public T caseMavenProjectCoordinates(MavenProjectCoordinates object) {
       return null;
    }
 
@@ -297,8 +279,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseMavenClassified(MavenClassified object)
-   {
+   public T caseMavenClassified(MavenClassified object) {
       return null;
    }
 
@@ -314,8 +295,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseMavenProject(MavenProject object)
-   {
+   public T caseMavenProject(MavenProject object) {
       return null;
    }
 
@@ -331,8 +311,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseDependencyDeclaration(DependencyDeclaration object)
-   {
+   public T caseDependencyDeclaration(DependencyDeclaration object) {
       return null;
    }
 
@@ -348,8 +327,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseMavenArtifactCoordinates(MavenArtifactCoordinates object)
-   {
+   public T caseMavenArtifactCoordinates(MavenArtifactCoordinates object) {
       return null;
    }
 
@@ -365,8 +343,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseExtendable(Extendable object)
-   {
+   public T caseExtendable(Extendable object) {
       return null;
    }
 
@@ -382,8 +359,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseAnnotatable(Annotatable object)
-   {
+   public T caseAnnotatable(Annotatable object) {
       return null;
    }
 
@@ -399,8 +375,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
     * @generated
     */
-   public T caseXAnnotatable(XAnnotatable object)
-   {
+   public T caseXAnnotatable(XAnnotatable object) {
       return null;
    }
 
@@ -417,8 +392,7 @@ public class MavenModelSwitch<T> extends Switch<T>
     * @generated
     */
    @Override
-   public T defaultCase(EObject object)
-   {
+   public T defaultCase(EObject object) {
       return null;
    }
 

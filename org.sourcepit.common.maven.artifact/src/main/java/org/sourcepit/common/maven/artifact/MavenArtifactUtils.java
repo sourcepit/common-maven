@@ -37,48 +37,40 @@ import org.sourcepit.common.maven.model.Scope;
 import org.sourcepit.common.maven.model.util.MavenModelUtils;
 import org.sourcepit.common.modeling.Annotation;
 
-public final class MavenArtifactUtils
-{
-   private MavenArtifactUtils()
-   {
+public final class MavenArtifactUtils {
+   private MavenArtifactUtils() {
       super();
    }
 
    @NotNull
-   public static MavenDependency toMavenDependecy(@NotNull org.eclipse.aether.artifact.Artifact artifact)
-   {
+   public static MavenDependency toMavenDependecy(@NotNull org.eclipse.aether.artifact.Artifact artifact) {
       return toMavenDependecy(toArtifact(artifact));
    }
 
    @NotNull
-   public static MavenDependency toMavenDependecy(@NotNull Artifact artifact)
-   {
+   public static MavenDependency toMavenDependecy(@NotNull Artifact artifact) {
       final MavenDependency dependency = MavenModelFactory.eINSTANCE.createMavenDependency();
       dependency.setGroupId(artifact.getGroupId());
       dependency.setArtifactId(artifact.getArtifactId());
-      dependency.setVersionConstraint(artifact.getVersionRange() == null ? artifact.getVersion() : artifact
-         .getVersionRange().toString());
+      dependency.setVersionConstraint(artifact.getVersionRange() == null
+         ? artifact.getVersion()
+         : artifact.getVersionRange().toString());
 
-      if (dependency.isOptional() != artifact.isOptional())
-      {
+      if (dependency.isOptional() != artifact.isOptional()) {
          dependency.setOptional(artifact.isOptional());
       }
 
-      if (artifact.getClassifier() != null && !ObjectUtils.equals(dependency.getClassifier(), artifact.getClassifier()))
-      {
+      if (artifact.getClassifier() != null && !ObjectUtils.equals(dependency.getClassifier(), artifact.getClassifier())) {
          dependency.setClassifier(artifact.getClassifier());
       }
 
-      if (artifact.getType() != null && !ObjectUtils.equals(dependency.getType(), artifact.getType()))
-      {
+      if (artifact.getType() != null && !ObjectUtils.equals(dependency.getType(), artifact.getType())) {
          dependency.setType(artifact.getType());
       }
 
-      if (artifact.getScope() != null)
-      {
+      if (artifact.getScope() != null) {
          final Scope artifactScope = MavenModelUtils.toScope(artifact.getScope());
-         if (!ObjectUtils.equals(dependency.getScope(), artifactScope))
-         {
+         if (!ObjectUtils.equals(dependency.getScope(), artifactScope)) {
             dependency.setScope(artifactScope);
          }
       }
@@ -87,8 +79,7 @@ public final class MavenArtifactUtils
    }
 
    @NotNull
-   public static MavenDependency toMavenDependecy(@NotNull org.eclipse.aether.graph.Dependency dependency)
-   {
+   public static MavenDependency toMavenDependecy(@NotNull org.eclipse.aether.graph.Dependency dependency) {
       final Artifact artifact = toArtifact(dependency.getArtifact());
 
       final MavenDependency mavenDep = MavenModelFactory.eINSTANCE.createMavenDependency();
@@ -96,26 +87,21 @@ public final class MavenArtifactUtils
       mavenDep.setArtifactId(artifact.getArtifactId());
       mavenDep.setVersionConstraint(artifact.getVersion());
 
-      if (mavenDep.isOptional() != dependency.isOptional())
-      {
+      if (mavenDep.isOptional() != dependency.isOptional()) {
          mavenDep.setOptional(dependency.isOptional());
       }
 
-      if (artifact.getClassifier() != null && !ObjectUtils.equals(mavenDep.getClassifier(), artifact.getClassifier()))
-      {
+      if (artifact.getClassifier() != null && !ObjectUtils.equals(mavenDep.getClassifier(), artifact.getClassifier())) {
          mavenDep.setClassifier(artifact.getClassifier());
       }
 
-      if (artifact.getType() != null && !ObjectUtils.equals(mavenDep.getType(), artifact.getType()))
-      {
+      if (artifact.getType() != null && !ObjectUtils.equals(mavenDep.getType(), artifact.getType())) {
          mavenDep.setType(artifact.getType());
       }
 
-      if (dependency.getScope() != null)
-      {
+      if (dependency.getScope() != null) {
          final Scope artifactScope = MavenModelUtils.toScope(dependency.getScope());
-         if (!ObjectUtils.equals(mavenDep.getScope(), artifactScope))
-         {
+         if (!ObjectUtils.equals(mavenDep.getScope(), artifactScope)) {
             mavenDep.setScope(artifactScope);
          }
       }
@@ -125,25 +111,21 @@ public final class MavenArtifactUtils
 
 
    @NotNull
-   public static MavenArtifact toMavenArtifact(@NotNull org.eclipse.aether.artifact.Artifact artifact)
-   {
+   public static MavenArtifact toMavenArtifact(@NotNull org.eclipse.aether.artifact.Artifact artifact) {
       return toMavenArtifact(toArtifact(artifact));
    }
 
    @NotNull
-   public static MavenArtifact toMavenArtifact(@NotNull Artifact artifact)
-   {
+   public static MavenArtifact toMavenArtifact(@NotNull Artifact artifact) {
       final MavenArtifact mavenArtifact = MavenModelFactory.eINSTANCE.createMavenArtifact();
       mavenArtifact.setGroupId(artifact.getGroupId());
       mavenArtifact.setArtifactId(artifact.getArtifactId());
       mavenArtifact.setVersion(artifact.getVersion());
       if (artifact.getClassifier() != null
-         && !ObjectUtils.equals(mavenArtifact.getClassifier(), artifact.getClassifier()))
-      {
+         && !ObjectUtils.equals(mavenArtifact.getClassifier(), artifact.getClassifier())) {
          mavenArtifact.setClassifier(artifact.getClassifier());
       }
-      if (artifact.getType() != null && !ObjectUtils.equals(mavenArtifact.getType(), artifact.getType()))
-      {
+      if (artifact.getType() != null && !ObjectUtils.equals(mavenArtifact.getType(), artifact.getType())) {
          mavenArtifact.setType(artifact.getType());
       }
       mavenArtifact.setFile(artifact.getFile());
@@ -163,22 +145,18 @@ public final class MavenArtifactUtils
 
 
    @NotNull
-   public static ArtifactKey toArtifactKey(@NotNull Artifact artifact)
-   {
+   public static ArtifactKey toArtifactKey(@NotNull Artifact artifact) {
       return MavenModelUtils.toArtifactKey(artifact.getGroupId(), artifact.getArtifactId(), artifact.getType(),
          artifact.getClassifier(), artifact.getVersion());
    }
 
    @NotNull
-   public static ArtifactKey toArtifactKey(@NotNull org.eclipse.aether.artifact.Artifact artifact)
-   {
+   public static ArtifactKey toArtifactKey(@NotNull org.eclipse.aether.artifact.Artifact artifact) {
       return toArtifactKey(toArtifact(artifact));
    }
 
-   public static Artifact toArtifact(org.eclipse.aether.artifact.Artifact artifact)
-   {
-      if (artifact == null)
-      {
+   public static Artifact toArtifact(org.eclipse.aether.artifact.Artifact artifact) {
+      if (artifact == null) {
          return null;
       }
 
@@ -202,13 +180,11 @@ public final class MavenArtifactUtils
       return result;
    }
 
-   private static String nullify(String string)
-   {
+   private static String nullify(String string) {
       return (string == null || string.length() <= 0) ? null : string;
    }
 
-   private static ArtifactHandler newHandler(org.eclipse.aether.artifact.Artifact artifact)
-   {
+   private static ArtifactHandler newHandler(org.eclipse.aether.artifact.Artifact artifact) {
       String type = artifact.getProperty(ArtifactProperties.TYPE, artifact.getExtension());
       ArtifactHandlerImpl handler = new ArtifactHandlerImpl();
       handler.setType(type);
@@ -221,8 +197,7 @@ public final class MavenArtifactUtils
       return handler;
    }
 
-   public static org.eclipse.aether.artifact.Artifact toArtifact(Artifact artifact)
-   {
+   public static org.eclipse.aether.artifact.Artifact toArtifact(Artifact artifact) {
       final String groupId = artifact.getGroupId();
       final String artifactId = artifact.getArtifactId();
       final String version = getVersion(artifact);
@@ -238,35 +213,29 @@ public final class MavenArtifactUtils
 
    private static org.eclipse.aether.artifact.Artifact newArtifact(final String groupId, final String artifactId,
       final String version, final String classifier, final String extension, final Map<String, String> properties,
-      final ArtifactType artifactType, final File file)
-   {
+      final ArtifactType artifactType, final File file) {
       return new org.eclipse.aether.artifact.DefaultArtifact(groupId, artifactId, classifier, extension, version,
          properties, artifactType).setFile(file);
    }
 
-   private static Map<String, String> getProperties(org.apache.maven.artifact.Artifact artifact)
-   {
+   private static Map<String, String> getProperties(org.apache.maven.artifact.Artifact artifact) {
       final String scope = artifact.getScope();
-      if (org.apache.maven.artifact.Artifact.SCOPE_SYSTEM.equals(scope))
-      {
+      if (org.apache.maven.artifact.Artifact.SCOPE_SYSTEM.equals(scope)) {
          String localPath = (artifact.getFile() != null) ? artifact.getFile().getPath() : "";
          return Collections.singletonMap(ArtifactProperties.LOCAL_PATH, localPath);
       }
       return null;
    }
 
-   private static String getVersion(org.apache.maven.artifact.Artifact artifact)
-   {
+   private static String getVersion(org.apache.maven.artifact.Artifact artifact) {
       String version = artifact.getVersion();
-      if (version == null && artifact.getVersionRange() != null)
-      {
+      if (version == null && artifact.getVersionRange() != null) {
          version = artifact.getVersionRange().toString();
       }
       return version;
    }
 
-   private static ArtifactType newArtifactType(String id, ArtifactHandler handler)
-   {
+   private static ArtifactType newArtifactType(String id, ArtifactHandler handler) {
       return new DefaultArtifactType(id, handler.getExtension(), handler.getClassifier(), handler.getLanguage(),
          handler.isAddedToClasspath(), handler.isIncludesDependencies());
    }

@@ -18,8 +18,7 @@ package org.sourcepit.common.maven.artifact;
 
 import org.apache.maven.artifact.handler.ArtifactHandler;
 
-public class ArtifactHandlerImpl implements ArtifactHandler
-{
+public class ArtifactHandlerImpl implements ArtifactHandler {
    private String type;
 
    private String extension;
@@ -36,116 +35,94 @@ public class ArtifactHandlerImpl implements ArtifactHandler
 
    private boolean addedToClasspath;
 
-   public ArtifactHandlerImpl()
-   {
+   public ArtifactHandlerImpl() {
       this(null);
    }
 
-   public ArtifactHandlerImpl(String type)
-   {
+   public ArtifactHandlerImpl(String type) {
       this.type = type;
    }
 
-   public void setType(String type)
-   {
+   public void setType(String type) {
       this.type = type;
    }
 
-   public String getType()
-   {
+   public String getType() {
       return type;
    }
 
-   public void setExtension(String extension)
-   {
+   public void setExtension(String extension) {
       this.extension = extension;
    }
 
    @Override
-   public String getExtension()
-   {
-      if (extension == null)
-      {
+   public String getExtension() {
+      if (extension == null) {
          extension = type;
       }
       return extension;
    }
 
-   public void setClassifier(String classifier)
-   {
+   public void setClassifier(String classifier) {
       this.classifier = classifier;
    }
 
    @Override
-   public String getClassifier()
-   {
+   public String getClassifier() {
       return classifier;
    }
 
-   public void setDirectory(String directory)
-   {
+   public void setDirectory(String directory) {
       this.directory = directory;
    }
 
    @Override
-   public String getDirectory()
-   {
-      if (directory == null)
-      {
+   public String getDirectory() {
+      if (directory == null) {
          directory = getPackaging() + "s";
       }
       return directory;
    }
 
-   public void setPackaging(String packaging)
-   {
+   public void setPackaging(String packaging) {
       this.packaging = packaging;
    }
 
    @Override
-   public String getPackaging()
-   {
-      if (packaging == null)
-      {
+   public String getPackaging() {
+      if (packaging == null) {
          packaging = type;
       }
       return packaging;
    }
 
    @Override
-   public boolean isIncludesDependencies()
-   {
+   public boolean isIncludesDependencies() {
       return includesDependencies;
    }
 
-   public void setIncludesDependencies(boolean includesDependencies)
-   {
+   public void setIncludesDependencies(boolean includesDependencies) {
       this.includesDependencies = includesDependencies;
    }
 
-   public void setLanguage(String language)
-   {
+   public void setLanguage(String language) {
       this.language = language;
    }
 
    @Override
-   public String getLanguage()
-   {
-      if (language == null)
-      {
+   public String getLanguage() {
+      if (language == null) {
          language = "none";
       }
       return language;
    }
 
-   public void setAddedToClasspath(boolean addedToClasspath)
-   {
+   public void setAddedToClasspath(boolean addedToClasspath) {
       this.addedToClasspath = addedToClasspath;
    }
 
    @Override
-   public boolean isAddedToClasspath()
-   {
+   public boolean isAddedToClasspath() {
       return addedToClasspath;
    }
 }

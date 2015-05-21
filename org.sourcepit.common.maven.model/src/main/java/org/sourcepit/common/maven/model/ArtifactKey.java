@@ -20,62 +20,51 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 
 import org.sourcepit.common.constraints.NotNull;
 
-public class ArtifactKey
-{
+public class ArtifactKey {
    private final ProjectKey projectKey;
 
    private final VersionConflictKey versionConflictKey;
 
    public ArtifactKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String version,
-      @NotNull String type, String classifier)
-   {
+      @NotNull String type, String classifier) {
       this.projectKey = new ProjectKey(groupId, artifactId, version);
       this.versionConflictKey = new VersionConflictKey(groupId, artifactId, type, classifier);
    }
 
-   public ArtifactConflictKey getArtifactConflictKey()
-   {
+   public ArtifactConflictKey getArtifactConflictKey() {
       return projectKey.getArtifactConflictKey();
    }
 
-   public VersionConflictKey getVersionConflictKey()
-   {
+   public VersionConflictKey getVersionConflictKey() {
       return versionConflictKey;
    }
 
-   public ProjectKey getProjectKey()
-   {
+   public ProjectKey getProjectKey() {
       return projectKey;
    }
 
-   public String getGroupId()
-   {
+   public String getGroupId() {
       return projectKey.getGroupId();
    }
 
-   public String getArtifactId()
-   {
+   public String getArtifactId() {
       return projectKey.getArtifactId();
    }
 
-   public String getVersion()
-   {
+   public String getVersion() {
       return projectKey.getVersion();
    }
 
-   public String getType()
-   {
+   public String getType() {
       return versionConflictKey.getType();
    }
 
-   public String getClassifier()
-   {
+   public String getClassifier() {
       return versionConflictKey.getClassifier();
    }
 
    @Override
-   public int hashCode()
-   {
+   public int hashCode() {
       final int prime = 31;
       int result = 1;
       result = prime * result + ((projectKey == null) ? 0 : projectKey.hashCode());
@@ -84,57 +73,45 @@ public class ArtifactKey
    }
 
    @Override
-   public boolean equals(Object obj)
-   {
-      if (this == obj)
-      {
+   public boolean equals(Object obj) {
+      if (this == obj) {
          return true;
       }
-      if (obj == null)
-      {
+      if (obj == null) {
          return false;
       }
-      if (getClass() != obj.getClass())
-      {
+      if (getClass() != obj.getClass()) {
          return false;
       }
       ArtifactKey other = (ArtifactKey) obj;
-      if (projectKey == null)
-      {
-         if (other.projectKey != null)
-         {
+      if (projectKey == null) {
+         if (other.projectKey != null) {
             return false;
          }
       }
-      else if (!projectKey.equals(other.projectKey))
-      {
+      else if (!projectKey.equals(other.projectKey)) {
          return false;
       }
-      if (versionConflictKey == null)
-      {
-         if (other.versionConflictKey != null)
-         {
+      if (versionConflictKey == null) {
+         if (other.versionConflictKey != null) {
             return false;
          }
       }
-      else if (!versionConflictKey.equals(other.versionConflictKey))
-      {
+      else if (!versionConflictKey.equals(other.versionConflictKey)) {
          return false;
       }
       return true;
    }
 
    @Override
-   public String toString()
-   {
+   public String toString() {
       final StringBuilder sb = new StringBuilder();
       sb.append(getGroupId());
       sb.append(':');
       sb.append(getArtifactId());
       sb.append(':');
       sb.append(getType());
-      if (!isNullOrEmpty(getClassifier()))
-      {
+      if (!isNullOrEmpty(getClassifier())) {
          sb.append(':');
          sb.append(getClassifier());
       }

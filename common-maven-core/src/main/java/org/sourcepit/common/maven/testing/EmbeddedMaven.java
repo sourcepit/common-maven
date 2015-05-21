@@ -34,8 +34,8 @@ import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.InvalidRepositoryException;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.artifact.resolver.filter.CumulativeScopeArtifactFilter;
-import org.apache.maven.cli.transfer.BatchModeMavenTransferListener;
 import org.apache.maven.cli.event.ExecutionEventLogger;
+import org.apache.maven.cli.transfer.BatchModeMavenTransferListener;
 import org.apache.maven.eventspy.internal.EventSpyDispatcher;
 import org.apache.maven.execution.DefaultMavenExecutionRequest;
 import org.apache.maven.execution.ExecutionEvent;
@@ -59,8 +59,7 @@ import org.slf4j.Logger;
 import org.sourcepit.common.maven.core.MavenProjectUtils;
 
 @Named
-public class EmbeddedMaven
-{
+public class EmbeddedMaven {
    private final Maven maven;
 
    private final EventSpyDispatcher eventSpyDispatcher;
@@ -82,8 +81,7 @@ public class EmbeddedMaven
    @Inject
    public EmbeddedMaven(Maven maven, EventSpyDispatcher eventSpyDispatcher, Logger logger,
       LifecycleDependencyResolver resolver, MavenExecutionRequestPopulator executionRequestPopulator,
-      SettingsBuilder settingsBuilder, LegacySupport buildContext, RepositorySystem repositorySystem)
-   {
+      SettingsBuilder settingsBuilder, LegacySupport buildContext, RepositorySystem repositorySystem) {
       this.maven = maven;
       this.eventSpyDispatcher = eventSpyDispatcher;
       this.logger = logger;
@@ -94,106 +92,85 @@ public class EmbeddedMaven
       this.repositorySystem = repositorySystem;
    }
 
-   public void dispose()
-   {
+   public void dispose() {
       eventSpyDispatcher.close();
    }
 
-   public File getUserHome()
-   {
+   public File getUserHome() {
       return userHome;
    }
 
-   public void setUserHome(File userHome)
-   {
+   public void setUserHome(File userHome) {
       this.userHome = userHome;
    }
 
-   public File getUserSettings()
-   {
+   public File getUserSettings() {
       return userSettings;
    }
 
-   public void setUserSettings(File userSettings)
-   {
+   public void setUserSettings(File userSettings) {
       this.userSettings = userSettings;
    }
 
-   public File getLocalRepo()
-   {
+   public File getLocalRepo() {
       return localRepo;
    }
 
-   public void setLocalRepo(File localRepo)
-   {
+   public void setLocalRepo(File localRepo) {
       this.localRepo = localRepo;
    }
 
-   public File getRemoteRepo()
-   {
+   public File getRemoteRepo() {
       return remoteRepo;
    }
 
-   public void setRemoteRepo(File remoteRepo)
-   {
+   public void setRemoteRepo(File remoteRepo) {
       this.remoteRepo = remoteRepo;
    }
 
-   public ArtifactRepository getLocalRepository()
-   {
-      try
-      {
+   public ArtifactRepository getLocalRepository() {
+      try {
          return repositorySystem.createLocalRepository(getLocalRepo());
       }
-      catch (InvalidRepositoryException e)
-      {
+      catch (InvalidRepositoryException e) {
          throw new IllegalStateException(e);
       }
    }
 
-   public ArtifactRepository getRemoteRepository()
-   {
+   public ArtifactRepository getRemoteRepository() {
       final File remoteRepo = getRemoteRepo();
       final String id = remoteRepo.getName();
       final String url;
-      try
-      {
+      try {
          url = remoteRepo.toURI().toURL().toString();
       }
-      catch (MalformedURLException e)
-      {
+      catch (MalformedURLException e) {
          throw new IllegalStateException(e);
       }
       return repositorySystem.createArtifactRepository(id, url, null, null, null);
    }
 
-   public Artifact createProjectArtifact(Model pom)
-   {
+   public Artifact createProjectArtifact(Model pom) {
       return repositorySystem.createProjectArtifact(pom.getGroupId(), pom.getArtifactId(), pom.getVersion());
    }
 
-   public Artifact createArtifact(Model pom)
-   {
+   public Artifact createArtifact(Model pom) {
       return repositorySystem.createArtifact(pom.getGroupId(), pom.getArtifactId(), pom.getVersion(),
          pom.getPackaging());
    }
 
-   public MavenExecutionRequest newMavenExecutionRequest(File pom) throws Exception
-   {
+   public MavenExecutionRequest newMavenExecutionRequest(File pom) throws Exception {
       return newMavenExecutionRequest(pom, "validate");
    }
 
-   public MavenExecutionRequest newMavenExecutionRequest(File pom, String... goals) throws Exception
-   {
+   public MavenExecutionRequest newMavenExecutionRequest(File pom, String... goals) throws Exception {
       return newMavenExecutionRequest(pom, newSystemProperties(), null, goals);
    }
 
    public MavenExecutionRequest newMavenExecutionRequest(File pom, Properties systemProperties,
-      Properties userProperties, String... goals) throws Exception
-   {
+      Properties userProperties, String... goals) throws Exception {
       final MavenExecutionRequest request = new DefaultMavenExecutionRequest();
-      if (pom != null)
-      {
+      if (pom != null) {
          request.setBaseDirectory(pom.getParentFile());
          request.setPom(pom);
       }
@@ -202,8 +179,7 @@ public class EmbeddedMaven
 
       request.setUserSettingsFile(userSettings);
 
-      if (goals != null)
-      {
+      if (goals != null) {
          request.setGoals(Arrays.asList(goals));
       }
 
@@ -213,8 +189,7 @@ public class EmbeddedMaven
    }
 
    public void populateDefaults(final MavenExecutionRequest request) throws Exception,
-      MavenExecutionRequestPopulationException
-   {
+      MavenExecutionRequestPopulationException {
       request.setExecutionListener(eventSpyDispatcher.chainListener(new ExecutionEventLogger(logger)));
       request.setTransferListener(new BatchModeMavenTransferListener(System.out));
 
@@ -222,33 +197,28 @@ public class EmbeddedMaven
          request.getSystemProperties(), request.getUserProperties());
       executionRequestPopulator.populateFromSettings(request, settingsResult.getEffectiveSettings());
 
-      if (localRepo != null)
-      {
+      if (localRepo != null) {
          request.setLocalRepositoryPath(localRepo);
       }
 
-      if (remoteRepo != null)
-      {
+      if (remoteRepo != null) {
          request.getRemoteRepositories().add(getRemoteRepository());
       }
 
       executionRequestPopulator.populateDefaults(request);
    }
 
-   public Properties newSystemProperties()
-   {
+   public Properties newSystemProperties() {
       Properties properties = new Properties();
       properties.putAll(System.getProperties());
-      if (userHome != null && userHome.exists())
-      {
+      if (userHome != null && userHome.exists()) {
          properties.put("user.home", userHome.getAbsolutePath());
       }
       return properties;
    }
 
    public SettingsBuildingResult buildSettings(File globalSettingsFile, File userSettingsFile,
-      Properties systemProperties, Properties userProperties) throws Exception
-   {
+      Properties systemProperties, Properties userProperties) throws Exception {
       final SettingsBuildingRequest settingsRequest = new DefaultSettingsBuildingRequest();
       settingsRequest.setGlobalSettingsFile(globalSettingsFile);
       settingsRequest.setUserSettingsFile(userSettingsFile);
@@ -258,57 +228,47 @@ public class EmbeddedMaven
       return settingsBuilder.build(settingsRequest);
    }
 
-   public MavenExecutionResult2 buildStubProject(File projectDir)
-   {
+   public MavenExecutionResult2 buildStubProject(File projectDir) {
       final Model pom = new Model();
       pom.setModelVersion("4.0.0");
       pom.setGroupId("org.sourcepit");
       pom.setArtifactId("stub-project");
       pom.setVersion("1");
 
-      try
-      {
+      try {
          final File projectPom = File.createTempFile("pom", ".xml", projectDir);
-         try
-         {
+         try {
             new DefaultModelWriter().write(projectPom, null, pom);
             return buildProject(projectPom);
          }
-         finally
-         {
+         finally {
             FileUtils.forceDelete(projectPom);
          }
       }
-      catch (Exception e)
-      {
+      catch (Exception e) {
          throw new IllegalStateException(e);
       }
    }
 
-   public MavenExecutionResult2 buildProject(File pom) throws Exception
-   {
+   public MavenExecutionResult2 buildProject(File pom) throws Exception {
       return buildProject(pom, null, false);
    }
 
-   public MavenExecutionResult2 buildProject(File pom, boolean resolveDependencies) throws Exception
-   {
+   public MavenExecutionResult2 buildProject(File pom, boolean resolveDependencies) throws Exception {
       return buildProject(pom, null, resolveDependencies);
    }
 
    public MavenExecutionResult2 buildProject(File pom, Properties userProperties, boolean resolveDependencies)
-      throws Exception
-   {
+      throws Exception {
       final MavenExecutionRequest request = newMavenExecutionRequest(pom, newSystemProperties(), userProperties,
          "compile");
       request.getProjectBuildingRequest().setProcessPlugins(false);
       request.getProjectBuildingRequest().setResolveDependencies(resolveDependencies);
 
       final MavenSession[] session = new MavenSession[1];
-      request.setExecutionListener(new ChainedExecutionListener(request.getExecutionListener())
-      {
+      request.setExecutionListener(new ChainedExecutionListener(request.getExecutionListener()) {
          @Override
-         public void sessionStarted(ExecutionEvent event)
-         {
+         public void sessionStarted(ExecutionEvent event) {
             super.sessionStarted(event);
             session[0] = event.getSession();
             throw new IllegalStateException();
@@ -316,24 +276,19 @@ public class EmbeddedMaven
       });
 
       final MavenExecutionResult2 tmpResult = execute(request);
-      if (session[0] == null)
-      {
-         if (tmpResult.hasExceptions())
-         {
+      if (session[0] == null) {
+         if (tmpResult.hasExceptions()) {
             throw new IllegalStateException(tmpResult.getExceptions().get(0));
          }
       }
 
       final MavenExecutionResult2 result = new MavenExecutionResult2Impl(session[0], session[0].getResult());
-      if (request.getProjectBuildingRequest().isResolveDependencies())
-      {
+      if (request.getProjectBuildingRequest().isResolveDependencies()) {
          Set<Artifact> projectArtifacts = new HashSet<Artifact>();
 
-         for (MavenProject mavenProject : result.getTopologicallySortedProjects())
-         {
+         for (MavenProject mavenProject : result.getTopologicallySortedProjects()) {
             File artifactFile = MavenProjectUtils.getOutputDir(mavenProject);
-            if (artifactFile == null)
-            {
+            if (artifactFile == null) {
                artifactFile = mavenProject.getBasedir();
             }
             mavenProject.getArtifact().setFile(artifactFile);
@@ -348,35 +303,29 @@ public class EmbeddedMaven
             ArrayList<String> scopesToCollect = new ArrayList<String>();
             Collections.addAll(scopesToCollect, "system", "compile", "provided", "runtime", "test");
 
-            try
-            {
+            try {
                resolver.resolveProjectDependencies(mavenProject, scopesToCollect, scopesToCollect, result.getSession(),
                   true, Collections.<Artifact> emptySet());
             }
-            catch (LifecycleExecutionException e)
-            {
+            catch (LifecycleExecutionException e) {
                result.addException(e);
             }
 
             mavenProject.setArtifactFilter(new CumulativeScopeArtifactFilter(scopesToCollect));
          }
       }
-      if (result.hasExceptions())
-      {
+      if (result.hasExceptions()) {
          throw new IllegalStateException(result.getExceptions().get(0));
       }
 
       return result;
    }
 
-   public MavenExecutionResult2 execute(MavenExecutionRequest request)
-   {
+   public MavenExecutionResult2 execute(MavenExecutionRequest request) {
       final MavenSession[] session = new MavenSession[1];
-      request.setExecutionListener(new ChainedExecutionListener(request.getExecutionListener())
-      {
+      request.setExecutionListener(new ChainedExecutionListener(request.getExecutionListener()) {
          @Override
-         public void sessionStarted(ExecutionEvent event)
-         {
+         public void sessionStarted(ExecutionEvent event) {
             super.sessionStarted(event);
             session[0] = event.getSession();
          }
@@ -384,14 +333,12 @@ public class EmbeddedMaven
 
       final MavenSession currentSession = buildContext.getSession();
       final MavenExecutionResult result;
-      try
-      {
+      try {
          eventSpyDispatcher.onEvent(request);
          result = maven.execute(request);
          eventSpyDispatcher.onEvent(result);
       }
-      finally
-      {
+      finally {
          buildContext.setSession(currentSession);
       }
 

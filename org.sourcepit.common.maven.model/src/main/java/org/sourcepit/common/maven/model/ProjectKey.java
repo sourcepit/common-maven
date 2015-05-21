@@ -19,41 +19,34 @@ package org.sourcepit.common.maven.model;
 import org.sourcepit.common.constraints.NotNull;
 import org.sourcepit.common.maven.model.util.MavenModelUtils;
 
-public class ProjectKey
-{
+public class ProjectKey {
    private final String version;
 
    private final ArtifactConflictKey artifactConflictKey;
 
-   public ProjectKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String version)
-   {
+   public ProjectKey(@NotNull String groupId, @NotNull String artifactId, @NotNull String version) {
       this.artifactConflictKey = new ArtifactConflictKey(groupId, artifactId);
       this.version = MavenModelUtils.normalizeSnapshotVersion(version);
    }
 
-   public ArtifactConflictKey getArtifactConflictKey()
-   {
+   public ArtifactConflictKey getArtifactConflictKey() {
       return artifactConflictKey;
    }
 
-   public String getGroupId()
-   {
+   public String getGroupId() {
       return artifactConflictKey.getGroupId();
    }
 
-   public String getArtifactId()
-   {
+   public String getArtifactId() {
       return artifactConflictKey.getArtifactId();
    }
 
-   public String getVersion()
-   {
+   public String getVersion() {
       return version;
    }
 
    @Override
-   public int hashCode()
-   {
+   public int hashCode() {
       final int prime = 31;
       int result = 1;
       result = prime * result + ((artifactConflictKey == null) ? 0 : artifactConflictKey.hashCode());
@@ -62,49 +55,38 @@ public class ProjectKey
    }
 
    @Override
-   public boolean equals(Object obj)
-   {
-      if (this == obj)
-      {
+   public boolean equals(Object obj) {
+      if (this == obj) {
          return true;
       }
-      if (obj == null)
-      {
+      if (obj == null) {
          return false;
       }
-      if (getClass() != obj.getClass())
-      {
+      if (getClass() != obj.getClass()) {
          return false;
       }
       ProjectKey other = (ProjectKey) obj;
-      if (artifactConflictKey == null)
-      {
-         if (other.artifactConflictKey != null)
-         {
+      if (artifactConflictKey == null) {
+         if (other.artifactConflictKey != null) {
             return false;
          }
       }
-      else if (!artifactConflictKey.equals(other.artifactConflictKey))
-      {
+      else if (!artifactConflictKey.equals(other.artifactConflictKey)) {
          return false;
       }
-      if (version == null)
-      {
-         if (other.version != null)
-         {
+      if (version == null) {
+         if (other.version != null) {
             return false;
          }
       }
-      else if (!version.equals(other.version))
-      {
+      else if (!version.equals(other.version)) {
          return false;
       }
       return true;
    }
 
    @Override
-   public String toString()
-   {
+   public String toString() {
       final StringBuilder sb = new StringBuilder();
       sb.append(getGroupId());
       sb.append(':');

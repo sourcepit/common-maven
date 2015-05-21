@@ -40,8 +40,7 @@ import org.sourcepit.common.maven.model.MavenModelPackage;
  */
 public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinatesImpl
    implements
-      MavenArtifactCoordinates
-{
+      MavenArtifactCoordinates {
    /**
     * The default value of the '{@link #getClassifier() <em>Classifier</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -92,8 +91,7 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * 
     * @generated
     */
-   protected MavenArtifactCoordinatesImpl()
-   {
+   protected MavenArtifactCoordinatesImpl() {
       super();
    }
 
@@ -104,8 +102,7 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return MavenModelPackage.Literals.MAVEN_ARTIFACT_COORDINATES;
    }
 
@@ -115,8 +112,7 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * 
     * @generated
     */
-   public String getClassifier()
-   {
+   public String getClassifier() {
       return classifier;
    }
 
@@ -126,8 +122,7 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * 
     * @generated
     */
-   public void setClassifier(String newClassifier)
-   {
+   public void setClassifier(String newClassifier) {
       String oldClassifier = classifier;
       classifier = newClassifier;
       if (eNotificationRequired())
@@ -141,8 +136,7 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * 
     * @generated
     */
-   public String getType()
-   {
+   public String getType() {
       return type;
    }
 
@@ -152,8 +146,7 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * 
     * @generated
     */
-   public void setType(String newType)
-   {
+   public void setType(String newType) {
       String oldType = type;
       type = newType;
       if (eNotificationRequired())
@@ -167,8 +160,7 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * 
     * @generated
     */
-   public ArtifactKey getArtifactKey()
-   {
+   public ArtifactKey getArtifactKey() {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -181,10 +173,8 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER :
             return getClassifier();
          case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__TYPE :
@@ -200,10 +190,8 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER :
             setClassifier((String) newValue);
             return;
@@ -221,10 +209,8 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER :
             setClassifier(CLASSIFIER_EDEFAULT);
             return;
@@ -242,10 +228,8 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER :
             return CLASSIFIER_EDEFAULT == null ? classifier != null : !CLASSIFIER_EDEFAULT.equals(classifier);
          case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__TYPE :
@@ -261,12 +245,9 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * @generated
     */
    @Override
-   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-   {
-      if (baseClass == MavenClassified.class)
-      {
-         switch (derivedFeatureID)
-         {
+   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+      if (baseClass == MavenClassified.class) {
+         switch (derivedFeatureID) {
             case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER :
                return MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER;
             case MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__TYPE :
@@ -285,12 +266,9 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * @generated
     */
    @Override
-   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-   {
-      if (baseClass == MavenClassified.class)
-      {
-         switch (baseFeatureID)
-         {
+   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+      if (baseClass == MavenClassified.class) {
+         switch (baseFeatureID) {
             case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
                return MavenModelPackage.MAVEN_ARTIFACT_COORDINATES__CLASSIFIER;
             case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
@@ -309,8 +287,7 @@ public abstract class MavenArtifactCoordinatesImpl extends MavenProjectCoordinat
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

@@ -31,23 +31,19 @@ import org.eclipse.aether.artifact.Artifact;
 import org.sourcepit.common.maven.model.ArtifactKey;
 
 @Named
-public class ArtifactFactory
-{
+public class ArtifactFactory {
    private final Map<String, ArtifactHandler> artifactHandlers;
 
    @Inject
-   public ArtifactFactory(Map<String, ArtifactHandler> artifactHandlers)
-   {
+   public ArtifactFactory(Map<String, ArtifactHandler> artifactHandlers) {
       this.artifactHandlers = artifactHandlers;
    }
 
-   public Artifact createArtifact(final Artifact artifact, String classifier, String type)
-   {
+   public Artifact createArtifact(final Artifact artifact, String classifier, String type) {
       return createArtifact(artifact, classifier, type, null);
    }
 
-   public Artifact createArtifact(final Artifact artifact, String classifier, String type, String localPath)
-   {
+   public Artifact createArtifact(final Artifact artifact, String classifier, String type, String localPath) {
       classifier = isNullOrEmpty(classifier) ? null : classifier;
 
       final String scope = localPath == null ? null : org.apache.maven.artifact.Artifact.SCOPE_SYSTEM;
@@ -57,21 +53,18 @@ public class ArtifactFactory
       final DefaultArtifact legacyArtifact = new DefaultArtifact(artifact.getGroupId(), artifact.getArtifactId(),
          artifact.getVersion(), scope, type, classifier, handler);
 
-      if (localPath != null)
-      {
+      if (localPath != null) {
          legacyArtifact.setFile(new File(localPath));
       }
 
       return toArtifact(legacyArtifact);
    }
 
-   public Artifact createArtifact(ArtifactKey artifactKey)
-   {
+   public Artifact createArtifact(ArtifactKey artifactKey) {
       return createArtifact(artifactKey, null);
    }
 
-   public Artifact createArtifact(ArtifactKey artifactKey, String localPath)
-   {
+   public Artifact createArtifact(ArtifactKey artifactKey, String localPath) {
       final ArtifactHandler handler = artifactHandlers.get(artifactKey.getType());
 
       final String scope = localPath == null ? null : org.apache.maven.artifact.Artifact.SCOPE_SYSTEM;
@@ -79,8 +72,7 @@ public class ArtifactFactory
       final DefaultArtifact legacyArtifact = new DefaultArtifact(artifactKey.getGroupId(), artifactKey.getArtifactId(),
          artifactKey.getVersion(), scope, artifactKey.getType(), artifactKey.getClassifier(), handler);
 
-      if (localPath != null)
-      {
+      if (localPath != null) {
          legacyArtifact.setFile(new File(localPath));
       }
 

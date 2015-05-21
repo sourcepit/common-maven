@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.sourcepit.common.maven.model.MavenModelPackage
  * @generated
  */
-public interface MavenModelFactory extends EFactory
-{
+public interface MavenModelFactory extends EFactory {
    /**
     * The singleton instance of the factory.
     * <!-- begin-user-doc -->

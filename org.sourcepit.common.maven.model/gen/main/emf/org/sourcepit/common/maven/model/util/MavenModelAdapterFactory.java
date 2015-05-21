@@ -42,8 +42,7 @@ import org.sourcepit.common.modeling.XAnnotatable;
  * @see org.sourcepit.common.maven.model.MavenModelPackage
  * @generated
  */
-public class MavenModelAdapterFactory extends AdapterFactoryImpl
-{
+public class MavenModelAdapterFactory extends AdapterFactoryImpl {
    /**
     * The cached model package.
     * <!-- begin-user-doc -->
@@ -60,10 +59,8 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * 
     * @generated
     */
-   public MavenModelAdapterFactory()
-   {
-      if (modelPackage == null)
-      {
+   public MavenModelAdapterFactory() {
+      if (modelPackage == null) {
          modelPackage = MavenModelPackage.eINSTANCE;
       }
    }
@@ -79,14 +76,11 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    @Override
-   public boolean isFactoryForType(Object object)
-   {
-      if (object == modelPackage)
-      {
+   public boolean isFactoryForType(Object object) {
+      if (object == modelPackage) {
          return true;
       }
-      if (object instanceof EObject)
-      {
+      if (object instanceof EObject) {
          return ((EObject) object).eClass().getEPackage() == modelPackage;
       }
       return false;
@@ -99,77 +93,64 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * 
     * @generated
     */
-   protected MavenModelSwitch<Adapter> modelSwitch = new MavenModelSwitch<Adapter>()
-   {
+   protected MavenModelSwitch<Adapter> modelSwitch = new MavenModelSwitch<Adapter>() {
       @Override
-      public Adapter caseMavenArtifact(MavenArtifact object)
-      {
+      public Adapter caseMavenArtifact(MavenArtifact object) {
          return createMavenArtifactAdapter();
       }
 
       @Override
-      public Adapter caseMavenDependency(MavenDependency object)
-      {
+      public Adapter caseMavenDependency(MavenDependency object) {
          return createMavenDependencyAdapter();
       }
 
       @Override
-      public Adapter caseMavenArtifactConflictCoordinates(MavenArtifactConflictCoordinates object)
-      {
+      public Adapter caseMavenArtifactConflictCoordinates(MavenArtifactConflictCoordinates object) {
          return createMavenArtifactConflictCoordinatesAdapter();
       }
 
       @Override
-      public Adapter caseMavenProjectCoordinates(MavenProjectCoordinates object)
-      {
+      public Adapter caseMavenProjectCoordinates(MavenProjectCoordinates object) {
          return createMavenProjectCoordinatesAdapter();
       }
 
       @Override
-      public Adapter caseMavenClassified(MavenClassified object)
-      {
+      public Adapter caseMavenClassified(MavenClassified object) {
          return createMavenClassifiedAdapter();
       }
 
       @Override
-      public Adapter caseMavenProject(MavenProject object)
-      {
+      public Adapter caseMavenProject(MavenProject object) {
          return createMavenProjectAdapter();
       }
 
       @Override
-      public Adapter caseDependencyDeclaration(DependencyDeclaration object)
-      {
+      public Adapter caseDependencyDeclaration(DependencyDeclaration object) {
          return createDependencyDeclarationAdapter();
       }
 
       @Override
-      public Adapter caseMavenArtifactCoordinates(MavenArtifactCoordinates object)
-      {
+      public Adapter caseMavenArtifactCoordinates(MavenArtifactCoordinates object) {
          return createMavenArtifactCoordinatesAdapter();
       }
 
       @Override
-      public Adapter caseExtendable(Extendable object)
-      {
+      public Adapter caseExtendable(Extendable object) {
          return createExtendableAdapter();
       }
 
       @Override
-      public Adapter caseAnnotatable(Annotatable object)
-      {
+      public Adapter caseAnnotatable(Annotatable object) {
          return createAnnotatableAdapter();
       }
 
       @Override
-      public Adapter caseXAnnotatable(XAnnotatable object)
-      {
+      public Adapter caseXAnnotatable(XAnnotatable object) {
          return createXAnnotatableAdapter();
       }
 
       @Override
-      public Adapter defaultCase(EObject object)
-      {
+      public Adapter defaultCase(EObject object) {
          return createEObjectAdapter();
       }
    };
@@ -184,8 +165,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @generated
     */
    @Override
-   public Adapter createAdapter(Notifier target)
-   {
+   public Adapter createAdapter(Notifier target) {
       return modelSwitch.doSwitch((EObject) target);
    }
 
@@ -202,8 +182,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.maven.model.MavenArtifact
     * @generated
     */
-   public Adapter createMavenArtifactAdapter()
-   {
+   public Adapter createMavenArtifactAdapter() {
       return null;
    }
 
@@ -219,8 +198,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.maven.model.MavenDependency
     * @generated
     */
-   public Adapter createMavenDependencyAdapter()
-   {
+   public Adapter createMavenDependencyAdapter() {
       return null;
    }
 
@@ -237,8 +215,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates
     * @generated
     */
-   public Adapter createMavenArtifactConflictCoordinatesAdapter()
-   {
+   public Adapter createMavenArtifactConflictCoordinatesAdapter() {
       return null;
    }
 
@@ -254,8 +231,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.maven.model.MavenProjectCoordinates
     * @generated
     */
-   public Adapter createMavenProjectCoordinatesAdapter()
-   {
+   public Adapter createMavenProjectCoordinatesAdapter() {
       return null;
    }
 
@@ -271,8 +247,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.maven.model.MavenClassified
     * @generated
     */
-   public Adapter createMavenClassifiedAdapter()
-   {
+   public Adapter createMavenClassifiedAdapter() {
       return null;
    }
 
@@ -288,8 +263,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.maven.model.MavenProject
     * @generated
     */
-   public Adapter createMavenProjectAdapter()
-   {
+   public Adapter createMavenProjectAdapter() {
       return null;
    }
 
@@ -305,8 +279,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.maven.model.DependencyDeclaration
     * @generated
     */
-   public Adapter createDependencyDeclarationAdapter()
-   {
+   public Adapter createDependencyDeclarationAdapter() {
       return null;
    }
 
@@ -322,8 +295,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.maven.model.MavenArtifactCoordinates
     * @generated
     */
-   public Adapter createMavenArtifactCoordinatesAdapter()
-   {
+   public Adapter createMavenArtifactCoordinatesAdapter() {
       return null;
    }
 
@@ -339,8 +311,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.modeling.Extendable
     * @generated
     */
-   public Adapter createExtendableAdapter()
-   {
+   public Adapter createExtendableAdapter() {
       return null;
    }
 
@@ -356,8 +327,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.modeling.Annotatable
     * @generated
     */
-   public Adapter createAnnotatableAdapter()
-   {
+   public Adapter createAnnotatableAdapter() {
       return null;
    }
 
@@ -373,8 +343,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @see org.sourcepit.common.modeling.XAnnotatable
     * @generated
     */
-   public Adapter createXAnnotatableAdapter()
-   {
+   public Adapter createXAnnotatableAdapter() {
       return null;
    }
 
@@ -387,8 +356,7 @@ public class MavenModelAdapterFactory extends AdapterFactoryImpl
     * @return the new adapter.
     * @generated
     */
-   public Adapter createEObjectAdapter()
-   {
+   public Adapter createEObjectAdapter() {
       return null;
    }
 

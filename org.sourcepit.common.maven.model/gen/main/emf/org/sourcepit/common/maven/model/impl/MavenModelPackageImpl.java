@@ -45,8 +45,7 @@ import org.sourcepit.common.modeling.CommonModelingPackage;
  * 
  * @generated
  */
-public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPackage
-{
+public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPackage {
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -165,8 +164,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * @see #init()
     * @generated
     */
-   private MavenModelPackageImpl()
-   {
+   private MavenModelPackageImpl() {
       super(eNS_URI, MavenModelFactory.eINSTANCE);
    }
 
@@ -191,8 +189,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * @see #initializePackageContents()
     * @generated
     */
-   public static MavenModelPackage init()
-   {
+   public static MavenModelPackage init() {
       if (isInited)
          return (MavenModelPackage) EPackage.Registry.INSTANCE.getEPackage(MavenModelPackage.eNS_URI);
 
@@ -227,8 +224,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EClass getMavenArtifact()
-   {
+   public EClass getMavenArtifact() {
       return mavenArtifactEClass;
    }
 
@@ -238,8 +234,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenArtifact_File()
-   {
+   public EAttribute getMavenArtifact_File() {
       return (EAttribute) mavenArtifactEClass.getEStructuralFeatures().get(0);
    }
 
@@ -249,8 +244,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EClass getMavenDependency()
-   {
+   public EClass getMavenDependency() {
       return mavenDependencyEClass;
    }
 
@@ -260,8 +254,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EClass getMavenArtifactConflictCoordinates()
-   {
+   public EClass getMavenArtifactConflictCoordinates() {
       return mavenArtifactConflictCoordinatesEClass;
    }
 
@@ -271,8 +264,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenArtifactConflictCoordinates_GroupId()
-   {
+   public EAttribute getMavenArtifactConflictCoordinates_GroupId() {
       return (EAttribute) mavenArtifactConflictCoordinatesEClass.getEStructuralFeatures().get(0);
    }
 
@@ -282,8 +274,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenArtifactConflictCoordinates_ArtifactId()
-   {
+   public EAttribute getMavenArtifactConflictCoordinates_ArtifactId() {
       return (EAttribute) mavenArtifactConflictCoordinatesEClass.getEStructuralFeatures().get(1);
    }
 
@@ -293,8 +284,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EClass getMavenProjectCoordinates()
-   {
+   public EClass getMavenProjectCoordinates() {
       return mavenProjectCoordinatesEClass;
    }
 
@@ -304,8 +294,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenProjectCoordinates_Version()
-   {
+   public EAttribute getMavenProjectCoordinates_Version() {
       return (EAttribute) mavenProjectCoordinatesEClass.getEStructuralFeatures().get(0);
    }
 
@@ -315,8 +304,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EClass getMavenClassified()
-   {
+   public EClass getMavenClassified() {
       return mavenClassifiedEClass;
    }
 
@@ -326,8 +314,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenClassified_Classifier()
-   {
+   public EAttribute getMavenClassified_Classifier() {
       return (EAttribute) mavenClassifiedEClass.getEStructuralFeatures().get(0);
    }
 
@@ -337,8 +324,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenClassified_Type()
-   {
+   public EAttribute getMavenClassified_Type() {
       return (EAttribute) mavenClassifiedEClass.getEStructuralFeatures().get(1);
    }
 
@@ -348,8 +334,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EClass getMavenProject()
-   {
+   public EClass getMavenProject() {
       return mavenProjectEClass;
    }
 
@@ -359,8 +344,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenProject_Packaging()
-   {
+   public EAttribute getMavenProject_Packaging() {
       return (EAttribute) mavenProjectEClass.getEStructuralFeatures().get(0);
    }
 
@@ -370,8 +354,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenProject_PomFile()
-   {
+   public EAttribute getMavenProject_PomFile() {
       return (EAttribute) mavenProjectEClass.getEStructuralFeatures().get(1);
    }
 
@@ -381,8 +364,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenProject_OutputDirectory()
-   {
+   public EAttribute getMavenProject_OutputDirectory() {
       return (EAttribute) mavenProjectEClass.getEStructuralFeatures().get(2);
    }
 
@@ -392,8 +374,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getMavenProject_TestOutputDirectory()
-   {
+   public EAttribute getMavenProject_TestOutputDirectory() {
       return (EAttribute) mavenProjectEClass.getEStructuralFeatures().get(3);
    }
 
@@ -403,8 +384,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EClass getDependencyDeclaration()
-   {
+   public EClass getDependencyDeclaration() {
       return dependencyDeclarationEClass;
    }
 
@@ -414,8 +394,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getDependencyDeclaration_VersionConstraint()
-   {
+   public EAttribute getDependencyDeclaration_VersionConstraint() {
       return (EAttribute) dependencyDeclarationEClass.getEStructuralFeatures().get(0);
    }
 
@@ -425,8 +404,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getDependencyDeclaration_Scope()
-   {
+   public EAttribute getDependencyDeclaration_Scope() {
       return (EAttribute) dependencyDeclarationEClass.getEStructuralFeatures().get(1);
    }
 
@@ -436,8 +414,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EAttribute getDependencyDeclaration_Optional()
-   {
+   public EAttribute getDependencyDeclaration_Optional() {
       return (EAttribute) dependencyDeclarationEClass.getEStructuralFeatures().get(2);
    }
 
@@ -447,8 +424,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EClass getMavenArtifactCoordinates()
-   {
+   public EClass getMavenArtifactCoordinates() {
       return mavenArtifactCoordinatesEClass;
    }
 
@@ -458,8 +434,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EEnum getScope()
-   {
+   public EEnum getScope() {
       return scopeEEnum;
    }
 
@@ -469,8 +444,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EDataType getNullableScope()
-   {
+   public EDataType getNullableScope() {
       return nullableScopeEDataType;
    }
 
@@ -480,8 +454,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EDataType getArtifactConflictKey()
-   {
+   public EDataType getArtifactConflictKey() {
       return artifactConflictKeyEDataType;
    }
 
@@ -491,8 +464,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EDataType getProjectKey()
-   {
+   public EDataType getProjectKey() {
       return projectKeyEDataType;
    }
 
@@ -502,8 +474,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public EDataType getArtifactKey()
-   {
+   public EDataType getArtifactKey() {
       return artifactKeyEDataType;
    }
 
@@ -513,8 +484,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public MavenModelFactory getMavenModelFactory()
-   {
+   public MavenModelFactory getMavenModelFactory() {
       return (MavenModelFactory) getEFactoryInstance();
    }
 
@@ -534,8 +504,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public void createPackageContents()
-   {
+   public void createPackageContents() {
       if (isCreated)
          return;
       isCreated = true;
@@ -596,8 +565,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
     * 
     * @generated
     */
-   public void initializePackageContents()
-   {
+   public void initializePackageContents() {
       if (isInitialized)
          return;
       isInitialized = true;
@@ -608,8 +576,7 @@ public class MavenModelPackageImpl extends EPackageImpl implements MavenModelPac
       setNsURI(eNS_URI);
 
       // Obtain other dependent packages
-      CommonModelingPackage theCommonModelingPackage = (CommonModelingPackage) EPackage.Registry.INSTANCE
-         .getEPackage(CommonModelingPackage.eNS_URI);
+      CommonModelingPackage theCommonModelingPackage = (CommonModelingPackage) EPackage.Registry.INSTANCE.getEPackage(CommonModelingPackage.eNS_URI);
 
       // Create type parameters
 

@@ -50,8 +50,7 @@ import org.sourcepit.common.modeling.impl.XAnnotatableImpl;
  * 
  * @generated
  */
-public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
-{
+public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact {
    /**
     * The default value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -190,8 +189,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   protected MavenArtifactImpl()
-   {
+   protected MavenArtifactImpl() {
       super();
    }
 
@@ -202,8 +200,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return MavenModelPackage.Literals.MAVEN_ARTIFACT;
    }
 
@@ -213,8 +210,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public String getGroupId()
-   {
+   public String getGroupId() {
       return groupId;
    }
 
@@ -224,8 +220,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public void setGroupId(String newGroupId)
-   {
+   public void setGroupId(String newGroupId) {
       String oldGroupId = groupId;
       groupId = newGroupId;
       if (eNotificationRequired())
@@ -239,8 +234,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public String getArtifactId()
-   {
+   public String getArtifactId() {
       return artifactId;
    }
 
@@ -250,8 +244,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public void setArtifactId(String newArtifactId)
-   {
+   public void setArtifactId(String newArtifactId) {
       String oldArtifactId = artifactId;
       artifactId = newArtifactId;
       if (eNotificationRequired())
@@ -265,8 +258,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public String getVersion()
-   {
+   public String getVersion() {
       return version;
    }
 
@@ -276,8 +268,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public void setVersion(String newVersion)
-   {
+   public void setVersion(String newVersion) {
       String oldVersion = version;
       version = newVersion;
       if (eNotificationRequired())
@@ -291,8 +282,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public String getClassifier()
-   {
+   public String getClassifier() {
       return classifier;
    }
 
@@ -302,8 +292,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public void setClassifier(String newClassifier)
-   {
+   public void setClassifier(String newClassifier) {
       String oldClassifier = classifier;
       classifier = newClassifier;
       if (eNotificationRequired())
@@ -317,8 +306,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public String getType()
-   {
+   public String getType() {
       return type;
    }
 
@@ -328,8 +316,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public void setType(String newType)
-   {
+   public void setType(String newType) {
       String oldType = type;
       type = newType;
       if (eNotificationRequired())
@@ -342,8 +329,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public File getFile()
-   {
+   public File getFile() {
       return file;
    }
 
@@ -353,8 +339,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public void setFile(File newFile)
-   {
+   public void setFile(File newFile) {
       File oldFile = file;
       file = newFile;
       if (eNotificationRequired())
@@ -367,8 +352,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public ArtifactKey getArtifactKey()
-   {
+   public ArtifactKey getArtifactKey() {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -380,8 +364,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public ProjectKey getProjectKey()
-   {
+   public ProjectKey getProjectKey() {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -393,8 +376,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * 
     * @generated
     */
-   public ArtifactConflictKey getArtifactConflictKey()
-   {
+   public ArtifactConflictKey getArtifactConflictKey() {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -407,10 +389,8 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID :
             return getGroupId();
          case MavenModelPackage.MAVEN_ARTIFACT__ARTIFACT_ID :
@@ -434,10 +414,8 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID :
             setGroupId((String) newValue);
             return;
@@ -467,10 +445,8 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID :
             setGroupId(GROUP_ID_EDEFAULT);
             return;
@@ -500,10 +476,8 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID :
             return GROUP_ID_EDEFAULT == null ? groupId != null : !GROUP_ID_EDEFAULT.equals(groupId);
          case MavenModelPackage.MAVEN_ARTIFACT__ARTIFACT_ID :
@@ -527,12 +501,9 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * @generated
     */
    @Override
-   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-   {
-      if (baseClass == MavenArtifactConflictCoordinates.class)
-      {
-         switch (derivedFeatureID)
-         {
+   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+      if (baseClass == MavenArtifactConflictCoordinates.class) {
+         switch (derivedFeatureID) {
             case MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID :
                return MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID;
             case MavenModelPackage.MAVEN_ARTIFACT__ARTIFACT_ID :
@@ -541,20 +512,16 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
                return -1;
          }
       }
-      if (baseClass == MavenProjectCoordinates.class)
-      {
-         switch (derivedFeatureID)
-         {
+      if (baseClass == MavenProjectCoordinates.class) {
+         switch (derivedFeatureID) {
             case MavenModelPackage.MAVEN_ARTIFACT__VERSION :
                return MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION;
             default :
                return -1;
          }
       }
-      if (baseClass == MavenClassified.class)
-      {
-         switch (derivedFeatureID)
-         {
+      if (baseClass == MavenClassified.class) {
+         switch (derivedFeatureID) {
             case MavenModelPackage.MAVEN_ARTIFACT__CLASSIFIER :
                return MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER;
             case MavenModelPackage.MAVEN_ARTIFACT__TYPE :
@@ -563,10 +530,8 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
                return -1;
          }
       }
-      if (baseClass == MavenArtifactCoordinates.class)
-      {
-         switch (derivedFeatureID)
-         {
+      if (baseClass == MavenArtifactCoordinates.class) {
+         switch (derivedFeatureID) {
             default :
                return -1;
          }
@@ -581,12 +546,9 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * @generated
     */
    @Override
-   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-   {
-      if (baseClass == MavenArtifactConflictCoordinates.class)
-      {
-         switch (baseFeatureID)
-         {
+   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+      if (baseClass == MavenArtifactConflictCoordinates.class) {
+         switch (baseFeatureID) {
             case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID :
                return MavenModelPackage.MAVEN_ARTIFACT__GROUP_ID;
             case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID :
@@ -595,20 +557,16 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
                return -1;
          }
       }
-      if (baseClass == MavenProjectCoordinates.class)
-      {
-         switch (baseFeatureID)
-         {
+      if (baseClass == MavenProjectCoordinates.class) {
+         switch (baseFeatureID) {
             case MavenModelPackage.MAVEN_PROJECT_COORDINATES__VERSION :
                return MavenModelPackage.MAVEN_ARTIFACT__VERSION;
             default :
                return -1;
          }
       }
-      if (baseClass == MavenClassified.class)
-      {
-         switch (baseFeatureID)
-         {
+      if (baseClass == MavenClassified.class) {
+         switch (baseFeatureID) {
             case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
                return MavenModelPackage.MAVEN_ARTIFACT__CLASSIFIER;
             case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
@@ -617,10 +575,8 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
                return -1;
          }
       }
-      if (baseClass == MavenArtifactCoordinates.class)
-      {
-         switch (baseFeatureID)
-         {
+      if (baseClass == MavenArtifactCoordinates.class) {
+         switch (baseFeatureID) {
             default :
                return -1;
          }
@@ -635,8 +591,7 @@ public class MavenArtifactImpl extends XAnnotatableImpl implements MavenArtifact
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

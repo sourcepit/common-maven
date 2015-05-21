@@ -33,8 +33,7 @@ package org.sourcepit.common.maven.model;
  * @model abstract="true"
  * @generated
  */
-public interface MavenProjectCoordinates extends MavenArtifactConflictCoordinates
-{
+public interface MavenProjectCoordinates extends MavenArtifactConflictCoordinates {
    /**
     * Returns the value of the '<em><b>Version</b></em>' attribute.
     * <!-- begin-user-doc -->

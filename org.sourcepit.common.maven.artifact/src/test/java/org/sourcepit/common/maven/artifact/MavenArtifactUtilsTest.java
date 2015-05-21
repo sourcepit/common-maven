@@ -29,26 +29,20 @@ import org.apache.maven.artifact.versioning.VersionRange;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
 import org.junit.Test;
-import org.sourcepit.common.maven.artifact.ArtifactHandlerImpl;
-import org.sourcepit.common.maven.artifact.MavenArtifactUtils;
 import org.sourcepit.common.maven.model.MavenArtifact;
 import org.sourcepit.common.maven.model.MavenDependency;
 import org.sourcepit.common.maven.model.MavenModelPackage;
 import org.sourcepit.common.maven.model.Scope;
 import org.sourcepit.common.maven.model.util.MavenModelUtils;
 
-public class MavenArtifactUtilsTest
-{
+public class MavenArtifactUtilsTest {
    @Test
-   public void testToMavenArtifact()
-   {
-      try
-      {
+   public void testToMavenArtifact() {
+      try {
          MavenArtifactUtils.toMavenArtifact((Artifact) null);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Artifact artifact = mock(Artifact.class);
@@ -78,8 +72,7 @@ public class MavenArtifactUtilsTest
    }
 
    @Test
-   public void testToArtifactKey()
-   {
+   public void testToArtifactKey() {
       Artifact artifact = mock(Artifact.class);
       when(artifact.getFile()).thenReturn(new File(""));
       when(artifact.getGroupId()).thenReturn("groupId");
@@ -99,15 +92,12 @@ public class MavenArtifactUtilsTest
    }
 
    @Test
-   public void testToMavenDependency() throws Exception
-   {
-      try
-      {
+   public void testToMavenDependency() throws Exception {
+      try {
          MavenArtifactUtils.toMavenDependecy((Artifact) null);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Artifact artifact = mock(Artifact.class);

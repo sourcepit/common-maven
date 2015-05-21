@@ -30,19 +30,15 @@ import org.apache.maven.model.Plugin;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.junit.Test;
 
-public class MavenModelUtilsTest
-{
+public class MavenModelUtilsTest {
 
    @Test
-   public void testCreatePlugin() throws Exception
-   {
-      try
-      {
+   public void testCreatePlugin() throws Exception {
+      try {
          MavenModelUtils.createPlugin("", null, "");
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Plugin plugin = MavenModelUtils.createPlugin("org.sourcepit", "foo-maven-plugin", "1.0.0");
@@ -59,15 +55,12 @@ public class MavenModelUtilsTest
    }
 
    @Test
-   public void testGetBuild()
-   {
-      try
-      {
+   public void testGetBuild() {
+      try {
          MavenModelUtils.getBuild(null, false);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Build build = MavenModelUtils.getBuild(new Model(), false);
@@ -89,33 +82,26 @@ public class MavenModelUtilsTest
    }
 
    @Test
-   public void testGetPlugin()
-   {
-      try
-      {
+   public void testGetPlugin() {
+      try {
          MavenModelUtils.getPlugin((Model) null, null, null, false);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
-      try
-      {
+      try {
          MavenModelUtils.getPlugin((Build) null, null, null, false);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
-      try
-      {
+      try {
          MavenModelUtils.getPlugin(new Model(), null, null, false);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Plugin plugin = MavenModelUtils.getPlugin(new Model(), null, "foo", false);
@@ -148,15 +134,12 @@ public class MavenModelUtilsTest
    }
 
    @Test
-   public void testGetConfiguration()
-   {
-      try
-      {
+   public void testGetConfiguration() {
+      try {
          MavenModelUtils.getConfiguration(null, false);
          fail();
       }
-      catch (IllegalArgumentException e)
-      {
+      catch (IllegalArgumentException e) {
       }
 
       Xpp3Dom configuration = MavenModelUtils.getConfiguration(new Plugin(), false);

@@ -32,8 +32,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum Scope implements Enumerator
-{
+public enum Scope implements Enumerator {
    /**
     * The '<em><b>Compile</b></em>' literal object.
     * <!-- begin-user-doc -->
@@ -221,13 +220,10 @@ public enum Scope implements Enumerator
     * 
     * @generated
     */
-   public static Scope get(String literal)
-   {
-      for (int i = 0; i < VALUES_ARRAY.length; ++i)
-      {
+   public static Scope get(String literal) {
+      for (int i = 0; i < VALUES_ARRAY.length; ++i) {
          Scope result = VALUES_ARRAY[i];
-         if (result.toString().equals(literal))
-         {
+         if (result.toString().equals(literal)) {
             return result;
          }
       }
@@ -241,13 +237,10 @@ public enum Scope implements Enumerator
     * 
     * @generated
     */
-   public static Scope getByName(String name)
-   {
-      for (int i = 0; i < VALUES_ARRAY.length; ++i)
-      {
+   public static Scope getByName(String name) {
+      for (int i = 0; i < VALUES_ARRAY.length; ++i) {
          Scope result = VALUES_ARRAY[i];
-         if (result.getName().equals(name))
-         {
+         if (result.getName().equals(name)) {
             return result;
          }
       }
@@ -261,10 +254,8 @@ public enum Scope implements Enumerator
     * 
     * @generated
     */
-   public static Scope get(int value)
-   {
-      switch (value)
-      {
+   public static Scope get(int value) {
+      switch (value) {
          case COMPILE_VALUE :
             return COMPILE;
          case PROVIDED_VALUE :
@@ -312,8 +303,7 @@ public enum Scope implements Enumerator
     * 
     * @generated
     */
-   private Scope(int value, String name, String literal)
-   {
+   private Scope(int value, String name, String literal) {
       this.value = value;
       this.name = name;
       this.literal = literal;
@@ -325,8 +315,7 @@ public enum Scope implements Enumerator
     * 
     * @generated
     */
-   public int getValue()
-   {
+   public int getValue() {
       return value;
    }
 
@@ -336,8 +325,7 @@ public enum Scope implements Enumerator
     * 
     * @generated
     */
-   public String getName()
-   {
+   public String getName() {
       return name;
    }
 
@@ -347,8 +335,7 @@ public enum Scope implements Enumerator
     * 
     * @generated
     */
-   public String getLiteral()
-   {
+   public String getLiteral() {
       return literal;
    }
 
@@ -360,8 +347,7 @@ public enum Scope implements Enumerator
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       return literal;
    }
 

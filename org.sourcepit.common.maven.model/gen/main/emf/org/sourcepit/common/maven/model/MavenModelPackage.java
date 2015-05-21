@@ -39,8 +39,7 @@ import org.sourcepit.common.modeling.CommonModelingPackage;
  * @model kind="package"
  * @generated
  */
-public interface MavenModelPackage extends EPackage
-{
+public interface MavenModelPackage extends EPackage {
    /**
     * The package name.
     * <!-- begin-user-doc -->
@@ -1107,8 +1106,7 @@ public interface MavenModelPackage extends EPackage
     * 
     * @generated
     */
-   interface Literals
-   {
+   interface Literals {
       /**
        * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.MavenArtifactImpl
        * <em>Maven Artifact</em>}' class.
@@ -1162,8 +1160,7 @@ public interface MavenModelPackage extends EPackage
        * 
        * @generated
        */
-      EAttribute MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID = eINSTANCE
-         .getMavenArtifactConflictCoordinates_GroupId();
+      EAttribute MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID = eINSTANCE.getMavenArtifactConflictCoordinates_GroupId();
 
       /**
        * The meta object literal for the '<em><b>Artifact Id</b></em>' attribute feature.
@@ -1172,8 +1169,7 @@ public interface MavenModelPackage extends EPackage
        * 
        * @generated
        */
-      EAttribute MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID = eINSTANCE
-         .getMavenArtifactConflictCoordinates_ArtifactId();
+      EAttribute MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID = eINSTANCE.getMavenArtifactConflictCoordinates_ArtifactId();
 
       /**
        * The meta object literal for the '{@link org.sourcepit.common.maven.model.impl.MavenProjectCoordinatesImpl

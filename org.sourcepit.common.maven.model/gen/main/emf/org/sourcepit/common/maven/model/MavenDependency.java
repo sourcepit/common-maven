@@ -28,6 +28,5 @@ import org.sourcepit.common.modeling.XAnnotatable;
  * @model
  * @generated
  */
-public interface MavenDependency extends DependencyDeclaration, XAnnotatable
-{
+public interface MavenDependency extends DependencyDeclaration, XAnnotatable {
 } // MavenDependency

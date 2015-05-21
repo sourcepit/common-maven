@@ -41,8 +41,7 @@ import org.sourcepit.common.maven.model.MavenModelPackage;
  */
 public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
    implements
-      MavenArtifactConflictCoordinates
-{
+      MavenArtifactConflictCoordinates {
    /**
     * The default value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -93,8 +92,7 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * 
     * @generated
     */
-   protected MavenArtifactConflictCoordinatesImpl()
-   {
+   protected MavenArtifactConflictCoordinatesImpl() {
       super();
    }
 
@@ -105,8 +103,7 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return MavenModelPackage.Literals.MAVEN_ARTIFACT_CONFLICT_COORDINATES;
    }
 
@@ -116,8 +113,7 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * 
     * @generated
     */
-   public String getGroupId()
-   {
+   public String getGroupId() {
       return groupId;
    }
 
@@ -127,8 +123,7 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * 
     * @generated
     */
-   public void setGroupId(String newGroupId)
-   {
+   public void setGroupId(String newGroupId) {
       String oldGroupId = groupId;
       groupId = newGroupId;
       if (eNotificationRequired())
@@ -142,8 +137,7 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * 
     * @generated
     */
-   public String getArtifactId()
-   {
+   public String getArtifactId() {
       return artifactId;
    }
 
@@ -153,8 +147,7 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * 
     * @generated
     */
-   public void setArtifactId(String newArtifactId)
-   {
+   public void setArtifactId(String newArtifactId) {
       String oldArtifactId = artifactId;
       artifactId = newArtifactId;
       if (eNotificationRequired())
@@ -168,8 +161,7 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * 
     * @generated
     */
-   public ArtifactConflictKey getArtifactConflictKey()
-   {
+   public ArtifactConflictKey getArtifactConflictKey() {
       // TODO: implement this method
       // Ensure that you remove @generated or mark it @generated NOT
       throw new UnsupportedOperationException();
@@ -182,10 +174,8 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID :
             return getGroupId();
          case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID :
@@ -201,10 +191,8 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID :
             setGroupId((String) newValue);
             return;
@@ -222,10 +210,8 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID :
             setGroupId(GROUP_ID_EDEFAULT);
             return;
@@ -243,10 +229,8 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__GROUP_ID :
             return GROUP_ID_EDEFAULT == null ? groupId != null : !GROUP_ID_EDEFAULT.equals(groupId);
          case MavenModelPackage.MAVEN_ARTIFACT_CONFLICT_COORDINATES__ARTIFACT_ID :
@@ -262,8 +246,7 @@ public abstract class MavenArtifactConflictCoordinatesImpl extends EObjectImpl
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

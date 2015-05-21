@@ -17,19 +17,15 @@
 package org.sourcepit.common.maven.model.impl;
 
 import org.sourcepit.common.constraints.NotNull;
-
 import org.sourcepit.common.maven.model.ArtifactConflictKey;
 import org.sourcepit.common.maven.model.MavenArtifactConflictCoordinates;
 
-public final class MavenArtifactConflictCoordinatesOperations
-{
-   private MavenArtifactConflictCoordinatesOperations()
-   {
+public final class MavenArtifactConflictCoordinatesOperations {
+   private MavenArtifactConflictCoordinatesOperations() {
       super();
    }
 
-   public static ArtifactConflictKey getArtifactConflictKey(@NotNull MavenArtifactConflictCoordinates o)
-   {
+   public static ArtifactConflictKey getArtifactConflictKey(@NotNull MavenArtifactConflictCoordinates o) {
       return new ArtifactConflictKey(o.getGroupId(), o.getArtifactId());
    }
 }

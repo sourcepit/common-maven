@@ -39,8 +39,7 @@ import org.sourcepit.common.maven.model.Scope;
  * 
  * @generated
  */
-public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFactory
-{
+public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFactory {
    /**
     * Creates the default factory implementation.
     * <!-- begin-user-doc -->
@@ -48,19 +47,14 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public static MavenModelFactory init()
-   {
-      try
-      {
-         MavenModelFactory theMavenModelFactory = (MavenModelFactory) EPackage.Registry.INSTANCE
-            .getEFactory("http://www.sourcepit.org/common/maven/0.1");
-         if (theMavenModelFactory != null)
-         {
+   public static MavenModelFactory init() {
+      try {
+         MavenModelFactory theMavenModelFactory = (MavenModelFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.sourcepit.org/common/maven/0.1");
+         if (theMavenModelFactory != null) {
             return theMavenModelFactory;
          }
       }
-      catch (Exception exception)
-      {
+      catch (Exception exception) {
          EcorePlugin.INSTANCE.log(exception);
       }
       return new MavenModelFactoryImpl();
@@ -73,8 +67,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public MavenModelFactoryImpl()
-   {
+   public MavenModelFactoryImpl() {
       super();
    }
 
@@ -85,10 +78,8 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * @generated
     */
    @Override
-   public EObject create(EClass eClass)
-   {
-      switch (eClass.getClassifierID())
-      {
+   public EObject create(EClass eClass) {
+      switch (eClass.getClassifierID()) {
          case MavenModelPackage.MAVEN_ARTIFACT :
             return createMavenArtifact();
          case MavenModelPackage.MAVEN_DEPENDENCY :
@@ -107,10 +98,8 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * @generated
     */
    @Override
-   public Object createFromString(EDataType eDataType, String initialValue)
-   {
-      switch (eDataType.getClassifierID())
-      {
+   public Object createFromString(EDataType eDataType, String initialValue) {
+      switch (eDataType.getClassifierID()) {
          case MavenModelPackage.SCOPE :
             return createScopeFromString(eDataType, initialValue);
          case MavenModelPackage.NULLABLE_SCOPE :
@@ -133,10 +122,8 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * @generated
     */
    @Override
-   public String convertToString(EDataType eDataType, Object instanceValue)
-   {
-      switch (eDataType.getClassifierID())
-      {
+   public String convertToString(EDataType eDataType, Object instanceValue) {
+      switch (eDataType.getClassifierID()) {
          case MavenModelPackage.SCOPE :
             return convertScopeToString(eDataType, instanceValue);
          case MavenModelPackage.NULLABLE_SCOPE :
@@ -158,8 +145,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public MavenArtifact createMavenArtifact()
-   {
+   public MavenArtifact createMavenArtifact() {
       MavenArtifactImpl mavenArtifact = new MavenArtifactImpl();
       return mavenArtifact;
    }
@@ -170,8 +156,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public MavenDependency createMavenDependency()
-   {
+   public MavenDependency createMavenDependency() {
       MavenDependencyImpl mavenDependency = new MavenDependencyImpl();
       return mavenDependency;
    }
@@ -182,8 +167,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public MavenProject createMavenProject()
-   {
+   public MavenProject createMavenProject() {
       MavenProjectImpl mavenProject = new MavenProjectImpl();
       return mavenProject;
    }
@@ -194,8 +178,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public Scope createScopeFromString(EDataType eDataType, String initialValue)
-   {
+   public Scope createScopeFromString(EDataType eDataType, String initialValue) {
       Scope result = Scope.get(initialValue);
       if (result == null)
          throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '"
@@ -209,8 +192,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public String convertScopeToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertScopeToString(EDataType eDataType, Object instanceValue) {
       return instanceValue == null ? null : instanceValue.toString();
    }
 
@@ -220,8 +202,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public Scope createNullableScopeFromString(EDataType eDataType, String initialValue)
-   {
+   public Scope createNullableScopeFromString(EDataType eDataType, String initialValue) {
       return (Scope) super.createFromString(eDataType, initialValue);
    }
 
@@ -231,8 +212,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public String convertNullableScopeToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertNullableScopeToString(EDataType eDataType, Object instanceValue) {
       return super.convertToString(eDataType, instanceValue);
    }
 
@@ -242,8 +222,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public ArtifactConflictKey createArtifactConflictKeyFromString(EDataType eDataType, String initialValue)
-   {
+   public ArtifactConflictKey createArtifactConflictKeyFromString(EDataType eDataType, String initialValue) {
       return (ArtifactConflictKey) super.createFromString(eDataType, initialValue);
    }
 
@@ -253,8 +232,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public String convertArtifactConflictKeyToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertArtifactConflictKeyToString(EDataType eDataType, Object instanceValue) {
       return super.convertToString(eDataType, instanceValue);
    }
 
@@ -264,8 +242,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public ProjectKey createProjectKeyFromString(EDataType eDataType, String initialValue)
-   {
+   public ProjectKey createProjectKeyFromString(EDataType eDataType, String initialValue) {
       return (ProjectKey) super.createFromString(eDataType, initialValue);
    }
 
@@ -275,8 +252,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public String convertProjectKeyToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertProjectKeyToString(EDataType eDataType, Object instanceValue) {
       return super.convertToString(eDataType, instanceValue);
    }
 
@@ -286,8 +262,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public ArtifactKey createArtifactKeyFromString(EDataType eDataType, String initialValue)
-   {
+   public ArtifactKey createArtifactKeyFromString(EDataType eDataType, String initialValue) {
       return (ArtifactKey) super.createFromString(eDataType, initialValue);
    }
 
@@ -297,8 +272,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public String convertArtifactKeyToString(EDataType eDataType, Object instanceValue)
-   {
+   public String convertArtifactKeyToString(EDataType eDataType, Object instanceValue) {
       return super.convertToString(eDataType, instanceValue);
    }
 
@@ -308,8 +282,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * 
     * @generated
     */
-   public MavenModelPackage getMavenModelPackage()
-   {
+   public MavenModelPackage getMavenModelPackage() {
       return (MavenModelPackage) getEPackage();
    }
 
@@ -321,8 +294,7 @@ public class MavenModelFactoryImpl extends EFactoryImpl implements MavenModelFac
     * @generated
     */
    @Deprecated
-   public static MavenModelPackage getPackage()
-   {
+   public static MavenModelPackage getPackage() {
       return MavenModelPackage.eINSTANCE;
    }
 

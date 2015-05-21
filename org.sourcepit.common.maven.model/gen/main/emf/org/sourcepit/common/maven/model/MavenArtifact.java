@@ -36,8 +36,7 @@ import org.sourcepit.common.modeling.XAnnotatable;
  * @model
  * @generated
  */
-public interface MavenArtifact extends XAnnotatable, MavenArtifactCoordinates
-{
+public interface MavenArtifact extends XAnnotatable, MavenArtifactCoordinates {
    /**
     * Returns the value of the '<em><b>File</b></em>' attribute.
     * <!-- begin-user-doc -->

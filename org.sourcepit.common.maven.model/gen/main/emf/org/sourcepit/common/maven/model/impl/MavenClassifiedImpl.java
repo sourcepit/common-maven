@@ -37,8 +37,7 @@ import org.sourcepit.common.maven.model.MavenModelPackage;
  * 
  * @generated
  */
-public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenClassified
-{
+public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenClassified {
    /**
     * The default value of the '{@link #getClassifier() <em>Classifier</em>}' attribute.
     * <!-- begin-user-doc -->
@@ -89,8 +88,7 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * 
     * @generated
     */
-   protected MavenClassifiedImpl()
-   {
+   protected MavenClassifiedImpl() {
       super();
    }
 
@@ -101,8 +99,7 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * @generated
     */
    @Override
-   protected EClass eStaticClass()
-   {
+   protected EClass eStaticClass() {
       return MavenModelPackage.Literals.MAVEN_CLASSIFIED;
    }
 
@@ -112,8 +109,7 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * 
     * @generated
     */
-   public String getClassifier()
-   {
+   public String getClassifier() {
       return classifier;
    }
 
@@ -123,8 +119,7 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * 
     * @generated
     */
-   public void setClassifier(String newClassifier)
-   {
+   public void setClassifier(String newClassifier) {
       String oldClassifier = classifier;
       classifier = newClassifier;
       if (eNotificationRequired())
@@ -138,8 +133,7 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * 
     * @generated
     */
-   public String getType()
-   {
+   public String getType() {
       return type;
    }
 
@@ -149,8 +143,7 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * 
     * @generated
     */
-   public void setType(String newType)
-   {
+   public void setType(String newType) {
       String oldType = type;
       type = newType;
       if (eNotificationRequired())
@@ -164,10 +157,8 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * @generated
     */
    @Override
-   public Object eGet(int featureID, boolean resolve, boolean coreType)
-   {
-      switch (featureID)
-      {
+   public Object eGet(int featureID, boolean resolve, boolean coreType) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
             return getClassifier();
          case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
@@ -183,10 +174,8 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * @generated
     */
    @Override
-   public void eSet(int featureID, Object newValue)
-   {
-      switch (featureID)
-      {
+   public void eSet(int featureID, Object newValue) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
             setClassifier((String) newValue);
             return;
@@ -204,10 +193,8 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * @generated
     */
    @Override
-   public void eUnset(int featureID)
-   {
-      switch (featureID)
-      {
+   public void eUnset(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
             setClassifier(CLASSIFIER_EDEFAULT);
             return;
@@ -225,10 +212,8 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * @generated
     */
    @Override
-   public boolean eIsSet(int featureID)
-   {
-      switch (featureID)
-      {
+   public boolean eIsSet(int featureID) {
+      switch (featureID) {
          case MavenModelPackage.MAVEN_CLASSIFIED__CLASSIFIER :
             return CLASSIFIER_EDEFAULT == null ? classifier != null : !CLASSIFIER_EDEFAULT.equals(classifier);
          case MavenModelPackage.MAVEN_CLASSIFIED__TYPE :
@@ -244,8 +229,7 @@ public abstract class MavenClassifiedImpl extends EObjectImpl implements MavenCl
     * @generated
     */
    @Override
-   public String toString()
-   {
+   public String toString() {
       if (eIsProxy())
          return super.toString();
 

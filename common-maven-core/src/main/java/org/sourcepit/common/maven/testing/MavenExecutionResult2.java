@@ -22,7 +22,6 @@ import org.apache.maven.execution.MavenSession;
 /**
  * @author Bernd Vogt <bernd.vogt@sourcepit.org>
  */
-public interface MavenExecutionResult2 extends MavenExecutionResult
-{
+public interface MavenExecutionResult2 extends MavenExecutionResult {
    MavenSession getSession();
 }

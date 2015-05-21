@@ -41,8 +41,7 @@ import org.apache.maven.plugin.LegacySupport;
 import org.codehaus.plexus.PlexusContainer;
 
 @Named
-public class ArtifactRepositoryFacade
-{
+public class ArtifactRepositoryFacade {
    @Inject
    private PlexusContainer plexus;
 
@@ -52,86 +51,67 @@ public class ArtifactRepositoryFacade
    private EmbeddedMaven embeddedMaven;
 
    @Inject
-   public ArtifactRepositoryFacade(EmbeddedMaven embeddedMaven)
-   {
+   public ArtifactRepositoryFacade(EmbeddedMaven embeddedMaven) {
       this.embeddedMaven = embeddedMaven;
    }
 
-   public void setEmbeddedMaven(EmbeddedMaven embeddedMaven)
-   {
+   public void setEmbeddedMaven(EmbeddedMaven embeddedMaven) {
       this.embeddedMaven = embeddedMaven;
    }
 
-   public EmbeddedMaven getEmbeddedMaven()
-   {
+   public EmbeddedMaven getEmbeddedMaven() {
       return embeddedMaven;
    }
 
 
-   public void install(Model pom)
-   {
-      try
-      {
+   public void install(Model pom) {
+      try {
          deploy(pom, true, false);
       }
-      catch (RuntimeException e)
-      {
+      catch (RuntimeException e) {
          throw e;
       }
-      catch (Exception e)
-      {
+      catch (Exception e) {
          throw new IllegalStateException(e);
       }
    }
 
-   public void deploy(Model pom)
-   {
-      try
-      {
+   public void deploy(Model pom) {
+      try {
          deploy(pom, false, true);
       }
-      catch (RuntimeException e)
-      {
+      catch (RuntimeException e) {
          throw e;
       }
-      catch (Exception e)
-      {
+      catch (Exception e) {
          throw new IllegalStateException(e);
       }
    }
 
-   public void installAndDeploy(Model pom)
-   {
-      try
-      {
+   public void installAndDeploy(Model pom) {
+      try {
          deploy(pom, true, true);
       }
-      catch (RuntimeException e)
-      {
+      catch (RuntimeException e) {
          throw e;
       }
-      catch (Exception e)
-      {
+      catch (Exception e) {
          throw new IllegalStateException(e);
       }
    }
 
-   private void deploy(Model pom, boolean install, boolean deploy) throws Exception, RuntimeException
-   {
+   private void deploy(Model pom, boolean install, boolean deploy) throws Exception, RuntimeException {
       final File localRepo = new File(embeddedMaven.getLocalRepository().getBasedir());
       final File source = createStubJar(localRepo);
-      try
-      {
+      try {
          deploy(source, pom, install, deploy);
       }
-      finally
-      {
+      finally {
          FileUtils.forceDelete(source);
       }
    }
 
-   private void deploy(final File source, Model pom, boolean install, boolean deploy)
-   {
+   private void deploy(final File source, Model pom, boolean install, boolean deploy) {
       final ArtifactRepository localRepository = embeddedMaven.getLocalRepository();
 
       final File localRepo = new File(localRepository.getBasedir());
@@ -139,8 +119,7 @@ public class ArtifactRepositoryFacade
       final MavenExecutionResult2 result = embeddedMaven.buildStubProject(localRepo);
 
       final MavenSession session = legacySupport.getSession();
-      try
-      {
+      try {
          final ArtifactInstaller installer = install ? plexus.lookup(ArtifactInstaller.class) : null;
          final ArtifactDeployer deployer = deploy ? plexus.lookup(ArtifactDeployer.class) : null;
 
@@ -149,58 +128,46 @@ public class ArtifactRepositoryFacade
          final ArtifactRepository deploymentRepository = embeddedMaven.getRemoteRepository();
 
          final Artifact artifact = embeddedMaven.createArtifact(pom);
-         if (install)
-         {
+         if (install) {
             installer.install(source, artifact, localRepository);
          }
-         if (deploy)
-         {
+         if (deploy) {
             deployer.deploy(source, artifact, deploymentRepository, localRepository);
          }
 
-         if (!"pom".equals(pom.getPackaging()))
-         {
+         if (!"pom".equals(pom.getPackaging())) {
             final Artifact pomArtifact = embeddedMaven.createProjectArtifact(pom);
             final File pomFile = File.createTempFile(pom.getArtifactId() + "-" + pom.getVersion(), ".pom", localRepo);
-            try
-            {
+            try {
                new DefaultModelWriter().write(pomFile, null, pom);
-               if (install)
-               {
+               if (install) {
                   installer.install(pomFile, pomArtifact, localRepository);
                }
-               if (deploy)
-               {
+               if (deploy) {
                   deployer.deploy(pomFile, pomArtifact, deploymentRepository, localRepository);
                }
             }
-            finally
-            {
+            finally {
                FileUtils.forceDelete(pomFile);
             }
          }
       }
-      catch (RuntimeException e)
-      {
+      catch (RuntimeException e) {
          throw e;
       }
-      catch (Exception e)
-      {
+      catch (Exception e) {
          throw new IllegalStateException(e);
       }
-      finally
-      {
+      finally {
          legacySupport.setSession(session);
       }
    }
 
-   private static File createStubJar(File dir) throws IOException
-   {
+   private static File createStubJar(File dir) throws IOException {
       final File jarFile = File.createTempFile("stub", ".jar", dir);
 
       JarOutputStream jarOut = null;
-      try
-      {
+      try {
          jarOut = new JarOutputStream(new FileOutputStream(jarFile));
 
          final JarEntry mfEntry = new JarEntry(JarFile.MANIFEST_NAME);
@@ -212,8 +179,7 @@ public class ArtifactRepositoryFacade
 
          jarOut.closeEntry();
       }
-      finally
-      {
+      finally {
          IOUtils.closeQuietly(jarOut);
       }
 

@@ -35,8 +35,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface MavenClassified extends EObject
-{
+public interface MavenClassified extends EObject {
    /**
     * Returns the value of the '<em><b>Classifier</b></em>' attribute.
     * <!-- begin-user-doc -->
