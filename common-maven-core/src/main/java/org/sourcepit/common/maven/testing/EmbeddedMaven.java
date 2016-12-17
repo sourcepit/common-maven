@@ -56,15 +56,17 @@ import org.apache.maven.settings.building.SettingsBuilder;
 import org.apache.maven.settings.building.SettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuildingResult;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sourcepit.common.maven.core.MavenProjectUtils;
 
 @Named
 public class EmbeddedMaven {
+
+   private static final Logger logger = LoggerFactory.getLogger(EmbeddedMaven.class);
+
    private final Maven maven;
 
    private final EventSpyDispatcher eventSpyDispatcher;
-
-   private final Logger logger;
 
    private final LifecycleDependencyResolver resolver;
 
@@ -79,12 +81,11 @@ public class EmbeddedMaven {
    private File userHome, userSettings, localRepo, remoteRepo;
 
    @Inject
-   public EmbeddedMaven(Maven maven, EventSpyDispatcher eventSpyDispatcher, Logger logger,
-      LifecycleDependencyResolver resolver, MavenExecutionRequestPopulator executionRequestPopulator,
-      SettingsBuilder settingsBuilder, LegacySupport buildContext, RepositorySystem repositorySystem) {
+   public EmbeddedMaven(Maven maven, EventSpyDispatcher eventSpyDispatcher, LifecycleDependencyResolver resolver,
+      MavenExecutionRequestPopulator executionRequestPopulator, SettingsBuilder settingsBuilder,
+      LegacySupport buildContext, RepositorySystem repositorySystem) {
       this.maven = maven;
       this.eventSpyDispatcher = eventSpyDispatcher;
-      this.logger = logger;
       this.resolver = resolver;
       this.executionRequestPopulator = executionRequestPopulator;
       this.settingsBuilder = settingsBuilder;
@@ -188,8 +189,8 @@ public class EmbeddedMaven {
       return request;
    }
 
-   public void populateDefaults(final MavenExecutionRequest request) throws Exception,
-      MavenExecutionRequestPopulationException {
+   public void populateDefaults(final MavenExecutionRequest request)
+      throws Exception, MavenExecutionRequestPopulationException {
       request.setExecutionListener(eventSpyDispatcher.chainListener(new ExecutionEventLogger(logger)));
       request.setTransferListener(new BatchModeMavenTransferListener(System.out));
 

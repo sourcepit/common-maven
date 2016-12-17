@@ -22,10 +22,16 @@ import java.util.Properties;
 
 import javax.inject.Inject;
 
+import org.apache.maven.Maven;
+import org.apache.maven.classrealm.ClassRealmManager;
+import org.apache.maven.classrealm.DefaultClassRealmManager;
 import org.apache.maven.cli.logging.Slf4jConfiguration;
 import org.apache.maven.cli.logging.Slf4jConfigurationFactory;
 import org.apache.maven.cli.logging.Slf4jLoggerManager;
+import org.apache.maven.eventspy.internal.EventSpyDispatcher;
 import org.apache.maven.execution.MavenExecutionRequest;
+import org.apache.maven.extension.internal.CoreExports;
+import org.apache.maven.extension.internal.CoreExtensionEntry;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.settings.building.SettingsBuildingResult;
 import org.codehaus.plexus.ContainerConfiguration;
@@ -66,8 +72,14 @@ public abstract class EmbeddedMavenTest {
       slf4jConfiguration.activate();
 
       // create a maven like plexus configuration
+      final ClassWorld classWorld = new ClassWorld("plexus.core", getClass().getClassLoader());
+
+      final ClassRealm coreRealm = classWorld.getClassRealm("plexus.core");
+
+      final CoreExtensionEntry coreEntry = CoreExtensionEntry.discoverFrom(coreRealm);
+
       ContainerConfiguration cc = new DefaultContainerConfiguration();
-      cc.setClassWorld(new ClassWorld("plexus.core", getClass().getClassLoader()));
+      cc.setClassWorld(classWorld);
       cc.setClassPathScanning(PlexusConstants.SCANNING_INDEX);
       cc.setAutoWiring(true);
       cc.setName("maven");
@@ -77,6 +89,7 @@ public abstract class EmbeddedMavenTest {
          container = new DefaultPlexusContainer(cc, new Module() {
             @Override
             public void configure(Binder binder) {
+               binder.bind(CoreExports.class).toInstance(new CoreExports(coreEntry));
                binder.bind(ILoggerFactory.class).toInstance(slf4jLoggerFactory);
                configureCustomBindings(binder);
             }
@@ -87,6 +100,13 @@ public abstract class EmbeddedMavenTest {
       }
       container.setLookupRealm(null);
       container.setLoggerManager(new Slf4jLoggerManager());
+
+      try {
+         container.lookup(ClassRealmManager.class.getName());
+      }
+      catch (Exception e) {
+         e.printStackTrace();
+      }
 
       final ClassRealm realm = new ClassRealm(container.getClassWorld(), "foo", null);
       container.discoverComponents(realm, new com.google.inject.AbstractModule() {

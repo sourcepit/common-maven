@@ -80,9 +80,12 @@ public abstract class ExternalMavenTest {
 
    protected CommandLine newMavenCmd(String... arguments) {
       final String sh = getEnvironment().isDebugAllowed() && isDebug() ? "mvnDebug" : "mvn";
-      final String bat = sh + ".bat";
       final File binDir = new File(getEnvironment().getMavenHome(), "/bin");
-      return newCmd(binDir, bat, sh, arguments);
+      String exec = sh + ".bat";
+      if (!new File(binDir, exec).exists()) {
+         exec = sh + ".cmd";
+      }
+      return newCmd(binDir, exec, sh, arguments);
    }
 
    protected abstract boolean isDebug();
