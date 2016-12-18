@@ -78,7 +78,7 @@ limitations under the License.
 				<plugin>
 					<groupId>org.sourcepit.osgifier</groupId>
 					<artifactId>osgifier-maven-plugin</artifactId>
-					<version>0.24.2</version>
+					<version>0.25.0</version>
 					<configuration>
 						<pde>true</pde>
 					</configuration>
